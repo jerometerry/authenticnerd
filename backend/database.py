@@ -1,8 +1,8 @@
 # backend/database.py
-from pymongo.mongo_client import MongoClient
+from pymongo import AsyncMongoClient
 from .config import settings
 
-client = MongoClient(settings.MONGO_URI)
+client = AsyncMongoClient(settings.MONGO_URI)
 db = client[settings.DATABASE_NAME]
 
 def get_collection(name: str):
