@@ -9,18 +9,26 @@
   },
   "dependencies": {
     "@aurelia/router": "latest",
-    "aurelia": "latest",
-    "esbuild": "^0.25.10"
+    "@reduxjs/toolkit": "^2.9.0",
+    "esbuild": "^0.25.10",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@aurelia/testing": "latest",
     "@aurelia/vite-plugin": "latest",
+    "@rtk-query/codegen-openapi": "^2.0.0",
     "@types/node": "^22.10.2",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^9.17.0",
     "globals": "^15.14.0",
     "jsdom": "^25.0.1",
     "stylelint": "^16.12.0",
     "stylelint-config-standard": "^36.0.1",
+    "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",
@@ -35,7 +43,9 @@
     "pretest": "npm run lint",
     "start": "vite",
     "build": "vite build",
-    "test": "vitest"
+    "preview": "vite preview",
+    "test": "vitest",
+    "codegen": "TS_NODE_PROJECT=tsconfig.codegen.json rtk-query-codegen-openapi rtk-codegen.config.cts"
   },
   "type": "module",
   "overrides": {
