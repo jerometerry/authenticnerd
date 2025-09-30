@@ -6,6 +6,7 @@ const config: typeof ConfigFile = {
   apiFile: './src/state/api.ts',
   outputFile: './src/state/generatedApi.ts',
   hooks: true,
+  tag: true, 
 };
 
 module.exports = config;

@@ -2,11 +2,12 @@
 from fastapi import FastAPI, Body, status, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
+from datetime import datetime
 
 from .database import get_collection
-from .models import LogEntry, LogEntryInDB
+from .models import LogEntry, LogEntryInDB, TimeLogEntry, TimeLogEntryInDB
 
-app = FastAPI(openapi_prefix="/api")
+app = FastAPI()
 
 origins = ["http://localhost:9000", "http://localhost:5173"]
 app.add_middleware(
@@ -20,11 +21,12 @@ app.add_middleware(
 router = APIRouter()
 log_collection = get_collection("logs")
 
-@app.post(
+@router.post(
     "/log",
     response_model=LogEntryInDB,
     status_code=status.HTTP_201_CREATED,
     operation_id="create_log",
+    openapi_extra={"x-rtk-query-invalidates-tags": ["Log"]},
 )
 async def create_log_endpoint(log: LogEntry = Body(...)):
     """Create a new log entry in the database."""
@@ -33,10 +35,52 @@ async def create_log_endpoint(log: LogEntry = Body(...)):
     created_log = await log_collection.find_one({"_id": new_log.inserted_id})
     return created_log
 
-@app.get("/log", response_model=List[LogEntryInDB], operation_id="list_logs")
+@router.get(
+    "/log",
+    response_model=List[LogEntryInDB], 
+    operation_id="list_logs",
+    openapi_extra={"x-rtk-query-tags": ["Log"]},
+)
 async def list_logs_endpoint():
     """Retrieve all log entries from the database."""
     logs = await log_collection.find().to_list(100)
     return logs
 
+@router.post(
+    "/log/import",
+    operation_id="import_logs",
+    openapi_extra={"x-rtk-query-invalidates-tags": ["TimeLog"]},
+)
+async def import_logs_endpoint(logs: List[TimeLogEntry] = Body(...)):
+    if not logs:
+        return {"status": "no logs provided", "imported_count": 0}
+    
+    logs_to_insert = []
+    for log in logs:
+        timestamp = datetime.combine(log.entry_date, log.entry_time)
+        log_dict = log.model_dump(exclude={'entry_date', 'entry_time'})
+        log_dict['timestamp'] = timestamp
+        logs_to_insert.append(log_dict)
+
+    timelog_collection = get_collection("timelogs")
+    result = await timelog_collection.insert_many(logs_to_insert)
+    
+    return {"status": "success", "imported_count": len(result.inserted_ids)}
+
+@router.get(
+    "/timelogs",
+    response_model=List[TimeLogEntryInDB],
+    operation_id="list_timelogs",
+    openapi_extra={"x-rtk-query-tags": ["TimeLog"]},
+)
+async def list_timelogs_endpoint():
+    timelog_collection = get_collection("timelogs")
+    logs = await timelog_collection.find().to_list(1000)
+    return logs
+
 app.include_router(router, prefix="/api")
+
+print("--- Registered Routes ---")
+for route in app.routes:
+    if hasattr(route, "path"):
+        print(f"Path: {route.path}, Name: {route.name}")

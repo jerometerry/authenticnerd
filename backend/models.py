@@ -2,7 +2,9 @@
 from pydantic import BaseModel, Field
 from pydantic_core import core_schema
 from bson import ObjectId
-from typing import Any, Optional
+from typing import Any, Optional, List
+from datetime import date, time, datetime
+
 
 class PyObjectId:
     @classmethod
@@ -19,7 +21,6 @@ class PyObjectId:
             serialization=core_schema.plain_serializer_function_ser_schema(str),
         )
 
-# Model for data you receive from the user
 class LogEntry(BaseModel):
     content: str = Field(...)
     mood: int = Field(..., ge=1, le=5)
@@ -32,6 +33,25 @@ class LogEntry(BaseModel):
             }
         }
 
-# Model for data you send back to the user
 class LogEntryInDB(LogEntry):
     id: Optional[PyObjectId] = Field(alias="_id")
+
+class TimeLogEntry(BaseModel):
+    entry_date: date
+    entry_time: time
+    activity: str
+    time_category: str
+    task_category: str
+    core_values: List[str] = []
+    intentionality: int = Field(..., ge=1, le=5)
+    energy: int = Field(..., ge=-5, le=5)
+
+class TimeLogEntryInDB(BaseModel):
+    id: Optional[PyObjectId] = Field(alias="_id")
+    timestamp: datetime
+    activity: str
+    time_category: str
+    task_category: str
+    core_values: List[str] = []
+    intentionality: int
+    energy: int
