@@ -1,12 +1,12 @@
 // frontend/src/LogForm.tsx
 import React, { useState } from 'react';
-import { useCreateLogLogsPostMutation } from './state/generatedApi';
+import { useCreateLogMutation } from './state/generatedApi';
 
 export function LogForm() {
   
   const [content, setContent] = useState('');
   
-  const [createLog, { isLoading }] = useCreateLogLogsPostMutation();
+  const [createLog, { isLoading }] = useCreateLogMutation();
 
 
   const handleSubmit = async (e: React.FormEvent) => {

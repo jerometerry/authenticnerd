@@ -1,18 +1,12 @@
 import { api } from "./api";
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
-    listLogsLogsGet: build.query<
-      ListLogsLogsGetApiResponse,
-      ListLogsLogsGetApiArg
-    >({
-      query: () => ({ url: `/logs/` }),
+    listLogs: build.query<ListLogsApiResponse, ListLogsApiArg>({
+      query: () => ({ url: `/log` }),
     }),
-    createLogLogsPost: build.mutation<
-      CreateLogLogsPostApiResponse,
-      CreateLogLogsPostApiArg
-    >({
+    createLog: build.mutation<CreateLogApiResponse, CreateLogApiArg>({
       query: (queryArg) => ({
-        url: `/logs/`,
+        url: `/log`,
         method: "POST",
         body: queryArg.logEntry,
       }),
@@ -21,12 +15,12 @@ const injectedRtkApi = api.injectEndpoints({
   overrideExisting: false,
 });
 export { injectedRtkApi as enhancedApi };
-export type ListLogsLogsGetApiResponse =
+export type ListLogsApiResponse =
   /** status 200 Successful Response */ LogEntryInDb[];
-export type ListLogsLogsGetApiArg = void;
-export type CreateLogLogsPostApiResponse =
+export type ListLogsApiArg = void;
+export type CreateLogApiResponse =
   /** status 201 Successful Response */ LogEntryInDb;
-export type CreateLogLogsPostApiArg = {
+export type CreateLogApiArg = {
   logEntry: LogEntry;
 };
 export type LogEntryInDb = {
@@ -46,5 +40,4 @@ export type LogEntry = {
   content: string;
   mood: number;
 };
-export const { useListLogsLogsGetQuery, useCreateLogLogsPostMutation } =
-  injectedRtkApi;
+export const { useListLogsQuery, useCreateLogMutation } = injectedRtkApi;
