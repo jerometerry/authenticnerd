@@ -13,7 +13,7 @@ export function LogList({ logs, isLoading, error }: LogListProps) {
       <h3>All Log Entries</h3>
       <ul>
         {logs?.map((log) => (
-          <li key={log.id} style={{ borderBottom: '1px solid #ccc', padding: '8px 0' }}>
+          <li key={log._id} style={{ borderBottom: '1px solid #ccc', padding: '8px 0' }}>
             <strong>Mood: {log.mood}/5</strong> - {log.content}
           </li>
         ))}

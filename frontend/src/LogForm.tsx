@@ -26,7 +26,18 @@ export function LogForm({ onSuccess }: LogFormProps) {
   // ... rest of the component's return statement is the same
   return (
     <form onSubmit={handleSubmit}>
-      {/* ... */}
+      <h3>Add a New Log Entry</h3>
+      <textarea
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        rows={5}
+        placeholder="What's on your mind?"
+        style={{ width: '100%', fontSize: '1em', padding: '8px' }}
+        disabled={isLoading}
+      />
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Submitting...' : 'Submit Log'}
+      </button>
     </form>
   );
 }

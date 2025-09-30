@@ -15,7 +15,7 @@ export function TimeLogList({ timeLogs, isLoading, error }: TimeLogListProps) {
         {/* ... table structure remains the same ... */}
         <tbody>
           {timeLogs?.map((log) => (
-            <tr key={log.id} style={{ borderBottom: '1px solid #ccc' }}>
+            <tr key={log._id} style={{ borderBottom: '1px solid #ccc' }}>
               <td>{new Date(log.timestamp).toLocaleDateString()}</td>
               <td>{new Date(log.timestamp).toLocaleTimeString()}</td>
               <td>{log.activity}</td>
