@@ -2,6 +2,24 @@
 
 This project contains a modern full-stack application with a React frontend and a FastAPI backend, designed for personal organization and data analysis.
 
+## Problem Statement
+
+The primary motivation for this project is to replace a manual, spreadsheet-based system for tracking daily activities. This data is used to analyze patterns and guide decisions aimed at improving quality of life. While functional, the spreadsheet approach is time-consuming, error-prone, and difficult to query for meaningful insights.
+
+This application solves these problems by providing a dedicated, web-based interface for streamlined data entry and a structured database for powerful querying and future analysis.
+
+## Project Goals
+
+This project aims to create a superior workflow for personal data tracking with the following goals:
+
+* **Streamlined Data Entry**: Provide a simple, fast, and mobile-friendly interface for logging daily activities. This replaces the cumbersome, time-consuming, and error-prone process of manually editing spreadsheets.
+
+* **Centralized Data Store**: Consolidate all personal data into a single, secure MongoDB database, creating a reliable "single source of truth."
+
+* **Powerful Analytics**: Enable robust querying and analysis of the collected data to identify patterns and insights that can be used to guide decisions and improve quality of life.
+
+* **Flexible Data Export**: Retain the benefits of spreadsheet analysis by providing the ability to generate and export custom spreadsheets from the central data store on demand.
+
 ## Technology Stack
 
 * **Backend**: Python, FastAPI, Pydantic, PyMongo (Async Driver), Uvicorn
@@ -73,21 +91,16 @@ To update the RTK Query hooks after making changes to the backend API:
 ### Additional Scripts
 
 **Nuke MongoDB**
-```
+⚠️ **Warning:** This will permanently delete all data in the container.
+```bash
 docker stop my-mongo
 docker rm my-mongo
 docker run --name my-mongo -p 27017:27017 -d mongo
 ```
 
 **Hard Restart API Server
-```
-# CTRL+C to terminate running server
-# run this command to exit the environment
-exit 
-
-# Activate the environment
-source backend/.venv/bin/activate
-# start the server, auto-restart when saving files
+```bash
+# CTRL+C to stop the running server
 uvicorn backend.main:app --reload
 ```
 
