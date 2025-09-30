@@ -70,6 +70,27 @@ To update the RTK Query hooks after making changes to the backend API:
     ```
 ---
 
+### Additional Scripts
+
+**Nuke MongoDB**
+```
+docker stop my-mongo
+docker rm my-mongo
+docker run --name my-mongo -p 27017:27017 -d mongo
+```
+
+**Hard Restart API Server
+```
+# CTRL+C to terminate running server
+# run this command to exit the environment
+exit 
+
+# Activate the environment
+source backend/.venv/bin/activate
+# start the server, auto-restart when saving files
+uvicorn backend.main:app --reload
+```
+
 ## Accessing the App & API Docs
 
 ### Frontend Application
