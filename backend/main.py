@@ -26,7 +26,6 @@ log_collection = get_collection("logs")
     response_model=LogEntryInDB,
     status_code=status.HTTP_201_CREATED,
     operation_id="create_log",
-    openapi_extra={"x-rtk-query-invalidates-tags": ["Log"]},
 )
 async def create_log_endpoint(log: LogEntry = Body(...)):
     """Create a new log entry in the database."""
@@ -39,7 +38,6 @@ async def create_log_endpoint(log: LogEntry = Body(...)):
     "/log",
     response_model=List[LogEntryInDB], 
     operation_id="list_logs",
-    openapi_extra={"x-rtk-query-tags": ["Log"]},
 )
 async def list_logs_endpoint():
     """Retrieve all log entries from the database."""
@@ -49,7 +47,6 @@ async def list_logs_endpoint():
 @router.post(
     "/log/import",
     operation_id="import_logs",
-    openapi_extra={"x-rtk-query-invalidates-tags": ["TimeLog"]},
 )
 async def import_logs_endpoint(logs: List[TimeLogEntry] = Body(...)):
     if not logs:
@@ -71,7 +68,6 @@ async def import_logs_endpoint(logs: List[TimeLogEntry] = Body(...)):
     "/timelogs",
     response_model=List[TimeLogEntryInDB],
     operation_id="list_timelogs",
-    openapi_extra={"x-rtk-query-tags": ["TimeLog"]},
 )
 async def list_timelogs_endpoint():
     timelog_collection = get_collection("timelogs")

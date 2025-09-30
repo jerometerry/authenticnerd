@@ -6,5 +6,5 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vite.config.ts", "rtk-codegen.config.cts"]
+  "include": ["vite.config.ts"]
 }

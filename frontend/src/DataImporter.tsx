@@ -1,12 +1,16 @@
-// frontend/src/DataImporter.tsx
 import { useState } from 'react';
 import { useImportLogsMutation } from './state/generatedApi';
 
-export function DataImporter() {
+interface DataImporterProps {
+  onSuccess: () => void;
+}
+
+export function DataImporter({ onSuccess }: DataImporterProps) {
   const [pastedData, setPastedData] = useState('');
   const [importLogs, { isLoading, isSuccess, isError, data }] = useImportLogsMutation();
 
-  const handleImport = () => {
+
+  const handleImport = async () => {
   const lines = pastedData.trim().split('\n').filter(line => line);
   if (lines.length < 2) {
     alert('Please paste data with a header row and at least one data row.');
@@ -54,7 +58,13 @@ export function DataImporter() {
     return logObject;
   });
 
-  importLogs({logs: parsedLogs});
+
+  try {
+      await importLogs({ logs: parsedLogs }).unwrap();
+      onSuccess(); // Call the callback on success
+    } catch(err) {
+      console.error('Import failed', err)
+    }
 };
 
   return (

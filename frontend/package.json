@@ -45,7 +45,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "codegen": "TS_NODE_PROJECT=tsconfig.codegen.json rtk-query-codegen-openapi rtk-codegen.config.cts"
+    "codegen":"NODE_OPTIONS='--unhandled-rejections=throw' rtk-query-codegen-openapi rtk-codegen.config.cjs"
   },
   "type": "module",
   "overrides": {

@@ -1,35 +1,30 @@
 import { api } from "./api";
-export const addTagTypes = [] as const;
-const injectedRtkApi = api
-  .enhanceEndpoints({
-    addTagTypes,
-  })
-  .injectEndpoints({
-    endpoints: (build) => ({
-      listLogs: build.query<ListLogsApiResponse, ListLogsApiArg>({
-        query: () => ({ url: `/api/log` }),
-      }),
-      createLog: build.mutation<CreateLogApiResponse, CreateLogApiArg>({
-        query: (queryArg) => ({
-          url: `/api/log`,
-          method: "POST",
-          body: queryArg.logEntry,
-        }),
-      }),
-      importLogs: build.mutation<ImportLogsApiResponse, ImportLogsApiArg>({
-        query: (queryArg) => ({
-          url: `/api/log/import`,
-          method: "POST",
-          body: queryArg.logs,
-        }),
-      }),
-      listTimelogs: build.query<ListTimelogsApiResponse, ListTimelogsApiArg>({
-        query: () => ({ url: `/api/timelogs` }),
+const injectedRtkApi = api.injectEndpoints({
+  endpoints: (build) => ({
+    listLogs: build.query<ListLogsApiResponse, ListLogsApiArg>({
+      query: () => ({ url: `/api/log` }),
+    }),
+    createLog: build.mutation<CreateLogApiResponse, CreateLogApiArg>({
+      query: (queryArg) => ({
+        url: `/api/log`,
+        method: "POST",
+        body: queryArg.logEntry,
       }),
     }),
-    overrideExisting: false,
-  });
-export { injectedRtkApi as enhancedApi };
+    importLogs: build.mutation<ImportLogsApiResponse, ImportLogsApiArg>({
+      query: (queryArg) => ({
+        url: `/api/log/import`,
+        method: "POST",
+        body: queryArg.logs,
+      }),
+    }),
+    listTimelogs: build.query<ListTimelogsApiResponse, ListTimelogsApiArg>({
+      query: () => ({ url: `/api/timelogs` }),
+    }),
+  }),
+  overrideExisting: false,
+});
+export { injectedRtkApi as api };
 export type ListLogsApiResponse =
   /** status 200 Successful Response */ LogEntryInDb[];
 export type ListLogsApiArg = void;

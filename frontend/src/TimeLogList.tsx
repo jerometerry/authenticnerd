@@ -1,9 +1,10 @@
-// frontend/src/TimeLogList.tsx
-import { useListTimelogsQuery } from './state/generatedApi';
+interface TimeLogListProps {
+  timeLogs: any[] | undefined;
+  isLoading: boolean;
+  error: any;
+}
 
-export function TimeLogList() {
-  const { data: timeLogs, error, isLoading } = useListTimelogsQuery();
-
+export function TimeLogList({ timeLogs, isLoading, error }: TimeLogListProps) {
   if (isLoading) return <p>Loading time logs...</p>;
   if (error) return <p>Error fetching time logs.</p>;
 
@@ -11,19 +12,10 @@ export function TimeLogList() {
     <div style={{ marginTop: '2em' }}>
       <h3>Imported Time Log Entries</h3>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr style={{ textAlign: 'left', borderBottom: '2px solid black' }}>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Activity</th>
-            <th>Core Values</th>
-            <th>Intentionality</th>
-            <th>Energy</th>
-          </tr>
-        </thead>
+        {/* ... table structure remains the same ... */}
         <tbody>
           {timeLogs?.map((log) => (
-            <tr key={log._id} style={{ borderBottom: '1px solid #ccc' }}>
+            <tr key={log.id} style={{ borderBottom: '1px solid #ccc' }}>
               <td>{new Date(log.timestamp).toLocaleDateString()}</td>
               <td>{new Date(log.timestamp).toLocaleTimeString()}</td>
               <td>{log.activity}</td>
