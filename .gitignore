@@ -343,6 +343,27 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.pnpm-debug.log
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+crash.log
+
+# Build artifacts
+*.zip
+build/
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
