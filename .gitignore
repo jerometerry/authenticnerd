@@ -364,6 +364,11 @@ crash.log
 *.zip
 build/
 
+# Environment variables
+.env
+.env.*
+!.env.example
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json

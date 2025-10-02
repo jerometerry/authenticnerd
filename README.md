@@ -102,6 +102,8 @@ cd ..
 ```baqsh
 cd terraform
 terraform apply --auto-approve
+cd ..
+aws s3 sync ./dist s3://<your-bucket-name>
 ```
 
 ---

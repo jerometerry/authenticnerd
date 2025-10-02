@@ -1,13 +1,73 @@
 # terraform/backend.tf
 
-# 1. A secure place to store your MongoDB connection string
-resource "aws_ssm_parameter" "mongo_uri" {
-  name  = "/MyPersonalSystem/MongoUri"
-  type  = "SecureString"
-  value = "mongodb+srv://<user>:<password>@cluster..." # <-- PASTE YOUR URI HERE
+# -----------------------------------------------------------------------------
+# DATA SOURCES
+# -----------------------------------------------------------------------------
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
+
+
+# -----------------------------------------------------------------------------
+# CUSTOM KMS KEY FOR SSM ENCRYPTION
+# -----------------------------------------------------------------------------
+resource "aws_kms_key" "ssm_key" {
+  description             = "KMS key for encrypting SSM parameters for personal-system"
+  deletion_window_in_days = 7
 }
 
-# 2. An IAM role for the Lambda function to run with
+resource "aws_kms_alias" "ssm_key_alias" {
+  name          = "alias/personal-system-ssm-key"
+  target_key_id = aws_kms_key.ssm_key.id
+}
+
+data "aws_iam_policy_document" "kms_key_policy" {
+  statement {
+    sid    = "Enable IAM User Permissions"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+    }
+    actions   = ["kms:*"]
+    resources = ["*"]
+  }
+
+  statement {
+    sid    = "Allow Lambda to Decrypt"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = [aws_iam_role.lambda_exec_role.arn]
+    }
+    actions   = ["kms:Decrypt"]
+    resources = ["*"]
+  }
+}
+
+resource "aws_kms_key_policy" "ssm_key_policy" {
+  key_id = aws_kms_key.ssm_key.id
+  policy = data.aws_iam_policy_document.kms_key_policy.json
+}
+
+
+# -----------------------------------------------------------------------------
+# SSM PARAMETER FOR MONGODB URI
+# -----------------------------------------------------------------------------
+resource "aws_ssm_parameter" "mongo_uri" {
+  name   = "/MyPersonalSystem/MongoUri"
+  type   = "SecureString"
+  key_id = aws_kms_key.ssm_key.id
+  value  = "placeholder-to-be-updated-manually-in-aws-console"
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
+
+
+# -----------------------------------------------------------------------------
+# LAMBDA IAM ROLE & POLICY
+# -----------------------------------------------------------------------------
 resource "aws_iam_role" "lambda_exec_role" {
   name = "lambda-exec-role"
   assume_role_policy = jsonencode({
@@ -20,7 +80,6 @@ resource "aws_iam_role" "lambda_exec_role" {
   })
 }
 
-# 3. Policy allowing the Lambda to write logs and read the secret
 resource "aws_iam_policy" "lambda_policy" {
   name = "lambda-policy"
   policy = jsonencode({
@@ -35,6 +94,16 @@ resource "aws_iam_policy" "lambda_policy" {
         Action   = "ssm:GetParameters",
         Effect   = "Allow",
         Resource = aws_ssm_parameter.mongo_uri.arn
+      },
+      {
+        Action   = "kms:Decrypt",
+        Effect   = "Allow",
+        Resource = aws_kms_key.ssm_key.arn
+      },
+      {
+        Action   = "kms:Decrypt",
+        Effect   = "Allow",
+        Resource = "arn:aws:kms:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:alias/aws/lambda"
       }
     ]
   })
@@ -45,14 +114,18 @@ resource "aws_iam_role_policy_attachment" "lambda_attach" {
   policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
-# 4. The Lambda function itself
+
+# -----------------------------------------------------------------------------
+# LAMBDA FUNCTION
+# -----------------------------------------------------------------------------
 resource "aws_lambda_function" "api_lambda" {
-  function_name = "personal-system-api"
-  filename      = "../backend.zip" # Points to the zip file we created
-  role          = aws_iam_role.lambda_exec_role.arn
-  handler       = "main.handler"   # For Mangum, this is "filename.handler"
-  runtime       = "python3.12"
+  function_name    = "personal-system-api"
+  filename         = "../backend.zip"
+  role             = aws_iam_role.lambda_exec_role.arn
+  handler          = "main.handler"
+  runtime          = "python3.12"
   source_code_hash = filebase64sha256("../backend.zip")
+  timeout          = 15
 
   environment {
     variables = {
@@ -61,10 +134,18 @@ resource "aws_lambda_function" "api_lambda" {
   }
 }
 
-# 5. The API Gateway (HTTP API - cheaper and simpler)
+
+# -----------------------------------------------------------------------------
+# API GATEWAY (HTTP API)
+# -----------------------------------------------------------------------------
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "personal-system-http-api"
   protocol_type = "HTTP"
+  cors_configuration {
+    allow_origins = ["*"] # For development; restrict this for production
+    allow_methods = ["*"]
+    allow_headers = ["*"]
+  }
 }
 
 resource "aws_apigatewayv2_integration" "lambda_integration" {
@@ -75,7 +156,7 @@ resource "aws_apigatewayv2_integration" "lambda_integration" {
 
 resource "aws_apigatewayv2_route" "api_route" {
   api_id    = aws_apigatewayv2_api.http_api.id
-  route_key = "ANY /{proxy+}" # Routes all requests to the Lambda
+  route_key = "ANY /{proxy+}"
   target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
 }
 
@@ -85,7 +166,6 @@ resource "aws_apigatewayv2_stage" "default_stage" {
   auto_deploy = true
 }
 
-# 6. Permission for API Gateway to invoke the Lambda
 resource "aws_lambda_permission" "api_gw_permission" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_lambda.function_name
@@ -93,7 +173,10 @@ resource "aws_lambda_permission" "api_gw_permission" {
   source_arn    = "${aws_apigatewayv2_api.http_api.execution_arn}/*/*"
 }
 
-# 7. Output the API URL
+
+# -----------------------------------------------------------------------------
+# OUTPUTS
+# -----------------------------------------------------------------------------
 output "api_endpoint_url" {
   value = aws_apigatewayv2_stage.default_stage.invoke_url
 }
