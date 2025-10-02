@@ -86,6 +86,24 @@ To update the RTK Query hooks after making changes to the backend API:
     ```bash
     pnpm run codegen
     ```
+
+### Build
+```bash
+rm -rf build backend.zip
+mkdir -p build/
+pip install -r backend/requirements.txt -t build/
+cp backend/*.py build/
+cd build
+zip -r ../backend.zip .
+cd ..
+```
+
+### Deploy
+```baqsh
+cd terraform
+terraform apply --auto-approve
+```
+
 ---
 
 ### Additional Scripts
