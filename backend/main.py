@@ -1,4 +1,7 @@
 # backend/main.py
+import os
+import boto3
+from mangum import Mangum
 from fastapi import FastAPI, Body, status, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
@@ -8,6 +11,15 @@ from .database import get_collection
 from .models import LogEntry, LogEntryInDB, TimeLogEntry, TimeLogEntryInDB
 
 app = FastAPI()
+
+def get_mongo_uri():
+    if os.environ.get("IS_OFFLINE"): # For local development
+        return "mongodb://localhost:27017"
+    
+    ssm = boto3.client('ssm')
+    param_name = os.environ['MONGO_URI_PARAM_NAME']
+    response = ssm.get_parameters(Names=[param_name], WithDecryption=True)
+    return response['Parameters'][0]['Value']
 
 origins = ["http://localhost:9000", "http://localhost:5173"]
 app.add_middleware(
@@ -76,7 +88,4 @@ async def list_timelogs_endpoint():
 
 app.include_router(router, prefix="/api")
 
-print("--- Registered Routes ---")
-for route in app.routes:
-    if hasattr(route, "path"):
-        print(f"Path: {route.path}, Name: {route.name}")
+handler = Mangum(app)
