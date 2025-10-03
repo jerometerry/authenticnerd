@@ -91,7 +91,7 @@ resource "aws_iam_policy" "lambda_policy" {
         Resource = "arn:aws:logs:*:*:*"
       },
       {
-        Action   = "ssm:GetParameters",
+        Action   = "ssm:GetParameter",
         Effect   = "Allow",
         Resource = aws_ssm_parameter.mongo_uri.arn
       },
@@ -122,7 +122,7 @@ resource "aws_lambda_function" "api_lambda" {
   function_name    = "personal-system-api"
   filename         = "../backend.zip"
   role             = aws_iam_role.lambda_exec_role.arn
-  handler          = "main.handler"
+  handler          = "app.lambda_function.handler"
   runtime          = "python3.12"
   source_code_hash = filebase64sha256("../backend.zip")
   timeout          = 15
@@ -141,11 +141,6 @@ resource "aws_lambda_function" "api_lambda" {
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "personal-system-http-api"
   protocol_type = "HTTP"
-  cors_configuration {
-    allow_origins = ["*"] # For development; restrict this for production
-    allow_methods = ["*"]
-    allow_headers = ["*"]
-  }
 }
 
 resource "aws_apigatewayv2_integration" "lambda_integration" {

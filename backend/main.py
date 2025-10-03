@@ -1,7 +1,6 @@
 # backend/main.py
 import os
 import boto3
-from mangum import Mangum
 from fastapi import FastAPI, Body, status, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
@@ -21,7 +20,11 @@ def get_mongo_uri():
     response = ssm.get_parameters(Names=[param_name], WithDecryption=True)
     return response['Parameters'][0]['Value']
 
-origins = ["http://localhost:9000", "http://localhost:5173"]
+origins = [
+    "http://localhost:9000",
+    "http://localhost:5173",
+    "https://d1pcrj7opwky2r.cloudfront.net"
+]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -87,5 +90,3 @@ async def list_timelogs_endpoint():
     return logs
 
 app.include_router(router, prefix="/api")
-
-handler = Mangum(app)

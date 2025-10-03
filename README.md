@@ -89,13 +89,7 @@ To update the RTK Query hooks after making changes to the backend API:
 
 ### Build
 ```bash
-rm -rf build backend.zip
-mkdir -p build/
-pip install -r backend/requirements.txt -t build/
-cp backend/*.py build/
-cd build
-zip -r ../backend.zip .
-cd ..
+./build.sh
 ```
 
 ### Deploy
@@ -103,7 +97,11 @@ cd ..
 cd terraform
 terraform apply --auto-approve
 cd ..
+cd frontend
+pnpm run build
 aws s3 sync ./dist s3://<your-bucket-name>
+
+aws cloudfront create-invalidation --distribution-id <your-distribution-id> --paths "/*"
 ```
 
 ---
