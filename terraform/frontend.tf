@@ -91,9 +91,3 @@ resource "aws_s3_bucket_policy" "site_policy" {
   # Ensure the bucket is private BEFORE applying this policy.
   depends_on = [aws_s3_bucket_public_access_block.site_access_block]
 }
-
-
-# 6. Output the website URL (this remains the same)
-output "website_url" {
-  value = "https://${aws_cloudfront_distribution.s3_distribution.domain_name}"
-}
