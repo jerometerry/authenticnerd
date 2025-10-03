@@ -2,7 +2,7 @@
 
 # 1. S3 bucket to store the static files (now private)
 resource "aws_s3_bucket" "site_bucket" {
-  bucket = "my-personal-system-unique-bucket-name" # <-- MAKE SURE THIS MATCHES YOUR EXISTING BUCKET NAME
+  bucket = "my-personal-system-unique-bucket-name"
 }
 
 # 2. Block ALL public access to the S3 bucket
@@ -24,6 +24,33 @@ resource "aws_cloudfront_origin_access_control" "oac" {
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
+}
+
+data "aws_cloudfront_cache_policy" "caching_disabled" {
+  name = "Managed-CachingDisabled"
+}
+
+resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
+  name    = "NoCacheHeadersPolicy-PersonalSystem"
+  comment = "Adds no-cache headers for index.html"
+
+  custom_headers_config {
+    items {
+      header   = "Cache-Control"
+      override = true
+      value    = "no-store, no-cache, must-revalidate, max-age=0"
+    }
+    items {
+      header   = "Pragma"
+      override = true
+      value    = "no-cache"
+    }
+    items {
+      header = "Expires"
+      override = true
+      value = "0"
+    }
+  }
 }
 
 # 4. CloudFront distribution (CDN)
@@ -53,6 +80,16 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "index.html"
+    target_origin_id = aws_s3_bucket.site_bucket.id
+    viewer_protocol_policy = "redirect-to-https"
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    cache_policy_id  = data.aws_cloudfront_cache_policy.caching_disabled.id
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.no_cache_headers.id
   }
 
   restrictions {
