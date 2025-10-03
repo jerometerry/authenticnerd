@@ -12,7 +12,16 @@ export function TimeLogList({ timeLogs, isLoading, error }: TimeLogListProps) {
     <div style={{ marginTop: '2em' }}>
       <h3>Imported Time Log Entries</h3>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        {/* ... table structure remains the same ... */}
+        <thead>
+          <tr style={{ textAlign: 'left', borderBottom: '2px solid black' }}>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Activity</th>
+            <th>Core Values</th>
+            <th>Intentionality</th>
+            <th>Energy</th>
+          </tr>
+        </thead>
         <tbody>
           {timeLogs?.map((log) => (
             <tr key={log._id} style={{ borderBottom: '1px solid #ccc' }}>
