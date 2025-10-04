@@ -1,13 +1,12 @@
 # terraform/frontend.tf
 
-# S3 bucket to store the static files (now private)
 resource "aws_s3_bucket" "static_assets_bucket" {
   bucket = var.website_s3_bucket_name
 
   tags = {
-    "jt:my-personal-system:name" = "my-personal-system-website",
-    "jt:my-personal-system:description" = "Hosting Website Static Assets",
-    "jt:my-personal-system:module" = "frontend",
+    "jt:my-personal-system:name" = "my-personal-system-website-bucket"
+    "jt:my-personal-system:description" = "S3 Bucket for hosting website static assets"
+    "jt:my-personal-system:module" = "frontend"
     "jt:my-personal-system:component" = "static-accets-s3-bucket"
   }
 }
@@ -60,7 +59,6 @@ resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
   }
 }
 
-# CloudFront distribution (CDN)
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name              = aws_s3_bucket.static_assets_bucket.bucket_regional_domain_name
@@ -70,6 +68,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   default_root_object = "index.html"
+  aliases = ["${var.subdomain_name}.${var.domain_name}"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
@@ -106,18 +105,19 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = aws_acm_certificate_validation.site_cert_validation.certificate_arn
+    ssl_support_method  = "sni-only"
   }
 
   tags = {
-    "jt:my-personal-system:name" = "s3-distribution",
-    "jt:my-personal-system:description" = "Public access to the website",
-    "jt:my-personal-system:module" = "frontend",
+    "jt:my-personal-system:name" = "s3-distribution"
+    "jt:my-personal-system:description" = "Public access to the website"
+    "jt:my-personal-system:module" = "frontend"
     "jt:my-personal-system:component" = "cloud-front-distribution"
   }
 }
 
-# This policy GRANTS access ONLY to the CloudFront distribution.
+# Lock down access to the website S3 bucket to the CloudFront distribution
 resource "aws_s3_bucket_policy" "site_policy" {
   bucket = aws_s3_bucket.static_assets_bucket.id
   policy = jsonencode({
@@ -131,13 +131,12 @@ resource "aws_s3_bucket_policy" "site_policy" {
       Resource  = "${aws_s3_bucket.static_assets_bucket.arn}/*",
       Condition = {
         StringEquals = {
-          # This condition ensures only YOUR CloudFront distribution can access the files.
           "AWS:SourceArn" = aws_cloudfront_distribution.s3_distribution.arn
         }
       }
     }]
   })
 
-  # Ensure the bucket is private BEFORE applying this policy.
+  # Grant CloudFront Distribution access after website S3 bucket is blocked from public acccess
   depends_on = [aws_s3_bucket_public_access_block.site_access_block]
 }

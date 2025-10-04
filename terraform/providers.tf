@@ -28,3 +28,8 @@ provider "mongodbatlas" {
   public_key  = var.atlas_public_key
   private_key = var.atlas_private_key
 }
+
+provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+}

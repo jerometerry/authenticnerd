@@ -22,7 +22,8 @@ def get_mongo_uri():
 
 origins = [
     "http://localhost:9000",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://tools.authenticnerd.com"
 ]
 app.add_middleware(
     CORSMiddleware,

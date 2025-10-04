@@ -22,3 +22,13 @@ variable "atlas_connection_string" {
   type        = string
   sensitive   = true
 }
+
+variable "domain_name" {
+  description = "The root domain name you have registered (e.g., jt-dev-projects.com)."
+  type        = string
+}
+
+variable "subdomain_name" {
+  description = "The subdomain for your website (e.g., p-system)."
+  type        = string
+}

@@ -5,9 +5,9 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags                 = {
-    "jt:my-personal-system:name" = "my-personal-system-vpc",
-    "jt:my-personal-system:description" = "Requirement to use MongoDB Atlas VPC Peering",
-    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:name" = "my-personal-system-vpc"
+    "jt:my-personal-system:description" = "Requirement to use MongoDB Atlas VPC Peering"
+    "jt:my-personal-system:module" = "vpc"
     "jt:my-personal-system:component" = "core"
   }
 }
@@ -17,9 +17,9 @@ resource "aws_subnet" "private" {
   cidr_block        = "10.0.1.0/24"
   availability_zone = "${data.aws_region.current.id}a"
   tags              = {
-    "jt:my-personal-system:name" = "my-personal-system-private-subnet",
-    "jt:my-personal-system:description" = "Allows api-lambda to connect to SSM & KMS",
-    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:name" = "my-personal-system-private-subnet"
+    "jt:my-personal-system:description" = "Allows api-lambda to connect to SSM & KMS"
+    "jt:my-personal-system:module" = "vpc"
     "jt:my-personal-system:component" = "core"
   }
 }
@@ -37,9 +37,9 @@ resource "aws_security_group" "lambda_sg" {
   }
 
   tags = {
-    "jt:my-personal-system:name" = "my-personal-system-lambda-sg",
-    "jt:my-personal-system:description" = "Security Group for the Lambda function (allows all outbound traffic)",
-    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:name" = "my-personal-system-lambda-sg"
+    "jt:my-personal-system:description" = "Security Group for the Lambda function (allows all outbound traffic)"
+    "jt:my-personal-system:module" = "vpc"
     "jt:my-personal-system:component" = "api-lambda"
   }
 }
@@ -58,9 +58,9 @@ resource "aws_security_group" "endpoint_sg" {
   }
 
   tags = {
-    "jt:my-personal-system:name" = "my-personal-system-endpoint-sg",
-    "jt:my-personal-system:description" = "Dedicated Security Group for the VPC Endpoints",
-    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:name" = "my-personal-system-endpoint-sg"
+    "jt:my-personal-system:description" = "Dedicated Security Group for the VPC Endpoints"
+    "jt:my-personal-system:module" = "vpc"
     "jt:my-personal-system:component" = "core"
   }
 }

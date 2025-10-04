@@ -7,9 +7,9 @@ resource "aws_kms_key" "ssm_key" {
   deletion_window_in_days = 7
 
   tags = {
-    "jt:my-personal-system:name" = "ssm_key",
-    "jt:my-personal-system:description" = "KMS key for encrypting SSM parameters for personal-system",
-    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:name" = "ssm_key"
+    "jt:my-personal-system:description" = "KMS key for encrypting SSM parameters for personal-system"
+    "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "core"
   }
 }
@@ -55,9 +55,9 @@ resource "aws_ssm_parameter" "mongo_uri" {
   value  = var.atlas_connection_string
 
   tags = {
-    "jt:my-personal-system:name" = "mongo_uri",
-    "jt:my-personal-system:description" = "Connection string to the MongoDB Atlas DB",
-    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:name" = "mongo_uri"
+    "jt:my-personal-system:description" = "Connection string to the MongoDB Atlas DB"
+    "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "mongodb-atlas"
   }
 }
@@ -74,9 +74,9 @@ resource "aws_iam_role" "lambda_exec_role" {
   })
 
   tags = {
-    "jt:my-personal-system:name" = "lambda_exec_role",
-    "jt:my-personal-system:description" = "IAM Role for the api-lambda to execute FastAPI",
-    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:name" = "lambda_exec_role"
+    "jt:my-personal-system:description" = "IAM Role for the api-lambda to execute FastAPI"
+    "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "api-lambda"
   }
 }
@@ -149,9 +149,9 @@ resource "aws_lambda_function" "api_lambda" {
   }
 
   tags = {
-    "jt:my-personal-system:name" = "api_lambda",
-    "jt:my-personal-system:description" = "Lambda Funcation that executes FastAPI",
-    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:name" = "api_lambda"
+    "jt:my-personal-system:description" = "Lambda Funcation that executes FastAPI"
+    "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "api-lambda"
   }
 }
@@ -161,9 +161,9 @@ resource "aws_apigatewayv2_api" "http_api" {
   protocol_type = "HTTP"
 
   tags = {
-    "jt:my-personal-system:name" = "http_api",
-    "jt:my-personal-system:description" = "API Gateway that forwards requests to the API Lambda Function",
-    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:name" = "http_api"
+    "jt:my-personal-system:description" = "API Gateway that forwards requests to the API Lambda Function"
+    "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "api-gateway"
   }
 }
@@ -186,9 +186,9 @@ resource "aws_apigatewayv2_stage" "default_stage" {
   auto_deploy = true
 
   tags = {
-    "jt:my-personal-system:name" = "default_stage",
-    "jt:my-personal-system:description" = "API Gateway Stage that auto-creates a new deployment when updated",
-    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:name" = "default_stage"
+    "jt:my-personal-system:description" = "API Gateway Stage that auto-creates a new deployment when updated"
+    "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "api-gateway"
   }
 }
