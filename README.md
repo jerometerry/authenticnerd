@@ -252,7 +252,7 @@ docker rm my-mongo
 docker run --name my-mongo -p 27017:27017 -d mongo
 ```
 
-**Hard Restart API Server
+**Hard Restart API Server^^
 ```bash
 # CTRL+C to stop the running server
 uvicorn backend.main:app --reload
