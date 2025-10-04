@@ -2,7 +2,7 @@
 
 # 1. S3 bucket to store the static files (now private)
 resource "aws_s3_bucket" "site_bucket" {
-  bucket = "my-personal-system-unique-bucket-name"
+  bucket = var.s3_bucket_name
 }
 
 # 2. Block ALL public access to the S3 bucket

@@ -6,7 +6,6 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-
 # -----------------------------------------------------------------------------
 # CUSTOM KMS KEY FOR SSM ENCRYPTION
 # -----------------------------------------------------------------------------
@@ -49,7 +48,6 @@ resource "aws_kms_key_policy" "ssm_key_policy" {
   policy = data.aws_iam_policy_document.kms_key_policy.json
 }
 
-
 # -----------------------------------------------------------------------------
 # SSM PARAMETER FOR MONGODB URI
 # -----------------------------------------------------------------------------
@@ -63,7 +61,6 @@ resource "aws_ssm_parameter" "mongo_uri" {
     ignore_changes = [value]
   }
 }
-
 
 # -----------------------------------------------------------------------------
 # LAMBDA IAM ROLE & POLICY
@@ -114,7 +111,6 @@ resource "aws_iam_role_policy_attachment" "lambda_attach" {
   policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
-
 # -----------------------------------------------------------------------------
 # LAMBDA FUNCTION
 # -----------------------------------------------------------------------------
@@ -130,10 +126,10 @@ resource "aws_lambda_function" "api_lambda" {
   environment {
     variables = {
       MONGO_URI_PARAM_NAME = aws_ssm_parameter.mongo_uri.name
+      FRONTEND_URL         = "https://${aws_cloudfront_distribution.s3_distribution.domain_name}"
     }
   }
 }
-
 
 # -----------------------------------------------------------------------------
 # API GATEWAY (HTTP API)

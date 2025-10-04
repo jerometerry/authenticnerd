@@ -22,8 +22,7 @@ def get_mongo_uri():
 
 origins = [
     "http://localhost:9000",
-    "http://localhost:5173",
-    "https://d1pcrj7opwky2r.cloudfront.net"
+    "http://localhost:5173"
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -32,6 +31,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if "FRONTEND_URL" in os.environ:
+    origins.append(os.environ["FRONTEND_URL"])
 
 router = APIRouter()
 log_collection = get_collection("logs")
