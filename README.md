@@ -132,3 +132,106 @@ When you run `pnpm start`, the Vite server will print the local URL to the conso
 FastAPI automatically generates interactive API documentation. While the backend server is running, you can access them at:
 * **Swagger UI**: `http://127.0.0.1:8000/docs` 
 * **ReDoc**: `http://127.0.0.1:8000/redoc`
+
+## AWS Setup
+
+MongoDB Atlas Connection needs to be set in SSM Parameter Store. 
+Parameter Name: /MyPersonalSystem/MongoUri
+
+Terraform deployment requires `PowerUserAccess` policy along with the following IAM permissions
+
+
+```json
+{
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"iam:GetRole",
+				"iam:CreateRole",
+				"iam:DeleteRole",
+				"iam:AttachRolePolicy",
+				"iam:DetachRolePolicy",
+				"iam:PutRolePolicy",
+				"iam:ListRolePolicies",
+				"iam:ListAttachedRolePolicies",
+				"iam:ListInstanceProfilesForRole"
+			],
+			"Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "iam:PassRole",
+			"Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"iam:GetPolicy",
+				"iam:CreatePolicy",
+				"iam:DeletePolicy",
+				"iam:GetPolicyVersion",
+				"iam:ListPolicyVersions"
+			],
+			"Resource": "arn:aws:iam::<ACCOUNT_ID>:policy/lambda-policy"
+		}
+	]
+}
+```
+
+## AWS Cost Analysis
+
+Based on the resources deployed, estimated monthly cost will be around **$92 USD** with a NAT Gateway setup, or around **$75 USD** by switching to the more cost-effective VPC Endpoint setup.
+
+Here’s a framework for how those costs break down.
+
+### ## Cost Analysis Framework 💰
+
+Costs can be broken down into two main categories: fixed recurring costs (which form a monthly baseline) and usage-based costs (which for a personal project, will likely be free).
+
+#### ### 1. Fixed Monthly Costs (Your Baseline)
+These are resources that are charged for every hour they exist, regardless of traffic. This is where the vast majority of the AWS bill will come from.
+*(Calculations use an average of 730 hours per month)*
+
+* **MongoDB Atlas M10 Cluster**: **~$58.40 / month**
+    * M10 Cluster `$0.08/hour`, this dedicated cluster is the largest single expense.
+
+* **Networking (Main AWS Cost)**: Key decision point.
+    * **Option A: NAT Gateway (Current Setup)**: **~$32.85 / month**
+        * The NAT Gateway itself has a fixed hourly cost (`$0.045/hr * 730 hours`).
+        * There's also a small data processing fee (`$0.045/GB`), which will be negligible for current use.
+    * **Option B: VPC Endpoints (Recommended)**: **~$14.60 / month**
+        * Each VPC Interface Endpoint has a fixed hourly cost (`~$0.01/hr`). Project has two (SSM and KMS).
+        * `$0.01/hr * 2 endpoints * 730 hours = $14.60`.
+        * This option is **over 50% cheaper** for projects networking costs.
+
+* **AWS KMS Key**: **$1.00 / month**
+    * Flat fee for each custom KMS key created.
+
+#### ### 2. Usage-Based Costs (Likely Free)
+These services have generous "Always Free" tiers. For a personal project, usage will almost certainly fall within these free limits every month.
+
+* **AWS Lambda**: **Effectively $0**. The free tier includes 1 million requests per month.
+* **API Gateway (HTTP API)**: **Effectively $0**. The free tier includes 1 million requests per month for the first 12 months, and is extremely cheap after that.
+* **S3 & CloudFront**: **Effectively $0**. React app is tiny, and the free tiers for storage (S3) and data transfer (CloudFront) are enormous.
+
+#### ### 3. No-Cost Resources
+Many of the project resources created don't have a direct cost. They are the "glue" that holds the architecture together.
+* **IAM** (Roles, Policies)
+* **VPC** (The VPC itself, Subnets, Route Tables, Security Groups)
+* **SSM Parameter Store** (The standard parameter itself is free)
+
+---
+### ## Summary and Recommendation 📊
+
+Here is the side-by-side comparison of two main architectural choices:
+
+| Service | Monthly Cost (NAT Gateway) | Monthly Cost (VPC Endpoints) |
+| :--- | :--- | :--- |
+| MongoDB Atlas M10 | ~$58.40 | ~$58.40 |
+| **Networking** | **~$32.85** | **~$14.60** |
+| AWS KMS Key | $1.00 | $1.00 |
+| Usage-Based Services | ~$0.00 | ~$0.00 |
+| **Total Estimated Bill** | **~$92.25 USD** | **~$74.00 USD** |
+
+**Recommendation**: Now that your system is stable, I recommend you **revert to the VPC Endpoint setup**. It will provide the same level of security and functionality while saving you approximately $18 per month.
