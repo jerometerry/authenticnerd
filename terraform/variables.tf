@@ -16,3 +16,9 @@ variable "atlas_private_key" {
   type        = string
   sensitive   = true
 }
+
+variable "atlas_connection_string" {
+  description = "Connection string for the MongoDB Atlas cluster."
+  type        = string
+  sensitive   = true
+}

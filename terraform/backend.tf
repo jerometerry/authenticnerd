@@ -55,11 +55,7 @@ resource "aws_ssm_parameter" "mongo_uri" {
   name   = "/MyPersonalSystem/MongoUri"
   type   = "SecureString"
   key_id = aws_kms_key.ssm_key.id
-  value  = "placeholder-to-be-updated-manually-in-aws-console"
-
-  lifecycle {
-    ignore_changes = [value]
-  }
+  value  = var.atlas_connection_string
 }
 
 # -----------------------------------------------------------------------------
