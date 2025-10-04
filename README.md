@@ -185,11 +185,6 @@ Terraform deployment requires `PowerUserAccess` policy along with the following 
 
 ## AWS Cost Analysis
 
-Of course. Here is a version of the cost analysis rewritten to be a neutral description for your `README.md` file.
-
----
-## Estimated Monthly Cost
-
 The estimated monthly cost to run this project on AWS with the current serverless architecture (using VPC Endpoints) is approximately **$74 USD**.
 
 The project's costs can be broken down into two main categories: fixed recurring costs, which form the monthly baseline, and usage-based costs, which are expected to be free for this project's low-traffic use case.
