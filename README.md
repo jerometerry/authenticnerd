@@ -185,57 +185,42 @@ Terraform deployment requires `PowerUserAccess` policy along with the following 
 
 ## AWS Cost Analysis
 
-Based on the resources deployed, estimated monthly cost will be around **$92 USD** with a NAT Gateway setup, or around **$75 USD** by switching to the more cost-effective VPC Endpoint setup.
-
-Here’s a framework for how those costs break down.
-
-### ## Cost Analysis Framework 💰
-
-Costs can be broken down into two main categories: fixed recurring costs (which form a monthly baseline) and usage-based costs (which for a personal project, will likely be free).
-
-#### ### 1. Fixed Monthly Costs (Your Baseline)
-These are resources that are charged for every hour they exist, regardless of traffic. This is where the vast majority of the AWS bill will come from.
-*(Calculations use an average of 730 hours per month)*
-
-* **MongoDB Atlas M10 Cluster**: **~$58.40 / month**
-    * M10 Cluster `$0.08/hour`, this dedicated cluster is the largest single expense.
-
-* **Networking (Main AWS Cost)**: Key decision point.
-    * **Option A: NAT Gateway (Current Setup)**: **~$32.85 / month**
-        * The NAT Gateway itself has a fixed hourly cost (`$0.045/hr * 730 hours`).
-        * There's also a small data processing fee (`$0.045/GB`), which will be negligible for current use.
-    * **Option B: VPC Endpoints (Recommended)**: **~$14.60 / month**
-        * Each VPC Interface Endpoint has a fixed hourly cost (`~$0.01/hr`). Project has two (SSM and KMS).
-        * `$0.01/hr * 2 endpoints * 730 hours = $14.60`.
-        * This option is **over 50% cheaper** for projects networking costs.
-
-* **AWS KMS Key**: **$1.00 / month**
-    * Flat fee for each custom KMS key created.
-
-#### ### 2. Usage-Based Costs (Likely Free)
-These services have generous "Always Free" tiers. For a personal project, usage will almost certainly fall within these free limits every month.
-
-* **AWS Lambda**: **Effectively $0**. The free tier includes 1 million requests per month.
-* **API Gateway (HTTP API)**: **Effectively $0**. The free tier includes 1 million requests per month for the first 12 months, and is extremely cheap after that.
-* **S3 & CloudFront**: **Effectively $0**. React app is tiny, and the free tiers for storage (S3) and data transfer (CloudFront) are enormous.
-
-#### ### 3. No-Cost Resources
-Many of the project resources created don't have a direct cost. They are the "glue" that holds the architecture together.
-* **IAM** (Roles, Policies)
-* **VPC** (The VPC itself, Subnets, Route Tables, Security Groups)
-* **SSM Parameter Store** (The standard parameter itself is free)
+Of course. Here is a version of the cost analysis rewritten to be a neutral description for your `README.md` file.
 
 ---
-### ## Summary and Recommendation 📊
+## Estimated Monthly Cost
 
-Here is the side-by-side comparison of two main architectural choices:
+The estimated monthly cost to run this project on AWS with the current serverless architecture (using VPC Endpoints) is approximately **$74 USD**.
 
-| Service | Monthly Cost (NAT Gateway) | Monthly Cost (VPC Endpoints) |
-| :--- | :--- | :--- |
-| MongoDB Atlas M10 | ~$58.40 | ~$58.40 |
-| **Networking** | **~$32.85** | **~$14.60** |
-| AWS KMS Key | $1.00 | $1.00 |
-| Usage-Based Services | ~$0.00 | ~$0.00 |
-| **Total Estimated Bill** | **~$92.25 USD** | **~$74.00 USD** |
+The project's costs can be broken down into two main categories: fixed recurring costs, which form the monthly baseline, and usage-based costs, which are expected to be free for this project's low-traffic use case.
 
-**Recommendation**: Now that your system is stable, I recommend you **revert to the VPC Endpoint setup**. It will provide the same level of security and functionality while saving you approximately $18 per month.
+*(Calculations use an average of 730 hours per month)*
+
+### 1. Fixed Monthly Costs (The Baseline)
+The majority of the cost comes from fixed, hourly charges for the dedicated infrastructure required for this secure, production-ready setup.
+
+* **MongoDB Atlas M10 Cluster**: **~$58.40 / month**
+    * (`$0.08/hour * 730 hours`) A dedicated cluster is required to support the secure VPC Peering connection.
+
+* **AWS VPC Endpoints**: **~$14.60 / month**
+    * (`$0.01/hour * 2 endpoints * 730 hours`) These provide a secure, private network path from the Lambda function to AWS services (SSM and KMS), avoiding the need for a more expensive NAT Gateway.
+
+* **AWS KMS Key**: **$1.00 / month**
+    * This is the flat fee for the custom key used to encrypt the database credentials.
+
+### 2. Usage-Based Costs (Effectively Free)
+The following services are usage-based, but their costs are expected to be **$0** as the project's traffic falls well within the AWS Free Tier.
+
+* **AWS Lambda**: 1 million free requests/month.
+* **API Gateway (HTTP API)**: 1 million free requests/month (first 12 months).
+* **S3 & CloudFront**: Generous free tiers for storage and data transfer.
+
+### Summary
+
+| Service | Estimated Monthly Cost |
+| :--- | :--- |
+| MongoDB Atlas M10 | ~$58.40 |
+| AWS Networking (VPC Endpoints) | ~$14.60 |
+| AWS KMS Key | $1.00 |
+| Usage-Based Services | ~$0.00 |
+| **Total Estimated Bill** | **~$74.00 USD** |
