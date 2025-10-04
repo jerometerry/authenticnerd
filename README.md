@@ -33,216 +33,141 @@ This project aims to create a superior workflow for personal data tracking with 
 
 ### Initial One-Time Setup
 
-0. **Prerequisites**
+This guide assumes you are on macOS with Homebrew installed.
 
-	Homebrew
-
-	```bash
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	```
-
-	Install AWS CLI
-
-	https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-	https://awscli.amazonaws.com/AWSCLIV2.pkg
-
-	**Setup AWS CLI**
-
-	https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html
-
-	You'll need to be able to run terraform plan and apply. Configure that according to your needs. 
-
-	```bash
-	aws configure
-	aws sts get-caller-identity
-	```
-
-	**Terraform**
-
-	```bash
-	brew install tfenv
-	tfenv install latest
-	tfenv use latest
-	```
-
-	**Python**
-
-	```bash
-	brew install pyenv readline xz
-	pyenv install 3.13.7
-	pyenv global 3.13.7
-	```
-
-	# Use this command to find the latest version of Python
-	```bash
-	pyenv install --list
-	```
-
-	**NodeJS**
-
-	```bash
-	brew install nvm
-
-	nvm install --lts
-	nvm use --lts
-	npm install -g npm@latest
-	
-	brew install pnpm
-	```
-
-	**Docker**
-
-	```bash
-	brew install --cask docker
-	```
-
-	**Git**
-
-	```bash
-	brew install git
-	git config --global user.name "<YOUR_NAME>"
-	git config --global user.email "<YOUR_EMAIL>"
-	```
-
-1.  **Backend Dependencies (from the project root):**
+1.  **Install Prerequisites:**
     ```bash
+    # Install core tools
+    brew install tfenv pyenv nvm pnpm docker git
+
+    # Configure Git (first time only)
+    git config --global user.name "<YOUR_NAME>"
+    git config --global user.email "<YOUR_EMAIL>"
+    ```
+
+2.  **Set up Runtimes:**
+    ```bash
+    # Set up Terraform (use the latest version)
+    tfenv install latest
+    tfenv use latest
+
+    # Set up Python (use the version specified in .python-version)
+    pyenv install 3.13.7
+    pyenv global 3.13.7
+    
+    # Set up Node.js
+    nvm install --lts
+    nvm use --lts
+    ```
+
+3.  **Install Project Dependencies:**
+    ```bash
+    # Install backend dependencies (from project root)
     cd backend
     python -m venv .venv
     source .venv/bin/activate
-    pip install "fastapi[all]" "pymongo[async]"
-    # It's also a good idea to create a requirements.txt file
-    # pip freeze > requirements.txt
-    ```
+    pip install -r requirements.txt
+    cd ..
 
-2.  **Frontend Dependencies (from the `frontend` directory):**
-    ```bash
+    # Install frontend dependencies (from project root)
     cd frontend
     pnpm install
-	cp .env.example .env.development
+    cd ..
     ```
 
-	Update .env.development, setting the API URL if you want something other than localhost
-
-3. **AWS IAM User**
-
-	Terraform deployment requires `PowerUserAccess` policy along with the following IAM permissions
-
-
-	```json
-	{
-		"Statement": [
-			{
-				"Effect": "Allow",
-				"Action": [
-					"iam:GetRole",
-					"iam:CreateRole",
-					"iam:DeleteRole",
-					"iam:AttachRolePolicy",
-					"iam:DetachRolePolicy",
-					"iam:PassRole",
-					"iam:PutRolePolicy",
-					"iam:ListRolePolicies",
-					"iam:ListAttachedRolePolicies",
-					"iam:ListInstanceProfilesForRole",
-					"iam:TagRole"
-				],
-				"Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
-			},
-			{
-				"Effect": "Allow",
-				"Action": [
-					"iam:GetPolicy",
-					"iam:CreatePolicy",
-					"iam:DeletePolicy",
-					"iam:GetPolicyVersion",
-					"iam:ListPolicyVersions",
-					"iam:TagPolicy"
-				],
-				"Resource": "arn:aws:iam::<ACCOUNT_ID>:policy/lambda-policy"
-			}
-		]
-	}
-	```
-
-4. **Configure Terraform**
-	```bash
-	cp terraform.tfvars.example terraform.tfvars
-	```
-
-	Update terraform.tfvars
-	Set your Atlas Project ID, Public/Private Keys 
-
-	```terraform
-	atlas_project_id  = "<PROJECT_ID>"
-	atlas_public_key  = "<PUBLIC_KEY>"
-	atlas_private_key = "<PRIVATE_KEY>"
-	```
-
-## AWS Setup
-
-	MongoDB Atlas Connection needs to be set in SSM Parameter Store. 
-	Parameter Name: /MyPersonalSystem/MongoUri
-
-	
-
-### Running the Application
+### Running the Application Locally
 
 You will need **three separate terminal windows** open.
 
 #### Terminal 1: Run MongoDB
-**First time only:**
-```bash
-docker run --name my-mongo -p 27017:27017 -d mongo
-```
-
-**To start the container on subsequent runs:**
-```bash
-docker start my-mongo
-```
-> **Tip:** To stop the container, run `docker stop my-mongo`.
+_(This section is perfect, no changes needed)_
 
 #### Terminal 2: Start the Backend API
-From the **project root** (`my-personal-system`):
+From the **project root**:
 ```bash
 source backend/.venv/bin/activate
 uvicorn backend.main:app --reload
 ```
 
 #### Terminal 3: Start the Frontend App
-From the **`frontend`** directory:
+From the **`frontend`** directory, first set up your local environment file:
+```bash
+# This only needs to be done once
+cp .env.example .env.development
+```
+Then start the server:
 ```bash
 pnpm start
 ```
 
-### Code Generation
-To update the RTK Query hooks after making changes to the backend API:
+---
 
-1.  Make sure the backend API is running.
-2.  From the **`frontend`** directory, run:
+## AWS Deployment
+
+### One-Time AWS Setup
+
+1.  **Configure AWS CLI**: Ensure your local machine is configured to access your AWS account.
     ```bash
-    pnpm run codegen
+    aws configure
+    aws sts get-caller-identity # Confirms you are logged in
     ```
 
-### Build
+2.  **Create IAM User Policy**: Create an IAM user for deployment with the `PowerUserAccess` managed policy. Then, create the following custom policy named `TerraformProjectIAMPolicy` and attach it to the user. **Remember to replace `<ACCOUNT_ID>` with your 12-digit AWS Account ID.**
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "iam:GetRole",
+                    "iam:CreateRole",
+                    "iam:DeleteRole",
+                    "iam:AttachRolePolicy",
+                    "iam:DetachRolePolicy",
+                    "iam:PassRole",
+                    "iam:PutRolePolicy",
+                    "iam:ListRolePolicies",
+                    "iam:ListAttachedRolePolicies"
+                ],
+                "Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "iam:GetPolicy",
+                    "iam:CreatePolicy",
+                    "iam:DeletePolicy",
+                    "iam:GetPolicyVersion"
+                ],
+                "Resource": "arn:aws:iam::<ACCOUNT_ID>:policy/lambda-policy"
+            }
+        ]
+    }
+    ```
+
+3.  **Configure Terraform & Atlas Credentials**: In the `terraform` directory, create a `terraform.tfvars` file from the example.
+    ```bash
+    cd terraform
+    cp terraform.tfvars.example terraform.tfvars
+    ```
+    Edit `terraform.tfvars` and fill in your MongoDB Atlas Project ID and API keys.
+
+4.  **Set MongoDB Connection String**: After the first successful deployment, you must manually set the secret in AWS Systems Manager Parameter Store.
+    * **Parameter Name**: `/MyPersonalSystem/MongoUri`
+    * **Value**: Your MongoDB Atlas private connection string.
+
+### Running a Deployment
+
+To deploy all infrastructure and application updates, run the automated script from the **project root**:
+
 ```bash
-./build.sh
-```
-
-### Deploy
-```baqsh
-cd terraform
-terraform apply --auto-approve
-cd ..
-cd frontend
-pnpm run build
-aws s3 sync ./dist s3://<your-bucket-name>
-
-aws cloudfront create-invalidation --distribution-id <your-distribution-id> --paths "/*"
+./deploy.sh
 ```
 
 ---
 
-### Additional Scripts
+## Additional Scripts & Information
 
 **Nuke MongoDB**
 ⚠️ **Warning:** This will permanently delete all data in the container.
@@ -252,7 +177,7 @@ docker rm my-mongo
 docker run --name my-mongo -p 27017:27017 -d mongo
 ```
 
-**Hard Restart API Server^^
+**Hard Restart API Server**
 ```bash
 # CTRL+C to stop the running server
 uvicorn backend.main:app --reload
