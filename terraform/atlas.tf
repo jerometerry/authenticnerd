@@ -1,7 +1,13 @@
 # terraform/atlas.tf
 
+# Can be found from the Mongo DB Atlas website under Project Settings
+# Log into your Atlas Account https://account.mongodb.com/account/login
+# Should redirect you to https://cloud.mongodb.com/v2
+# Click on your project
+# Click the vertical ellipsis (⋮) in top left corner of the page
+# Click "Project Settings"
 variable "atlas_project_id" {
-  description = "Your MongoDB Atlas Project ID."
+  description = "MongoDB Atlas Project ID"
   type        = string
 }
 

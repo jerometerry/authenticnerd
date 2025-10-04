@@ -33,6 +33,77 @@ This project aims to create a superior workflow for personal data tracking with 
 
 ### Initial One-Time Setup
 
+0. **Prerequisites**
+
+	Homebrew
+
+	```bash
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	```
+
+	Install AWS CLI
+
+	https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+	https://awscli.amazonaws.com/AWSCLIV2.pkg
+
+	**Setup AWS CLI**
+
+	https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html
+
+	You'll need to be able to run terraform plan and apply. Configure that according to your needs. 
+
+	```bash
+	aws configure
+	aws sts get-caller-identity
+	```
+
+	**Terraform**
+
+	```bash
+	brew install tfenv
+	tfenv install latest
+	tfenv use latest
+	```
+
+	**Python**
+
+	```bash
+	brew install pyenv readline xz
+	pyenv install 3.13.7
+	pyenv global 3.13.7
+	```
+
+	# Use this command to find the latest version of Python
+	```bash
+	pyenv install --list
+	```
+
+	**NodeJS**
+
+	```bash
+	brew install nvm
+
+	nvm install --lts
+	nvm use --lts
+	npm install -g npm@latest
+	
+	brew install pnpm
+	```
+
+	**Docker**
+
+	```bash
+	brew install --cask docker
+	```
+
+	**Git**
+
+	```bash
+	brew install git
+	git config --global user.name "<YOUR_NAME>"
+	git config --global user.email "<YOUR_EMAIL>"
+	```
+
 1.  **Backend Dependencies (from the project root):**
     ```bash
     cd backend
@@ -47,13 +118,72 @@ This project aims to create a superior workflow for personal data tracking with 
     ```bash
     cd frontend
     pnpm install
+	cp .env.example .env.development
     ```
-3. **Configure Terraform**
-	```bash
-	brew install tfenv
-	tfenv install latest
-	tfenv use latest
+
+	Update .env.development, setting the API URL if you want something other than localhost
+
+3. **AWS IAM User**
+
+	Terraform deployment requires `PowerUserAccess` policy along with the following IAM permissions
+
+
+	```json
+	{
+		"Statement": [
+			{
+				"Effect": "Allow",
+				"Action": [
+					"iam:GetRole",
+					"iam:CreateRole",
+					"iam:DeleteRole",
+					"iam:AttachRolePolicy",
+					"iam:DetachRolePolicy",
+					"iam:PassRole",
+					"iam:PutRolePolicy",
+					"iam:ListRolePolicies",
+					"iam:ListAttachedRolePolicies",
+					"iam:ListInstanceProfilesForRole",
+					"iam:TagRole"
+				],
+				"Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
+			},
+			{
+				"Effect": "Allow",
+				"Action": [
+					"iam:GetPolicy",
+					"iam:CreatePolicy",
+					"iam:DeletePolicy",
+					"iam:GetPolicyVersion",
+					"iam:ListPolicyVersions",
+					"iam:TagPolicy"
+				],
+				"Resource": "arn:aws:iam::<ACCOUNT_ID>:policy/lambda-policy"
+			}
+		]
+	}
 	```
+
+4. **Configure Terraform**
+	```bash
+	cp terraform.tfvars.example terraform.tfvars
+	```
+
+	Update terraform.tfvars
+	Set your Atlas Project ID, Public/Private Keys 
+
+	```terraform
+	atlas_project_id  = "<PROJECT_ID>"
+	atlas_public_key  = "<PUBLIC_KEY>"
+	atlas_private_key = "<PRIVATE_KEY>"
+	```
+
+## AWS Setup
+
+	MongoDB Atlas Connection needs to be set in SSM Parameter Store. 
+	Parameter Name: /MyPersonalSystem/MongoUri
+
+	
 
 ### Running the Application
 
@@ -138,50 +268,6 @@ When you run `pnpm start`, the Vite server will print the local URL to the conso
 FastAPI automatically generates interactive API documentation. While the backend server is running, you can access them at:
 * **Swagger UI**: `http://127.0.0.1:8000/docs` 
 * **ReDoc**: `http://127.0.0.1:8000/redoc`
-
-## AWS Setup
-
-MongoDB Atlas Connection needs to be set in SSM Parameter Store. 
-Parameter Name: /MyPersonalSystem/MongoUri
-
-Terraform deployment requires `PowerUserAccess` policy along with the following IAM permissions
-
-
-```json
-{
-	"Statement": [
-		{
-			"Effect": "Allow",
-			"Action": [
-				"iam:GetRole",
-				"iam:CreateRole",
-				"iam:DeleteRole",
-				"iam:AttachRolePolicy",
-				"iam:DetachRolePolicy",
-				"iam:PassRole",
-				"iam:PutRolePolicy",
-				"iam:ListRolePolicies",
-				"iam:ListAttachedRolePolicies",
-				"iam:ListInstanceProfilesForRole",
-				"iam:TagRole"
-			],
-			"Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
-		},
-		{
-			"Effect": "Allow",
-			"Action": [
-				"iam:GetPolicy",
-				"iam:CreatePolicy",
-				"iam:DeletePolicy",
-				"iam:GetPolicyVersion",
-				"iam:ListPolicyVersions",
-				"iam:TagPolicy"
-			],
-			"Resource": "arn:aws:iam::<ACCOUNT_ID>:policy/lambda-policy"
-		}
-	]
-}
-```
 
 ## AWS Cost Analysis
 
