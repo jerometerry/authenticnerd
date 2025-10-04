@@ -1,8 +1,8 @@
 # terraform/variables.tf
-variable "s3_bucket_name" {
-  description = "The unique name for the S3 bucket."
+variable "website_s3_bucket_name" {
+  description = "Name of the S3 bucket for hosting static assets"
   type        = string
-  default     = "my-personal-system-unique-bucket-name"
+  default     = "my-personal-system-website"
 }
 
 variable "atlas_public_key" {

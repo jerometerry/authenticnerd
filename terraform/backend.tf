@@ -1,17 +1,17 @@
 # terraform/backend.tf
-
-# -----------------------------------------------------------------------------
-# DATA SOURCES
-# -----------------------------------------------------------------------------
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-# -----------------------------------------------------------------------------
-# CUSTOM KMS KEY FOR SSM ENCRYPTION
-# -----------------------------------------------------------------------------
 resource "aws_kms_key" "ssm_key" {
   description             = "KMS key for encrypting SSM parameters for personal-system"
   deletion_window_in_days = 7
+
+  tags = {
+    "jt:my-personal-system:name" = "ssm_key",
+    "jt:my-personal-system:description" = "KMS key for encrypting SSM parameters for personal-system",
+    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:component" = "core"
+  }
 }
 
 resource "aws_kms_alias" "ssm_key_alias" {
@@ -48,19 +48,20 @@ resource "aws_kms_key_policy" "ssm_key_policy" {
   policy = data.aws_iam_policy_document.kms_key_policy.json
 }
 
-# -----------------------------------------------------------------------------
-# SSM PARAMETER FOR MONGODB URI
-# -----------------------------------------------------------------------------
 resource "aws_ssm_parameter" "mongo_uri" {
   name   = "/MyPersonalSystem/MongoUri"
   type   = "SecureString"
   key_id = aws_kms_key.ssm_key.id
   value  = var.atlas_connection_string
+
+  tags = {
+    "jt:my-personal-system:name" = "mongo_uri",
+    "jt:my-personal-system:description" = "Connection string to the MongoDB Atlas DB",
+    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:component" = "mongodb-atlas"
+  }
 }
 
-# -----------------------------------------------------------------------------
-# LAMBDA IAM ROLE & POLICY
-# -----------------------------------------------------------------------------
 resource "aws_iam_role" "lambda_exec_role" {
   name = "lambda-exec-role"
   assume_role_policy = jsonencode({
@@ -71,6 +72,13 @@ resource "aws_iam_role" "lambda_exec_role" {
       Principal = { Service = "lambda.amazonaws.com" }
     }]
   })
+
+  tags = {
+    "jt:my-personal-system:name" = "lambda_exec_role",
+    "jt:my-personal-system:description" = "IAM Role for the api-lambda to execute FastAPI",
+    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:component" = "api-lambda"
+  }
 }
 
 resource "aws_iam_policy" "lambda_policy" {
@@ -100,6 +108,13 @@ resource "aws_iam_policy" "lambda_policy" {
       }
     ]
   })
+
+  tags = {
+    "jt:my-personal-system:name" = "lambda_exec_role",
+    "jt:my-personal-system:description" = "IAM Role for the api-lambda to execute FastAPI",
+    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:component" = "api-lambda"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_attach" {
@@ -112,16 +127,13 @@ resource "aws_iam_role_policy_attachment" "lambda_vpc_attach" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
 }
 
-# -----------------------------------------------------------------------------
-# LAMBDA FUNCTION
-# -----------------------------------------------------------------------------
 resource "aws_lambda_function" "api_lambda" {
   function_name    = "personal-system-api"
-  filename         = "../backend.zip"
+  filename         = "../api_lambda_function.zip"
   role             = aws_iam_role.lambda_exec_role.arn
   handler          = "app.lambda_function.handler"
   runtime          = "python3.12"
-  source_code_hash = filebase64sha256("../backend.zip")
+  source_code_hash = filebase64sha256("../api_lambda_function.zip")
   timeout          = 15
 
   environment {
@@ -137,19 +149,22 @@ resource "aws_lambda_function" "api_lambda" {
   }
 
   tags = {
-    Component = "backend"
+    "jt:my-personal-system:name" = "api_lambda",
+    "jt:my-personal-system:description" = "Lambda Funcation that executes FastAPI",
+    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:component" = "api-lambda"
   }
 }
 
-# -----------------------------------------------------------------------------
-# API GATEWAY (HTTP API)
-# -----------------------------------------------------------------------------
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "personal-system-http-api"
   protocol_type = "HTTP"
 
   tags = {
-    Component = "backend"
+    "jt:my-personal-system:name" = "http_api",
+    "jt:my-personal-system:description" = "API Gateway that forwards requests to the API Lambda Function",
+    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:component" = "api-gateway"
   }
 }
 
@@ -169,6 +184,13 @@ resource "aws_apigatewayv2_stage" "default_stage" {
   api_id      = aws_apigatewayv2_api.http_api.id
   name        = "$default"
   auto_deploy = true
+
+  tags = {
+    "jt:my-personal-system:name" = "default_stage",
+    "jt:my-personal-system:description" = "API Gateway Stage that auto-creates a new deployment when updated",
+    "jt:my-personal-system:module" = "backend",
+    "jt:my-personal-system:component" = "api-gateway"
+  }
 }
 
 resource "aws_lambda_permission" "api_gw_permission" {

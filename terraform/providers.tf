@@ -17,9 +17,9 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project     = "personal-system"
-      Environment = "development"
-      ManagedBy   = "terraform"
+      "jt:project" = "my-personal-system"
+      "jt:my-personal-system:environment" = "development"
+      "jt:my-personal-system:managed-by" = "terraform"
     }
   }
 }

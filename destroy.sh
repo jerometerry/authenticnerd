@@ -7,7 +7,7 @@ set -e
 echo "--- 1. Getting S3 Bucket Name from Terraform Output ---"
 # Navigate to the terraform directory to get the output
 cd terraform
-BUCKET_NAME=$(terraform output -raw s3_bucket_name)
+BUCKET_NAME=$(terraform output -raw website_s3_bucket_name)
 cd .. # Return to project root
 
 if [ -z "$BUCKET_NAME" ]; then

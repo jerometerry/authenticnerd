@@ -7,7 +7,7 @@ echo "--- Building Lambda Package ---"
 BACKEND_DIR="backend"
 BUILD_DIR="${BACKEND_DIR}/build"
 APP_DIR="${BUILD_DIR}/app"
-ZIP_FILE_NAME="backend.zip"
+ZIP_FILE_NAME="api_lambda_function.zip"
 REQUIREMENTS_FILE="requirements.txt"
 
 rm -rf "${BUILD_DIR}" "${ZIP_FILE_NAME}"
@@ -23,9 +23,9 @@ touch "${APP_DIR}/__init__.py"
 echo "Copying application code..."
 cp "${BACKEND_DIR}"/*.py "${APP_DIR}/"
 
-echo "Creating zip package..."
+echo "Creating lambda_function zip package..."
 cd "${BUILD_DIR}"
 zip -r "../../${ZIP_FILE_NAME}" .
 cd ../.. 
 
-echo "--- Lambda package created successfully at ${ZIP_FILE_NAME} ---"
+echo "--- API Lambda function package created successfully at ${ZIP_FILE_NAME} ---"

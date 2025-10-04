@@ -12,7 +12,7 @@ cd terraform
 terraform apply --auto-approve
 
 API_URL=$(terraform output -raw api_endpoint_url)
-BUCKET_NAME=$(terraform output -raw s3_bucket_name)
+BUCKET_NAME=$(terraform output -raw website_s3_bucket_name)
 DISTRIBUTION_ID=$(terraform output -raw cloudfront_distribution_id)
 WEBSITE_URL=$(terraform output -raw website_url)
 

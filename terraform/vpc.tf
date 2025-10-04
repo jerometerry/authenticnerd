@@ -4,17 +4,26 @@ resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags                 = { Name = "personal-system-vpc" }
+  tags                 = {
+    "jt:my-personal-system:name" = "my-personal-system-vpc",
+    "jt:my-personal-system:description" = "Requirement to use MongoDB Atlas VPC Peering",
+    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:component" = "core"
+  }
 }
 
 resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "${data.aws_region.current.id}a"
-  tags              = { Name = "personal-system-private-subnet" }
+  tags              = {
+    "jt:my-personal-system:name" = "my-personal-system-private-subnet",
+    "jt:my-personal-system:description" = "Allows api-lambda to connect to SSM & KMS",
+    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:component" = "core"
+  }
 }
 
-# Security Group for the Lambda function (allows all outbound traffic)
 resource "aws_security_group" "lambda_sg" {
   name        = "lambda-sg"
   description = "Allow all outbound traffic for Lambda"
@@ -27,10 +36,14 @@ resource "aws_security_group" "lambda_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = { Name = "personal-system-lambda-sg" }
+  tags = {
+    "jt:my-personal-system:name" = "my-personal-system-lambda-sg",
+    "jt:my-personal-system:description" = "Security Group for the Lambda function (allows all outbound traffic)",
+    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:component" = "api-lambda"
+  }
 }
 
-# --- NEW: A dedicated Security Group for the VPC Endpoints ---
 resource "aws_security_group" "endpoint_sg" {
   name        = "endpoint-sg"
   description = "Allow inbound HTTPS from the Lambda SG"
@@ -44,29 +57,32 @@ resource "aws_security_group" "endpoint_sg" {
     security_groups = [aws_security_group.lambda_sg.id]
   }
 
-  tags = { Name = "personal-system-endpoint-sg" }
+  tags = {
+    "jt:my-personal-system:name" = "my-personal-system-endpoint-sg",
+    "jt:my-personal-system:description" = "Dedicated Security Group for the VPC Endpoints",
+    "jt:my-personal-system:module" = "vpc",
+    "jt:my-personal-system:component" = "core"
+  }
 }
 
-# Create a private endpoint for SSM inside your VPC
+# Create a private endpoint for SSM inside the VPC
 resource "aws_vpc_endpoint" "ssm" {
   vpc_id            = aws_vpc.main.id
   service_name      = "com.amazonaws.${data.aws_region.current.id}.ssm"
   vpc_endpoint_type = "Interface"
 
   subnet_ids          = [aws_subnet.private.id]
-  # Use the new, dedicated security group
   security_group_ids  = [aws_security_group.endpoint_sg.id]
   private_dns_enabled = true
 }
 
-# Create a private endpoint for KMS inside your VPC
+# Create a private endpoint for KMS inside the VPC
 resource "aws_vpc_endpoint" "kms" {
   vpc_id            = aws_vpc.main.id
   service_name      = "com.amazonaws.${data.aws_region.current.id}.kms"
   vpc_endpoint_type = "Interface"
 
   subnet_ids          = [aws_subnet.private.id]
-  # Use the new, dedicated security group
   security_group_ids  = [aws_security_group.endpoint_sg.id]
   private_dns_enabled = true
 }
