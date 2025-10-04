@@ -80,7 +80,16 @@ This guide assumes you are on macOS with Homebrew installed.
 You will need **three separate terminal windows** open.
 
 #### Terminal 1: Run MongoDB
-_(This section is perfect, no changes needed)_
+**First time only:**
+```bash
+docker run --name my-mongo -p 27017:27017 -d mongo
+```
+
+**To start the container on subsequent runs:**
+```bash
+docker start my-mongo
+```
+> **Tip:** To stop the container, run `docker stop my-mongo`.
 
 #### Terminal 2: Start the Backend API
 From the **project root**:
