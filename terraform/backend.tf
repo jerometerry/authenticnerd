@@ -111,6 +111,11 @@ resource "aws_iam_role_policy_attachment" "lambda_attach" {
   policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_vpc_attach" {
+  role       = aws_iam_role.lambda_exec_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+}
+
 # -----------------------------------------------------------------------------
 # LAMBDA FUNCTION
 # -----------------------------------------------------------------------------
@@ -128,6 +133,11 @@ resource "aws_lambda_function" "api_lambda" {
       MONGO_URI_PARAM_NAME = aws_ssm_parameter.mongo_uri.name
       FRONTEND_URL         = "https://${aws_cloudfront_distribution.s3_distribution.domain_name}"
     }
+  }
+
+  vpc_config {
+    subnet_ids         = [aws_subnet.private.id]
+    security_group_ids = [aws_security_group.lambda_sg.id]
   }
 }
 

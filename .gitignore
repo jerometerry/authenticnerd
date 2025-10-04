@@ -358,6 +358,7 @@ frontend/.pnpm-debug.log
 *.tfstate
 *.tfstate.backup
 *.tfplan
+*.tfvars
 crash.log
 
 # Build artifacts
