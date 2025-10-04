@@ -100,7 +100,7 @@ resource "aws_iam_policy" "lambda_policy" {
       {
         Action   = "kms:Decrypt",
         Effect   = "Allow",
-        Resource = "arn:aws:kms:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:alias/aws/lambda"
+        Resource = "arn:aws:kms:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:alias/aws/lambda"
       }
     ]
   })
@@ -139,6 +139,10 @@ resource "aws_lambda_function" "api_lambda" {
     subnet_ids         = [aws_subnet.private.id]
     security_group_ids = [aws_security_group.lambda_sg.id]
   }
+
+  tags = {
+    Component = "backend"
+  }
 }
 
 # -----------------------------------------------------------------------------
@@ -147,6 +151,10 @@ resource "aws_lambda_function" "api_lambda" {
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "personal-system-http-api"
   protocol_type = "HTTP"
+
+  tags = {
+    Component = "backend"
+  }
 }
 
 resource "aws_apigatewayv2_integration" "lambda_integration" {

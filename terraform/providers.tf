@@ -3,17 +3,25 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = ">= 5.100.0"
     }
     mongodbatlas = {
       source  = "mongodb/mongodbatlas"
-      version = "~> 1.15"
+      version = ">= 1.41.1"
     }
   }
 }
 
 provider "aws" {
-  region = "us-east-1" 
+  region = "us-east-1"
+
+  default_tags {
+    tags = {
+      Project     = "personal-system"
+      Environment = "development"
+      ManagedBy   = "terraform"
+    }
+  }
 }
 
 provider "mongodbatlas" {

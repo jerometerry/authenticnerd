@@ -48,6 +48,12 @@ This project aims to create a superior workflow for personal data tracking with 
     cd frontend
     pnpm install
     ```
+3. **Configure Terraform**
+	```bash
+	brew install tfenv
+	tfenv install latest
+	tfenv use latest
+	```
 
 ### Running the Application
 
@@ -152,16 +158,13 @@ Terraform deployment requires `PowerUserAccess` policy along with the following 
 				"iam:DeleteRole",
 				"iam:AttachRolePolicy",
 				"iam:DetachRolePolicy",
+				"iam:PassRole",
 				"iam:PutRolePolicy",
 				"iam:ListRolePolicies",
 				"iam:ListAttachedRolePolicies",
-				"iam:ListInstanceProfilesForRole"
+				"iam:ListInstanceProfilesForRole",
+				"iam:TagRole"
 			],
-			"Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
-		},
-		{
-			"Effect": "Allow",
-			"Action": "iam:PassRole",
 			"Resource": "arn:aws:iam::<ACCOUNT_ID>:role/lambda-exec-role"
 		},
 		{
@@ -171,7 +174,8 @@ Terraform deployment requires `PowerUserAccess` policy along with the following 
 				"iam:CreatePolicy",
 				"iam:DeletePolicy",
 				"iam:GetPolicyVersion",
-				"iam:ListPolicyVersions"
+				"iam:ListPolicyVersions",
+				"iam:TagPolicy"
 			],
 			"Resource": "arn:aws:iam::<ACCOUNT_ID>:policy/lambda-policy"
 		}

@@ -11,13 +11,13 @@ data "mongodbatlas_network_containers" "main" {
 }
 
 # Initiate peering from Atlas to AWS
-resource "mongodbatlas_network_peering" "peer" {
+resource "mongodbatlas_network_peering" "peer" {  
   project_id   = var.atlas_project_id
   provider_name = "AWS"
 
   container_id = data.mongodbatlas_network_containers.main.results[0].id
   
-  accepter_region_name   = data.aws_region.current.name
+  accepter_region_name   = data.aws_region.current.id
   aws_account_id         = data.aws_caller_identity.current.account_id
   vpc_id                 = aws_vpc.main.id
   route_table_cidr_block = aws_vpc.main.cidr_block

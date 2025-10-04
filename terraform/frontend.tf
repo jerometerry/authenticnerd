@@ -3,6 +3,10 @@
 # 1. S3 bucket to store the static files (now private)
 resource "aws_s3_bucket" "site_bucket" {
   bucket = var.s3_bucket_name
+
+  tags = {
+    Component = "frontend"
+  }
 }
 
 # 2. Block ALL public access to the S3 bucket
@@ -100,6 +104,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   viewer_certificate {
     cloudfront_default_certificate = true
+  }
+
+  tags = {
+    Component = "frontend"
   }
 }
 
