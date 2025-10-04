@@ -12,7 +12,7 @@ output "website_url" {
 
 output "website_s3_bucket_name" {
   description = "The name of the S3 bucket for the frontend."
-  value       = aws_s3_bucket.static_accets_bucket.id
+  value       = aws_s3_bucket.static_assets_bucket.id
 }
 
 output "cloudfront_distribution_id" {

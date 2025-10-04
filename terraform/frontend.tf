@@ -1,7 +1,7 @@
 # terraform/frontend.tf
 
 # S3 bucket to store the static files (now private)
-resource "aws_s3_bucket" "static_accets_bucket" {
+resource "aws_s3_bucket" "static_assets_bucket" {
   bucket = var.website_s3_bucket_name
 
   tags = {
@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "static_accets_bucket" {
 # Block ALL public access to the S3 bucket
 # This is more secure than the previous configuration.
 resource "aws_s3_bucket_public_access_block" "site_access_block" {
-  bucket = aws_s3_bucket.static_accets_bucket.id
+  bucket = aws_s3_bucket.static_assets_bucket.id
 
   block_public_acls       = true
   ignore_public_acls      = true
@@ -63,8 +63,8 @@ resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
 # CloudFront distribution (CDN)
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name              = aws_s3_bucket.static_accets_bucket.bucket_regional_domain_name
-    origin_id                = aws_s3_bucket.static_accets_bucket.id
+    domain_name              = aws_s3_bucket.static_assets_bucket.bucket_regional_domain_name
+    origin_id                = aws_s3_bucket.static_assets_bucket.id
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
   }
 
@@ -74,7 +74,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = aws_s3_bucket.static_accets_bucket.id
+    target_origin_id = aws_s3_bucket.static_assets_bucket.id
 
     forwarded_values {
       query_string = false
@@ -91,7 +91,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   ordered_cache_behavior {
     path_pattern     = "index.html"
-    target_origin_id = aws_s3_bucket.static_accets_bucket.id
+    target_origin_id = aws_s3_bucket.static_assets_bucket.id
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
@@ -119,7 +119,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
 # This policy GRANTS access ONLY to the CloudFront distribution.
 resource "aws_s3_bucket_policy" "site_policy" {
-  bucket = aws_s3_bucket.static_accets_bucket.id
+  bucket = aws_s3_bucket.static_assets_bucket.id
   policy = jsonencode({
     Version   = "2012-10-17",
     Statement = [{
@@ -128,7 +128,7 @@ resource "aws_s3_bucket_policy" "site_policy" {
       Principal = {
         Service = "cloudfront.amazonaws.com"
       },
-      Resource  = "${aws_s3_bucket.static_accets_bucket.arn}/*",
+      Resource  = "${aws_s3_bucket.static_assets_bucket.arn}/*",
       Condition = {
         StringEquals = {
           # This condition ensures only YOUR CloudFront distribution can access the files.
