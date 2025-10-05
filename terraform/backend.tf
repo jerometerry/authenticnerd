@@ -390,7 +390,7 @@ resource "aws_cloudfront_distribution" "rest_api_cloudformation_distribution" {
   enabled = true
   aliases = ["${var.api_subdomain_name}.${var.domain_name}"]
   price_class = "PriceClass_100"
-  web_acl_id = aws_wafv2_web_acl.api_waf.arn
+  web_acl_id = aws_wafv2_web_acl.main.arn
 
   origin {
     domain_name = "${aws_api_gateway_rest_api.rest_api_gateway.id}.execute-api.us-east-1.amazonaws.com"

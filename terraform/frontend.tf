@@ -176,7 +176,7 @@ resource "aws_cloudfront_distribution" "website_cloudformation_distribution" {
   enabled             = true
   default_root_object = "index.html"
   aliases = ["${var.website_subdomain_name}.${var.domain_name}"]
-  web_acl_id = aws_wafv2_web_acl.website_waf.arn
+  web_acl_id = aws_wafv2_web_acl.main.arn
   price_class = "PriceClass_100"  
 
   restrictions {

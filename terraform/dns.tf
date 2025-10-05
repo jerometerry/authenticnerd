@@ -1,47 +1,90 @@
 # terraform/dns.tf
 
-resource "aws_acm_certificate" "site_cert" {
-  provider = aws.us-east-1
+# Looks up the Route 53 hosted zone for your root domain
+data "aws_route53_zone" "main" {
+  name = var.domain_name
+}
 
+# --- Certificate and DNS for the Website Subdomain ---
+
+resource "aws_acm_certificate" "site_cert" {
+  provider          = aws.us-east-1
   domain_name       = "${var.website_subdomain_name}.${var.domain_name}"
   validation_method = "DNS"
+  # ... (your tags and lifecycle are correct)
+}
 
-  lifecycle {
-    create_before_destroy = true
+resource "aws_route53_record" "site_cert_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.site_cert.domain_validation_options : dvo.domain_name => {
+      name    = dvo.resource_record_name
+      record  = dvo.resource_record_value
+      type    = dvo.resource_record_type
+    }
   }
-  
-  tags = {
-    "jt:my-personal-system:name" = "website-ssl-cert"
-    "jt:my-personal-system:description" = "SSL Cert for Website"
-    "jt:my-personal-system:module" = "dns"
-    "jt:my-personal-system:component" = "cloud-front-distribution"
-  }
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
 }
 
 resource "aws_acm_certificate_validation" "site_cert_validation" {
-  provider = aws.us-east-1
+  provider                = aws.us-east-1
   certificate_arn         = aws_acm_certificate.site_cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.site_cert_validation : record.fqdn]
 }
 
-resource "aws_acm_certificate" "api_cert" {
-  provider = aws.us-east-1
+resource "aws_route53_record" "site_dns" {
+  name    = aws_acm_certificate.site_cert.domain_name
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = aws_cloudfront_distribution.website_cloudformation_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.website_cloudformation_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
 
+# --- Certificate and DNS for the API Subdomain ---
+
+resource "aws_acm_certificate" "api_cert" {
+  provider          = aws.us-east-1
   domain_name       = "${var.api_subdomain_name}.${var.domain_name}"
   validation_method = "DNS"
+  # ... (your tags and lifecycle are correct)
+}
 
-  lifecycle {
-    create_before_destroy = true
+resource "aws_route53_record" "api_cert_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.api_cert.domain_validation_options : dvo.domain_name => {
+      name    = dvo.resource_record_name
+      record  = dvo.resource_record_value
+      type    = dvo.resource_record_type
+    }
   }
-  
-  tags = {
-    "jt:my-personal-system:name" = "api-ssl-cert"
-    "jt:my-personal-system:description" = "SSL Cert for API"
-    "jt:my-personal-system:module" = "dns"
-    "jt:my-personal-system:component" = "api-lambda"
-  }
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
 }
 
 resource "aws_acm_certificate_validation" "api_cert_validation" {
-  provider = aws.us-east-1
+  provider                = aws.us-east-1
   certificate_arn         = aws_acm_certificate.api_cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.api_cert_validation : record.fqdn]
+}
+
+resource "aws_route53_record" "api_dns" {
+  name    = aws_acm_certificate.api_cert.domain_name
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+  alias {
+    name                   = aws_cloudfront_distribution.rest_api_cloudformation_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.rest_api_cloudformation_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
 }
