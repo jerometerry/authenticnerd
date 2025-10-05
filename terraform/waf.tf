@@ -1,8 +1,7 @@
 # terraform/waf.tf
 
-# 1. Creates a set of the IP addresses you want to allow
 resource "aws_wafv2_ip_set" "allowed_ips" {
-  provider = aws.us-east-1 # WAF for CloudFront must be in us-east-1
+  provider = aws.us-east-1
 
   name               = "personal-system-allowed-ips"
   scope              = "CLOUDFRONT"
@@ -16,49 +15,100 @@ resource "aws_wafv2_ip_set" "allowed_ips" {
   }
 }
 
-# 2. Creates the Web ACL (the firewall rule)
-resource "aws_wafv2_web_acl" "main" {
-  provider = aws.us-east-1 # WAF for CloudFront must be in us-east-1
+resource "aws_wafv2_web_acl" "my_personal_system_waf" {
+  name        = "my-personal-system-waf"
+  description = "Web Application Firewall"
+  scope       = "CLOUDFRONT"
 
-  name  = "personal-system-acl"
-  scope = "CLOUDFRONT"
-
-  # The default action is to block any request that doesn't match a rule
   default_action {
     block {}
   }
 
-  # Add a rule to allow requests from your IP set
-  rule {
-    name     = "Allow-Personal-IPs"
-    priority = 1
-
-    action {
-      allow {}
-    }
-
-    statement {
-      ip_set_reference_statement {
-        arn = aws_wafv2_ip_set.allowed_ips.arn
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = false
-      metric_name                = "Allow-Personal-IPs"
-      sampled_requests_enabled   = false
-    }
-  }
-
   visibility_config {
     cloudwatch_metrics_enabled = false
-    metric_name                = "personal-system-acl"
+    metric_name                = "my-personal-system-waf"
     sampled_requests_enabled   = false
   }
 
+  rule {
+    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 0
+    override_action {
+        none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name =  "AWS"
+      }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesAmazonIpReputationList"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 1
+    override_action {
+        none {}
+    }
+    statement {
+        managed_rule_group_statement {
+            name = "AWSManagedRulesCommonRuleSet"
+            vendor_name = "AWS"
+        }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesCommonRuleSet"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+      name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+      priority = 2
+      override_action {
+          none {}
+      }
+      statement {
+          managed_rule_group_statement {
+              name = "AWSManagedRulesKnownBadInputsRuleSet"
+              vendor_name = "AWS"
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+          sampled_requests_enabled = true
+      }
+  }
+
+  rule {
+      name = "my-personal-system-allowed-ips-rule"
+      priority = 3
+      action {
+          allow {}
+      }
+      statement {
+          ip_set_reference_statement {
+              arn = aws_wafv2_ip_set.allowed_ips.arn
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "my-personal-system-allowed-ips-rule"
+          sampled_requests_enabled = true
+      }
+  }
+
   tags = {
-    "jt:my-personal-system:name"        = "waf-main-acl"
-    "jt:my-personal-system:description" = "Main WAF ACL to restrict access to CloudFront distributions"
-    "jt:my-personal-system:module"      = "security"
+    "jt:my-personal-system:name" = "my-personal-system-waf"
+    "jt:my-personal-system:description" = "Web Application Firewall"
+    "jt:my-personal-system:module" = "waf"
+    "jt:my-personal-system:component" = "cloud-front-distribution"
   }
 }

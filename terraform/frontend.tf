@@ -53,119 +53,6 @@ resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
   }
 }
 
-resource "aws_wafv2_ip_set" "website-allowed-ip-set" {
-  name               = "website-allowed-ip-set"
-  description        = "Allowed List of IPs for Website WAF"
-  scope              = "CLOUDFRONT"
-  ip_address_version = "IPV4"
-  addresses          = var.allowed_ips
-
-  tags = {
-    "jt:my-personal-system:name" = "website-allowed-ip-set"
-    "jt:my-personal-system:description" = "Allowed List of IPs for Website WAF"
-    "jt:my-personal-system:module" = "frontend"
-    "jt:my-personal-system:component" = "cloud-front-distribution"
-  }
-}
-
-resource "aws_wafv2_web_acl" "website_waf" {
-  name        = "website-web-acl"
-  description = "WAF in front of website"
-  scope       = "CLOUDFRONT"
-
-  default_action {
-    block {}
-  }
-
-  visibility_config {
-    cloudwatch_metrics_enabled = false
-    metric_name                = "website_waf"
-    sampled_requests_enabled   = false
-  }
-
-  rule {
-    name = "AWS-AWSManagedRulesAmazonIpReputationList"
-    priority = 0
-    override_action {
-        none {}
-    }
-    statement {
-      managed_rule_group_statement {
-        name = "AWSManagedRulesAmazonIpReputationList"
-        vendor_name =  "AWS"
-      }
-    }
-    visibility_config {
-        cloudwatch_metrics_enabled = true
-        metric_name = "AWS-AWSManagedRulesAmazonIpReputationList"
-        sampled_requests_enabled = true
-    }
-  }
-
-  rule {
-    name = "AWS-AWSManagedRulesCommonRuleSet"
-    priority = 1
-    override_action {
-        none {}
-    }
-    statement {
-        managed_rule_group_statement {
-            name = "AWSManagedRulesCommonRuleSet"
-            vendor_name = "AWS"
-        }
-    }
-    visibility_config {
-        cloudwatch_metrics_enabled = true
-        metric_name = "AWS-AWSManagedRulesCommonRuleSet"
-        sampled_requests_enabled = true
-    }
-  }
-
-  rule {
-      name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-      priority = 2
-      override_action {
-          none {}
-      }
-      statement {
-          managed_rule_group_statement {
-              name = "AWSManagedRulesKnownBadInputsRuleSet"
-              vendor_name = "AWS"
-          }
-      }
-      visibility_config {
-          cloudwatch_metrics_enabled = true
-          metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-          sampled_requests_enabled = true
-      }
-  }
-
-  rule {
-      name = "website-allowed-ips-rule"
-      priority = 3
-      action {
-          allow {}
-      }
-      statement {
-          ip_set_reference_statement {
-              arn = aws_wafv2_ip_set.website-allowed-ip-set.arn
-          }
-      }
-      visibility_config {
-          cloudwatch_metrics_enabled = true
-          metric_name = "website-allowed-ips-rule"
-          sampled_requests_enabled = true
-      }
-  }
-
-  tags = {
-    "jt:my-personal-system:name" = "website-web-acl"
-    "jt:my-personal-system:description" = "WAF in front of website"
-    "jt:my-personal-system:module" = "frontend"
-    "jt:my-personal-system:component" = "cloud-front-distribution"
-  }
-}
-
 resource "aws_cloudfront_distribution" "website_cloudformation_distribution" {
   origin {
     origin_id                = aws_s3_bucket.website_s3_bucket.id
@@ -176,7 +63,7 @@ resource "aws_cloudfront_distribution" "website_cloudformation_distribution" {
   enabled             = true
   default_root_object = "index.html"
   aliases = ["${var.website_subdomain_name}.${var.domain_name}"]
-  web_acl_id = aws_wafv2_web_acl.main.arn
+  web_acl_id = aws_wafv2_web_acl.my_personal_system_waf.arn
   price_class = "PriceClass_100"  
 
   restrictions {
