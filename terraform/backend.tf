@@ -136,7 +136,7 @@ resource "aws_lambda_function" "api_lambda" {
   environment {
     variables = {
       MONGO_URI_PARAM_NAME = aws_ssm_parameter.mongo_uri.name
-      FRONTEND_URL         = "https://${aws_cloudfront_distribution.s3_distribution.domain_name}"
+      FRONTEND_URL         = "https://${aws_cloudfront_distribution.website_cloudformation_distribution.domain_name}"
     }
   }
 
@@ -153,7 +153,7 @@ resource "aws_lambda_function" "api_lambda" {
   }
 }
 
-resource "aws_apigatewayv2_api" "http_api" {
+resource "aws_apigatewayv2_api" "api_gateway" {
   name          = "personal-system-http-api"
   protocol_type = "HTTP"
 
@@ -166,19 +166,19 @@ resource "aws_apigatewayv2_api" "http_api" {
 }
 
 resource "aws_apigatewayv2_integration" "lambda_integration" {
-  api_id           = aws_apigatewayv2_api.http_api.id
+  api_id           = aws_apigatewayv2_api.api_gateway.id
   integration_type = "AWS_PROXY"
   integration_uri  = aws_lambda_function.api_lambda.invoke_arn
 }
 
 resource "aws_apigatewayv2_route" "api_route" {
-  api_id    = aws_apigatewayv2_api.http_api.id
+  api_id    = aws_apigatewayv2_api.api_gateway.id
   route_key = "ANY /{proxy+}"
   target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
 }
 
 resource "aws_apigatewayv2_stage" "default_stage" {
-  api_id      = aws_apigatewayv2_api.http_api.id
+  api_id      = aws_apigatewayv2_api.api_gateway.id
   name        = "$default"
   auto_deploy = true
 
@@ -194,7 +194,7 @@ resource "aws_lambda_permission" "api_gw_permission" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_lambda.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_apigatewayv2_api.http_api.execution_arn}/*/*"
+  source_arn    = "${aws_apigatewayv2_api.api_gateway.execution_arn}/*/*"
 }
 
 resource "aws_wafv2_ip_set" "api-allowed-ip-set" {
@@ -213,7 +213,7 @@ resource "aws_wafv2_ip_set" "api-allowed-ip-set" {
 }
 
 resource "aws_wafv2_web_acl" "api_waf" {
-  name        = "api-web-application-firewall"
+  name        = "api-web-acl"
   description = "WAF in front of API"
   scope       = "CLOUDFRONT"
 
@@ -303,38 +303,21 @@ resource "aws_wafv2_web_acl" "api_waf" {
   }
 
   tags = {
-    "jt:my-personal-system:name" = "api-web-application-firewall"
+    "jt:my-personal-system:name" = "api-web-acl"
     "jt:my-personal-system:description" = "WAF in front of API"
     "jt:my-personal-system:module" = "api-lambda"
     "jt:my-personal-system:component" = "cloud-front-distribution"
   }
 }
 
-resource "aws_apigatewayv2_domain_name" "api_domain" {
-  domain_name = "${var.api_subdomain_name}.${var.domain_name}"
-  domain_name_configuration {
-    certificate_arn = aws_acm_certificate.api_cert.arn
-    security_policy = "TLS_1_2"
-    endpoint_type = "REGIONAL"
-  }
+resource "aws_cloudfront_distribution" "api_cloudformation_distribution" {
+  enabled = true
+  aliases = ["${var.api_subdomain_name}.${var.domain_name}"]
+  price_class = "PriceClass_100"
+  web_acl_id = aws_wafv2_web_acl.api_waf.arn
 
-  tags = {
-    "jt:my-personal-system:name" = "api-cloudfront-domain"
-    "jt:my-personal-system:description" = "Domain Name for the API CloudFront Distribution"
-    "jt:my-personal-system:module" = "backend"
-    "jt:my-personal-system:component" = "api-lambda"
-  }
-}
-
-resource "aws_apigatewayv2_api_mapping" "api_mapping" {
-  stage = aws_apigatewayv2_stage.default_stage.id
-  api_id      = aws_apigatewayv2_api.http_api.id
-  domain_name = aws_apigatewayv2_domain_name.api_domain.domain_name
-}
-
-resource "aws_cloudfront_distribution" "api_distribution" {
   origin {
-    domain_name              = aws_apigatewayv2_domain_name.api_domain.domain_name
+    domain_name = "${aws_apigatewayv2_api.api_gateway.id}.execute-api.us-east-1.amazonaws.com"
     origin_id                = "my-personal-system-api-origin"
 
     custom_origin_config {
@@ -344,10 +327,6 @@ resource "aws_cloudfront_distribution" "api_distribution" {
       origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
-
-  enabled = true
-  aliases = ["${var.api_subdomain_name}.${var.domain_name}"]
-  price_class = "PriceClass_100"
 
   restrictions {
     geo_restriction {
@@ -375,6 +354,7 @@ resource "aws_cloudfront_distribution" "api_distribution" {
   }
 
   tags = {
+    Name = "api-cloudfront-distribution"
     "jt:my-personal-system:name" = "api-cloudfront-distribution"
     "jt:my-personal-system:description" = "Public access to the API"
     "jt:my-personal-system:module" = "backend"

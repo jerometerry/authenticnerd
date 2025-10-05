@@ -1,20 +1,19 @@
 # terraform/frontend.tf
 
-resource "aws_s3_bucket" "static_assets_bucket" {
+resource "aws_s3_bucket" "website_s3_bucket" {
   bucket = var.website_s3_bucket_name
 
   tags = {
-    "jt:my-personal-system:name" = "my-personal-system-website-bucket"
+    "jt:my-personal-system:name" = "website-s3-bucket"
     "jt:my-personal-system:description" = "S3 Bucket for hosting website static assets"
     "jt:my-personal-system:module" = "frontend"
-    "jt:my-personal-system:component" = "static-accets-s3-bucket"
+    "jt:my-personal-system:component" = "website-s3-bucket"
   }
 }
 
 # Block ALL public access to the S3 bucket
-# This is more secure than the previous configuration.
-resource "aws_s3_bucket_public_access_block" "site_access_block" {
-  bucket = aws_s3_bucket.static_assets_bucket.id
+resource "aws_s3_bucket_public_access_block" "website_access_block" {
+  bucket = aws_s3_bucket.website_s3_bucket.id
 
   block_public_acls       = true
   ignore_public_acls      = true
@@ -23,9 +22,8 @@ resource "aws_s3_bucket_public_access_block" "site_access_block" {
 }
 
 # Create the CloudFront Origin Access Control (OAC)
-# This is the modern replacement for the older Origin Access Identity (OAI).
-resource "aws_cloudfront_origin_access_control" "oac" {
-  name                              = "oac-for-personal-system"
+resource "aws_cloudfront_origin_access_control" "website_oac" {
+  name                              = "website_oac"
   description                       = "Origin Access Control for the personal system S3 bucket"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
@@ -71,7 +69,7 @@ resource "aws_wafv2_ip_set" "website-allowed-ip-set" {
 }
 
 resource "aws_wafv2_web_acl" "website_waf" {
-  name        = "website-web-application-firewall"
+  name        = "website-web-acl"
   description = "WAF in front of website"
   scope       = "CLOUDFRONT"
 
@@ -161,26 +159,25 @@ resource "aws_wafv2_web_acl" "website_waf" {
   }
 
   tags = {
-    "jt:my-personal-system:name" = "website-web-application-firewall"
+    "jt:my-personal-system:name" = "website-web-acl"
     "jt:my-personal-system:description" = "WAF in front of website"
     "jt:my-personal-system:module" = "frontend"
     "jt:my-personal-system:component" = "cloud-front-distribution"
   }
 }
 
-resource "aws_cloudfront_distribution" "s3_distribution" {
+resource "aws_cloudfront_distribution" "website_cloudformation_distribution" {
   origin {
-    origin_id                = aws_s3_bucket.static_assets_bucket.id
-    domain_name              = aws_s3_bucket.static_assets_bucket.bucket_regional_domain_name
-    origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
+    origin_id                = aws_s3_bucket.website_s3_bucket.id
+    domain_name              = aws_s3_bucket.website_s3_bucket.bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.website_oac.id
   }
 
   enabled             = true
   default_root_object = "index.html"
   aliases = ["${var.website_subdomain_name}.${var.domain_name}"]
-  price_class = "PriceClass_100"
-
   web_acl_id = aws_wafv2_web_acl.website_waf.arn
+  price_class = "PriceClass_100"  
 
   restrictions {
     geo_restriction {
@@ -197,7 +194,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = aws_s3_bucket.static_assets_bucket.id
+    target_origin_id = aws_s3_bucket.website_s3_bucket.id
 
     forwarded_values {
       query_string = false
@@ -214,7 +211,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   ordered_cache_behavior {
     path_pattern     = "index.html"
-    target_origin_id = aws_s3_bucket.static_assets_bucket.id
+    target_origin_id = aws_s3_bucket.website_s3_bucket.id
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
@@ -223,7 +220,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   tags = {
-    "jt:my-personal-system:name" = "s3-distribution"
+    Name = "website-cloudfront-distribution"
+    "jt:my-personal-system:name" = "website-cloudfront-distribution"
     "jt:my-personal-system:description" = "Public access to the website"
     "jt:my-personal-system:module" = "frontend"
     "jt:my-personal-system:component" = "cloud-front-distribution"
@@ -231,8 +229,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 }
 
 # Lock down access to the website S3 bucket to the CloudFront distribution
-resource "aws_s3_bucket_policy" "site_policy" {
-  bucket = aws_s3_bucket.static_assets_bucket.id
+resource "aws_s3_bucket_policy" "website_s3_bucket_policy" {
+  bucket = aws_s3_bucket.website_s3_bucket.id
   policy = jsonencode({
     Version   = "2012-10-17",
     Statement = [{
@@ -241,15 +239,15 @@ resource "aws_s3_bucket_policy" "site_policy" {
       Principal = {
         Service = "cloudfront.amazonaws.com"
       },
-      Resource  = "${aws_s3_bucket.static_assets_bucket.arn}/*",
+      Resource  = "${aws_s3_bucket.website_s3_bucket.arn}/*",
       Condition = {
         StringEquals = {
-          "AWS:SourceArn" = aws_cloudfront_distribution.s3_distribution.arn
+          "AWS:SourceArn" = aws_cloudfront_distribution.website_cloudformation_distribution.arn
         }
       }
     }]
   })
 
   # Grant CloudFront Distribution access after website S3 bucket is blocked from public acccess
-  depends_on = [aws_s3_bucket_public_access_block.site_access_block]
+  depends_on = [aws_s3_bucket_public_access_block.website_access_block]
 }
