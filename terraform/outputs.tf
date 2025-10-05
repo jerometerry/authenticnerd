@@ -27,10 +27,10 @@ output "rest_apigateway_endpoint_url" {
 
 output "rest_api_cloudformation_distribution" {
   description = "The ID of the REST API CloudFront distribution."
-  value       = aws_cloudfront_distribution.rest_api_cloudformation_distribution.id
+  value       = aws_cloudfront_distribution.api_distribution.id
 }
 
 output "rest_api_cloudfront_url" {
   description = "The URL of the REST API CloudFront distribution."
-  value       = "https://${aws_cloudfront_distribution.rest_api_cloudformation_distribution.domain_name}"
+  value       = "https://${aws_cloudfront_distribution.api_distribution.domain_name}"
 }

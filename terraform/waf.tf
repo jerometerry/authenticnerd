@@ -24,14 +24,18 @@ resource "aws_wafv2_web_acl" "my_personal_system_waf" {
     block {
       custom_response {
         response_code = 403
-        # Optional: Add a custom header
-        response_header {
-          name  = "Content-Type"
-          value = "application/json"
-        }
         custom_response_body_key = "custom-blocked-response"
       }
     }
+  }
+
+  custom_response_body {
+    key          = "custom-blocked-response"
+    content_type = "APPLICATION_JSON"
+    content      = jsonencode({
+      "error" : "Forbidden",
+      "message" : "Access from this IP address is not allowed."
+    })
   }
 
   visibility_config {
