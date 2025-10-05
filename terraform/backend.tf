@@ -317,6 +317,13 @@ resource "aws_apigatewayv2_domain_name" "api_domain" {
     security_policy = "TLS_1_2"
     endpoint_type = "REGIONAL"
   }
+
+  tags = {
+    "jt:my-personal-system:name" = "api-cloudfront-domain"
+    "jt:my-personal-system:description" = "Domain Name for the API CloudFront Distribution"
+    "jt:my-personal-system:module" = "backend"
+    "jt:my-personal-system:component" = "api-lambda"
+  }
 }
 
 resource "aws_apigatewayv2_api_mapping" "api_mapping" {
@@ -340,6 +347,7 @@ resource "aws_cloudfront_distribution" "api_distribution" {
 
   enabled = true
   aliases = ["${var.api_subdomain_name}.${var.domain_name}"]
+  price_class = "PriceClass_100"
 
   restrictions {
     geo_restriction {

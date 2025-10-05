@@ -178,6 +178,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   enabled             = true
   default_root_object = "index.html"
   aliases = ["${var.website_subdomain_name}.${var.domain_name}"]
+  price_class = "PriceClass_100"
 
   web_acl_id = aws_wafv2_web_acl.website_waf.arn
 
