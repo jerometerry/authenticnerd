@@ -356,7 +356,7 @@ frontend/.pnpm-debug.log
 # Terraform
 .terraform/
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
 *.tfplan
 *.tfvars
 crash.log
