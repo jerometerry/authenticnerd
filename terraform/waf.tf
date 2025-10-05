@@ -21,7 +21,17 @@ resource "aws_wafv2_web_acl" "my_personal_system_waf" {
   scope       = "CLOUDFRONT"
 
   default_action {
-    block {}
+    block {
+      custom_response {
+        response_code = 403
+        # Optional: Add a custom header
+        response_header {
+          name  = "Content-Type"
+          value = "application/json"
+        }
+        custom_response_body_key = "custom-blocked-response"
+      }
+    }
   }
 
   visibility_config {
