@@ -59,6 +59,119 @@ resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
   }
 }
 
+resource "aws_wafv2_ip_set" "website-allowed-ip-set" {
+  name               = "website-allowed-ip-set"
+  description        = "Allowed List of IPs for Website WAF"
+  scope              = "CLOUDFRONT"
+  ip_address_version = "IPV4"
+  addresses          = var.allowed_ips
+
+  tags = {
+    "jt:my-personal-system:name" = "website-allowed-ip-set"
+    "jt:my-personal-system:description" = "Allowed List of IPs for Website WAF"
+    "jt:my-personal-system:module" = "frontend"
+    "jt:my-personal-system:component" = "cloud-front-distribution"
+  }
+}
+
+resource "aws_wafv2_web_acl" "website_waf" {
+  name        = "website-web-application-firewall"
+  description = "WAF in front of website"
+  scope       = "CLOUDFRONT"
+
+  default_action {
+    block {}
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = false
+    metric_name                = "website_waf"
+    sampled_requests_enabled   = false
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 0
+    override_action {
+        none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name =  "AWS"
+      }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesAmazonIpReputationList"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 1
+    override_action {
+        none {}
+    }
+    statement {
+        managed_rule_group_statement {
+            name = "AWSManagedRulesCommonRuleSet"
+            vendor_name = "AWS"
+        }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesCommonRuleSet"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+      name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+      priority = 2
+      override_action {
+          none {}
+      }
+      statement {
+          managed_rule_group_statement {
+              name = "AWSManagedRulesKnownBadInputsRuleSet"
+              vendor_name = "AWS"
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+          sampled_requests_enabled = true
+      }
+  }
+
+  rule {
+      name = "website-allowed-ips-rule"
+      priority = 3
+      action {
+          allow {}
+      }
+      statement {
+          ip_set_reference_statement {
+              arn = aws_wafv2_ip_set.website-allowed-ip-set.arn
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "website-allowed-ips-rule"
+          sampled_requests_enabled = true
+      }
+  }
+
+  tags = {
+    "jt:my-personal-system:name" = "website-web-application-firewall"
+    "jt:my-personal-system:description" = "WAF in front of website"
+    "jt:my-personal-system:module" = "frontend"
+    "jt:my-personal-system:component" = "cloud-front-distribution"
+  }
+}
+
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name              = aws_s3_bucket.static_assets_bucket.bucket_regional_domain_name
@@ -68,7 +181,21 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   default_root_object = "index.html"
-  aliases = ["${var.subdomain_name}.${var.domain_name}"]
+  aliases = ["${var.website_subdomain_name}.${var.domain_name}"]
+
+  web_acl_id = aws_wafv2_web_acl.website_waf.arn
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "whitelist"
+      locations        = ["CA"]
+    }
+  }
+
+  viewer_certificate {
+    acm_certificate_arn = aws_acm_certificate_validation.site_cert_validation.certificate_arn
+    ssl_support_method  = "sni-only"
+  }
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
@@ -96,17 +223,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     cached_methods   = ["GET", "HEAD"]
     cache_policy_id  = data.aws_cloudfront_cache_policy.caching_disabled.id
     response_headers_policy_id = aws_cloudfront_response_headers_policy.no_cache_headers.id
-  }
-
-  restrictions {
-    geo_restriction {
-      restriction_type = "none"
-    }
-  }
-
-  viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate_validation.site_cert_validation.certificate_arn
-    ssl_support_method  = "sni-only"
   }
 
   tags = {
