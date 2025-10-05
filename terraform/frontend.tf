@@ -32,10 +32,6 @@ resource "aws_cloudfront_origin_access_control" "oac" {
   signing_protocol                  = "sigv4"
 }
 
-data "aws_cloudfront_cache_policy" "caching_disabled" {
-  name = "Managed-CachingDisabled"
-}
-
 resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
   name    = "NoCacheHeadersPolicy-PersonalSystem"
   comment = "Adds no-cache headers for index.html"
@@ -174,8 +170,8 @@ resource "aws_wafv2_web_acl" "website_waf" {
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name              = aws_s3_bucket.static_assets_bucket.bucket_regional_domain_name
     origin_id                = aws_s3_bucket.static_assets_bucket.id
+    domain_name              = aws_s3_bucket.static_assets_bucket.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
   }
 

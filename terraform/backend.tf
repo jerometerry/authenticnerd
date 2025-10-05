@@ -1,7 +1,4 @@
 # terraform/backend.tf
-data "aws_caller_identity" "current" {}
-data "aws_region" "current" {}
-
 resource "aws_kms_key" "ssm_key" {
   description             = "KMS key for encrypting SSM parameters for personal-system"
   deletion_window_in_days = 7
@@ -161,7 +158,7 @@ resource "aws_apigatewayv2_api" "http_api" {
   protocol_type = "HTTP"
 
   tags = {
-    "jt:my-personal-system:name" = "http_api"
+    "jt:my-personal-system:name" = "personal-system-http-api"
     "jt:my-personal-system:description" = "API Gateway that forwards requests to the API Lambda Function"
     "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "api-gateway"
@@ -198,4 +195,181 @@ resource "aws_lambda_permission" "api_gw_permission" {
   function_name = aws_lambda_function.api_lambda.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_apigatewayv2_api.http_api.execution_arn}/*/*"
+}
+
+resource "aws_wafv2_ip_set" "api-allowed-ip-set" {
+  name               = "api-allowed-ip-set"
+  description        = "Allowed List of IPs for API WAF"
+  scope              = "CLOUDFRONT"
+  ip_address_version = "IPV4"
+  addresses          = var.allowed_ips
+
+  tags = {
+    "jt:my-personal-system:name" = "api-allowed-ip-set"
+    "jt:my-personal-system:description" = "Allowed List of IPs for API WAF"
+    "jt:my-personal-system:module" = "api-lambda"
+    "jt:my-personal-system:component" = "cloud-front-distribution"
+  }
+}
+
+resource "aws_wafv2_web_acl" "api_waf" {
+  name        = "api-web-application-firewall"
+  description = "WAF in front of API"
+  scope       = "CLOUDFRONT"
+
+  default_action {
+    block {}
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = false
+    metric_name                = "api_waf"
+    sampled_requests_enabled   = false
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 0
+    override_action {
+        none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name =  "AWS"
+      }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesAmazonIpReputationList"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 1
+    override_action {
+        none {}
+    }
+    statement {
+        managed_rule_group_statement {
+            name = "AWSManagedRulesCommonRuleSet"
+            vendor_name = "AWS"
+        }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesCommonRuleSet"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+      name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+      priority = 2
+      override_action {
+          none {}
+      }
+      statement {
+          managed_rule_group_statement {
+              name = "AWSManagedRulesKnownBadInputsRuleSet"
+              vendor_name = "AWS"
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+          sampled_requests_enabled = true
+      }
+  }
+
+  rule {
+      name = "api-allowed-ips-rule"
+      priority = 3
+      action {
+          allow {}
+      }
+      statement {
+          ip_set_reference_statement {
+              arn = aws_wafv2_ip_set.website-allowed-ip-set.arn
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "api-allowed-ips-rule"
+          sampled_requests_enabled = true
+      }
+  }
+
+  tags = {
+    "jt:my-personal-system:name" = "api-web-application-firewall"
+    "jt:my-personal-system:description" = "WAF in front of API"
+    "jt:my-personal-system:module" = "api-lambda"
+    "jt:my-personal-system:component" = "cloud-front-distribution"
+  }
+}
+
+resource "aws_apigatewayv2_domain_name" "api_domain" {
+  domain_name = "${var.api_subdomain_name}.${var.domain_name}"
+  domain_name_configuration {
+    certificate_arn = aws_acm_certificate.api_cert.arn
+    security_policy = "TLS_1_2"
+    endpoint_type = "REGIONAL"
+  }
+}
+
+resource "aws_apigatewayv2_api_mapping" "api_mapping" {
+  stage = aws_apigatewayv2_stage.default_stage.id
+  api_id      = aws_apigatewayv2_api.http_api.id
+  domain_name = aws_apigatewayv2_domain_name.api_domain.domain_name
+}
+
+resource "aws_cloudfront_distribution" "api_distribution" {
+  origin {
+    domain_name              = aws_apigatewayv2_domain_name.api_domain.domain_name
+    origin_id                = "my-personal-system-api-origin"
+
+    custom_origin_config {
+      http_port              = 80
+      https_port             = 443
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
+    }
+  }
+
+  enabled = true
+  aliases = ["${var.api_subdomain_name}.${var.domain_name}"]
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "whitelist"
+      locations        = ["CA"]
+    }
+  }
+
+  viewer_certificate {
+    acm_certificate_arn = aws_acm_certificate_validation.api_cert_validation.certificate_arn
+    ssl_support_method  = "sni-only"
+  }
+  
+  default_cache_behavior {
+    allowed_methods  = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "my-personal-system-api-origin"
+    cache_policy_id = data.aws_cloudfront_cache_policy.caching_disabled.id
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer_except_host_header.id
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  tags = {
+    "jt:my-personal-system:name" = "api-cloudfront-distribution"
+    "jt:my-personal-system:description" = "Public access to the API"
+    "jt:my-personal-system:module" = "backend"
+    "jt:my-personal-system:component" = "api-lambda"
+  }
 }
