@@ -15,9 +15,14 @@ output "website_cloudfront_url" {
   value       = "https://${aws_cloudfront_distribution.website_cloudformation_distribution.domain_name}"
 }
 
+output "api_lambda_invoke_arn" {
+  description = "The invoke ARN for the API Lambda"
+  value       = aws_lambda_function.api_lambda.invoke_arn
+}
+
 output "rest_apigateway_endpoint_url" {
   description = "The invoke URL for the REST API Gateway."
-  value       = aws_api_gateway_stage.rest_api_default_stage.invoke_url
+  value       = aws_api_gateway_stage.api_stage.invoke_url
 }
 
 output "http_apigateway_endpoint_url" {

@@ -15,6 +15,7 @@ BUCKET_NAME=$(terraform output -raw website_s3_bucket_name)
 WEBSITE_DISTRIBUTION_ID=$(terraform output -raw website_cloudformation_distribution)
 WEBSITE_CLOUDFRONT_URL=$(terraform output -raw website_cloudfront_url)
 
+API_LAMBDA_INVOKE_ARN=$(terraform output -raw api_lambda_invoke_arn)
 REST_APIGATEWAY_URL=$(terraform output -raw rest_apigateway_endpoint_url)
 HTTP_APIGATEWAY_URL=$(terraform output -raw http_apigateway_endpoint_url)
 HTTP_API_DISTRIBUTION_ID=$(terraform output -raw http_api_cloudformation_distribution)
@@ -44,3 +45,4 @@ echo "API URL: ${HTTP_API_CLOUDFRONT_URL}"
 
 echo "REST APIGATEWAY URL: ${REST_APIGATEWAY_URL}"
 echo "HTTP APIGATEWAY URL: ${HTTP_APIGATEWAY_URL}"
+echo "API LAMBDA INVOKE ARN: ${API_LAMBDA_INVOKE_ARN}"
