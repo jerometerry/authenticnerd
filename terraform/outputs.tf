@@ -30,12 +30,12 @@ output "http_apigateway_endpoint_url" {
   value       = aws_apigatewayv2_stage.default_stage.invoke_url
 }
 
-output "http_api_cloudformation_distribution" {
-  description = "The ID of the HTTP API CloudFront distribution."
-  value       = aws_cloudfront_distribution.api_cloudformation_distribution.id
+output "rest_api_cloudformation_distribution" {
+  description = "The ID of the REST API CloudFront distribution."
+  value       = aws_cloudfront_distribution.rest_api_cloudformation_distribution.id
 }
 
-output "http_api_cloudfront_url" {
-  description = "The URL of the HTTP API CloudFront distribution."
-  value       = "https://${aws_cloudfront_distribution.api_cloudformation_distribution.domain_name}"
+output "rest_api_cloudfront_url" {
+  description = "The URL of the REST API CloudFront distribution."
+  value       = "https://${aws_cloudfront_distribution.rest_api_cloudformation_distribution.domain_name}"
 }
