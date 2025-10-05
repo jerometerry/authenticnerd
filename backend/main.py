@@ -33,8 +33,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-if "FRONTEND_URL" in os.environ:
-    origins.append(os.environ["FRONTEND_URL"])
+if "WEBSITE_CLOUDFRONT_URL" in os.environ:
+    origins.append(os.environ["WEBSITE_CLOUDFRONT_URL"])
+
+if "WEBSITE_ALTERNATE_DOMAIN" in os.environ:
+    origins.append(os.environ["WEBSITE_ALTERNATE_DOMAIN"])
 
 router = APIRouter()
 log_collection = get_collection("logs")

@@ -136,7 +136,8 @@ resource "aws_lambda_function" "api_lambda" {
   environment {
     variables = {
       MONGO_URI_PARAM_NAME = aws_ssm_parameter.mongo_uri.name
-      FRONTEND_URL         = "https://${aws_cloudfront_distribution.website_cloudformation_distribution.domain_name}"
+      WEBSITE_CLOUDFRONT_URL = "https://${aws_cloudfront_distribution.website_cloudformation_distribution.domain_name}"
+      WEBSITE_ALTERNATE_DOMAIN = "https://${var.website_subdomain_name}.${var.domain_name}"
     }
   }
 
@@ -292,7 +293,7 @@ resource "aws_wafv2_web_acl" "api_waf" {
       }
       statement {
           ip_set_reference_statement {
-              arn = aws_wafv2_ip_set.website-allowed-ip-set.arn
+              arn = aws_wafv2_ip_set.api-allowed-ip-set.arn
           }
       }
       visibility_config {
@@ -360,4 +361,53 @@ resource "aws_cloudfront_distribution" "api_cloudformation_distribution" {
     "jt:my-personal-system:module" = "backend"
     "jt:my-personal-system:component" = "api-lambda"
   }
+}
+
+resource "aws_api_gateway_rest_api" "rest_api_gateway" {
+  name        = "my-personal-system-rest-api"
+  description = "REST API Gateway that forwards requests to the API Lambda Function"
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
+
+   tags = {
+    "jt:my-personal-system:name" = "my-personal-system-rest-api"
+    "jt:my-personal-system:description" = "REST API Gateway that forwards requests to the API Lambda Function"
+    "jt:my-personal-system:module" = "backend"
+    "jt:my-personal-system:component" = "api-gateway"
+  }
+}
+
+resource "aws_api_gateway_resource" "rest_api_resource" {
+  rest_api_id = aws_api_gateway_rest_api.rest_api_gateway.id
+  parent_id   = aws_api_gateway_rest_api.rest_api_gateway.root_resource_id
+  path_part   = "{proxy+}"
+}
+
+resource "aws_api_gateway_method" "rest_api_method" {
+  rest_api_id = "${aws_api_gateway_rest_api.rest_api_gateway.id}"
+  resource_id = "${aws_api_gateway_resource.rest_api_resource.id}"
+  http_method = "ANY"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "rest_api_proxy_integration" {
+  rest_api_id              = "${aws_api_gateway_rest_api.rest_api_gateway.id}"
+  resource_id              = "${aws_api_gateway_resource.rest_api_resource.id}"
+  http_method              = "${aws_api_gateway_method.rest_api_method.http_method}"
+  type                     = "AWS_PROXY"
+  integration_http_method  = "ANY"
+  uri                      = aws_lambda_function.api_lambda.invoke_arn
+}
+
+resource "aws_api_gateway_deployment" "rest_api_deployment" {
+  depends_on = [aws_api_gateway_method.rest_api_method]
+  rest_api_id = "${aws_api_gateway_rest_api.rest_api_gateway.id}"
+}
+
+resource "aws_api_gateway_stage" "rest_api_default_stage" {
+  deployment_id = aws_api_gateway_deployment.rest_api_deployment.id
+  rest_api_id   = aws_api_gateway_rest_api.rest_api_gateway.id
+  stage_name    = "default_stage"
 }

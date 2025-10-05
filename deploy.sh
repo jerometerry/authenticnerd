@@ -11,15 +11,19 @@ cd terraform
 
 terraform apply --auto-approve
 
-APIGATEWAY_URL=$(terraform output -raw apigateway_endpoint_url)
 BUCKET_NAME=$(terraform output -raw website_s3_bucket_name)
 WEBSITE_DISTRIBUTION_ID=$(terraform output -raw website_cloudformation_distribution)
-WEBSITE_URL=$(terraform output -raw website_url)
+WEBSITE_CLOUDFRONT_URL=$(terraform output -raw website_cloudfront_url)
+
+REST_APIGATEWAY_URL=$(terraform output -raw rest_apigateway_endpoint_url)
+HTTP_APIGATEWAY_URL=$(terraform output -raw http_apigateway_endpoint_url)
+HTTP_API_DISTRIBUTION_ID=$(terraform output -raw http_api_cloudformation_distribution)
+HTTP_API_CLOUDFRONT_URL=$(terraform output -raw http_api_cloudfront_url)
 
 cd ..
 
 echo "--- 3. Configuring Frontend with Live API URL ---"
-echo "VITE_API_BASE_URL=${APIGATEWAY_URL}" > frontend/.env.production
+echo "VITE_API_BASE_URL=${HTTP_API_CLOUDFRONT_URL}" > frontend/.env.production
 echo "Frontend environment configured."
 
 echo "--- 4. Building Frontend ---"
@@ -34,4 +38,9 @@ echo "--- 6. Invalidating CloudFront Cache ---"
 aws cloudfront create-invalidation --distribution-id "${WEBSITE_DISTRIBUTION_ID}" --paths "/*"
 
 echo "--- DEPLOYMENT COMPLETE ---"
-echo "Website URL: ${WEBSITE_URL}"
+
+echo "Website URL: ${WEBSITE_CLOUDFRONT_URL}"
+echo "API URL: ${HTTP_API_CLOUDFRONT_URL}"
+
+echo "REST APIGATEWAY URL: ${REST_APIGATEWAY_URL}"
+echo "HTTP APIGATEWAY URL: ${HTTP_APIGATEWAY_URL}"
