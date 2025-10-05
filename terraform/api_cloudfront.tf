@@ -1,6 +1,8 @@
 # terraform/api_cloudfront.tf
+data "aws_cloudfront_origin_request_policy" "all_viewer" {
+  name = "Managed-AllViewer"
+}
 
-# 1. Create an Origin Request Policy to forward the Host header
 resource "aws_cloudfront_origin_request_policy" "api_policy" {
   name    = "api-gateway-host-header"
   comment = "Policy to forward Host header to API Gateway"
@@ -18,17 +20,17 @@ resource "aws_cloudfront_origin_request_policy" "api_policy" {
   }
 }
 
-# 2. Create the CloudFront distribution for the API
 resource "aws_cloudfront_distribution" "api_distribution" {
+  price_class         = "PriceClass_100"
   enabled             = true
-  default_root_object = "" # APIs don't have a root object
+  default_root_object = ""
   aliases             = ["${var.api_subdomain_name}.${var.domain_name}"]
-  price_class = "PriceClass_100"
+  //web_acl_id          = aws_wafv2_web_acl.my_personal_system_waf.arn
   
   origin {
-    # The domain_name is the invoke URL from your REST API, without the stage
     domain_name = "${aws_api_gateway_rest_api.rest_api_gateway.id}.execute-api.us-east-1.amazonaws.com"
     origin_id   = "api-gateway-origin"
+	  origin_path = "/${aws_api_gateway_stage.api_stage.stage_name}"
     
     custom_origin_config {
       http_port              = 80
@@ -40,21 +42,12 @@ resource "aws_cloudfront_distribution" "api_distribution" {
 
   default_cache_behavior {
     target_origin_id = "api-gateway-origin"
-    
-    # Use the new Origin Request Policy
-    origin_request_policy_id = aws_cloudfront_origin_request_policy.api_policy.id
-
-    # For an API, you typically want to disable caching and forward all values
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer.id
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
     viewer_protocol_policy = "redirect-to-https"
-
-    # Use a managed policy that's optimized for caching API responses
-    cache_policy_id = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad" # Managed-CachingOptimized
+    cache_policy_id = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad" # This is Managed-CachingDisabled
   }
-
-  # Attach the WAF Web ACL
-  web_acl_id = aws_wafv2_web_acl.my_personal_system_waf.arn
 
   viewer_certificate {
     acm_certificate_arn = aws_acm_certificate_validation.api_cert_validation.certificate_arn

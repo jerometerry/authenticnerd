@@ -1,17 +1,13 @@
 # terraform/dns.tf
 
-# Looks up the Route 53 hosted zone for your root domain
 data "aws_route53_zone" "main" {
   name = var.domain_name
 }
-
-# --- Certificate and DNS for the Website Subdomain ---
 
 resource "aws_acm_certificate" "site_cert" {
   provider          = aws.us-east-1
   domain_name       = "${var.website_subdomain_name}.${var.domain_name}"
   validation_method = "DNS"
-  # ... (your tags and lifecycle are correct)
 }
 
 resource "aws_route53_record" "site_cert_validation" {
@@ -47,13 +43,10 @@ resource "aws_route53_record" "site_dns" {
   }
 }
 
-# --- Certificate and DNS for the API Subdomain ---
-
 resource "aws_acm_certificate" "api_cert" {
   provider          = aws.us-east-1
   domain_name       = "${var.api_subdomain_name}.${var.domain_name}"
   validation_method = "DNS"
-  # ... (your tags and lifecycle are correct)
 }
 
 resource "aws_route53_record" "api_cert_validation" {
