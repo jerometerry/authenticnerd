@@ -228,3 +228,8 @@ resource "aws_lambda_permission" "rest_api_lambda_permission" {
 
   source_arn = "${aws_api_gateway_rest_api.rest_api_gateway.execution_arn}/*/*/*"
 }
+
+resource "aws_wafv2_web_acl_association" "rest_api_waf_association" {
+  resource_arn = aws_api_gateway_stage.api_stage.arn
+  web_acl_arn  = aws_wafv2_web_acl.api_waf.arn
+}
