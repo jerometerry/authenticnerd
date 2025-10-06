@@ -42,3 +42,13 @@ variable "allowed_ips" {
   description = "The subdomain for your API"
   type        = list(string)
 }
+
+variable "blog_subdomain_name" {
+  description = "The subdomain for the blog"
+  type        = string
+}
+
+variable "blog_s3_bucket_name" {
+  description = "Name of the S3 bucket for hosting the blog's static assets."
+  type        = string
+}

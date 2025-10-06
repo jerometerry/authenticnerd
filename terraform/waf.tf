@@ -31,7 +31,7 @@ resource "aws_wafv2_ip_set" "api_allowed_ips" {
 }
 
 resource "aws_wafv2_web_acl" "website_waf" {
-  name        = "websit_waf"
+  name        = "website_waf"
   description = "Website Web Application Firewall"
   scope       = "CLOUDFRONT"
 
@@ -137,6 +137,95 @@ resource "aws_wafv2_web_acl" "website_waf" {
   tags = {
     "jt:my-personal-system:name" = "website-waf"
     "jt:my-personal-system:description" = "Website Web Application Firewall"
+    "jt:my-personal-system:module" = "waf"
+    "jt:my-personal-system:component" = "cloud-front-distribution"
+  }
+}
+
+resource "aws_wafv2_web_acl" "blog_waf" {
+  name        = "blog_waf"
+  description = "Blog Web Application Firewall"
+  scope       = "CLOUDFRONT"
+
+  default_action {
+    allow {}
+  }
+
+  custom_response_body {
+    key          = "custom-blocked-response"
+    content_type = "APPLICATION_JSON"
+    content      = jsonencode({
+      "error" : "Forbidden",
+      "message" : "Access from this IP address is not allowed."
+    })
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = false
+    metric_name                = "blog-waf"
+    sampled_requests_enabled   = false
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 0
+    override_action {
+        none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name =  "AWS"
+      }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesAmazonIpReputationList"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 1
+    override_action {
+        none {}
+    }
+    statement {
+        managed_rule_group_statement {
+            name = "AWSManagedRulesCommonRuleSet"
+            vendor_name = "AWS"
+        }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesCommonRuleSet"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+      name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+      priority = 2
+      override_action {
+          none {}
+      }
+      statement {
+          managed_rule_group_statement {
+              name = "AWSManagedRulesKnownBadInputsRuleSet"
+              vendor_name = "AWS"
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+          sampled_requests_enabled = true
+      }
+  }
+
+  tags = {
+    "jt:my-personal-system:name" = "blog-waf"
+    "jt:my-personal-system:description" = "Blog Web Application Firewall"
     "jt:my-personal-system:module" = "waf"
     "jt:my-personal-system:component" = "cloud-front-distribution"
   }

@@ -24,3 +24,13 @@ output "rest_apigateway_endpoint_url" {
   description = "The invoke URL for the REST API Gateway."
   value       = aws_api_gateway_stage.api_stage.invoke_url
 }
+
+output "blog_s3_bucket_name" {
+  description = "The name of the S3 bucket for the blog."
+  value       = aws_s3_bucket.blog_s3_bucket.id
+}
+
+output "blog_cloudfront_distribution_id" {
+  description = "The ID of the CloudFront distribution for the blog."
+  value       = aws_cloudfront_distribution.blog_cloudformation_distribution.id
+}

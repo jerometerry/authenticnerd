@@ -11,29 +11,29 @@ cd terraform
 
 terraform apply --auto-approve
 
-BUCKET_NAME=$(terraform output -raw website_s3_bucket_name)
+WEBSITE_BUCKET_NAME=$(terraform output -raw website_s3_bucket_name)
 WEBSITE_DISTRIBUTION_ID=$(terraform output -raw website_cloudformation_distribution)
 WEBSITE_CLOUDFRONT_URL=$(terraform output -raw website_cloudfront_url)
 
 API_LAMBDA_INVOKE_ARN=$(terraform output -raw api_lambda_invoke_arn)
 REST_APIGATEWAY_URL=$(terraform output -raw rest_apigateway_endpoint_url)
 
+BLOG_BUCKET_NAME=$(terraform output -raw blog_s3_bucket_name)
+BLOG_DISTRIBUTION_ID=$(terraform output -raw blog_cloudfront_distribution_id)
+
 cd ..
 
-echo "--- 3. Configuring Frontend with Live API URL ---"
+echo "--- 3. Configuring and Deploying Main Website ---"
 echo "VITE_API_BASE_URL=${REST_APIGATEWAY_URL}" > frontend/.env.production
+cd frontend && pnpm run build && cd ..
+aws s3 sync frontend/dist/ "s3://${WEBSITE_BUCKET_NAME}" --delete
+aws cloudfront create-invalidation --distribution-id "${WEBSITE_DISTRIBUTION_ID}" --paths "/*"
 echo "Frontend environment configured."
 
-echo "--- 4. Building Frontend ---"
-cd frontend
-pnpm run build
-cd ..
-
-echo "--- 5. Uploading Frontend to S3 ---"
-aws s3 sync frontend/dist/ "s3://${BUCKET_NAME}" --delete
-
-echo "--- 6. Invalidating CloudFront Cache ---"
-aws cloudfront create-invalidation --distribution-id "${WEBSITE_DISTRIBUTION_ID}" --paths "/*"
+echo "--- 4. Building and Deploying Blog ---"
+cd blog && pnpm run build && cd ..
+aws s3 sync blog/dist/ "s3://${BLOG_BUCKET_NAME}" --delete
+aws cloudfront create-invalidation --distribution-id "${BLOG_DISTRIBUTION_ID}" --paths "/*"
 
 echo "--- DEPLOYMENT COMPLETE ---"
 

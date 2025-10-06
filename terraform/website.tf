@@ -54,17 +54,17 @@ resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
 }
 
 resource "aws_cloudfront_distribution" "website_cloudformation_distribution" {
+  enabled             = true
+  default_root_object = "index.html"
+  aliases             = ["${var.website_subdomain_name}.${var.domain_name}"]
+  web_acl_id          = aws_wafv2_web_acl.website_waf.arn
+  price_class         = "PriceClass_100"
+
   origin {
     origin_id                = aws_s3_bucket.website_s3_bucket.id
     domain_name              = aws_s3_bucket.website_s3_bucket.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.website_oac.id
   }
-
-  enabled             = true
-  default_root_object = "index.html"
-  aliases = ["${var.website_subdomain_name}.${var.domain_name}"]
-  web_acl_id = aws_wafv2_web_acl.website_waf.arn
-  price_class = "PriceClass_100"  
 
   restrictions {
     geo_restriction {
@@ -115,7 +115,6 @@ resource "aws_cloudfront_distribution" "website_cloudformation_distribution" {
   }
 }
 
-# Lock down access to the website S3 bucket to the CloudFront distribution
 resource "aws_s3_bucket_policy" "website_s3_bucket_policy" {
   bucket = aws_s3_bucket.website_s3_bucket.id
   policy = jsonencode({
@@ -135,6 +134,5 @@ resource "aws_s3_bucket_policy" "website_s3_bucket_policy" {
     }]
   })
 
-  # Grant CloudFront Distribution access after website S3 bucket is blocked from public acccess
   depends_on = [aws_s3_bucket_public_access_block.website_access_block]
 }
