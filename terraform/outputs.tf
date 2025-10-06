@@ -24,13 +24,3 @@ output "rest_apigateway_endpoint_url" {
   description = "The invoke URL for the REST API Gateway."
   value       = aws_api_gateway_stage.api_stage.invoke_url
 }
-
-output "rest_api_cloudformation_distribution" {
-  description = "The ID of the REST API CloudFront distribution."
-  value       = aws_cloudfront_distribution.api_distribution.id
-}
-
-output "rest_api_cloudfront_url" {
-  description = "The URL of the REST API CloudFront distribution."
-  value       = "https://${aws_cloudfront_distribution.api_distribution.domain_name}"
-}
