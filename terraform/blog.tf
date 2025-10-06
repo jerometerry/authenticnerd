@@ -64,7 +64,7 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
 
   ordered_cache_behavior {
     path_pattern     = "index.html"
-    target_origin_id = aws_s3_bucket.website_s3_bucket.id
+    target_origin_id = aws_s3_bucket.blog_s3_bucket.id
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
