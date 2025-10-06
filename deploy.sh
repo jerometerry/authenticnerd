@@ -17,13 +17,11 @@ WEBSITE_CLOUDFRONT_URL=$(terraform output -raw website_cloudfront_url)
 
 API_LAMBDA_INVOKE_ARN=$(terraform output -raw api_lambda_invoke_arn)
 REST_APIGATEWAY_URL=$(terraform output -raw rest_apigateway_endpoint_url)
-REST_API_DISTRIBUTION_ID=$(terraform output -raw rest_api_cloudformation_distribution)
-REST_API_CLOUDFRONT_URL=$(terraform output -raw rest_api_cloudfront_url)
 
 cd ..
 
 echo "--- 3. Configuring Frontend with Live API URL ---"
-echo "VITE_API_BASE_URL=${REST_API_CLOUDFRONT_URL}" > frontend/.env.production
+echo "VITE_API_BASE_URL=${REST_APIGATEWAY_URL}" > frontend/.env.production
 echo "Frontend environment configured."
 
 echo "--- 4. Building Frontend ---"
@@ -40,6 +38,5 @@ aws cloudfront create-invalidation --distribution-id "${WEBSITE_DISTRIBUTION_ID}
 echo "--- DEPLOYMENT COMPLETE ---"
 
 echo "Website URL: ${WEBSITE_CLOUDFRONT_URL}"
-echo "API URL: ${REST_API_CLOUDFRONT_URL}"
 echo "REST APIGATEWAY URL: ${REST_APIGATEWAY_URL}"
 echo "API LAMBDA INVOKE ARN: ${API_LAMBDA_INVOKE_ARN}"

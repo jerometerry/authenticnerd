@@ -5,7 +5,7 @@ resource "aws_api_gateway_domain_name" "api_domain" {
   domain_name     = "${var.api_subdomain_name}.${var.domain_name}"
   certificate_arn = aws_acm_certificate_validation.api_cert_validation.certificate_arn
   endpoint_configuration {
-    types = ["REGIONAL"]
+    types = ["EDGE"]
   }
 
   tags = {
