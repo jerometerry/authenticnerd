@@ -31,7 +31,11 @@ resource "aws_cloudfront_function" "dir_index_rewrite" {
 resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   enabled             = true
   default_root_object = "index.html"
-  aliases             = ["${var.blog_subdomain_name}.${var.domain_name}"]
+  aliases             = [
+    "${var.blog_subdomain_name}.${var.domain_name}",
+    var.domain_name,
+    "www.${var.domain_name}"
+  ]
   web_acl_id          = aws_wafv2_web_acl.blog_waf.arn
   price_class         = "PriceClass_100"
 

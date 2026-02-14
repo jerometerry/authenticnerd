@@ -100,8 +100,17 @@ resource "aws_route53_record" "api_dns" {
 
 resource "aws_acm_certificate" "blog_cert" {
   provider          = aws.us-east-1
-  domain_name       = "${var.blog_subdomain_name}.${var.domain_name}"
+  domain_name       = var.domain_name
   validation_method = "DNS"
+
+  subject_alternative_names = [
+    "www.${var.domain_name}",
+    "${var.blog_subdomain_name}.${var.domain_name}"
+  ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
   
   tags = {
     Name = "my-personal-system-blog-cert"
@@ -135,7 +144,33 @@ resource "aws_acm_certificate_validation" "blog_cert_validation" {
 }
 
 resource "aws_route53_record" "blog_dns" {
-  name    = aws_acm_certificate.blog_cert.domain_name
+  name    = "${var.blog_subdomain_name}.${var.domain_name}"
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+
+  alias {
+    name                   = aws_cloudfront_distribution.blog_cloudformation_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.blog_cloudformation_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "root_dns" {
+  name    = var.domain_name
+  type    = "A"
+  zone_id = data.aws_route53_zone.main.zone_id
+
+  allow_overwrite = true
+
+  alias {
+    name                   = aws_cloudfront_distribution.blog_cloudformation_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.blog_cloudformation_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www_dns" {
+  name    = "www.${var.domain_name}"
   type    = "A"
   zone_id = data.aws_route53_zone.main.zone_id
 
