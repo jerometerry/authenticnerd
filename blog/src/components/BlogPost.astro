@@ -1,4 +1,14 @@
 ---
-const { title, url } = Astro.props;
+const { pubDate, title, url } = Astro.props;
+
+const dateOptions: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
+
+const parsedDate = new Date(Date.parse(pubDate));
+const formattedDate = parsedDate.toLocaleDateString('en-US', dateOptions);
 ---
-<li><a href={url}>{title}</a></li>
+
+<div><a href={url}>{title}</a>, {formattedDate}</div>
