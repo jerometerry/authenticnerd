@@ -1,37 +1,7 @@
 ---
-	import { Image } from 'astro:assets';
-	import authNerdPic from '@assets/AuthenticNerd.jpg';
+import BaseLayout from '@layouts/BaseLayout.astro';
+const pageTitle = "Authentic Nerd";
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />º
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} >
-		<title>Authentic Nerd</title>
-	</head>
-	<body>
-		<h1>The Authentic Nerd</h1>
-
-		<p>I’m Jerome Terry, a software developer recovering from trauma, currently focused on living authentically.</p>
-
-		<Image 
-			src={authNerdPic} 
-			alt="Jerome Terry, creator of Authentic Nerd" 
-			layout='constrained' 
-			width={600} 
-		/>
-
-		<p>I think of myself as a nerd. I was bullied in grade school for being a nerd. As a professional programmer I’ve leaned into being a nerd, and was successful doing so. My creative side lets me redefine what it is to be a N.E.R.D.</p>
-
-		<p>Neurodivergent Empathetic Romantic Dramatic</p>
-
-		<p>I write in a stream of consciousness style, reflecting on key lessons I’m learning on my path of authenticity.</p>
-
-		<p>I believe that by writing my stream of consciousness, I’m capturing bits and pieces of my subconsciousness that otherwise I wouldn’t have any insight into.</p>
-
-		<p>Once my raw ideas are captured this way, that’s when I can really do critical thinking, challenge my own subconscious beliefs, and then start reprogramming myself.</p>
-
-		<p>I want to share my journey with the world to offer inspiration and encouragement. It’s my way of paying it forward for all the people who have helped me on my journey.</p>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+</BaseLayout>
