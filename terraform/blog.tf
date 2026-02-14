@@ -20,12 +20,34 @@ resource "aws_s3_bucket_public_access_block" "blog_access_block" {
   restrict_public_buckets = true
 }
 
+resource "aws_cloudfront_function" "dir_index_rewrite" {
+  name    = "astro-dir-index-rewrite"
+  runtime = "cloudfront-js-2.0"
+  comment = "Rewrite subdirectories to index.html for Astro static builds"
+  publish = true
+  code    = file("${path.module}/rewrite.js")
+}
+
 resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   enabled             = true
   default_root_object = "index.html"
   aliases             = ["${var.blog_subdomain_name}.${var.domain_name}"]
   web_acl_id          = aws_wafv2_web_acl.blog_waf.arn
   price_class         = "PriceClass_100"
+
+  custom_error_response {
+    error_code            = 404
+    response_page_path    = "/404.html"
+    response_code         = 404
+    error_caching_min_ttl = 300
+  }
+
+  custom_error_response {
+    error_code            = 500
+    response_page_path    = "/500.html"
+    response_code         = 500
+    error_caching_min_ttl = 300
+  }
 
   origin {
     domain_name              = aws_s3_bucket.blog_s3_bucket.bucket_regional_domain_name
@@ -54,6 +76,11 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
       cookies {
         forward = "none"
       }
+    }
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.dir_index_rewrite.arn
     }
 
     viewer_protocol_policy = "redirect-to-https"
