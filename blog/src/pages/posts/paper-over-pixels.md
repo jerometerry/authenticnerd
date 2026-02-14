@@ -7,7 +7,7 @@ author: 'Jerome Terry'
 image:
     url: 'ChoosePaperOverPixels.png'
     alt: 'Letter Board with the phrase: Choose Paper Over Pixels'
-tags: ["technolog", "burnout", "analog", "distractions"]
+tags: ["technology", "burnout", "analog", "distractions"]
 ---
 
 ## Introduction: The Problem of the “Expert Googler”
