@@ -7,7 +7,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg
 const imagePath = `/src/assets/${frontmatter.image.url}`;
 if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
 	<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
 	<p><em>{frontmatter.description}</em></p>
 

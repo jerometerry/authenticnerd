@@ -3,8 +3,9 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import authNerdPic from '@assets/AuthenticNerd.jpg';
 const pageTitle = "About Me";
+const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description}>
   <p>I’m Jerome Terry, a software developer recovering from trauma, currently focused on living authentically.</p>
 
   <Image 

@@ -3,8 +3,9 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogPost from '@components/BlogPost.astro';
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 const pageTitle = "Authentic Nerd";
+const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description}>
   <p>I’m Jerome Terry, a software developer recovering from trauma, currently focused on living authentically.</p>
 
   <p>I think of myself as a nerd. I was bullied in grade school for being a nerd. As a professional programmer I’ve leaned into being a nerd, and was successful doing so. My creative side lets me redefine what it is to be a N.E.R.D.</p>
