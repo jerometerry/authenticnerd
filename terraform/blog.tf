@@ -11,6 +11,13 @@ resource "aws_s3_bucket" "blog_s3_bucket" {
   }
 }
 
+resource "aws_s3_bucket_versioning" "blog_versioning" {
+  bucket = aws_s3_bucket.blog_s3_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "blog_access_block" {
   bucket = aws_s3_bucket.blog_s3_bucket.id
   
@@ -84,12 +91,7 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
     target_origin_id = aws_s3_bucket.blog_s3_bucket.id
     compress         = true
 
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
+    cache_policy_id  = data.aws_cloudfront_cache_policy.caching_optimized.id
 
     function_association {
       event_type   = "viewer-request"
@@ -103,12 +105,16 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   }
 
   ordered_cache_behavior {
-    path_pattern     = "index.html"
-    target_origin_id = aws_s3_bucket.blog_s3_bucket.id
-    viewer_protocol_policy = "redirect-to-https"
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
-    cache_policy_id  = data.aws_cloudfront_cache_policy.caching_disabled.id
+    path_pattern               = "index.html"
+
+    allowed_methods            = ["GET", "HEAD"]
+    cached_methods             = ["GET", "HEAD"]
+    target_origin_id           = aws_s3_bucket.blog_s3_bucket.id
+    compress                   = true
+
+    viewer_protocol_policy     = "redirect-to-https"    
+
+    cache_policy_id            = data.aws_cloudfront_cache_policy.caching_disabled.id
     response_headers_policy_id = aws_cloudfront_response_headers_policy.no_cache_headers.id
   }
 

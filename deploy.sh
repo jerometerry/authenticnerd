@@ -32,7 +32,30 @@ echo "Frontend environment configured."
 
 echo "--- 4. Building and Deploying Blog ---"
 cd blog && pnpm run build && cd ..
-aws s3 sync blog/dist/ "s3://${BLOG_BUCKET_NAME}" --delete
+
+# 1. UPLOAD EVERYTHING (Default to Long Cache)
+# This handles all your images, CSS, and JS.
+# We set a 1-year cache because Astro hashes these filenames (e.g., client.CpUatUnr.js).
+# If the file changes, the name changes, so it's safe to cache forever.
+aws s3 sync blog/dist/ "s3://${BLOG_BUCKET_NAME}" \
+  --delete \
+  --exclude ".DS_Store" \
+  --cache-control "public, max-age=31536000, immutable"
+
+# 2. FIX THE HTML & METADATA (Overwrite with Short Cache)
+# We re-upload just the HTML, XML, and TXT files.
+# We set max-age=0 to force the browser/CloudFront to check for updates every time.
+# This ensures users see your new blog post the second you publish it.
+aws s3 cp blog/dist/ "s3://${BLOG_BUCKET_NAME}" \
+  --recursive \
+  --exclude "*" \
+  --include "*.html" \
+  --include "*.xml" \
+  --include "*.txt" \
+  --include "*.json" \
+  --exclude ".DS_Store" \
+  --cache-control "public, max-age=0, must-revalidate"
+
 aws cloudfront create-invalidation --distribution-id "${BLOG_DISTRIBUTION_ID}" --paths "/*"
 
 echo "--- DEPLOYMENT COMPLETE ---"
