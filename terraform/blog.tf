@@ -30,6 +30,7 @@ resource "aws_cloudfront_function" "dir_index_rewrite" {
 
 resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   enabled             = true
+  http_version        = "http3"
   default_root_object = "index.html"
   aliases             = [
     "${var.blog_subdomain_name}.${var.domain_name}",
@@ -40,17 +41,24 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   price_class         = "PriceClass_100"
 
   custom_error_response {
+    error_code            = 403
+    response_page_path    = "/404.html"
+    response_code         = 404
+    error_caching_min_ttl = 10
+  }
+
+  custom_error_response {
     error_code            = 404
     response_page_path    = "/404.html"
     response_code         = 404
-    error_caching_min_ttl = 300
+    error_caching_min_ttl = 10
   }
 
   custom_error_response {
     error_code            = 500
     response_page_path    = "/500.html"
     response_code         = 500
-    error_caching_min_ttl = 300
+    error_caching_min_ttl = 10
   }
 
   origin {
@@ -74,6 +82,7 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = aws_s3_bucket.blog_s3_bucket.id
+    compress         = true
 
     forwarded_values {
       query_string = false

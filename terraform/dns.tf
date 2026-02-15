@@ -180,3 +180,14 @@ resource "aws_route53_record" "www_dns" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "google_verification" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = var.domain_name
+  type    = "TXT"
+  ttl     = 300
+  
+  records = [
+    "google-site-verification=HqHEsNeSFE-0oVhnrA_ilIAIW-Dvo20QKu0xTzQClNY"
+  ]
+}
