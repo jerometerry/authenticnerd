@@ -1,0 +1,101 @@
+/* --- HERO STYLES (Unchanged) --- */
+  .hero {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .brand-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  .accent {
+    color: #ff9776;
+  }
+
+  .mission-statement {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+  }
+
+  /* N.E.R.D. Grid */
+  .nerd-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 600px) {
+    .nerd-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .nerd-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
+
+  .nerd-item:hover {
+    transform: translateY(-3px);
+    border-color: #ff9776;
+  }
+
+  .letter {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d0950;
+    margin-bottom: 0.25rem;
+  }
+
+  .word {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+  }
+
+  /* --- FEED STYLES --- */
+  .divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ddd, transparent);
+    margin: 3rem 0;
+  }
+
+  .feed-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Dark Mode Support */
+  :global(.dark) .brand-title,
+  :global(.dark) .letter {
+    color: #fff;
+  }
+  
+  :global(.dark) .nerd-item {
+    background: #1e1b4b;
+    border-color: #2d3748;
+  }
+  
+  :global(.dark) .word,
+  :global(.dark) .mission-statement {
+    color: #cbd5e1;
+  }

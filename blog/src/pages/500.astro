@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = "404 - Not Found";
-const description = "Content not found";
+const pageTitle = "500 - Internal Server Error";
+const description = "Internal Server Error";
 
 interface Props {
   error: unknown;
@@ -10,5 +10,10 @@ interface Props {
 const { error } = Astro.props;
 ---
 <BaseLayout pageTitle={pageTitle} description={description}>
-	<div>Whoops, our servers are having a bad day.</div>
+
+  <div style="text-align: center; margin-top: 4rem;">
+    <h1>{pageTitle}</h1>
+    <p>Whoops, our servers are having a bad day.</p>
+    <a href="/">Go Home</a>
+  </div>
 </BaseLayout>

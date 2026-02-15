@@ -1,4 +1,6 @@
 ---
+import '@styles/blog-post.css';
+
 const { pubDate, title, url } = Astro.props;
 
 const dateOptions: Intl.DateTimeFormatOptions = {
@@ -11,4 +13,7 @@ const parsedDate = new Date(Date.parse(pubDate));
 const formattedDate = parsedDate.toLocaleDateString('en-US', dateOptions);
 ---
 
-<div><a href={url}>{title}</a>, {formattedDate}</div>
+<div class="blog-post-item">
+  <a href={url} class="post-link">{title}</a>
+  <span class="post-date">{formattedDate}</span>
+</div>

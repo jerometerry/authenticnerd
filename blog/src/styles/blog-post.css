@@ -1,0 +1,32 @@
+/* Scoped styles for the component */
+  .blog-post-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  @media (min-width: 600px) {
+    .blog-post-item {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+  }
+
+  .post-link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0d0950;
+    text-decoration: none;
+  }
+
+  .post-link:hover {
+    color: #ff9776; /* Brand Peach */
+  }
+
+  .post-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }

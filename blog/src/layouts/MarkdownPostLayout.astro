@@ -2,12 +2,15 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 const { frontmatter } = Astro.props;
 import { Image } from 'astro:assets';
+import '@styles/markdown-post.css';
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}');
 const imagePath = `/src/assets/${frontmatter.image.url}`;
 if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
 <BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
+  <h1>{frontmatter.title}</h1>
+
 	<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
 	<p><em>{frontmatter.description}</em></p>
 
@@ -26,23 +29,3 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
 		))}
 	</div>	
 </BaseLayout>
-
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>

@@ -1,24 +1,63 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import BlogPost from '@components/BlogPost.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+import '@styles/index.css';
+
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+
+const sortedPosts = allPosts.sort((a: any, b: any) => {
+  return new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf();
+});
+
 const pageTitle = "Authentic Nerd";
 const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
 ---
+
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <p>I’m Jerome Terry, a software developer recovering from trauma, currently focused on living authentically.</p>
+  
+  <section class="hero">
+    <h1 class="brand-title">Authentic <span class="accent">Nerd</span></h1>
+    <p class="mission-statement">
+      Exploring the intersection of systems thinking, trauma recovery, and 
+      software architecture.
+    </p>
 
-  <p>I think of myself as a nerd. I was bullied in grade school for being a nerd. As a professional programmer I’ve leaned into being a nerd, and was successful doing so. My creative side lets me redefine what it is to be a N.E.R.D.</p>
+    <div class="nerd-grid">
+      <div class="nerd-item" title="Neurodivergent">
+        <span class="letter">N</span>
+        <span class="word">Neurodivergent</span>
+      </div>
+      <div class="nerd-item" title="Empathetic">
+        <span class="letter">E</span>
+        <span class="word">Empathetic</span>
+      </div>
+      <div class="nerd-item" title="Romantic">
+        <span class="letter">R</span>
+        <span class="word">Romantic</span>
+      </div>
+      <div class="nerd-item" title="Dramatic">
+        <span class="letter">D</span>
+        <span class="word">Dramatic</span>
+      </div>
+    </div>
+  </section>
 
-  <p>Neurodivergent Empathetic Romantic Dramatic</p>
+  <hr class="divider" />
 
-  <h2>Blog Entries</h2>
+  <section class="feed">
+    <div class="feed-header">
+      <h2>Latest Writings</h2>
+    </div>
 
-  {allPosts.map((post: any) => 
-    <BlogPost 
-      pubDate={post.frontmatter.pubDate}
-      title={post.frontmatter.title} 
-      url={post.url}
-    />
-)}
+    <div class="post-container">
+      {sortedPosts.map((post: any) => (
+        <BlogPost 
+          url={post.url} 
+          title={post.frontmatter.title} 
+          pubDate={post.frontmatter.pubDate} 
+        />
+      ))}
+    </div>
+  </section>
+
 </BaseLayout>
