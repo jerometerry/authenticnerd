@@ -2,28 +2,84 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import authNerdPic from '@assets/AuthenticNerd.jpg';
+import '@styles/about.css';
+
 const pageTitle = "About Me";
 const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
+
+const techStack = [
+  { name: "Astro", url: "https://astro.build" },
+  { name: "Preact", url: "https://preactjs.com" },
+  { name: "AWS Serverless", url: "https://aws.amazon.com" },
+  { name: "Terraform", url: "https://www.terraform.io" },
+];
 ---
+
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <p>I’m Jerome Terry, a software developer recovering from trauma, currently focused on living authentically.</p>
+  <div class="about-container">
+    
+    <section class="hero">
+      <div class="intro-text">
+        <h1 class="greeting">Hello, I'm Jerome Terry.</h1>
+        <p>
+          I am a software developer recovering from trauma and learning to live authentically.
+          I build systems that work, both in code and in life.
+        </p>
+      </div>
+      
+      <div class="image-wrapper">
+        <Image 
+          src={authNerdPic} 
+          alt="Jerome Terry, creator of Authentic Nerd" 
+          width={400} 
+          class="profile-pic"
+        />
+      </div>
+    </section>
 
-  <Image 
-    src={authNerdPic} 
-    alt="Jerome Terry, creator of Authentic Nerd" 
-    layout='constrained' 
-    width={600} 
-  />
+    <hr />
 
-  <p>I think of myself as a nerd. I was bullied in grade school for being a nerd. As a professional programmer I’ve leaned into being a nerd, and was successful doing so. My creative side lets me redefine what it is to be a N.E.R.D.</p>
+    <section class="philosophy">
+      <h2>Redefining N.E.R.D.</h2>
+      <p>
+        I was bullied in grade school for being a nerd. As a professional, I leaned into it. 
+        Now, my creative side lets me redefine what that word truly means to me:
+      </p>
+      <ul class="acronym-list">
+        <li><strong>N</strong>eurodivergent</li>
+        <li><strong>E</strong>mpathetic</li>
+        <li><strong>R</strong>omantic</li>
+        <li><strong>D</strong>ramatic</li>
+      </ul>
+    </section>
 
-  <p>Neurodivergent Empathetic Romantic Dramatic</p>
+    <section class="purpose">
+      <h2>Why This Blog Exists</h2>
+      <p>
+        I write in a stream-of-consciousness style to capture bits of my subconsciousness that 
+        I usually miss. Once those raw ideas are captured, I can apply critical thinking, 
+        challenge my beliefs, and start <em>reprogramming myself</em>.
+      </p>
+      <p>
+        Sharing this journey is my way of paying it forward to everyone who has helped me along the way.
+      </p>
+    </section>
 
-  <p>I write in a stream of consciousness style, reflecting on key lessons I’m learning on my path of authenticity.</p>
+    <hr />
 
-  <p>I believe that by writing my stream of consciousness, I’m capturing bits and pieces of my subconsciousness that otherwise I wouldn’t have any insight into.</p>
+    <section class="technical">
+      <h3>Built With Simplicity</h3>
+      <p>
+        This site is a static system designed for performance and longevity. 
+        If you are curious about the architecture, you can view the 
+        <a href="https://github.com/jerometerry/my-personal-system/tree/main/blog" target="_blank">source code on GitHub</a>.
+      </p>
+      <div class="stack-tags">
+        {techStack.map((tech) => (
+          <a href={tech.url} target="_blank" class="tag">{tech.name}</a>
+        ))}
+      </div>
+    </section>
 
-  <p>Once my raw ideas are captured this way, that’s when I can really do critical thinking, challenge my own subconscious beliefs, and then start reprogramming myself.</p>
-
-  <p>I want to share my journey with the world to offer inspiration and encouragement. It’s my way of paying it forward for all the people who have helped me on my journey.</p>
+  </div>
 </BaseLayout>
