@@ -3,14 +3,7 @@ import '@styles/blog-post.css';
 
 const { pubDate, title, url } = Astro.props;
 
-const dateOptions: Intl.DateTimeFormatOptions = {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-};
-
-const parsedDate = new Date(Date.parse(pubDate));
-const formattedDate = parsedDate.toLocaleDateString('en-US', dateOptions);
+const formattedDate = pubDate.toString().slice(0,10);
 ---
 
 <div class="blog-post-item">
