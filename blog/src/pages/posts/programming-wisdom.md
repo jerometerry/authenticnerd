@@ -10,7 +10,7 @@ image:
 tags: ["programming", "software engineering"]
 ---
 
-Here's a [Answer on Quora](https://qr.ae/pC6kTL) I wrote back in 2014. Much of this still resonates with me today. 
+Here's an [Answer on Quora](https://qr.ae/pC6kTL) I wrote back in 2014. Much of this still resonates with me today. 
 
 ***
 
@@ -37,18 +37,18 @@ to eliminate what does and doesn’t work as quickly and cheaply as possible. Th
 
 **Simpler is usually better**. Watch Rich Hickey's talk 
 [Simple Made Easy](http://www.infoq.com/presentations/Simple-Made-Easy), and read 
-[Kent Beck's Xp Simplicity Rules](https://www.quora.com/profile/Kent-Beck). When i first stared out programming, I 
+[Kent Beck's Xp Simplicity Rules](https://www.quora.com/profile/Kent-Beck). When I first started out programming, I 
 thought that my code was way too simple. As it turns out, simplicity is a good code quality! When you work on large 
 code bases, simplicity can get lost.
 
-**Code is written primarily for coworkers not compilers**. The ultimate test is your code simple enough is can your 
-fellow programmers with similar backgrounds understand your code? if your co-workers have a hard time understanding 
-your code, investigate why. Maybe it’s your code that’s too complex. Maybe there wasn’t enough tests. Maybe you used an 
+**Code is written primarily for coworkers not compilers**. The ultimate test if your code is simple enough is: can your 
+fellow programmers with similar backgrounds understand your code? If your co-workers have a hard time understanding 
+your code, investigate why. Maybe it’s your code that’s too complex. Maybe there weren’t enough tests. Maybe you used an 
 uncommon algorithm. The conversation about code is key.
 
 **A problem you perceive is a problem you own**. I’m not sure where I heard this, but it has stuck with me through my 
 career. If you see an inefficiency, a bug, any sort of problem, it’s on you to take action to rectify it. Maybe adding 
-it to a bug database is sufficient. Maybe raise the issue if fellow developers. Or maybe make the fix yourself. This 
+it to a bug database is sufficient. Maybe raise the issue with fellow developers. Or maybe make the fix yourself. This 
 ties in nicely with 
 [Don’t Live With Broken Windows](https://pragprog.com/the-pragmatic-programmer/extracts/software-entropy) from 
 [The Pragmatic Programmer](https://www.amazon.ca/Pragmatic-Programmer-Journeyman-Master/dp/020161622X).
@@ -82,7 +82,7 @@ more intently, though possibly with careful discretion.
 all time favourite talk! Simon’s message “people don’t buy what you do, they buy why you do it” resonates with me. So 
 any project I work on, I want to know the bigger picture. I want to know the “why”.
 
-When I get deep into a project, I can loose focus - in those moments I want to reflect on “why” I’m working on this 
+When I get deep into a project, I can lose focus - in those moments I want to reflect on “why” I’m working on this 
 project, why this project is important to the world. That gives me clarity, and I can focus on the tasks that help move 
 me in the right direction. Without knowing “why”, I’m just flying blind, without purpose, which is wasteful. Knowing 
 “why" helps me prioritize, and gives me energy.
@@ -93,7 +93,7 @@ Maybe you’re working for a CEO who has a vision for how the world can be a bet
 those who aren’t appointed leaders. I highly recommend reading 
 [Extreme Ownership: How US Navy SEALs Lead and Win](https://www.amazon.ca/Extreme-Ownership-U-S-Navy-SEALs/dp/1250183863). 
 This ties into [Start With Why](https://www.amazon.ca/Start-Why-Leaders-Inspire-Everyone/dp/1591846447) because if you 
-don’t understand “Why” or disagree with the leaders above you, it’s your responsibility to find out the leaders “Why”. 
+don’t understand “Why” or disagree with the leaders above you, it’s your responsibility to find out the leader's “Why”. 
 How can you lead others if you don’t understand why?
 
 My second favourite talk of all time is [Inventing on Principle](https://vimeo.com/906418692) by Bret Victor. This talk 
@@ -135,15 +135,15 @@ Watch Barbara Liskov's talk
 [The Power of Abstraction](http://www.infoq.com/presentations/programming-abstraction-liskov). Many times I’ve seen 
 developers create meaningless abstractions.
 
-The worst [abstraction](https://en.wikipedia.org/wiki/Abstraction_(software_engineering)) I’ve ever seen is was a Java 
+The worst [abstraction](https://en.wikipedia.org/wiki/Abstraction_(software_engineering)) I’ve ever seen was a Java 
 class called BeanFacade. This class name was derived by jamming together the concept of a 
 [Java Bean](https://en.wikipedia.org/wiki/JavaBeans) with the 
 [Facade pattern](https://en.wikipedia.org/wiki/Facade_pattern). In Java, this is a common thing to do - concatenate 
 names together to form new names. But the resulting abstraction is meaningless. It might as well have been named X, or 
-FooBar. Be careful of what abstractions you let into your code bases. If your are struggling with naming things,
+FooBar. Be careful of what abstractions you let into your code bases. If you are struggling with naming things,
 perhaps you don’t have the right abstraction.
 
-In my mind, Eric Evan’s book 
+In my mind, Eric Evans' book 
 [Domain Driven Design](https://www.amazon.ca/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215) 
 is largely about choosing appropriate abstractions, and evolving them properly over time.
 
@@ -193,14 +193,14 @@ job.
 done, without our software getting in their way.
 
 Always ask **"what problem am I trying to solve?"** This is such a great question to ask to gain clarity on what it is 
-exactly that you are doing. It helps you focus. This ties in nicely with Simon Sinke’s 
+exactly that you are doing. It helps you focus. This ties in nicely with Simon Sinek’s 
 [Start With Why](https://www.amazon.ca/Start-Why-Leaders-Inspire-Everyone/dp/1591846447).
 
 In general, stick to solving **one problem at a time**. When you spot other problems, note them and come back to them 
 later.
 
 **Be where you're at**. This is a life lesson that applies to software development. When you commit to doing something, 
-focus on doing it. When your washing the dishes focus on washing the dishes - forget all the things that stressed you 
+focus on doing it. When you're washing the dishes, focus on washing the dishes - forget all the things that stressed you 
 out that day. If you are spending time with your family, be there - turn off your phone, forget that tough problem 
 you've been wrestling with. When you're in a meeting, participate - focus on the conversation and forget about the work 
 that's piled up. Read "Zen Mind, Beginner's Mind" by Shunryu Suzuki
@@ -219,9 +219,9 @@ you don't know. Watch Kent Beck's talk
 [Ease at Work](https://www.youtube.com/watch?v=yeA4CBInqKo&list=PLE47081AB99250873).
 
 For me, Kent’s talk was a breath of fresh air. I’ve been a developer for over a decade and a half, and at times I get 
-it stuck in my head that they younger crowd already know the things that I know and more, and I’m an old, over paid 
+it stuck in my head that the younger crowd already know the things that I know and more, and I’m an old, overpaid 
 developer. This isn’t the case (I hope), but this thought drives me to continuously learn so to not be left behind. 
-Kent’s talk is great because it’s helps you remember that it’s OK where you are. Even if there is a teenager prodigy 
+Kent’s talk is great because it helps you remember that it’s OK where you are. Even if there is a teenager prodigy 
 who can code circles around you, by and large that is atypical. I’m never complacent but how hard should I push to keep 
 up?
 
@@ -229,18 +229,18 @@ up?
 when you need it. Give back to the community. Watch Leon Gersing's talk 
 [Truth, Myth and Reality in Software Development](https://www.youtube.com/watch?v=JIWvpPD3yQw).
 
-I really enjoyed Leon’s talk Write “Hello World” in a new language, then delete it. Paring with other developers helps 
+I really enjoyed Leon’s talk Write “Hello World” in a new language, then delete it. Pairing with other developers helps 
 to understand where they are coming from, and helps you understand yourself.
 
 I also like Leon’s talk because it ties together programming with Zen, both topics I find intriguing. Understanding 
 exactly what “Zen” is is a mind bend, ending in a place where Zen is everything and Zen is nothing. And some old Zen 
-master whacks a student, and the student finally “get’s it” … or doesn’t.
+master whacks a student, and the student finally “gets it” … or doesn’t.
 
 For me, I’m here to figure out why I’m here. I like to “code”. How does that help the world be a better place? Who am I, 
-really? Can I find meaning by studying Zen? Taoism? I don/t know if I’ll ever know the meaning of life, but I I’ll 
+really? Can I find meaning by studying Zen? Taoism? I don't know if I’ll ever know the meaning of life, but I’ll 
 never stop searching.
 
-**It's OK to be averag**e** - Read the article 
+**It's OK to be average** - Read the article 
 [In Praise Of The Average Developer](http://readwrite.com/2015/05/08/average-developer-10x-programmer-myth) - Why the 
 myth of the "10x" programmer is so destructive by Matt Asay. Matt Asay references Jacob Kaplan-Moss's 
 [keynote at PyCon 2015](https://www.youtube.com/watch?v=hIJdFxYlEKE).
