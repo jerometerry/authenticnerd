@@ -1,8 +1,14 @@
 ---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const pageTitle = "404 - Not Found";
+const description = "Content not found";
+
 interface Props {
   error: unknown;
 }
 
 const { error } = Astro.props;
 ---
-<div>Whoops, our servers are having a bad day.</div>
+<BaseLayout pageTitle={pageTitle} description={description}>
+	<div>Whoops, our servers are having a bad day.</div>
+</BaseLayout>

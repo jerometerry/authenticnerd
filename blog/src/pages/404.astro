@@ -1,1 +1,8 @@
-<div>Content Not Found</div>
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const pageTitle = "500 - Internal Server Error";
+const description = "Internal Server Error";
+---
+<BaseLayout pageTitle={pageTitle} description={description}>
+	<div>It's not you, it's me</div>
+</BaseLayout>
