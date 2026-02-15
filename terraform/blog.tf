@@ -35,6 +35,52 @@ resource "aws_cloudfront_function" "dir_index_rewrite" {
   code    = file("${path.module}/rewrite.js")
 }
 
+resource "aws_cloudfront_response_headers_policy" "security_headers" {
+  name    = "authentic-nerd-security-policy-v1"
+
+  security_headers_config {
+    strict_transport_security {
+      access_control_max_age_sec = 31536000 # 1 Year
+      include_subdomains         = true
+      preload                    = true
+      override                   = true
+    }
+
+    content_type_options {
+      override = true
+    }
+
+    frame_options {
+      frame_option = "DENY"
+      override     = true
+    }
+
+    referrer_policy {
+      referrer_policy = "strict-origin-when-cross-origin"
+      override        = true
+    }
+
+    content_security_policy {
+      content_security_policy = "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
+      override                = true
+    }
+  }
+
+  custom_headers_config {
+    items {
+      header   = "Permissions-Policy"
+      value    = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), vr=()"
+      override = true
+    }
+  }
+  
+  remove_headers_config {
+    items {
+      header = "Server"
+    }
+  }
+}
+
 resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   enabled             = true
   http_version        = "http3"
@@ -86,12 +132,13 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   }
 
   default_cache_behavior {
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = aws_s3_bucket.blog_s3_bucket.id
-    compress         = true
+    allowed_methods            = ["GET", "HEAD", "OPTIONS"]
+    cached_methods             = ["GET", "HEAD"]
+    target_origin_id           = aws_s3_bucket.blog_s3_bucket.id
+    compress                   = true
 
-    cache_policy_id  = data.aws_cloudfront_cache_policy.caching_optimized.id
+    cache_policy_id            = data.aws_cloudfront_cache_policy.caching_optimized.id
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers.id
 
     function_association {
       event_type   = "viewer-request"
