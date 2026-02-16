@@ -1,5 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BlogPost from '@components/BlogPost.astro';
 
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 
@@ -20,12 +21,11 @@ const description = "Living life as a professional, authentic, N.E.R.D. - Neurod
       <span class="text-terracotta dark:text-peach">Nerd</span>
     </h1>
 
-    <p class="text-lg text-gray-600 max-w-[45ch] mx-auto mb-8 text-balance dark:text-gray-400">
-      Exploring the intersection of systems thinking, trauma recovery, and 
-      software architecture.
+    <p class="text-lg text-center text-gray-600 max-w-[45ch] mx-auto mb-8 text-balance dark:text-gray-400">
+      Exploring the intersection of systems thinking, trauma recovery, and software architecture.
     </p>
 
-    <div class="grid grid-cols-2 gap-4 max-w-[500px] mx-auto md:grid-cols-4">
+    <div class="grid grid-cols-2 gap-4 max-w-[500px] mx-auto md:grid-cols-4 md:max-w-full">
 
       <div class="bg-white border border-gray-300 rounded-lg p-3 flex flex-col items-center transition-transform hover:-translate-y-1 hover:border-peach dark:bg-gray-dark dark:border-gray-700">
         <span class="text-2xl font-bold text-navy mb-1 dark:text-white">N</span>
@@ -61,14 +61,11 @@ const description = "Living life as a professional, authentic, N.E.R.D. - Neurod
     
       {sortedPosts.map((post: any) => (
 
-        <div class="flex flex-col p-4 border-b border-gray-200 md:flex-row md:justify-between md:items-baseline">
-          <a href={post.url} class="text-xl font-semibold text-navy hover:text-peach dark:text-white dark:hover:text-peach transition-colors">
-            {post.frontmatter.title}
-          </a>
-          <span class="text-sm text-gray-500 mt-1">
-            {post.frontmatter.pubDate.toString().slice(0,10)}
-          </span>
-        </div>
+        <BlogPost 
+          url={post.url} 
+          title={post.frontmatter.title} 
+          pubDate={post.frontmatter.pubDate} 
+        />
 
       ))}
       
