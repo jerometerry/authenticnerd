@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* Colors */
@@ -10,4 +11,13 @@
   --color-gray-dark: #1e1b4b;
 
   --font-sans: ui-rounded, 'Hiragino Maru Gothic ProN', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Typography Overrides */
+@utility prose-code-clean {
+  :where(code):not(:where([class~="not-prose"] *, pre *)) {
+    &::before { content: none !important; }
+    &::after { content: none !important; }
+    font-weight: 600;
+  }
 }

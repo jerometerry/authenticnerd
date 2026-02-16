@@ -1,8 +1,7 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import authNerdPic from '@assets/AuthenticNerd.jpg';
-import '@styles/about.css';
+import authNerdPic from '../assets/AuthenticNerd.jpg';
 
 const pageTitle = "About Me";
 const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
@@ -16,46 +15,48 @@ const techStack = [
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <div class="about-container">
+  <div class="leading-relaxed text-inherit">
     
-    <section class="hero">
-      <div class="intro-text">
-        <h1 class="greeting">Hello, I'm Jerome Terry.</h1>
-        <p>
+    <section class="flex flex-col gap-8 mb-12 items-center text-center md:flex-row md:text-left md:justify-between">
+      <div class="flex-1 md:pr-8">
+        <h1 class="text-4xl italic font-bold mb-2 leading-tight text-navy dark:text-white">
+          Hello, I'm Jerome Terry.
+        </h1>
+        <p class="text-lg">
           I am a software developer recovering from trauma and learning to live authentically.
           I build systems that work, both in code and in life.
         </p>
       </div>
       
-      <div class="image-wrapper">
+      <div class="shrink-0">
         <Image 
           src={authNerdPic} 
           alt="Jerome Terry, creator of Authentic Nerd" 
           width={400} 
-          class="profile-pic"
+          class="rounded-full border-4 border-peach shadow-lg w-[200px] h-[200px] object-cover dark:border-peach dark:shadow-xl"
         />
       </div>
     </section>
 
-    <hr />
+    <hr class="border-0 border-t border-gray-300 my-8 dark:border-gray-700" />
 
-    <section class="philosophy">
-      <h2>Redefining N.E.R.D.</h2>
+    <section class="my-8">
+      <h2 class="text-2xl font-bold mb-4 text-navy dark:text-white">Redefining N.E.R.D.</h2>
       <p>
         I was bullied in grade school for being a nerd. As a professional, I leaned into it. 
         Now, my creative side lets me redefine what that word truly means to me:
       </p>
-      <ul class="acronym-list">
-        <li><strong>N</strong>eurodivergent</li>
-        <li><strong>E</strong>mpathetic</li>
-        <li><strong>R</strong>omantic</li>
-        <li><strong>D</strong>ramatic</li>
+      <ul class="list-none p-0 mt-4 text-lg flex flex-wrap gap-6 justify-center md:justify-start">
+        <li><strong class="text-peach text-xl">N</strong>eurodivergent</li>
+        <li><strong class="text-peach text-xl">E</strong>mpathetic</li>
+        <li><strong class="text-peach text-xl">R</strong>omantic</li>
+        <li><strong class="text-peach text-xl">D</strong>ramatic</li>
       </ul>
     </section>
 
-    <section class="purpose">
-      <h2>Why This Blog Exists</h2>
-      <p>
+    <section class="my-8">
+      <h2 class="text-2xl font-bold mb-4 text-navy dark:text-white">Why This Blog Exists</h2>
+      <p class="mb-4">
         I write in a stream-of-consciousness style to capture bits of my subconsciousness that 
         I usually miss. Once those raw ideas are captured, I can apply critical thinking, 
         challenge my beliefs, and start <em>reprogramming myself</em>.
@@ -65,18 +66,25 @@ const techStack = [
       </p>
     </section>
 
-    <hr />
+    <hr class="border-0 border-t border-gray-300 my-8 dark:border-gray-700" />
 
-    <section class="technical">
-      <h3>Built With Simplicity</h3>
+    <section class="mt-8 bg-[#e2e8f0] p-6 rounded-lg text-sm text-black dark:bg-gray-dark dark:text-white">
+      <h3 class="text-xl font-bold mb-2">Built With Simplicity</h3>
       <p>
         This site is a static system designed for performance and longevity. 
         If you are curious about the architecture, you can view the 
-        <a href="https://github.com/jerometerry/my-personal-system/tree/main/blog" target="_blank">source code on GitHub</a>.
+        <a href="https://github.com/jerometerry/my-personal-system/tree/main/blog" target="_blank" class="text-navy font-bold hover:text-peach dark:text-peach dark:hover:text-white">source code on GitHub</a>.
       </p>
-      <div class="stack-tags">
+      
+      <div class="flex gap-2 flex-wrap mt-4">
         {techStack.map((tech) => (
-          <a href={tech.url} target="_blank" class="tag">{tech.name}</a>
+          <a 
+            href={tech.url} 
+            target="_blank" 
+            class="bg-white border border-gray-300 px-3 py-1 rounded-full no-underline text-navy text-xs font-semibold transition-all duration-200 hover:bg-peach hover:text-white hover:border-peach dark:bg-navy dark:border-peach dark:text-peach dark:hover:bg-peach dark:hover:text-navy"
+          >
+            {tech.name}
+          </a>
         ))}
       </div>
     </section>

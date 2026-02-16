@@ -1,31 +1,53 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-const { frontmatter } = Astro.props;
+import BaseLayout from './BaseLayout.astro';
 import { Image } from 'astro:assets';
-import '@styles/markdown-post.css';
+
+const { frontmatter } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}');
 const imagePath = `/src/assets/${frontmatter.image.url}`;
 if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
-<BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
-  <h1>{frontmatter.title}</h1>
 
-	<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-	<p><em>{frontmatter.description}</em></p>
+<BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
+  
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-navy mb-2 dark:text-white">
+      {frontmatter.title}
+    </h1>
+    
+    <div class="flex flex-col text-gray-600 dark:text-gray-400">
+      <p class="text-sm font-semibold">
+        {frontmatter.pubDate.toString().slice(0,10)}
+      </p>
+      <p class="italic mt-1">
+        {frontmatter.description}
+      </p>
+    </div>
+  </div>
 
   <Image 
     src={images[imagePath]()} 
     alt={frontmatter.image.alt}
-    layout='constrained' 
-    width={300} 
+    class="rounded-lg shadow-md mb-8 h-auto w-full max-w-[300px]"
   />
 
-	<slot />
+  <div class="prose prose-lg prose-code-clean max-w-none prose-headings:text-navy prose-a:text-[#00539F] hover:prose-a:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:hover:prose-a:text-peach mb-10">
+    <slot />
+  </div>
 
-	<div class="tags">
-		{frontmatter.tags.map((tag: string) => (
-			<p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-		))}
-	</div>	
+  <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
+      {frontmatter.tags.map((tag: string) => (
+
+          <p class="border border-dotted border-gray-400 rounded-lg px-4 py-2 text-lg bg-[#F8FCFD] dark:bg-gray-800 dark:border-gray-600">
+            <a 
+              href={`/tags/${tag}`} 
+              class="text-[#00539F] no-underline hover:text-peach dark:text-blue-300 dark:hover:text-peach"
+            >
+              {tag}
+            </a>
+          </p>
+      ))}
+  </div>  
+
 </BaseLayout>
