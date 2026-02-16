@@ -5,6 +5,8 @@ import preact from "@astrojs/preact";
 
 import tailwindcss from '@tailwindcss/vite';
 
+import mdx from '@astrojs/mdx';
+
 export default defineConfig({
   site: "https://authenticnerd.com",
 
@@ -16,7 +18,7 @@ export default defineConfig({
     {
       compat: true,
     }
-  )],
+  ), mdx()],
 
   vite: {
     plugins: [tailwindcss()],
