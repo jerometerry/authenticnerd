@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogPost from '../components/BlogPost.astro';
-import '@styles/index.css';
 
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 
@@ -22,46 +20,58 @@ const description = "Living life as a professional, authentic, N.E.R.D. - Neurod
       <span class="text-terracotta dark:text-peach">Nerd</span>
     </h1>
 
-    <p class="mission-statement">
+    <p class="text-lg text-gray-600 max-w-[45ch] mx-auto mb-8 text-balance dark:text-gray-400">
       Exploring the intersection of systems thinking, trauma recovery, and 
       software architecture.
     </p>
 
-    <div class="nerd-grid">
-      <div class="nerd-item" title="Neurodivergent">
-        <span class="letter">N</span>
-        <span class="word">Neurodivergent</span>
+    <div class="grid grid-cols-2 gap-4 max-w-[500px] mx-auto md:grid-cols-4">
+
+      <div class="bg-white border border-gray-300 rounded-lg p-3 flex flex-col items-center transition-transform hover:-translate-y-1 hover:border-peach dark:bg-gray-dark dark:border-gray-700">
+        <span class="text-2xl font-bold text-navy mb-1 dark:text-white">N</span>
+        <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-300">Neurodivergent</span>
       </div>
-      <div class="nerd-item" title="Empathetic">
-        <span class="letter">E</span>
-        <span class="word">Empathetic</span>
+
+      <div class="bg-white border border-gray-300 rounded-lg p-3 flex flex-col items-center transition-transform hover:-translate-y-1 hover:border-peach dark:bg-gray-dark dark:border-gray-700">
+        <span class="text-2xl font-bold text-navy mb-1 dark:text-white">E</span>
+        <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-300">Empathetic</span>
       </div>
-      <div class="nerd-item" title="Romantic">
-        <span class="letter">R</span>
-        <span class="word">Romantic</span>
+
+      <div class="bg-white border border-gray-300 rounded-lg p-3 flex flex-col items-center transition-transform hover:-translate-y-1 hover:border-peach dark:bg-gray-dark dark:border-gray-700">
+        <span class="text-2xl font-bold text-navy mb-1 dark:text-white">R</span>
+        <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-300">Romantic</span>
       </div>
-      <div class="nerd-item" title="Dramatic">
-        <span class="letter">D</span>
-        <span class="word">Dramatic</span>
+
+      <div class="bg-white border border-gray-300 rounded-lg p-3 flex flex-col items-center transition-transform hover:-translate-y-1 hover:border-peach dark:bg-gray-dark dark:border-gray-700">
+        <span class="text-2xl font-bold text-navy mb-1 dark:text-white">D</span>
+        <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-300">Dramatic</span>
       </div>
+
     </div>
   </section>
 
-  <hr class="divider" />
+  <hr class="border-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-12" />
 
   <section class="feed">
     <div class="feed-header">
       <h2>Latest Writings</h2>
     </div>
 
-    <div class="post-container">
+    <div class="flex flex-col w-full">
+    
       {sortedPosts.map((post: any) => (
-        <BlogPost 
-          url={post.url} 
-          title={post.frontmatter.title} 
-          pubDate={post.frontmatter.pubDate} 
-        />
+
+        <div class="flex flex-col p-4 border-b border-gray-200 md:flex-row md:justify-between md:items-baseline">
+          <a href={post.url} class="text-xl font-semibold text-navy hover:text-peach dark:text-white dark:hover:text-peach transition-colors">
+            {post.frontmatter.title}
+          </a>
+          <span class="text-sm text-gray-500 mt-1">
+            {post.frontmatter.pubDate.toString().slice(0,10)}
+          </span>
+        </div>
+
       ))}
+      
     </div>
   </section>
 

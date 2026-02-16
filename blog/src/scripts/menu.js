@@ -1,6 +1,9 @@
-const menu = document.querySelector('.menu');
+const menuBtn = document.getElementById('menu-btn');
+const navLinks = document.getElementById('nav-links');
 
-menu?.addEventListener('click', () => {
-	const isExpanded = menu.getAttribute('aria-expanded') === 'true';
-	menu.setAttribute('aria-expanded', `${!isExpanded}`);
+menuBtn?.addEventListener('click', () => {
+	navLinks?.classList?.toggle('hidden');
+
+	const isExpanded = navLinks?.classList?.contains('hidden') ? 'false' : 'true';
+    menuBtn?.setAttribute('aria-expanded', isExpanded);
 });

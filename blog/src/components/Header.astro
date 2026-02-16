@@ -1,10 +1,16 @@
 ---
-import Menu from './Menu.astro';
-import Navigation from './Navigation.astro';
 ---
 <header>
-  <nav>
-    <Menu />
-    <Navigation />
+  <nav class="flex flex-wrap justify-end items-center pb-4 md:justify-center">
+    
+    <button id="menu-btn" aria-expanded="false" class="bg-navy border-none text-white text-lg font-bold py-1 px-2 m-0 cursor-pointer md:hidden dark:bg-white dark:text-black">
+      Menu
+    </button>
+
+    <div id="nav-links" class="nav-links w-full hidden m-0 md:block md:w-auto md:bg-none">
+      <a href="/" class="block w-fit ml-auto p-2.5 font-bold text-navy no-underline text-lg hover:bg-peach rounded md:inline-block md:w-auto md:m-0 md:p-4 md:text-center dark:text-white dark:hover:text-navy">Home</a>
+      <a href="/about/" class="block w-fit ml-auto p-2.5 font-bold text-navy no-underline text-lg hover:bg-peach rounded md:inline-block md:w-auto md:m-0 md:p-4 md:text-center dark:text-white dark:hover:text-navy">About</a>
+      <a href="/tags/" class="block w-fit ml-auto p-2.5 font-bold text-navy no-underline text-lg hover:bg-peach rounded md:inline-block md:w-auto md:m-0 md:p-4 md:text-center dark:text-white dark:hover:text-navy">Tags</a>
+    </div>
   </nav>
 </header>
