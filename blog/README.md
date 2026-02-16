@@ -77,6 +77,8 @@ graph LR
 │   │   ├── pages/         # Route definitions and Markdown content
 │   │   └── styles/        # Global CSS
 │   └── astro.config.mjs   # Astro configuration
+│   └── deploy.sh          # Configures env vars and runs deploy_blog.sh
+│   └── deploy_blog.sh     # Build website and sync with S3
 │
 ├── terraform/             # Infrastructure as Code
 │   ├── blog.tf            # S3, CloudFront, and WAF resources
@@ -84,7 +86,7 @@ graph LR
 │   ├── acm.tf             # SSL Certificates
 │   └── main.tf            # Provider configuration
 │
-└── deploy.sh              # Smart deployment script
+└── deploy.sh              # Builds and deploys my-personal-system
 
 ```
 
@@ -111,6 +113,15 @@ The deployment process (defined in `deploy.sh`) uses a **"Two-Pass Sync"** strat
 * **Canonical URLs:** Automatically generated to prevent duplicate content issues.
 * **Sitemap:** Automatically generated at build time via `@astrojs/sitemap`.
 * **Semantic HTML:** Output is standard, accessible HTML that is easily parsed by search engines.
+
+Tools Used
+
+* [PageSpeed](pagespeed.web.dev): Web base Lighthouse test
+* [WebPageTest](https://www.webpagetest.org/): Deeper website performance testing tool
+  * [WebPageTest GitHub Repo](https://github.com/catchpoint/WebPageTest)
+* [Security Headers](https://securityheaders.com/) Scans response headers for vulnerabilities
+* Chrome Developers Tools
+  * Lighthouse
 
 ---
 
