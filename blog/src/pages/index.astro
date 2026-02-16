@@ -2,7 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogPost from '@components/BlogPost.astro';
 
-const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+const allPosts = Object.values(import.meta.glob('./posts/*.{md,mdx}', { eager: true }));
 
 const sortedPosts = allPosts.sort((a: any, b: any) => {
   return new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf();
@@ -52,9 +52,12 @@ const description = "Living life as a professional, authentic, N.E.R.D. - Neurod
 
   <hr class="border-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-12" />
 
-  <section class="feed">
-    <div class="feed-header">
-      <h2>Latest Writings</h2>
+  <section>
+
+    <div class="mb-8">
+      <h2 class="text-4xl mb-6 text-terracotta dark:text-peach">
+        Latest Posts
+      </h1>
     </div>
 
     <div class="flex flex-col w-full">
