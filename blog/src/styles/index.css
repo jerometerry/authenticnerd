@@ -17,8 +17,9 @@
   .mission-statement {
     font-size: 1.1rem;
     color: #555;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
+    max-width: 60ch;
+    text-wrap: balance;
+    margin: 0 auto 1.5rem auto;
   }
 
   /* N.E.R.D. Grid */
