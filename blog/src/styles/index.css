@@ -11,7 +11,7 @@
   }
 
   .accent {
-    color: #ff9776;
+    color: #d96d4c;
   }
 
   .mission-statement {
@@ -98,4 +98,8 @@
   :global(.dark) .word,
   :global(.dark) .mission-statement {
     color: #cbd5e1;
+  }
+
+  :global(.dark) .accent {
+    color: #ff9776;
   }
