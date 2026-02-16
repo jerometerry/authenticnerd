@@ -69,7 +69,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers" {
   custom_headers_config {
     items {
       header   = "Permissions-Policy"
-      value    = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), vr=()"
+      value    = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), xr-spatial-tracking=()"
       override = true
     }
   }
