@@ -9,7 +9,7 @@ image:
 tags: ["astro", "software engineering", "software development", "blogging"]
 ---
 
-### Blogging. About my own blog?!?
+## Blogging. About my own blog?!?
 
 Well this is weird. I'm writing about my blog inside my blog. How, ... meta? 
 
