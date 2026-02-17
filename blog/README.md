@@ -125,6 +125,15 @@ Tools Used
 
 ---
 
+## Common pnpm scripts
+
+```shell
+pnpm dlx @astrojs/upgrade
+
+pnpm astro add mdx
+pnpm uninstall @astrojs/mdx
+```
+
 ## 👤 Author
 
 **Jerome Terry** *Lead Software Developer | Systems Architect | Authentic Nerd*
