@@ -32,7 +32,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
     class="rounded-lg shadow-md mb-8 h-auto w-full max-w-[300px]"
   />
 
-  <div class="prose prose-lg prose-code-clean max-w-none prose-headings:text-navy prose-a:text-[#00539F] hover:prose-a:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:hover:prose-a:text-peach mb-10">
+  <div class="prose prose-lg prose-code-clean max-w-none prose-headings:text-navy prose-a:text-[#00539F] [&_a:hover]:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:[&_a:hover]:text-peach mb-10">
     <slot />
   </div>
 
