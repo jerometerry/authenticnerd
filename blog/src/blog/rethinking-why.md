@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Why do I really do what I do?'
 pubDate: 2026-02-01
 description: 'Examining my real why'

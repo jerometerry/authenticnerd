@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Virtual Happiness'
 pubDate: 2025-05-30
 description: 'You can choose to be happy, no matter what'

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Reality'
 pubDate: 2025-05-30
 description: 'Our own views cloud reality and we do not even notice'

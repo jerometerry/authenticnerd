@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPost from '../../components/BlogPost.astro';
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const allPosts = Object.values(import.meta.glob('../posts/*.{md,mdx}', { eager: true }));
-    const uniqueTags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
+    const allPosts = await getCollection("blog");
+    const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
 
     return uniqueTags.map((tag) => {
-        const filteredPosts = allPosts.filter((post: any) => post.frontmatter.tags.includes(tag));
+        const filteredPosts = allPosts.filter((post: any) => post.data.tags.includes(tag));
         return {
             params: { tag },
             props: { posts: filteredPosts },
@@ -35,9 +36,9 @@ const { posts } = Astro.props;
   <div class="flex flex-col gap-2 list-none p-0 w-full">
     {posts.map((post: any) => 
         <BlogPost
-            title={post.frontmatter.title}
-            url={post.url}
-            pubDate={post.frontmatter.pubDate}  
+            title={post.data.title}
+            url={`/posts/${post.id}/`}
+            pubDate={post.data.pubDate}  
         />
     )}
   </div>

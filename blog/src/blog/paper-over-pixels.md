@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Choose Paper Over Pixels'
 pubDate: 2025-07-02
 description: 'Choosing the right amount of technology for your life'

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Ten Years of Service'
 pubDate: 2025-06-08
 description: 'Ten years with Nasdaq Verafin'

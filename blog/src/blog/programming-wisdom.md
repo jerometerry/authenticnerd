@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Programming Wisdom'
 pubDate: 2026-02-15
 description: 'Programming wisdom I shared on Quora in 2014'

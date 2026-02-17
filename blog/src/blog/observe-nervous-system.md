@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Nervous System Observability'
 pubDate: 2026-02-08
 description: 'Applying observability principles to my own nervous system'

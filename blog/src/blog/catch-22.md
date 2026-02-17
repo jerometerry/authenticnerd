@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: 'The Catch-22 of "Why"'
 pubDate: 2026-02-15
 description: "Turning brainstorming AI prompt into a blogpost"
