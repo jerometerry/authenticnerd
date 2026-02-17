@@ -109,8 +109,8 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
 
   custom_error_response {
     error_code            = 500
-    response_page_path    = "/500.html"
-    response_code         = 500
+    response_page_path    = "/404.html"
+    response_code         = 404
     error_caching_min_ttl = 10
   }
 
