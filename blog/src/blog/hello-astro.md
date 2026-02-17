@@ -125,7 +125,7 @@ about it in a few weeks.
 
 My least favorite thing when building websites is the look and feel. I started off with auto generated CSS using AI, 
 which quickly became a chore. Switching to [Tailwind](https://tailwindcss.com/) made the process of updating the look 
-and feel much simplerj. The font sizes I have setup might be a bit too large. But I don't know if I want to much with 
+and feel much simpler. The font sizes I have setup might be a bit too large. But I don't know if I want to much with 
 it to be honest. I'll leave it like it is for the time being.
 
 It was a bit of fun to setup. Markdown for content heavy websites makes a lot of sense to me. My blog doesn't need much
