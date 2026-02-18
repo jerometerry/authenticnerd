@@ -79,7 +79,7 @@ that moment. How are you coping?
 | Date | SH (1-10) | IT (1-10) | What's the shit? |
 | ---- | --------- | --------- | -------------------------------------- |
 | 25/09/22 | 8 | 3 | Surprise deadline. Dishwasher broke. Overwhelmed.  |
-| 25/09/23 | 6 | 7 | Still busy. Good night's slee. I feel resilient.   | 
+| 25/09/23 | 6 | 7 | Still busy. Good night's sleep. I feel resilient.   | 
 | 25/09/24 | 3 | 8 | Quiet day. Tackled some small tasks.               |
 
 **Blank Template:**
