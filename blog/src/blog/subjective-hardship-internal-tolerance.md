@@ -17,9 +17,9 @@ Traditional wellness journals can feel a bit - *earnest*. They ask you to track 
 great, but sometimes you're just having a rough day and need a way to acknowledge it without feeling like you've failed 
 at being positive. 
 
-This framework flips the script. Instead of chasing a perfect "10" on the **happiness** scale, it helps you manage the 
-inevitable **"shit"** that life throws your way, making the process of self-reflection more approachable, relatable, 
-and genuinely fun.
+This framework flips the script. Instead of chasing a perfect "10" on the **"happiness"** scale, it helps you manage
+the inevitable **"shit"** that life throws your way, making the process of self-reflection more approachable, 
+relatable, and genuinely fun.
 
 The **S.H.I.T.** Framework is a deliberate, comedic inversion of well-established psychological frameworks that measure 
 subjective well-being. It recognizes that hardship is a universal human experience, so why not give it a name and track 
@@ -35,7 +35,7 @@ you need to do to feel more in control, even when you're in the middle of a shit
 
 #### Subjective Hardship (SH) - Score (1-10)
 
-This is your personal assessment of the total "shit show" you're currently dealing with. It includes everything—work 
+This is your personal assessment of the total **"shit show"** you're currently dealing with. It includes everything—work 
 stress, personal issues, that thing your cat did, the weird noise your car is making. It’s a gut-check metric.
 - 1: A beautiful, frictionless day. Barely a whiff of shit in the air.
 - 5: A standard level of manageable, everyday bullshit.
