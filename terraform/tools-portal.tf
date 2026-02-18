@@ -1,4 +1,36 @@
-# terraform/frontend.tf
+# terraform/tools-portal.tf
+
+resource "aws_rum_app_monitor" "tools_portal_monitor" {
+  name             = "tools-portal-rum"
+  domain           = var.tools_portal_subdomain
+  cw_log_enabled   = true
+  
+  app_monitor_configuration {
+    allow_cookies       = true
+    enable_xray         = true
+    session_sample_rate = 1.0
+    telemetries         = ["performance", "errors", "http"]
+
+    guest_role_arn = aws_iam_role.web_rum_guest_role.arn
+    identity_pool_id = aws_cognito_identity_pool.web_rum_pool.id
+  }
+}
+
+resource "aws_iam_role_policy" "tools_portal_rum_send_policy" {
+  name = "ToolsPortalRumSendPolicy"
+  role = aws_iam_role.web_rum_guest_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = "rum:PutRumEvents"
+        Resource = aws_rum_app_monitor.tools_portal_monitor.arn
+      }
+    ]
+  })
+}
 
 resource "aws_s3_bucket" "website_s3_bucket" {
   bucket = var.website_s3_bucket_name
@@ -11,7 +43,6 @@ resource "aws_s3_bucket" "website_s3_bucket" {
   }
 }
 
-# Block ALL public access to the S3 bucket
 resource "aws_s3_bucket_public_access_block" "website_access_block" {
   bucket = aws_s3_bucket.website_s3_bucket.id
 
@@ -21,7 +52,6 @@ resource "aws_s3_bucket_public_access_block" "website_access_block" {
   restrict_public_buckets = true
 }
 
-# Create the CloudFront Origin Access Control (OAC)
 resource "aws_cloudfront_origin_access_control" "website_oac" {
   name                              = "website_oac"
   description                       = "Origin Access Control for the personal system S3 bucket"
@@ -56,7 +86,7 @@ resource "aws_cloudfront_response_headers_policy" "no_cache_headers" {
 resource "aws_cloudfront_distribution" "website_cloudformation_distribution" {
   enabled             = true
   default_root_object = "index.html"
-  aliases             = ["${var.website_subdomain_name}.${var.domain_name}"]
+  aliases             = [var.tools_portal_subdomain]
   web_acl_id          = aws_wafv2_web_acl.website_waf.arn
   price_class         = "PriceClass_100"
 

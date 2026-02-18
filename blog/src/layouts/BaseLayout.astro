@@ -1,6 +1,7 @@
 ---
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import AwsRum from '@components/AwsRum.astro';
 import '@styles/global.css';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -24,6 +25,8 @@ const {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+
+    <AwsRum />
   </head>
 
   <body class="mx-auto w-full max-w-[80ch] p-4 leading-normal bg-gray-light text-navy font-sans dark:bg-navy dark:text-white">

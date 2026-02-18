@@ -49,7 +49,6 @@ resource "aws_security_group" "endpoint_sg" {
   description = "Allow inbound HTTPS from the Lambda SG"
   vpc_id      = aws_vpc.main.id
 
-  # This rule allows the Lambda function to talk to the endpoints.
   ingress {
     from_port       = 443 # HTTPS
     to_port         = 443
@@ -65,7 +64,6 @@ resource "aws_security_group" "endpoint_sg" {
   }
 }
 
-# Create a private endpoint for SSM inside the VPC
 resource "aws_vpc_endpoint" "ssm" {
   vpc_id            = aws_vpc.main.id
   service_name      = "com.amazonaws.${data.aws_region.current.id}.ssm"
@@ -76,7 +74,6 @@ resource "aws_vpc_endpoint" "ssm" {
   private_dns_enabled = true
 }
 
-# Create a private endpoint for KMS inside the VPC
 resource "aws_vpc_endpoint" "kms" {
   vpc_id            = aws_vpc.main.id
   service_name      = "com.amazonaws.${data.aws_region.current.id}.kms"

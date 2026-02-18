@@ -1,5 +1,37 @@
 # terraform/blog.tf
 
+resource "aws_rum_app_monitor" "blog_monitor" {
+  name             = "blog-rum"
+  domain           = var.domain_name
+  cw_log_enabled   = true
+  
+  app_monitor_configuration {
+    allow_cookies       = true
+    enable_xray         = true
+    session_sample_rate = 1.0
+    telemetries         = ["performance", "errors", "http"]
+
+    guest_role_arn = aws_iam_role.web_rum_guest_role.arn
+    identity_pool_id = aws_cognito_identity_pool.web_rum_pool.id
+  }
+}
+
+resource "aws_iam_role_policy" "blog_rum_send_policy" {
+  name = "BlogRumSendPolicy"
+  role = aws_iam_role.web_rum_guest_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = "rum:PutRumEvents"
+        Resource = aws_rum_app_monitor.blog_monitor.arn
+      }
+    ]
+  })
+}
+
 resource "aws_s3_bucket" "logs" {
   bucket = var.blog_system_logs_s3_bucket_name
   force_destroy = true
@@ -84,6 +116,7 @@ resource "aws_cloudfront_function" "dir_index_rewrite" {
 
 resource "aws_cloudfront_response_headers_policy" "security_headers" {
   name    = "authentic-nerd-security-policy-v1"
+  comment = "Security headers for A+ rating on SecurityHeaders.com"
 
   security_headers_config {
     strict_transport_security {
@@ -108,7 +141,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers" {
     }
 
     content_security_policy {
-      content_security_policy = "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
+      content_security_policy = "default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://dataplane.rum.us-east-1.amazonaws.com https://cognito-identity.us-east-1.amazonaws.com; img-src 'self'; style-src 'self' 'unsafe-inline'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
       override                = true
     }
   }

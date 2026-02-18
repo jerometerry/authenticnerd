@@ -33,6 +33,11 @@ variable "website_subdomain_name" {
   type        = string
 }
 
+variable "tools_portal_subdomain" {
+  description = "The tools portal subdomain"
+  type        = string
+}
+
 variable "api_subdomain_name" {
   description = "The subdomain for your API"
   type        = string

@@ -10,10 +10,12 @@
   "dependencies": {
     "@aurelia/router": "latest",
     "@reduxjs/toolkit": "^2.9.0",
+    "aws-rum-web": "^2.0.0",
     "esbuild": "^0.25.10",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
     "@aurelia/testing": "latest",
@@ -45,7 +47,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "codegen":"NODE_OPTIONS='--unhandled-rejections=throw' rtk-query-codegen-openapi rtk-codegen.config.cjs"
+    "codegen": "NODE_OPTIONS='--unhandled-rejections=throw' rtk-query-codegen-openapi rtk-codegen.config.cjs"
   },
   "type": "module",
   "overrides": {

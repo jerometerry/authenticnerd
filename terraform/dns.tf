@@ -6,7 +6,7 @@ data "aws_route53_zone" "main" {
 
 resource "aws_acm_certificate" "site_cert" {
   provider          = aws.us-east-1
-  domain_name       = "${var.website_subdomain_name}.${var.domain_name}"
+  domain_name       = var.tools_portal_subdomain
   validation_method = "DNS"
 
   tags = {
