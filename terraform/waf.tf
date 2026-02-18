@@ -60,8 +60,82 @@ resource "aws_wafv2_web_acl" "website_waf" {
   }
 
   rule {
+      name = "website-waf-allowed-ips-rule"
+      priority = 0
+      action {
+          allow {}
+      }
+      statement {
+          ip_set_reference_statement {
+              arn = aws_wafv2_ip_set.website_allowed_ips.arn
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "website-waf-allowed-ips-rule"
+          sampled_requests_enabled = true
+      }
+  }
+
+  rule {
+    name     = "Block-WordPress-Probes"
+    priority = 1
+    action {
+      block {}
+    }
+    statement {
+      or_statement {
+        statement {
+          byte_match_statement {
+            search_string = "/wp-login.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/xmlrpc.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/wp-admin"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "STARTS_WITH"
+          }
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Block-WordPress-Probes"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
     name = "AWS-AWSManagedRulesAmazonIpReputationList"
-    priority = 0
+    priority = 2
     override_action {
         none {}
     }
@@ -80,7 +154,7 @@ resource "aws_wafv2_web_acl" "website_waf" {
 
   rule {
     name = "AWS-AWSManagedRulesCommonRuleSet"
-    priority = 1
+    priority = 3
     override_action {
         none {}
     }
@@ -99,7 +173,7 @@ resource "aws_wafv2_web_acl" "website_waf" {
 
   rule {
       name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-      priority = 2
+      priority = 4
       override_action {
           none {}
       }
@@ -112,24 +186,6 @@ resource "aws_wafv2_web_acl" "website_waf" {
       visibility_config {
           cloudwatch_metrics_enabled = true
           metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-          sampled_requests_enabled = true
-      }
-  }
-
-  rule {
-      name = "website-waf-allowed-ips-rule"
-      priority = 3
-      action {
-          allow {}
-      }
-      statement {
-          ip_set_reference_statement {
-              arn = aws_wafv2_ip_set.website_allowed_ips.arn
-          }
-      }
-      visibility_config {
-          cloudwatch_metrics_enabled = true
-          metric_name = "website-waf-allowed-ips-rule"
           sampled_requests_enabled = true
       }
   }
@@ -167,8 +223,64 @@ resource "aws_wafv2_web_acl" "blog_waf" {
   }
 
   rule {
-    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    name     = "Block-WordPress-Probes"
     priority = 0
+    action {
+      block {}
+    }
+    statement {
+      or_statement {
+        statement {
+          byte_match_statement {
+            search_string = "/wp-login.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/xmlrpc.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/wp-admin"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "STARTS_WITH"
+          }
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Block-WordPress-Probes"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 1
     override_action {
         none {}
     }
@@ -187,7 +299,7 @@ resource "aws_wafv2_web_acl" "blog_waf" {
 
   rule {
     name = "AWS-AWSManagedRulesCommonRuleSet"
-    priority = 1
+    priority = 2
     override_action {
         none {}
     }
@@ -206,7 +318,7 @@ resource "aws_wafv2_web_acl" "blog_waf" {
 
   rule {
       name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-      priority = 2
+      priority = 3
       override_action {
           none {}
       }
@@ -261,8 +373,82 @@ resource "aws_wafv2_web_acl" "api_waf" {
   }
 
   rule {
+      name = "api-waf-allowed-ips-rule"
+      priority = 0
+      action {
+          allow {}
+      }
+      statement {
+          ip_set_reference_statement {
+              arn = aws_wafv2_ip_set.api_allowed_ips.arn
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "api-waf-allowed-ips-rule"
+          sampled_requests_enabled = true
+      }
+  }
+
+  rule {
+    name     = "Block-WordPress-Probes"
+    priority = 1
+    action {
+      block {}
+    }
+    statement {
+      or_statement {
+        statement {
+          byte_match_statement {
+            search_string = "/wp-login.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/xmlrpc.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/wp-admin"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "STARTS_WITH"
+          }
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Block-WordPress-Probes"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
     name = "AWS-AWSManagedRulesAmazonIpReputationList"
-    priority = 0
+    priority = 2
     override_action {
         none {}
     }
@@ -281,7 +467,7 @@ resource "aws_wafv2_web_acl" "api_waf" {
 
   rule {
     name = "AWS-AWSManagedRulesCommonRuleSet"
-    priority = 1
+    priority = 3
     override_action {
         none {}
     }
@@ -300,7 +486,7 @@ resource "aws_wafv2_web_acl" "api_waf" {
 
   rule {
       name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-      priority = 2
+      priority = 4
       override_action {
           none {}
       }
@@ -313,24 +499,6 @@ resource "aws_wafv2_web_acl" "api_waf" {
       visibility_config {
           cloudwatch_metrics_enabled = true
           metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-          sampled_requests_enabled = true
-      }
-  }
-
-  rule {
-      name = "api-waf-allowed-ips-rule"
-      priority = 3
-      action {
-          allow {}
-      }
-      statement {
-          ip_set_reference_statement {
-              arn = aws_wafv2_ip_set.api_allowed_ips.arn
-          }
-      }
-      visibility_config {
-          cloudwatch_metrics_enabled = true
-          metric_name = "api-waf-allowed-ips-rule"
           sampled_requests_enabled = true
       }
   }
