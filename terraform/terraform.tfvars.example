@@ -7,4 +7,5 @@ website_subdomain_name = "<WEB_SUBDOMAIN>"
 api_subdomain_name = "<API_SUBDOMAIN>"
 blog_subdomain_name = "<BLOG_SUBDOMAIN>"
 blog_s3_bucket_name = "<BLOG_BUCKET>"
+blog_system_logs_s3_bucket_name = "<BLOG_SYSTEM_LOGS_BUCKET>"
 allowed_ips = ["10.0.0.0/32"]

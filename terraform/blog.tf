@@ -1,5 +1,52 @@
 # terraform/blog.tf
 
+resource "aws_s3_bucket" "logs" {
+  bucket = var.blog_system_logs_s3_bucket_name
+  force_destroy = true
+
+  tags = {
+    "jt:my-personal-system:name" = "blog-system-logs-s3-bucket"
+    "jt:my-personal-system:description" = "S3 Bucket for hosting blog system logs"
+    "jt:my-personal-system:module" = "frontend"
+    "jt:my-personal-system:component" = "blog-system-logs-s3-bucket"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "logs_cleanup" {
+  bucket = aws_s3_bucket.logs.id
+
+  rule {
+    id     = "delete-old-logs"
+    status = "Enabled"
+
+    expiration {
+      days = 90
+    }
+  }
+}
+
+resource "aws_s3_bucket_ownership_controls" "logs" {
+  bucket = aws_s3_bucket.logs.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "logs_security" {
+  bucket = aws_s3_bucket.logs.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_acl" "logs" {
+  depends_on = [aws_s3_bucket_ownership_controls.logs]
+  bucket     = aws_s3_bucket.logs.id
+  acl        = "private"
+}
+
 resource "aws_s3_bucket" "blog_s3_bucket" {
   bucket = var.blog_s3_bucket_name
   
@@ -146,6 +193,12 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
     }
 
     viewer_protocol_policy = "redirect-to-https"
+  }
+
+  logging_config {
+    include_cookies = false
+    bucket          = aws_s3_bucket.logs.bucket_domain_name
+    prefix          = "cloudfront/"
   }
 
   tags = {
