@@ -81,12 +81,16 @@ graph LR
 │   └── deploy_blog.sh     # Build website and sync with S3
 │
 ├── terraform/             # Infrastructure as Code
-│   ├── blog.tf            # S3, CloudFront, and WAF resources
+│   ├── data.tf            # Constants
 │   ├── dns.tf             # Route53 zones and records
-│   ├── acm.tf             # SSL Certificates
-│   └── main.tf            # Provider configuration
+│   ├── observability.tf   # RUM, Logs
+│   ├── outputs.tf         # Module outputs
+│   ├── providers.tf       # Provider configuration
+│   ├── rewrite.js         # CloudFront function to add index.html to S3 requests
+│   ├── variables.tf       # Module variables definitions
+│   └── website.tf         # S3, CloudFront, and WAF resources
 │
-└── deploy.sh              # Builds and deploys my-personal-system
+└── deploy.sh              # Builds and deploys authenticnerd
 
 ```
 
