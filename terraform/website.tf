@@ -1,3 +1,30 @@
+resource "aws_s3_bucket" "blog_s3_bucket" {
+  bucket = var.blog_s3_bucket_name
+  
+  tags = {
+    "jt:my-personal-system:name" = "blog-s3-bucket"
+    "jt:my-personal-system:description" = "S3 Bucket for hosting blog static assets"
+    "jt:my-personal-system:module" = "frontend"
+    "jt:my-personal-system:component" = "blog-s3-bucket"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "blog_versioning" {
+  bucket = aws_s3_bucket.blog_s3_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "blog_access_block" {
+  bucket = aws_s3_bucket.blog_s3_bucket.id
+  
+  block_public_acls       = true
+  ignore_public_acls      = true
+  block_public_policy     = true
+  restrict_public_buckets = true
+}
+
 resource "aws_cloudfront_function" "dir_index_rewrite" {
   name    = "astro-dir-index-rewrite"
   runtime = "cloudfront-js-2.0"
