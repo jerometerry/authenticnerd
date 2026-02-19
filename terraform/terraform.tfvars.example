@@ -1,12 +1,4 @@
-atlas_project_id  = "<PROJECT_ID>"
-atlas_public_key  = "<PUBLIC_KEY>"
-atlas_private_key = "<PRIVATE_KEY>"
-atlas_connection_string = "<MONGODB_ATLAS_URI>"
 domain_name    = "<DOMAIN>"
-website_subdomain_name = "<WEB_SUBDOMAIN>"
-tools_portal_subdomain = "<WEB_SUBDOMAIN>.<DOMAIN>"
-api_subdomain_name = "<API_SUBDOMAIN>"
 blog_subdomain_name = "<BLOG_SUBDOMAIN>"
 blog_s3_bucket_name = "<BLOG_BUCKET>"
 blog_system_logs_s3_bucket_name = "<BLOG_SYSTEM_LOGS_BUCKET>"
-allowed_ips = ["10.0.0.0/32"]

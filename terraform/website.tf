@@ -1,111 +1,3 @@
-# terraform/blog.tf
-
-resource "aws_rum_app_monitor" "blog_monitor" {
-  name             = "blog-rum"
-  domain           = var.domain_name
-  cw_log_enabled   = true
-  
-  app_monitor_configuration {
-    allow_cookies       = true
-    enable_xray         = true
-    session_sample_rate = 1.0
-    telemetries         = ["performance", "errors", "http"]
-
-    guest_role_arn = aws_iam_role.web_rum_guest_role.arn
-    identity_pool_id = aws_cognito_identity_pool.web_rum_pool.id
-  }
-}
-
-resource "aws_iam_role_policy" "blog_rum_send_policy" {
-  name = "BlogRumSendPolicy"
-  role = aws_iam_role.web_rum_guest_role.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = "rum:PutRumEvents"
-        Resource = aws_rum_app_monitor.blog_monitor.arn
-      }
-    ]
-  })
-}
-
-resource "aws_s3_bucket" "logs" {
-  bucket = var.blog_system_logs_s3_bucket_name
-  force_destroy = true
-
-  tags = {
-    "jt:my-personal-system:name" = "blog-system-logs-s3-bucket"
-    "jt:my-personal-system:description" = "S3 Bucket for hosting blog system logs"
-    "jt:my-personal-system:module" = "frontend"
-    "jt:my-personal-system:component" = "blog-system-logs-s3-bucket"
-  }
-}
-
-resource "aws_s3_bucket_lifecycle_configuration" "logs_cleanup" {
-  bucket = aws_s3_bucket.logs.id
-
-  rule {
-    id     = "delete-old-logs"
-    status = "Enabled"
-
-    expiration {
-      days = 90
-    }
-  }
-}
-
-resource "aws_s3_bucket_ownership_controls" "logs" {
-  bucket = aws_s3_bucket.logs.id
-  rule {
-    object_ownership = "BucketOwnerPreferred"
-  }
-}
-
-resource "aws_s3_bucket_public_access_block" "logs_security" {
-  bucket = aws_s3_bucket.logs.id
-
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
-
-resource "aws_s3_bucket_acl" "logs" {
-  depends_on = [aws_s3_bucket_ownership_controls.logs]
-  bucket     = aws_s3_bucket.logs.id
-  acl        = "private"
-}
-
-resource "aws_s3_bucket" "blog_s3_bucket" {
-  bucket = var.blog_s3_bucket_name
-  
-  tags = {
-    "jt:my-personal-system:name" = "blog-s3-bucket"
-    "jt:my-personal-system:description" = "S3 Bucket for hosting blog static assets"
-    "jt:my-personal-system:module" = "frontend"
-    "jt:my-personal-system:component" = "blog-s3-bucket"
-  }
-}
-
-resource "aws_s3_bucket_versioning" "blog_versioning" {
-  bucket = aws_s3_bucket.blog_s3_bucket.id
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
-
-resource "aws_s3_bucket_public_access_block" "blog_access_block" {
-  bucket = aws_s3_bucket.blog_s3_bucket.id
-  
-  block_public_acls       = true
-  ignore_public_acls      = true
-  block_public_policy     = true
-  restrict_public_buckets = true
-}
-
 resource "aws_cloudfront_function" "dir_index_rewrite" {
   name    = "astro-dir-index-rewrite"
   runtime = "cloudfront-js-2.0"
@@ -161,6 +53,14 @@ resource "aws_cloudfront_response_headers_policy" "security_headers" {
   }
 }
 
+resource "aws_cloudfront_origin_access_control" "blog_oac" {
+  name                              = "blog_oac"
+  description                       = "Origin Access Control for the blog S3 bucket"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
 resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   enabled             = true
   http_version        = "http3"
@@ -197,7 +97,7 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   origin {
     domain_name              = aws_s3_bucket.blog_s3_bucket.bucket_regional_domain_name
     origin_id                = aws_s3_bucket.blog_s3_bucket.id
-    origin_access_control_id = aws_cloudfront_origin_access_control.website_oac.id
+    origin_access_control_id = aws_cloudfront_origin_access_control.blog_oac.id
   }
 
   viewer_certificate {
@@ -263,4 +163,149 @@ resource "aws_s3_bucket_policy" "blog_s3_bucket_policy" {
   })
 
   depends_on = [aws_s3_bucket_public_access_block.blog_access_block]
+}
+
+resource "aws_wafv2_web_acl" "blog_waf" {
+  name        = "blog_waf"
+  description = "Blog Web Application Firewall"
+  scope       = "CLOUDFRONT"
+
+  default_action {
+    allow {}
+  }
+
+  custom_response_body {
+    key          = "custom-blocked-response"
+    content_type = "APPLICATION_JSON"
+    content      = jsonencode({
+      "error" : "Forbidden",
+      "message" : "Access from this IP address is not allowed."
+    })
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "blog-waf"
+    sampled_requests_enabled   = true
+  }
+
+  rule {
+    name     = "Block-WordPress-Probes"
+    priority = 0
+    action {
+      block {}
+    }
+    statement {
+      or_statement {
+        statement {
+          byte_match_statement {
+            search_string = "/wp-login.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/xmlrpc.php"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "CONTAINS"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string = "/wp-admin"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "STARTS_WITH"
+          }
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Block-WordPress-Probes"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 1
+    override_action {
+        none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name =  "AWS"
+      }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesAmazonIpReputationList"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+    name = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 2
+    override_action {
+        none {}
+    }
+    statement {
+        managed_rule_group_statement {
+            name = "AWSManagedRulesCommonRuleSet"
+            vendor_name = "AWS"
+        }
+    }
+    visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name = "AWS-AWSManagedRulesCommonRuleSet"
+        sampled_requests_enabled = true
+    }
+  }
+
+  rule {
+      name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+      priority = 3
+      override_action {
+          none {}
+      }
+      statement {
+          managed_rule_group_statement {
+              name = "AWSManagedRulesKnownBadInputsRuleSet"
+              vendor_name = "AWS"
+          }
+      }
+      visibility_config {
+          cloudwatch_metrics_enabled = true
+          metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+          sampled_requests_enabled = true
+      }
+  }
+
+  tags = {
+    "jt:my-personal-system:name" = "blog-waf"
+    "jt:my-personal-system:description" = "Blog Web Application Firewall"
+    "jt:my-personal-system:module" = "waf"
+    "jt:my-personal-system:component" = "cloud-front-distribution"
+  }
 }
