@@ -16,7 +16,7 @@ Well this is weird. I'm writing about my blog inside my blog. How, ... meta?
 My blog, [authenticnerd.com](https://authenticnerd.com/), is a static content website built using 
 [Astro](https://astro.build/). Static assests are stored in S3, and are served up from CloudFront. AWS infrastructure 
 is managed with Terraform. The source for this blog is on 
-[GitHub](https://github.com/jerometerry/my-personal-system/tree/main/blog), if you are so inclined.
+[GitHub](https://github.com/jerometerry/authenticnerd), if you are so inclined.
 
 ### The Blogging Process
 
@@ -61,7 +61,7 @@ Well this is weird. I'm writing about my blog inside my blog. How, ... meta?
 My blog, [authenticnerd.com](https://authenticnerd.com/), is a static content website built using 
 [Astro](https://astro.build/). Static assests are stored in S3, and are served up from CloudFront. AWS infrastructure 
 is managed with Terraform. The source for this blog is on 
-[GitHub](https://github.com/jerometerry/my-personal-system/tree/main/blog), if you are so inclined.
+[GitHub](https://github.com/jerometerry/authenticnerd), if you are so inclined.
 ```
 
 ### Running Locally
