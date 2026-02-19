@@ -1,53 +1,61 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import { Image } from 'astro:assets';
+import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}');
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif}",
+);
 const imagePath = `/src/assets/${frontmatter.image.url}`;
-if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`,
+  );
 ---
 
 <BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
-  
   <div class="mb-8">
-    <h1 class="text-4xl text-center font-bold text-navy mb-8 dark:text-white">
+    <h1 class="text-navy mb-8 text-center text-4xl font-bold dark:text-white">
       {frontmatter.title}
     </h1>
-    
+
     <div class="flex flex-col text-gray-600 dark:text-gray-400">
-      <p class="text-sm font-semibold mb-2">
-        {frontmatter.pubDate.toISOString().slice(0,10)}
+      <p class="mb-2 text-sm font-semibold">
+        {frontmatter.pubDate.toISOString().slice(0, 10)}
       </p>
-      <p class="italic mt-1">
+      <p class="mt-1 italic">
         {frontmatter.description}
       </p>
     </div>
   </div>
 
-  <Image 
-    src={images[imagePath]()} 
+  <Image
+    src={images[imagePath]()}
     alt={frontmatter.image.alt}
-    class="rounded-lg shadow-md mb-8 h-auto w-full max-w-[300px]"
+    class="mb-8 h-auto w-full max-w-[300px] rounded-lg shadow-md"
   />
 
-  <div class="prose prose-lg prose-code-clean max-w-none prose-headings:text-navy prose-a:text-[#00539F] [&_a:hover]:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:[&_a:hover]:text-peach mb-10">
+  <div
+    class="prose prose-lg prose-code-clean prose-headings:text-navy prose-a:text-[#00539F] [&_a:hover]:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:[&_a:hover]:text-peach mb-10 max-w-none"
+  >
     <slot />
   </div>
 
-  <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-200 dark:border-gray-700">
-      {frontmatter.tags.map((tag: string) => (
-
-          <p class="border border-dotted border-gray-400 rounded-lg px-4 py-2 text-lg bg-[#F8FCFD] dark:bg-gray-800 dark:border-gray-600">
-            <a 
-              href={`/tags/${tag}`} 
-              class="text-[#00539F] no-underline hover:text-peach dark:text-blue-300 dark:hover:text-peach"
-            >
-              {tag}
-            </a>
-          </p>
-      ))}
-  </div>  
-
+  <div
+    class="flex flex-wrap gap-2 border-t border-gray-200 pt-4 dark:border-gray-700"
+  >
+    {
+      frontmatter.tags.map((tag: string) => (
+        <p class="rounded-lg border border-dotted border-gray-400 bg-[#F8FCFD] px-4 py-2 text-lg dark:border-gray-600 dark:bg-gray-800">
+          <a
+            href={`/tags/${tag}`}
+            class="hover:text-peach dark:hover:text-peach text-[#00539F] no-underline dark:text-blue-300"
+          >
+            {tag}
+          </a>
+        </p>
+      ))
+    }
+  </div>
 </BaseLayout>

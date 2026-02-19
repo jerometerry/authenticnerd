@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Privacy Policy";
 const description = "Privacy Policy for AuthenticNerd.com";
@@ -7,76 +7,87 @@ const lastUpdated = "February 18, 2026";
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-    <div class="leading-relaxed text-inherit">
-    
-        <section class="my-8">
-            <h1 class="text-4xl italic font-bold mb-2 leading-tight text-navy dark:text-white">
-                    The "Authentic Nerd" Privacy Policy
-            </h1>
-            <p class="text-sm opacity-70 mb-4">Last Updated: {lastUpdated}</p>
-            <p class="text-lg italic border-l-4 border-terracotta pl-4 py-2 bg-navy/5 dark:bg-white/5">
-                "I value your privacy as much as I value my own system's uptime."
-            </p>
-        </section>
+  <div class="leading-relaxed text-inherit">
+    <section class="my-8">
+      <h1
+        class="text-navy mb-2 text-4xl leading-tight font-bold italic dark:text-white"
+      >
+        The "Authentic Nerd" Privacy Policy
+      </h1>
+      <p class="mb-4 text-sm opacity-70">Last Updated: {lastUpdated}</p>
+      <p
+        class="border-terracotta bg-navy/5 border-l-4 py-2 pl-4 text-lg italic dark:bg-white/5"
+      >
+        "I value your privacy as much as I value my own system's uptime."
+      </p>
+    </section>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold mb-4 text-navy dark:text-white">What I Track (and Why)</h2>
-            <p class="mb-4">
-                This site uses <strong>AWS CloudWatch RUM (Real User Monitoring)</strong>. Unlike traditional marketing 
-				analytics, the goal here is System Performance, not user profiling.
-            </p>
-            <ul class="list-disc list-inside space-y-2 mb-4 ml-2">
-                <li>
-					<strong>Performance Metrics:</strong> I measure page load times, JavaScript errors, and Core Web 
-					Vitals (LCP, CLS, INP).
-				</li>
-                <li>
-					<strong>Anonymity:</strong> Your IP address is used only to determine your general region (e.g., 
-					Newfoundland, Canada) to optimize CDN routing. Your full IP is never stored.
-				</li>
-                <li>
-					<strong>Storage:</strong> Small, functional cookies are used by the AWS RUM client to distinguish 
-					unique sessions for performance aggregation.
-				</li>
-                <li>
-					<strong>No Cross-Site Tracking:</strong> I do not track you across other websites. There are no 
-					"Like" buttons, ad pixels, or third-party marketing trackers here.
-				</li>
-            </ul>
-        </section>
+    <section class="my-8">
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">
+        What I Track (and Why)
+      </h2>
+      <p class="mb-4">
+        This site uses <strong>AWS CloudWatch RUM (Real User Monitoring)</strong
+        >. Unlike traditional marketing analytics, the goal here is System
+        Performance, not user profiling.
+      </p>
+      <ul class="mb-4 ml-2 list-inside list-disc space-y-2">
+        <li>
+          <strong>Performance Metrics:</strong> I measure page load times, JavaScript
+          errors, and Core Web Vitals (LCP, CLS, INP).
+        </li>
+        <li>
+          <strong>Anonymity:</strong> Your IP address is used only to determine your
+          general region (e.g., Newfoundland, Canada) to optimize CDN routing. Your
+          full IP is never stored.
+        </li>
+        <li>
+          <strong>Storage:</strong> Small, functional cookies are used by the AWS
+          RUM client to distinguish unique sessions for performance aggregation.
+        </li>
+        <li>
+          <strong>No Cross-Site Tracking:</strong> I do not track you across other
+          websites. There are no "Like" buttons, ad pixels, or third-party marketing
+          trackers here.
+        </li>
+      </ul>
+    </section>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold mb-4 text-navy dark:text-white">
-                Privacy Browsers & Resiliency
-            </h2>
-            <p class="mb-4">
-                If you use a privacy-focused browser like DuckDuckGo, Brave, or extensions like uBlock Origin, my
-                performance monitoring will likely be blocked.
-            </p>
-            <p class="mb-4">
-                This is perfectly fine. My site is designed to be a <strong>Resilient System</strong>—it will work 
-				exactly the same for you whether the monitoring script fires or not. I respect your choice to stay 
-				invisible.
-            </p>
-        </section>
+    <section class="my-8">
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">
+        Privacy Browsers & Resiliency
+      </h2>
+      <p class="mb-4">
+        If you use a privacy-focused browser like DuckDuckGo, Brave, or
+        extensions like uBlock Origin, my performance monitoring will likely be
+        blocked.
+      </p>
+      <p class="mb-4">
+        This is perfectly fine. My site is designed to be a <strong
+          >Resilient System</strong
+        >—it will work exactly the same for you whether the monitoring script
+        fires or not. I respect your choice to stay invisible.
+      </p>
+    </section>
 
-        <section class="my-8 border-t border-navy/10 dark:border-white/10 pt-8">
-            <h2 class="text-xl font-bold mb-4 text-navy dark:text-white">Contact</h2>
-            <p>
-                If you have questions about this policy or how your (minimal) data is handled, feel free to reach out 
-				via 
-                <a 
-					href="https://www.linkedin.com/in/jerometerry" 
-					target="_blank"
-					class="text-terracotta hover:underline">LinkedIn
-				</a> or check the source on 
-                <a 
-					href="https://github.com/jerometerry/authenticnerd" 
-					target="_blank"
-					class="text-terracotta hover:underline">GitHub
-				</a>.
-            </p>
-        </section>
-
-    </div>
+    <section class="border-navy/10 my-8 border-t pt-8 dark:border-white/10">
+      <h2 class="text-navy mb-4 text-xl font-bold dark:text-white">Contact</h2>
+      <p>
+        If you have questions about this policy or how your (minimal) data is
+        handled, feel free to reach out via
+        <a
+          href="https://www.linkedin.com/in/jerometerry"
+          target="_blank"
+          class="text-terracotta hover:underline"
+          >LinkedIn
+        </a> or check the source on
+        <a
+          href="https://github.com/jerometerry/authenticnerd"
+          target="_blank"
+          class="text-terracotta hover:underline"
+          >GitHub
+        </a>.
+      </p>
+    </section>
+  </div>
 </BaseLayout>

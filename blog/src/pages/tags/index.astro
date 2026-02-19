@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog");
@@ -8,25 +8,24 @@ const pageTitle = "Tag Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-navy mb-6 dark:text-white">
+    <h1 class="text-navy mb-6 text-4xl font-bold dark:text-white">
       {pageTitle}
     </h1>
   </div>
 
   <div class="flex flex-wrap gap-4">
-
-    {tags.map((tag) => (
-
-      <p class="border border-dotted border-gray-400 rounded-lg px-4 py-2 text-lg bg-[#F8FCFD] dark:bg-gray-800 dark:border-gray-600">
-        <a class="text-[#00539F] no-underline hover:text-peach dark:text-blue-300 dark:hover:text-peach font-medium" href={`/tags/${tag}`}>
-          {tag}
-        </a>
-      </p>
-
-    ))}
-
+    {
+      tags.map((tag) => (
+        <p class="rounded-lg border border-dotted border-gray-400 bg-[#F8FCFD] px-4 py-2 text-lg dark:border-gray-600 dark:bg-gray-800">
+          <a
+            class="hover:text-peach dark:hover:text-peach font-medium text-[#00539F] no-underline dark:text-blue-300"
+            href={`/tags/${tag}`}
+          >
+            {tag}
+          </a>
+        </p>
+      ))
+    }
   </div>
-
 </BaseLayout>

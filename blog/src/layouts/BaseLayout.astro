@@ -1,18 +1,17 @@
 ---
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import AwsRum from '@components/AwsRum.astro';
-import '@styles/global.css';
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import AwsRum from "@components/AwsRum.astro";
+import "@styles/global.css";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const { 
-  pageTitle, 
-  description = "Authentic Nerd - A collection of thoughts on technology, authenticity, and systems thinking."
+const {
+  pageTitle,
+  description = "Authentic Nerd - A collection of thoughts on technology, authenticity, and systems thinking.",
 } = Astro.props;
 ---
 
 <html lang="en" class="scroll-smooth">
-
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -29,18 +28,19 @@ const {
     <AwsRum />
   </head>
 
-  <body class="mx-auto w-full max-w-[80ch] p-4 leading-normal bg-gray-light text-navy font-sans dark:bg-navy dark:text-white">
+  <body
+    class="bg-gray-light text-navy dark:bg-navy mx-auto w-full max-w-[80ch] p-4 font-sans leading-normal dark:text-white"
+  >
     <Header />
 
     <main>
-	    <slot />
+      <slot />
     </main>
 
     <Footer />
-    
+
     <script>
       import "@scripts/menu.js";
     </script>
   </body>
-
 </html>

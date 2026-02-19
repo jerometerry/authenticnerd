@@ -2,6 +2,9 @@
 const { linkText, url } = Astro.props;
 ---
 
-<a class="block w-fit ml-auto p-2.5 font-bold text-terracotta dark:text-peach no-underline text-lg rounded md:inline-block md:w-auto md:m-0 md:p-4 md:text-center dark:hover:text-navy" href={`${url}`}>
-	{linkText}
+<a
+  class="text-terracotta dark:text-peach dark:hover:text-navy ml-auto block w-fit rounded p-2.5 text-lg font-bold no-underline md:m-0 md:inline-block md:w-auto md:p-4 md:text-center"
+  href={`${url}`}
+>
+  {linkText}
 </a>

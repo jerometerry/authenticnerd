@@ -1,11 +1,11 @@
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://authenticnerd.com",
   build: {
-    inlineStylesheets: 'always'
+    inlineStylesheets: "always",
   },
   integrations: [sitemap()],
   vite: {
@@ -13,7 +13,7 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
-      theme: 'rose-pine',
+      theme: "rose-pine",
       wrap: true,
     },
   },

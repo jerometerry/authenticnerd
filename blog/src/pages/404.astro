@@ -1,24 +1,24 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
 const pageTitle = "404 - Page Not Found";
 const description = "Page Not Found";
 ---
+
 <BaseLayout pageTitle={pageTitle} description={description}>
-
-  <div class="flex flex-col items-center text-center mt-16 px-4">
-
-    <h1 class="text-4xl md:text-5xl font-bold text-navy mb-6 dark:text-white">
+  <div class="mt-16 flex flex-col items-center px-4 text-center">
+    <h1 class="text-navy mb-6 text-4xl font-bold md:text-5xl dark:text-white">
       {pageTitle}
     </h1>
 
-    <p class="text-lg text-gray-600 mb-8 dark:text-gray-400">
+    <p class="mb-8 text-lg text-gray-600 dark:text-gray-400">
       We couldn't find that page.
     </p>
 
-    <a href="/" class="inline-block bg-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-peach transition-colors duration-200 dark:bg-white dark:text-navy dark:hover:bg-peach dark:hover:text-white">
+    <a
+      href="/"
+      class="bg-navy hover:bg-peach dark:text-navy dark:hover:bg-peach inline-block rounded-lg px-6 py-3 font-semibold text-white transition-colors duration-200 dark:bg-white dark:hover:text-white"
+    >
       Go Home
     </a>
-
   </div>
-
 </BaseLayout>
