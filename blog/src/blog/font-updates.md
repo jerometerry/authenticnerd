@@ -41,7 +41,7 @@ Here's the HTML skeleton for all pages on my blog.
 </html>
 ```
 
-The font classes that I setup initially were `font-sans leading-normal`. I'm not a font expert, and used AI to
+The font classes that I setup initially were "font-sans leading-normal". I'm not a font expert, and used AI to
 generate the TawilwindCSS classes. It was good enough when initially setting things up, but when I was reading my
 rendered content, this font choice was bothersome.
 
@@ -54,8 +54,10 @@ I was using font-sans with this TailwindCSS theme setting
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 ```
 
-Switching from sans-serif font to a serif font made a huge improvement for me. I switched "font-sans leading-normal" to
-"font-serif leading-relaxed"
+### Sans vs Serif
+
+Switching from sans-serif to serif font-family made a huge improvement, in my opinion. I switched
+"font-sans leading-normal" to "font-serif leading-relaxed"
 
 **Before**
 
@@ -72,6 +74,9 @@ Switching from sans-serif font to a serif font made a huge improvement for me. I
   class="bg-gray-light text-navy dark:bg-navy mx-auto w-full max-w-[80ch] p-4 font-serif leading-relaxed dark:text-white"
 ></body>
 ```
+
+I removed the TailwindCSS "--font-sans" theme configuration from [global.css](https://github.com/jerometerry/authenticnerd/blob/main/blog/src/styles/global.css),
+since it was no longer used. I'm using the default "font-serif" TailwindCSS configuration. The defaults look good to me.
 
 ### Leading Relaxed on Posts
 
