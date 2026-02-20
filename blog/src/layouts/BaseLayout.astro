@@ -5,9 +5,11 @@ import AwsRum from "@components/AwsRum.astro";
 import "@styles/global.css";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImgURL = new URL("authenticnerd-og-fb.png", Astro.site);
 const {
   pageTitle,
   description = "Authentic Nerd - A collection of thoughts on technology, authenticity, and systems thinking.",
+  ogType = "article",
 } = Astro.props;
 ---
 
@@ -21,8 +23,26 @@ const {
     <link rel="canonical" href={canonicalURL} />
 
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+
+    <meta name="description" content={description} />
+    <meta name="keywords" content="" />
+
+    <meta name="author" content="Jerome Terry" />
+    <meta name="copyright" content="" />
+    <meta name="application-name" content="AuthenticNerd" />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:image" content={ogImgURL} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:description" content={description} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImgURL} />
+
     <title>{pageTitle}</title>
 
     <AwsRum />
