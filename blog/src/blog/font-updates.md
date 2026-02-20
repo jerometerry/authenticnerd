@@ -95,17 +95,11 @@ The solution was to add the css class "prose-p:leading-relaxed" in "MarkdownPost
 <div
   class="prose prose-lg prose-code-clean prose-headings:text-navy prose-a:text-[#00539F] [&_a:hover]:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:[&_a:hover]:text-peach mb-10 max-w-none"
 ></div>
-<div
-  class="prose prose-lg prose-p:leading-relaxed prose-code-clean prose-headings:text-navy prose-a:text-[#00539F] [&_a:hover]:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:[&_a:hover]:text-peach mb-10 max-w-none"
-></div>
 ```
 
 **After**
 
 ```html
-<div
-  class="prose prose-lg prose-code-clean prose-headings:text-navy prose-a:text-[#00539F] [&_a:hover]:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:[&_a:hover]:text-peach mb-10 max-w-none"
-></div>
 <div
   class="prose prose-lg prose-p:leading-relaxed prose-code-clean prose-headings:text-navy prose-a:text-[#00539F] [&_a:hover]:text-peach prose-img:rounded-xl dark:prose-invert dark:prose-headings:text-white dark:prose-a:text-blue-300 dark:[&_a:hover]:text-peach mb-10 max-w-none"
 ></div>
