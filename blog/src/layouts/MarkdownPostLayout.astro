@@ -4,14 +4,9 @@ import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{jpeg,jpg,png,gif}",
-);
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/*.{jpeg,jpg,png,gif}");
 const imagePath = `/src/assets/${frontmatter.image.url}`;
-if (!images[imagePath])
-  throw new Error(
-    `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`,
-  );
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
 
 <BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
@@ -42,9 +37,7 @@ if (!images[imagePath])
     <slot />
   </div>
 
-  <div
-    class="flex flex-wrap gap-2 border-t border-gray-200 pt-4 dark:border-gray-700"
-  >
+  <div class="flex flex-wrap gap-2 border-t border-gray-200 pt-4 dark:border-gray-700">
     {
       frontmatter.tags.map((tag: string) => (
         <p class="rounded-lg border border-dotted border-gray-400 bg-[#F8FCFD] px-4 py-2 text-lg dark:border-gray-600 dark:bg-gray-800">

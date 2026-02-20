@@ -2069,16 +2069,14 @@
                         body: e.body,
                       }),
                     }
-                  : e
-                      .blob()
-                      .then((t) => ({
-                        response: new p({
-                          headers: n,
-                          reason: e.statusText,
-                          statusCode: e.status,
-                          body: t,
-                        }),
-                      }));
+                  : e.blob().then((t) => ({
+                      response: new p({
+                        headers: n,
+                        reason: e.statusText,
+                        statusCode: e.status,
+                        body: t,
+                      }),
+                    }));
               }),
               m(n),
             ];

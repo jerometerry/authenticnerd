@@ -18,13 +18,7 @@ const { error } = Astro.props;
 
     <p class="mb-8 text-lg text-gray-600 dark:text-gray-400">
       Whoops, our servers are having a bad day.
-      {
-        error instanceof Error && (
-          <span class="mt-2 block font-mono text-sm text-red-500">
-            {error.message}
-          </span>
-        )
-      }
+      {error instanceof Error && <span class="mt-2 block font-mono text-sm text-red-500">{error.message}</span>}
     </p>
 
     <a

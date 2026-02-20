@@ -5,8 +5,7 @@ import { Image } from "astro:assets";
 import authNerdPic from "../assets/AuthenticNerd.jpg";
 
 const pageTitle = "About Me";
-const description =
-  "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
+const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
 
 const techStack = [
   { name: "Astro", url: "https://astro.build" },
@@ -18,18 +17,12 @@ const techStack = [
 
 <BaseLayout pageTitle={pageTitle} description={description} ogType="website">
   <div class="leading-relaxed text-inherit">
-    <section
-      class="mb-12 flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left"
-    >
+    <section class="mb-12 flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
       <div class="flex-1 md:pr-8">
-        <h1
-          class="text-navy mb-2 text-4xl leading-tight font-bold italic dark:text-white"
-        >
-          Hello, I'm Jerome Terry.
-        </h1>
+        <h1 class="text-navy mb-2 text-4xl leading-tight font-bold italic dark:text-white">Hello, I'm Jerome Terry.</h1>
         <p class="text-lg">
-          I am a software developer recovering from trauma and learning to live
-          authentically. I build systems that work, both in code and in life.
+          I am a software developer recovering from trauma and learning to live authentically. I build systems that
+          work, both in code and in life.
         </p>
       </div>
 
@@ -46,50 +39,38 @@ const techStack = [
     <hr class="my-8 border-0 border-t border-gray-300 dark:border-gray-700" />
 
     <section class="my-8">
-      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">
-        Redefining N.E.R.D.
-      </h2>
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Redefining N.E.R.D.</h2>
 
       <p class="mb-8">
-        I was bullied in grade school for being a nerd. As a professional, I
-        leaned into it. Now, my creative side lets me redefine what that word
-        truly means to me:
+        I was bullied in grade school for being a nerd. As a professional, I leaned into it. Now, my creative side lets
+        me redefine what that word truly means to me:
       </p>
 
       <NerdGrid />
     </section>
 
     <section class="my-8">
-      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">
-        Why This Blog Exists
-      </h2>
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Why This Blog Exists</h2>
       <p class="mb-4">
-        I write in a stream-of-consciousness style to capture bits of my
-        subconsciousness that I usually miss. Once those raw ideas are captured,
-        I can apply critical thinking, challenge my beliefs, and start <em
+        I write in a stream-of-consciousness style to capture bits of my subconsciousness that I usually miss. Once
+        those raw ideas are captured, I can apply critical thinking, challenge my beliefs, and start <em
           >reprogramming myself</em
         >.
       </p>
-      <p>
-        Sharing this journey is my way of paying it forward to everyone who has
-        helped me along the way.
-      </p>
+      <p>Sharing this journey is my way of paying it forward to everyone who has helped me along the way.</p>
     </section>
 
     <hr class="my-8 border-0 border-t border-gray-300 dark:border-gray-700" />
 
-    <section
-      class="dark:bg-gray-dark mt-8 rounded-lg bg-[#e2e8f0] p-6 text-sm text-black dark:text-white"
-    >
+    <section class="dark:bg-gray-dark mt-8 rounded-lg bg-[#e2e8f0] p-6 text-sm text-black dark:text-white">
       <h3 class="mb-2 text-xl font-bold">Built With Simplicity</h3>
       <p>
-        This site is a static system designed for performance and longevity. If
-        you are curious about the architecture, you can view the
+        This site is a static system designed for performance and longevity. If you are curious about the architecture,
+        you can view the
         <a
           href="https://github.com/jerometerry/authenticnerd"
           target="_blank"
-          class="text-navy hover:text-peach dark:text-peach font-bold dark:hover:text-white"
-          >source code on GitHub</a
+          class="text-navy hover:text-peach dark:text-peach font-bold dark:hover:text-white">source code on GitHub</a
         >.
       </p>
 
