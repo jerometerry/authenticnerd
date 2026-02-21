@@ -1,11 +1,11 @@
 resource "aws_s3_bucket" "blog_s3_bucket" {
   bucket = var.blog_s3_bucket_name
-  
+
   tags = {
-    "jt:my-personal-system:name" = "blog-s3-bucket"
+    "jt:my-personal-system:name"        = "blog-s3-bucket"
     "jt:my-personal-system:description" = "S3 Bucket for hosting blog static assets"
-    "jt:my-personal-system:module" = "frontend"
-    "jt:my-personal-system:component" = "blog-s3-bucket"
+    "jt:my-personal-system:module"      = "frontend"
+    "jt:my-personal-system:component"   = "blog-s3-bucket"
   }
 }
 
@@ -18,7 +18,7 @@ resource "aws_s3_bucket_versioning" "blog_versioning" {
 
 resource "aws_s3_bucket_public_access_block" "blog_access_block" {
   bucket = aws_s3_bucket.blog_s3_bucket.id
-  
+
   block_public_acls       = true
   ignore_public_acls      = true
   block_public_policy     = true
@@ -72,7 +72,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers" {
       override = true
     }
   }
-  
+
   remove_headers_config {
     items {
       header = "Server"
@@ -92,13 +92,13 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   enabled             = true
   http_version        = "http3"
   default_root_object = "index.html"
-  aliases             = [
+  aliases = [
     "${var.blog_subdomain_name}.${var.domain_name}",
     var.domain_name,
     "www.${var.domain_name}"
   ]
-  web_acl_id          = aws_wafv2_web_acl.blog_waf.arn
-  price_class         = "PriceClass_100"
+  web_acl_id  = aws_wafv2_web_acl.blog_waf.arn
+  price_class = "PriceClass_100"
 
   custom_error_response {
     error_code            = 403
@@ -139,10 +139,10 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   }
 
   default_cache_behavior {
-    allowed_methods            = ["GET", "HEAD", "OPTIONS"]
-    cached_methods             = ["GET", "HEAD"]
-    target_origin_id           = aws_s3_bucket.blog_s3_bucket.id
-    compress                   = true
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = aws_s3_bucket.blog_s3_bucket.id
+    compress         = true
 
     cache_policy_id            = data.aws_cloudfront_cache_policy.caching_optimized.id
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers.id
@@ -162,25 +162,25 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   }
 
   tags = {
-    Name = "blog-cloudfront-distribution"
-    "jt:my-personal-system:name" = "blog-cloudfront-distribution"
+    Name                                = "blog-cloudfront-distribution"
+    "jt:my-personal-system:name"        = "blog-cloudfront-distribution"
     "jt:my-personal-system:description" = "Public access to the blog"
-    "jt:my-personal-system:module" = "blog"
-    "jt:my-personal-system:component" = "cloud-front-distribution"
+    "jt:my-personal-system:module"      = "blog"
+    "jt:my-personal-system:component"   = "cloud-front-distribution"
   }
 }
 
 resource "aws_s3_bucket_policy" "blog_s3_bucket_policy" {
   bucket = aws_s3_bucket.blog_s3_bucket.id
   policy = jsonencode({
-    Version   = "2012-10-17",
+    Version = "2012-10-17",
     Statement = [{
-      Action    = "s3:GetObject",
-      Effect    = "Allow",
+      Action = "s3:GetObject",
+      Effect = "Allow",
       Principal = {
         Service = "cloudfront.amazonaws.com"
       },
-      Resource  = "${aws_s3_bucket.blog_s3_bucket.arn}/*",
+      Resource = "${aws_s3_bucket.blog_s3_bucket.arn}/*",
       Condition = {
         StringEquals = {
           "AWS:SourceArn" = aws_cloudfront_distribution.blog_cloudformation_distribution.arn
@@ -204,7 +204,7 @@ resource "aws_wafv2_web_acl" "blog_waf" {
   custom_response_body {
     key          = "custom-blocked-response"
     content_type = "APPLICATION_JSON"
-    content      = jsonencode({
+    content = jsonencode({
       "error" : "Forbidden",
       "message" : "Access from this IP address is not allowed."
     })
@@ -273,66 +273,117 @@ resource "aws_wafv2_web_acl" "blog_waf" {
   }
 
   rule {
-    name = "AWS-AWSManagedRulesAmazonIpReputationList"
+    name     = "Block-PHP-Files"
     priority = 1
+    action {
+      block {}
+    }
+    statement {
+      byte_match_statement {
+        search_string         = ".php"
+        positional_constraint = "ENDS_WITH"
+        field_to_match {
+          uri_path {}
+        }
+        text_transformation {
+          priority = 0
+          type     = "LOWERCASE"
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Block-PHP-Files"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "Block-Dotfiles"
+    priority = 2
+    action {
+      block {}
+    }
+    statement {
+      regex_match_statement {
+        regex_string = "/\\.[a-zA-Z0-9]+"
+        field_to_match {
+          uri_path {}
+        }
+        text_transformation {
+          priority = 0
+          type     = "NONE"
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Block-Dotfiles"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 3
     override_action {
-        none {}
+      none {}
     }
     statement {
       managed_rule_group_statement {
-        name = "AWSManagedRulesAmazonIpReputationList"
-        vendor_name =  "AWS"
+        name        = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name = "AWS"
       }
     }
     visibility_config {
-        cloudwatch_metrics_enabled = true
-        metric_name = "AWS-AWSManagedRulesAmazonIpReputationList"
-        sampled_requests_enabled = true
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWS-AWSManagedRulesAmazonIpReputationList"
+      sampled_requests_enabled   = true
     }
   }
 
   rule {
-    name = "AWS-AWSManagedRulesCommonRuleSet"
-    priority = 2
+    name     = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 4
     override_action {
-        none {}
+      none {}
     }
     statement {
-        managed_rule_group_statement {
-            name = "AWSManagedRulesCommonRuleSet"
-            vendor_name = "AWS"
-        }
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesCommonRuleSet"
+        vendor_name = "AWS"
+      }
     }
     visibility_config {
-        cloudwatch_metrics_enabled = true
-        metric_name = "AWS-AWSManagedRulesCommonRuleSet"
-        sampled_requests_enabled = true
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWS-AWSManagedRulesCommonRuleSet"
+      sampled_requests_enabled   = true
     }
   }
 
   rule {
-      name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-      priority = 3
-      override_action {
-          none {}
+    name     = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+    priority = 5
+    override_action {
+      none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesKnownBadInputsRuleSet"
+        vendor_name = "AWS"
       }
-      statement {
-          managed_rule_group_statement {
-              name = "AWSManagedRulesKnownBadInputsRuleSet"
-              vendor_name = "AWS"
-          }
-      }
-      visibility_config {
-          cloudwatch_metrics_enabled = true
-          metric_name = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
-          sampled_requests_enabled = true
-      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+      sampled_requests_enabled   = true
+    }
   }
 
   tags = {
-    "jt:my-personal-system:name" = "blog-waf"
+    "jt:my-personal-system:name"        = "blog-waf"
     "jt:my-personal-system:description" = "Blog Web Application Firewall"
-    "jt:my-personal-system:module" = "waf"
-    "jt:my-personal-system:component" = "cloud-front-distribution"
+    "jt:my-personal-system:module"      = "waf"
+    "jt:my-personal-system:component"   = "cloud-front-distribution"
   }
 }
