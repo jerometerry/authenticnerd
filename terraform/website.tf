@@ -217,15 +217,14 @@ resource "aws_wafv2_web_acl" "blog_waf" {
   }
 
   rule {
-    name     = "Block-WP-Admin"
+    name     = "Block-WordPress-Paths"
     priority = 0
     action {
       block {}
     }
     statement {
-      byte_match_statement {
-        search_string         = "/wp-admin"
-        positional_constraint = "STARTS_WITH"
+      regex_match_statement {
+        regex_string = "/wp-(admin|content|includes|login)"
         field_to_match {
           uri_path {}
         }
@@ -237,7 +236,7 @@ resource "aws_wafv2_web_acl" "blog_waf" {
     }
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "Block-WP-Admin"
+      metric_name                = "Block-WordPress-Paths"
       sampled_requests_enabled   = true
     }
   }
