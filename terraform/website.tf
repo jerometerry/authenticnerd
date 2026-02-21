@@ -217,57 +217,27 @@ resource "aws_wafv2_web_acl" "blog_waf" {
   }
 
   rule {
-    name     = "Block-WordPress-Probes"
+    name     = "Block-WP-Admin"
     priority = 0
     action {
       block {}
     }
     statement {
-      or_statement {
-        statement {
-          byte_match_statement {
-            search_string = "/wp-login.php"
-            field_to_match {
-              uri_path {}
-            }
-            text_transformation {
-              priority = 0
-              type     = "LOWERCASE"
-            }
-            positional_constraint = "CONTAINS"
-          }
+      byte_match_statement {
+        search_string         = "/wp-admin"
+        positional_constraint = "STARTS_WITH"
+        field_to_match {
+          uri_path {}
         }
-        statement {
-          byte_match_statement {
-            search_string = "/xmlrpc.php"
-            field_to_match {
-              uri_path {}
-            }
-            text_transformation {
-              priority = 0
-              type     = "LOWERCASE"
-            }
-            positional_constraint = "CONTAINS"
-          }
-        }
-        statement {
-          byte_match_statement {
-            search_string = "/wp-admin"
-            field_to_match {
-              uri_path {}
-            }
-            text_transformation {
-              priority = 0
-              type     = "LOWERCASE"
-            }
-            positional_constraint = "STARTS_WITH"
-          }
+        text_transformation {
+          priority = 0
+          type     = "LOWERCASE"
         }
       }
     }
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "Block-WordPress-Probes"
+      metric_name                = "Block-WP-Admin"
       sampled_requests_enabled   = true
     }
   }
