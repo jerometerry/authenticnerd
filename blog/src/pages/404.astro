@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+const requestedPath = Astro.url.pathname;
 const pageTitle = "404 - Page Not Found";
 const description = "Page Not Found";
 ---
@@ -10,7 +11,7 @@ const description = "Page Not Found";
       {pageTitle}
     </h1>
 
-    <p class="mb-8 text-lg text-gray-600 dark:text-gray-400">We couldn't find that page.</p>
+    <p class="mb-8 text-lg text-gray-600 dark:text-gray-400">The page <code>{requestedPath}</code> does not exist.</p>
 
     <a
       href="/"
