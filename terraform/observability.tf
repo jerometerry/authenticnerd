@@ -140,3 +140,71 @@ resource "aws_s3_bucket_policy" "logs_bucket_policy" {
   bucket = aws_s3_bucket.logs.id
   policy = data.aws_iam_policy_document.cloudfront_logs_policy.json
 }
+
+resource "aws_cloudwatch_dashboard" "waf_dashboard" {
+  dashboard_name = "Blog-WAF-Metrics"
+
+  dashboard_body = jsonencode({
+    widgets = [
+      {
+        type   = "metric"
+        x      = 0
+        y      = 0
+        width  = 12
+        height = 6
+        properties = {
+          metrics = [
+            ["AWS/WAFV2", "AllowedRequests", "WebACL", "blog_waf", "Rule", "ALL"],
+            [".", "BlockedRequests", ".", ".", ".", "."]
+          ]
+          view    = "timeSeries"
+          stacked = false
+          region  = "us-east-1"
+          stat    = "Sum"
+          period  = 300
+          title   = "Total Edge Traffic"
+        }
+      },
+      {
+        type   = "metric"
+        x      = 12
+        y      = 0
+        width  = 12
+        height = 6
+        properties = {
+          metrics = [
+            ["AWS/WAFV2", "BlockedRequests", "WebACL", "blog_waf", "Rule", "Block-WordPress-Paths"],
+            [".", ".", ".", ".", ".", "Block-PHP-Files"],
+            [".", ".", ".", ".", ".", "Block-Dotfiles"]
+          ]
+          view    = "timeSeries"
+          stacked = false
+          region  = "us-east-1"
+          stat    = "Sum"
+          period  = 300
+          title   = "Custom Edge Blocks"
+        }
+      },
+      {
+        type   = "metric"
+        x      = 0
+        y      = 6
+        width  = 24
+        height = 6
+        properties = {
+          metrics = [
+            ["AWS/WAFV2", "BlockedRequests", "WebACL", "blog_waf", "Rule", "AWS-AWSManagedRulesAmazonIpReputationList"],
+            [".", ".", ".", ".", ".", "AWS-AWSManagedRulesKnownBadInputsRuleSet"],
+            [".", ".", ".", ".", ".", "AWS-AWSManagedRulesCommonRuleSet"]
+          ]
+          view    = "timeSeries"
+          stacked = false
+          region  = "us-east-1"
+          stat    = "Sum"
+          period  = 300
+          title   = "AWS Managed Rule Blocks"
+        }
+      }
+    ]
+  })
+}
