@@ -36,17 +36,17 @@ resource "aws_cognito_identity_pool_roles_attachment" "web_rum_attachment" {
 }
 
 resource "aws_rum_app_monitor" "blog_monitor" {
-  name             = "blog-rum"
-  domain           = var.domain_name
-  cw_log_enabled   = true
-  
+  name           = "blog-rum"
+  domain         = var.domain_name
+  cw_log_enabled = true
+
   app_monitor_configuration {
     allow_cookies       = true
     enable_xray         = true
     session_sample_rate = 1.0
     telemetries         = ["performance", "errors", "http"]
 
-    guest_role_arn = aws_iam_role.web_rum_guest_role.arn
+    guest_role_arn   = aws_iam_role.web_rum_guest_role.arn
     identity_pool_id = aws_cognito_identity_pool.web_rum_pool.id
   }
 }
@@ -59,8 +59,8 @@ resource "aws_iam_role_policy" "blog_rum_send_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect = "Allow"
-        Action = "rum:PutRumEvents"
+        Effect   = "Allow"
+        Action   = "rum:PutRumEvents"
         Resource = aws_rum_app_monitor.blog_monitor.arn
       }
     ]
@@ -68,14 +68,14 @@ resource "aws_iam_role_policy" "blog_rum_send_policy" {
 }
 
 resource "aws_s3_bucket" "logs" {
-  bucket = var.blog_system_logs_s3_bucket_name
+  bucket        = var.blog_system_logs_s3_bucket_name
   force_destroy = true
 
   tags = {
-    "jt:my-personal-system:name" = "blog-system-logs-s3-bucket"
+    "jt:my-personal-system:name"        = "blog-system-logs-s3-bucket"
     "jt:my-personal-system:description" = "S3 Bucket for hosting blog system logs"
-    "jt:my-personal-system:module" = "frontend"
-    "jt:my-personal-system:component" = "blog-system-logs-s3-bucket"
+    "jt:my-personal-system:module"      = "frontend"
+    "jt:my-personal-system:component"   = "blog-system-logs-s3-bucket"
   }
 }
 
@@ -109,7 +109,34 @@ resource "aws_s3_bucket_public_access_block" "logs_security" {
 }
 
 resource "aws_s3_bucket_acl" "logs" {
-  depends_on = [aws_s3_bucket_ownership_controls.logs]
+  depends_on = [aws_s3_bucket_ownership_controls.logs, aws_s3_bucket_public_access_block.logs_security]
   bucket     = aws_s3_bucket.logs.id
   acl        = "private"
+}
+
+data "aws_iam_policy_document" "cloudfront_logs_policy" {
+  statement {
+    sid    = "AllowCloudFrontServicePrincipalLogDelivery"
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+
+    actions = ["s3:PutObject"]
+
+    resources = ["${aws_s3_bucket.logs.arn}/cloudfront/*"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "aws:SourceArn"
+      values   = [aws_cloudfront_distribution.blog_cloudformation_distribution.arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "logs_bucket_policy" {
+  bucket = aws_s3_bucket.logs.id
+  policy = data.aws_iam_policy_document.cloudfront_logs_policy.json
 }
