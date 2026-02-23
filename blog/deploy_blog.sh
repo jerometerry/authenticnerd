@@ -21,6 +21,8 @@ aws s3 sync dist/ "s3://${BLOG_BUCKET_NAME}" \
   --exclude "*.html" \
   --exclude "*.xml" \
   --exclude "*.json" \
+  --exclude "*.txt" \
+  --exclude "*.webmanifest" \
   --cache-control "public, max-age=31536000, immutable"
 
 # Pass 2: HTML/Data (Short Cache)
@@ -32,7 +34,8 @@ aws s3 cp dist/ "s3://${BLOG_BUCKET_NAME}" \
   --include "*.xml" \
   --include "*.txt" \
   --include "*.json" \
-  --cache-control "public, max-age=0, must-revalidate"
+  --include "*.webmanifest" \
+  --cache-control "public, max-age=86400, must-revalidate"
 
 echo "--- 3. INVALIDATING CLOUDFRONT CACHE ---"
 aws cloudfront create-invalidation \
