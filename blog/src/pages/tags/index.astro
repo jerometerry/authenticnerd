@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogTag from "@components/BlogTag.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog");
@@ -15,17 +16,6 @@ const pageTitle = "Tag Index";
   </div>
 
   <div class="flex flex-wrap gap-4">
-    {
-      tags.map((tag) => (
-        <p class="rounded-lg border border-dotted border-gray-400 bg-[#F8FCFD] px-4 py-2 text-lg dark:border-gray-600 dark:bg-gray-800">
-          <a
-            class="hover:text-peach dark:hover:text-peach font-medium text-[#00539F] no-underline dark:text-blue-300"
-            href={`/tags/${tag}`}
-          >
-            {tag}
-          </a>
-        </p>
-      ))
-    }
+    {tags.map((tag) => <BlogTag tag={tag} />)}
   </div>
 </BaseLayout>

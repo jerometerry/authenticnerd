@@ -1,0 +1,20 @@
+---
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+const slug = tag.toLowerCase().replace(/\s+/g, "-");
+const href = `/tags/${slug}/`;
+---
+
+<p
+  class="rounded-lg border border-dotted border-gray-400 bg-[#F8FCFD] px-4 py-2 text-lg dark:border-gray-600 dark:bg-gray-800"
+>
+  <a
+    href={href}
+    class="hover:text-peach dark:hover:text-peach font-medium text-[#00539F] no-underline dark:text-blue-300"
+  >
+    {tag}
+  </a>
+</p>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import BlogTag from "@components/BlogTag.astro";
 import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
@@ -38,17 +39,6 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
   </div>
 
   <div class="flex flex-wrap gap-2 border-t border-gray-200 pt-4 dark:border-gray-700">
-    {
-      frontmatter.tags.map((tag: string) => (
-        <p class="rounded-lg border border-dotted border-gray-400 bg-[#F8FCFD] px-4 py-2 text-lg dark:border-gray-600 dark:bg-gray-800">
-          <a
-            href={`/tags/${tag}`}
-            class="hover:text-peach dark:hover:text-peach text-[#00539F] no-underline dark:text-blue-300"
-          >
-            {tag}
-          </a>
-        </p>
-      ))
-    }
+    {frontmatter.tags.map((tag: string) => <BlogTag tag={tag} />)}
   </div>
 </BaseLayout>
