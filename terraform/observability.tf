@@ -208,3 +208,31 @@ resource "aws_cloudwatch_dashboard" "waf_dashboard" {
     ]
   })
 }
+
+resource "aws_cloudwatch_dashboard" "audience_dashboard" {
+  dashboard_name = "Blog-Audience-Metrics"
+
+  dashboard_body = jsonencode({
+    widgets = [
+      {
+        type   = "metric"
+        x      = 0
+        y      = 0
+        width  = 24
+        height = 8
+        properties = {
+          metrics = [
+            ["AWS/RUM", "SessionCount", "application_name", "blog-rum", { "region" : "us-east-1" }],
+            ["AWS/RUM", "PageViewCount", "application_name", "blog-rum", { "region" : "us-east-1" }]
+          ]
+          view    = "timeSeries"
+          stacked = false
+          region  = "us-east-1"
+          stat    = "Sum"
+          period  = 3600
+          title   = "Audience Traffic (Sessions vs Page Views)"
+        }
+      }
+    ]
+  })
+}
