@@ -4,8 +4,14 @@
 
 <script is:inline>
   const dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+  const isTrackingAllowed = dnt !== "1" && dnt !== "yes";
+  const isBot = /bot|googlebot|crawler|spider|robot|crawling|bingbot|duckduckbot|yandex|baidu|ptst/i.test(
+    navigator.userAgent || "",
+  );
+  const isHeadless = navigator.webdriver;
+  const enableRealUserMonitoring = isTrackingAllowed && !isBot && !isHeadless;
 
-  if (dnt !== "1" && dnt !== "yes") {
+  if (enableRealUserMonitoring) {
     (function (n, i, v, r, s, c, x, z) {
       x = window.AwsRumClient = {
         q: [],
