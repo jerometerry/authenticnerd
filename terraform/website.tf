@@ -217,33 +217,8 @@ resource "aws_wafv2_web_acl" "blog_waf" {
   }
 
   rule {
-    name     = "Block-WordPress-Paths"
-    priority = 0
-    action {
-      block {}
-    }
-    statement {
-      regex_match_statement {
-        regex_string = "/wp-(admin|content|includes|login)"
-        field_to_match {
-          uri_path {}
-        }
-        text_transformation {
-          priority = 0
-          type     = "LOWERCASE"
-        }
-      }
-    }
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "Block-WordPress-Paths"
-      sampled_requests_enabled   = true
-    }
-  }
-
-  rule {
     name     = "Block-PHP-Files"
-    priority = 1
+    priority = 0
     action {
       block {}
     }
@@ -263,6 +238,31 @@ resource "aws_wafv2_web_acl" "blog_waf" {
     visibility_config {
       cloudwatch_metrics_enabled = true
       metric_name                = "Block-PHP-Files"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "Block-WordPress-Paths"
+    priority = 1
+    action {
+      block {}
+    }
+    statement {
+      regex_match_statement {
+        regex_string = "/wp-(admin|content|includes|login)"
+        field_to_match {
+          uri_path {}
+        }
+        text_transformation {
+          priority = 0
+          type     = "LOWERCASE"
+        }
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Block-WordPress-Paths"
       sampled_requests_enabled   = true
     }
   }
