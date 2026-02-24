@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Privacy Policy";
 const description = "Privacy Policy for AuthenticNerd.com";
-const lastUpdated = "February 18, 2026";
+const lastUpdated = "February 24, 2026";
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description} ogType="website">
@@ -19,45 +19,56 @@ const lastUpdated = "February 18, 2026";
     </section>
 
     <section class="my-8">
-      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">What I Track (and Why)</h2>
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Zero Client-Side Tracking</h2>
       <p class="mb-4">
-        This site uses <strong>AWS CloudWatch RUM (Real User Monitoring)</strong>. Unlike traditional marketing
-        analytics, the goal here is System Performance, not user profiling.
+        I recently made the architectural decision to remove all client-side analytics from this site. There is no
+        Google Analytics, no AWS Real User Monitoring, and no marketing pixels.
       </p>
       <ul class="mb-4 ml-2 list-inside list-disc space-y-2">
         <li>
-          <strong>Performance Metrics:</strong> I measure page load times, and Core Web Vitals (LCP, CLS, INP).
+          <strong>No Cookies:</strong> This system does not set any tracking cookies on your device.
         </li>
         <li>
-          <strong>Anonymity:</strong> Your IP address is used only to determine your general region (e.g., Newfoundland, Canada)
-          to optimize CDN routing. Your full IP is never stored.
+          <strong>No Cross-Site Tracking:</strong> I do not track your behavior across the internet. There are no "Like" buttons
+          or third-party ad networks here.
         </li>
         <li>
-          <strong>No Cross-Site Tracking:</strong> I do not track you across other websites. There are no "Like" buttons,
-          ad pixels, or third-party marketing trackers here.
+          <strong>Read in Peace:</strong> Whether you use a standard browser or a heavily locked-down setup with strict tracking
+          protection, the site will function exactly the same.
         </li>
       </ul>
     </section>
 
     <section class="my-8">
-      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Privacy Browsers & Resiliency</h2>
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Infrastructure & Security Logs</h2>
       <p class="mb-4">
-        If you use a privacy-focused browser like DuckDuckGo, Brave, or extensions like uBlock Origin, my performance
-        monitoring will likely be blocked.
+        While the frontend is completely free of trackers, the underlying infrastructure (AWS CloudFront and Web
+        Application Firewall) automatically generates standard edge access logs to keep the system secure and online.
       </p>
-      <p class="mb-4">
-        This is perfectly fine. My site is designed to be a <strong>Resilient System</strong>—it will work exactly the
-        same for you whether the monitoring script fires or not. I respect your choice to stay invisible.
-      </p>
+      <ul class="mb-4 ml-2 list-inside list-disc space-y-2">
+        <li>
+          <strong>Edge Routing:</strong> When you request a page, AWS temporarily processes your IP address to route you to
+          the closest edge node for sub-second load times.
+        </li>
+        <li>
+          <strong>System Security:</strong> Automated bots and malicious requests are blocked at the edge. Standard request
+          data (IP, User-Agent, URI) is logged in a secure, private bucket strictly for security audits and debugging routing
+          failures.
+        </li>
+        <li>
+          <strong>Data Lifecycle:</strong> I do not stockpile this data. All infrastructure logs are governed by a strict
+          lifecycle policy and are permanently destroyed after 90 days.
+        </li>
+      </ul>
     </section>
 
     <section class="border-navy/10 my-8 border-t pt-8 dark:border-white/10">
       <h2 class="text-navy mb-4 text-xl font-bold dark:text-white">Contact</h2>
       <p>
-        If you have questions about this policy or how your (minimal) data is handled, feel free to reach out via
+        If you have questions about this policy or the system architecture, feel free to reach out via
         <a href="https://www.linkedin.com/in/jerometerry" target="_blank" class="text-terracotta hover:underline"
           >LinkedIn
-        </a> or check the source on
+        </a> or check the source code on
         <a href="https://github.com/jerometerry/authenticnerd" target="_blank" class="text-terracotta hover:underline"
           >GitHub
         </a>.
