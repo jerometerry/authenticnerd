@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://authenticnerd.com",
   build: {
-    inlineStylesheets: "always",
+    inlineStylesheets: "never",
   },
   integrations: [sitemap()],
   vite: {
