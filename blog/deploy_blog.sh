@@ -13,28 +13,20 @@ pnpm run build
 
 echo "--- 2. DEPLOYING TO S3 (Two-Pass Sync) ---"
 
-# Pass 1: Assets (Long Cache)
-echo "📦 Uploading immutable assets..."
-aws s3 sync dist/ "s3://${BLOG_BUCKET_NAME}" \
+# Pass 1: Hashed Assets (1-Year Immutable Cache)
+# Safely targets ONLY the _astro folder where files are guaranteed to have unique hashes.
+echo "📦 Uploading immutable hashed assets..."
+aws s3 sync dist/_astro/ "s3://${BLOG_BUCKET_NAME}/_astro/" \
   --delete \
-  --exclude ".DS_Store" \
-  --exclude "*.html" \
-  --exclude "*.xml" \
-  --exclude "*.json" \
-  --exclude "*.txt" \
-  --exclude "*.webmanifest" \
   --cache-control "public, max-age=31536000, immutable"
 
-# Pass 2: HTML/Data (Short Cache)
-echo "📄 Uploading HTML and data..."
-aws s3 cp dist/ "s3://${BLOG_BUCKET_NAME}" \
-  --recursive \
-  --exclude "*" \
-  --include "*.html" \
-  --include "*.xml" \
-  --include "*.txt" \
-  --include "*.json" \
-  --include "*.webmanifest" \
+# Pass 2: Unhashed Assets, HTML, and Data (1-Day Cache)
+# Syncs everything else (HTML, favicons, robots.txt) but ignores the _astro folder.
+echo "📄 Uploading HTML and unhashed root assets..."
+aws s3 sync dist/ "s3://${BLOG_BUCKET_NAME}/" \
+  --delete \
+  --exclude "_astro/*" \
+  --exclude ".DS_Store" \
   --cache-control "public, max-age=86400, must-revalidate"
 
 echo "--- 3. INVALIDATING CLOUDFRONT CACHE ---"
