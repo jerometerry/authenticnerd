@@ -19,45 +19,33 @@ const lastUpdated = "February 24, 2026";
     </section>
 
     <section class="my-8">
-      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Zero Client-Side Tracking</h2>
-      <p class="mb-4">
-        I recently made the architectural decision to remove all client-side analytics from this site. There is no
-        Google Analytics, no AWS Real User Monitoring, and no marketing pixels.
-      </p>
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Data Collection</h2>
+      <p class="mb-4">This website respects your privacy by collecting as little data as possible.</p>
       <ul class="mb-4 ml-2 list-inside list-disc space-y-2">
         <li>
-          <strong>No Cookies:</strong> This system does not set any tracking cookies on your device.
+          <strong>No Tracking:</strong> There are no analytics scripts, marketing pixels, or cross-site trackers.
         </li>
         <li>
-          <strong>No Cross-Site Tracking:</strong> I do not track your behavior across the internet. There are no "Like" buttons
-          or third-party ad networks here.
-        </li>
-        <li>
-          <strong>Read in Peace:</strong> Whether you use a standard browser or a heavily locked-down setup with strict tracking
-          protection, the site will function exactly the same.
+          <strong>No Cookies:</strong> This site does not set any advertising or tracking cookies on your device.
         </li>
       </ul>
     </section>
 
     <section class="my-8">
-      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Infrastructure & Security Logs</h2>
+      <h2 class="text-navy mb-4 text-2xl font-bold dark:text-white">Security Logs</h2>
       <p class="mb-4">
-        While the frontend is completely free of trackers, the underlying infrastructure (AWS CloudFront and Web
-        Application Firewall) automatically generates standard edge access logs to keep the system secure and online.
+        To keep the site secure and functional, the hosting provider automatically generates basic server access logs.
       </p>
       <ul class="mb-4 ml-2 list-inside list-disc space-y-2">
         <li>
-          <strong>Edge Routing:</strong> When you request a page, AWS temporarily processes your IP address to route you to
-          the closest edge node for sub-second load times.
+          <strong>What is logged:</strong> Basic request details, such as your IP address and the pages you visit.
         </li>
         <li>
-          <strong>System Security:</strong> Automated bots and malicious requests are blocked at the edge. Standard request
-          data (IP, User-Agent, URI) is logged in a secure, private bucket strictly for security audits and debugging routing
-          failures.
+          <strong>Purpose:</strong> This data is used strictly to defend against malicious bots, prevent abuse, and fix system
+          errors.
         </li>
         <li>
-          <strong>Data Lifecycle:</strong> I do not stockpile this data. All infrastructure logs are governed by a strict
-          lifecycle policy and are permanently destroyed after 90 days.
+          <strong>Retention:</strong> All access logs are automatically and permanently deleted after 90 days.
         </li>
       </ul>
     </section>
@@ -65,10 +53,10 @@ const lastUpdated = "February 24, 2026";
     <section class="border-navy/10 my-8 border-t pt-8 dark:border-white/10">
       <h2 class="text-navy mb-4 text-xl font-bold dark:text-white">Contact</h2>
       <p>
-        If you have questions about this policy or the system architecture, feel free to reach out via
+        If you have questions about this policy, feel free to reach out via
         <a href="https://www.linkedin.com/in/jerometerry" target="_blank" class="text-terracotta hover:underline"
           >LinkedIn
-        </a> or check the source code on
+        </a> or check the source on
         <a href="https://github.com/jerometerry/authenticnerd" target="_blank" class="text-terracotta hover:underline"
           >GitHub
         </a>.
