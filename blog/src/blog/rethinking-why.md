@@ -1,6 +1,7 @@
 ---
 title: "Why do I really do what I do?"
 pubDate: 2026-02-01
+subtitle: "Examining my real why"
 description: "Examining my real why"
 author: "Jerome Terry"
 image:

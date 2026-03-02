@@ -1,6 +1,7 @@
 ---
 title: "Reality"
 pubDate: 2025-05-30
+subtitle: "Our own views cloud reality and we do not even notice"
 description: "Our own views cloud reality and we do not even notice"
 author: "Jerome Terry"
 image:

@@ -1,5 +1,5 @@
 ---
-const { pubDate, title, description, url } = Astro.props;
+const { pubDate, title, subtitle, description, url } = Astro.props;
 const formattedDate = pubDate.toISOString().slice(0, 10);
 ---
 
@@ -17,7 +17,7 @@ const formattedDate = pubDate.toISOString().slice(0, 10);
   </div>
   <div class="flex flex-col p-2 md:flex-row md:items-baseline md:justify-between">
     <span class="text-sm text-gray-600 dark:text-gray-400">
-      {description}
+      {subtitle}
     </span>
   </div>
 </div>

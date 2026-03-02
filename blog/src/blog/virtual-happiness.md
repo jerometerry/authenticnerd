@@ -1,6 +1,7 @@
 ---
 title: "Virtual Happiness"
 pubDate: 2025-05-30
+subtitle: "You can choose to be happy, no matter what"
 description: "You can choose to be happy, no matter what"
 author: "Jerome Terry"
 image:

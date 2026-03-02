@@ -1,6 +1,7 @@
 ---
 title: 'The Catch-22 of "Why"'
 pubDate: 2026-02-15
+subtitle: "Turning brainstorming AI prompt into a blogpost"
 description: "Turning brainstorming AI prompt into a blogpost"
 author: "Jerome Terry"
 image:

@@ -11,10 +11,9 @@ const sortedPosts = allPosts.sort((a: any, b: any) => {
 });
 
 const pageTitle = "Authentic Nerd";
-const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
 ---
 
-<BaseLayout pageTitle={pageTitle} description={description} ogType="website">
+<BaseLayout pageTitle={pageTitle} ogType="website">
   <section class="hero">
     <h1 class="text-navy mb-2 text-center text-5xl leading-tight font-bold dark:text-white">
       Authentic
@@ -41,6 +40,7 @@ const description = "Living life as a professional, authentic, N.E.R.D. - Neurod
           <BlogPost
             url={`/posts/${post.id}/`}
             title={post.data.title}
+            subtitle={post.data.subtitle}
             description={post.data.description}
             pubDate={post.data.pubDate}
           />

@@ -1,6 +1,7 @@
 ---
 title: "Programming Wisdom"
 pubDate: 2026-02-15
+subtitle: "Programming wisdom I shared on Quora in 2014"
 description: "Programming wisdom I shared on Quora in 2014"
 author: "Jerome Terry"
 image:
