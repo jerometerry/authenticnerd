@@ -5,6 +5,8 @@ import { Image } from "astro:assets";
 import authNerdPic from "../assets/AuthenticNerd.jpg";
 
 const pageTitle = "About Me";
+const description =
+  "Learn more about Jerome. Merging a background in mathematics and computer science with two decades of software engineering and technology leadership.";
 
 const techStack = [
   { name: "Astro", url: "https://astro.build" },
@@ -14,7 +16,7 @@ const techStack = [
 ];
 ---
 
-<BaseLayout pageTitle={pageTitle} ogType="website">
+<BaseLayout pageTitle={pageTitle} description={description} ogType="website">
   <div class="leading-relaxed text-inherit">
     <section class="mb-12 flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
       <div class="flex-1 md:pr-8">
