@@ -19,9 +19,10 @@ export async function getStaticPaths() {
 }
 
 const { posts, originalTag } = Astro.props;
+const tagDescription = `Explore all posts related to ${originalTag} on Authentic Nerd. Living life as a professional, authentic N.E.R.D.`;
 ---
 
-<BaseLayout pageTitle={originalTag}>
+<BaseLayout pageTitle={originalTag} description={tagDescription}>
   <div class="mb-8">
     <h1 class="text-navy mb-8 text-4xl font-bold capitalize dark:text-white">
       {originalTag}
