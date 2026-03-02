@@ -4,15 +4,21 @@ import BlogTag from "@components/BlogTag.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog");
-const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
-const pageTitle = "Tag Index";
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())].sort((a, b) => a.localeCompare(b));
+const pageTitle = "Tags";
+const pageDescription =
+  "Browse the complete index of topics on Authentic Nerd. Dive into articles exploring the intersection of systems thinking, mental health, and software engineering.";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={pageDescription}>
   <div class="mb-8">
-    <h1 class="text-navy mb-6 text-4xl font-bold dark:text-white">
+    <h1 class="text-navy mb-2 text-center text-5xl leading-tight font-bold dark:text-white">
       {pageTitle}
     </h1>
+
+    <p class="mx-auto mb-8 max-w-[60ch] text-left text-lg text-gray-600 dark:text-gray-400">
+      {pageDescription}
+    </p>
   </div>
 
   <div class="flex flex-wrap gap-4">
