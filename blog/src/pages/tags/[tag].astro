@@ -36,7 +36,12 @@ const { posts, originalTag } = Astro.props;
   <div class="flex w-full list-none flex-col gap-2 p-0">
     {
       posts.map((post: any) => (
-        <BlogPost title={post.data.title} url={`/posts/${post.id}/`} pubDate={post.data.pubDate} />
+        <BlogPost
+          title={post.data.title}
+          description={post.data.description}
+          url={`/posts/${post.id}/`}
+          pubDate={post.data.pubDate}
+        />
       ))
     }
   </div>

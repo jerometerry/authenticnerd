@@ -38,7 +38,12 @@ const description = "Living life as a professional, authentic, N.E.R.D. - Neurod
     <div class="flex w-full flex-col">
       {
         sortedPosts.map((post: any) => (
-          <BlogPost url={`/posts/${post.id}/`} title={post.data.title} pubDate={post.data.pubDate} />
+          <BlogPost
+            url={`/posts/${post.id}/`}
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+          />
         ))
       }
     </div>
