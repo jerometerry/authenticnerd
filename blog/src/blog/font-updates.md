@@ -1,6 +1,7 @@
 ---
 title: "Updating Blog Fonts"
 pubDate: 2026-02-20
+subtitle: "Discussing blog changes since the 'Hello, Astro!' post"
 description: "Discussing blog changes since the 'Hello, Astro!' post"
 author: "Jerome Terry"
 image:

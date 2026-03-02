@@ -1,6 +1,7 @@
 ---
 title: "Nervous System Observability"
 pubDate: 2026-02-08
+subtitle: "Applying observability principles to my own nervous system"
 description: "Applying observability principles to my own nervous system"
 author: "Jerome Terry"
 image:

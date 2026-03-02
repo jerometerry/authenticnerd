@@ -1,6 +1,7 @@
 ---
 title: "Choose Paper Over Pixels"
 pubDate: 2025-07-02
+subtitle: "Choosing the right amount of technology for your life"
 description: "Choosing the right amount of technology for your life"
 author: "Jerome Terry"
 image:

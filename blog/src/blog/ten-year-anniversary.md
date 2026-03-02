@@ -1,6 +1,7 @@
 ---
 title: "Ten Years of Service"
 pubDate: 2025-06-08
+subtitle: "Ten years with Nasdaq Verafin"
 description: "Ten years with Nasdaq Verafin"
 author: "Jerome Terry"
 image:

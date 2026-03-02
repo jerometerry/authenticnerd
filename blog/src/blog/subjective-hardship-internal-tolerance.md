@@ -1,6 +1,7 @@
 ---
 title: "Subjective Hardship & Internal Tolerance Framework"
 pubDate: 2026-02-18
+subtitle: "The Subjective Hardship and Internal Tolerance (SHIT) Framework  is a decidedly unserious tool for the very serious business of personal well-being"
 description: "The Subjective Hardship and Internal Tolerance (SHIT) Framework  is a decidedly unserious tool for the very serious business of personal well-being"
 author: "Jerome Terry"
 image:

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import BlogPost from "@components/BlogPost.astro";
+import BlogPostLink from "@components/BlogPostLink.astro";
 import NerdGrid from "@components/NerdGrid.astro";
 
 import { getCollection } from "astro:content";
@@ -11,10 +11,9 @@ const sortedPosts = allPosts.sort((a: any, b: any) => {
 });
 
 const pageTitle = "Authentic Nerd";
-const description = "Living life as a professional, authentic, N.E.R.D. - Neurodivergent Empathetic Romantic Dramatic";
 ---
 
-<BaseLayout pageTitle={pageTitle} description={description} ogType="website">
+<BaseLayout pageTitle={pageTitle} ogType="website">
   <section class="hero">
     <h1 class="text-navy mb-2 text-center text-5xl leading-tight font-bold dark:text-white">
       Authentic
@@ -38,9 +37,10 @@ const description = "Living life as a professional, authentic, N.E.R.D. - Neurod
     <div class="flex w-full flex-col">
       {
         sortedPosts.map((post: any) => (
-          <BlogPost
+          <BlogPostLink
             url={`/posts/${post.id}/`}
             title={post.data.title}
+            subtitle={post.data.subtitle}
             description={post.data.description}
             pubDate={post.data.pubDate}
           />

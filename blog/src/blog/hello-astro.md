@@ -1,6 +1,7 @@
 ---
 title: "Hello, Astro!"
 pubDate: 2026-02-16
+subtitle: "Kicking the tires on Astro for this blog"
 description: "Kicking the tires on Astro for this blog"
 author: "Jerome Terry"
 image:
