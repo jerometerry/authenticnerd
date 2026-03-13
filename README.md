@@ -140,8 +140,19 @@ Tools Used
 ```shell
 pnpm dlx @astrojs/upgrade
 
+pnpm up
+
 pnpm astro add mdx
+
 pnpm uninstall @astrojs/mdx
+```
+
+## Common Homebrew Scripts
+
+```shell
+brew update
+
+brew upgrade
 ```
 
 ## 👤 Author
