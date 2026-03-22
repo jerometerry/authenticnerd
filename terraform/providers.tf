@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.100.0"
+      version = ">= 6.37.0"
     }
   }
 }
@@ -13,9 +13,9 @@ provider "aws" {
 
   default_tags {
     tags = {
-      "jt:project" = "my-personal-system"
+      "jt:project"                        = "my-personal-system"
       "jt:my-personal-system:environment" = "development"
-      "jt:my-personal-system:managed-by" = "terraform"
+      "jt:my-personal-system:managed-by"  = "terraform"
     }
   }
 }
