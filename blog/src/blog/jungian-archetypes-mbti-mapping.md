@@ -185,7 +185,7 @@ for a total of 16 combinations (2^4).
 In the Jungian system, the 8 personality types describe the dominant cognitive function and whether that is Introverted
 or Extraverted.
 
-The key to unlocking the MBTI system is understanding that the 4th letter (J or P) as what I call the
+The key to unlocking the MBTI system is understanding that the 4th letter (J or P) is what I call the
 **"business flag"**. It indicates which of the two cognitive functions (as indicated by the middle 2 letters) is
 Extraverted.
 
