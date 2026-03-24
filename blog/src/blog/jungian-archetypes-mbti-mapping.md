@@ -49,18 +49,18 @@ trial was comedy gold. lol
 
 [Wikipedia: Myers Briggs Type Indicator](https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator)
 
-These MBTI Personality Type references reminded me that I still don't fully understand the 16 types, or how to
-determine which type I align with. I know a little about Jung's ideas from research, but I never studied his work
-explicitly. I figured I'd investigate Carl Jung's personality types and compare Jung's ideas with the MBTI system.
+The MBTI Personality Type videos in my YouTube feed reminded me that I still don't fully understand the 16 types, or
+how to determine which type I align with. I know a little about Jung's ideas from online research, but I never studied
+his work explicitly. I figured I'd investigate Carl Jung's personality types and compare Jung's ideas with the MBTI
+system.
 
-What I found surprisingly challenging was mapping the 16 MBTI types to the 8 personality types that Carl Jung proposed. I
-determined that my MBTI type was likely either INTJ or INFJ and I wanted to understand the differences using Jung's
-ideas on personality types.
+What I found surprisingly challenging was mapping the 16 MBTI types to the 8 personality types that Carl Jung proposed.
+I determined that my MBTI type was likely either INTJ, INTP or INFJ and I wanted to understand the differences using
+Jung's ideas on personality types.
 
-INTJ and INFJ both have an Ni (Introverted Intuition) personality type. Trying to understand the differences between
-these two types from the Jungian perspective was rather challenging. If I'm correct about my personality type being one
-of these 2, then my primary cognitive function is introverted intuition. This would explain why I want to be able to
-understand the fundamentals and reason my way through using intuition.
+INTJ and INTP look like they should be very similar, but looks can be deceiving. INTJ maps to Introverted Intuition
+(Ni), but INTP maps to Introverted Thinking (Ti). INTJ and INFJ are actually more alike than INTJ and INTP, since INTJ
+and INFJ both map to Introverted Intuition (Ni). These differences don't make intuitive sense to me.
 
 In this post I'll explain how I made sense of mapping between the MBTI personality types and the Jungian personality
 types.
@@ -75,18 +75,23 @@ types.
 ### Personality Type System
 
 I found understanding Carl Jung's personality types, psychological types, and cognitive functions to be conceptually
-easy to understand, with rules that follow simple logic.
+straightforward to understand, with rules that follow simple logic.
 
-A personality type is composed of 4 cognitive functions Thinking, Feeling, Sensation and Intuition, and each
-cognitive function has an attitude type: extraversion or introversion.
+A personality type is made up of 4 cognitive functions Thinking, Feeling, Sensation and Intuition, and each
+cognitive function has an attitude type: extraversion or introversion. These 4 cognitive functions are ordered
 
-The four cognitive functions are ordered: primary (aka dominant), auxiliary, tertiary, and inferior.
+- Conscious
+  - Primary (aka Dominant)
+  - Auxiliary
+- Subconscious
+  - Tertiary
+  - Inferior
 
-There are eight personality types determined by which cognitive function is primary and whether it's introverted or
-extraverted.
+There are eight personality types determined by which cognitive function is primary and its corresponding attitude
+type (introverted or extraverted).
 
 The symbols for the 8 personality types are also simple to understand. The letter corresponding to the cognitive
-function (T, F, S, N) followed by the first letter of the direction of the primary function (i, e).
+function (T, F, S, N) followed by the first letter of the attitude type of the primary function (i, e).
 
 | Personality Type      | Symbol | Indication                                                   |
 | --------------------- | ------ | ------------------------------------------------------------ |
@@ -101,54 +106,57 @@ function (T, F, S, N) followed by the first letter of the direction of the prima
 
 ### Rules
 
-The primary and auxiliary functions are conscious, and the tertiary and inferior functions are subconscious.
+Primary/Auxiliary functions are conscious, Tertiary/Inferior subconscious.
 
-Cognitive functions Thinking and Feeling are known as Judging (aka Rational) functions.
+The cognitive function pair Thinking/Feeling are known as Judging (aka Rational) functions.
 
-Cognitive functions Sensation and Intuition are known as Perceiving (aka Irrational) functions.
+The cognitive function pair Sensation/ Intuition are known as Perceiving (aka Irrational) functions.
 
 #### Opposing Dominant & Inferior Cognitive Functions
 
-The Dominant and Inferior cognitive functions are opposing where Thinking and Feeling are the dominant and inferior
-functions, or Sensation and Intuition are, and one is Introverted and the other is Extraverted. For example, if the
-dominant function is introverted intuition, then the inferior function is extraverted sensation.
+The Dominant and Inferior cognitive functions are opposing: the pairs Thinking/Feeling or Sensation/Intuition are
+the Dominant/Inferior functions and they have different attitude types. For example, if the Dominant function is
+Introverted Intuition (Ni), the Inferior function is Extraverted Sensation (Se).
 
 #### Opposing Auxiliary & Tertiary Cognitive Functions
 
-The Auxiliary and Tertiary cognitive functions are also opposing, the same as Dominant and Inferior. For example, if the
-auxiliary function is extraverted thinking, then the tertiary function is introverted feeling.
+The Auxiliary and Tertiary cognitive functions are also opposing, using the same logic as Dominant and Inferior. For
+example, if the Auxiliary function is Extraverted Thinking (Te), the Tertiary function is Introverted Feeling (Fi).
 
 #### Opposing Dominant & Auxiliary Cognitive Functions
 
-The Dominant and Auxiliary cognitive functions are also opposing, where one is a Judging function while the other is
-a Perceiving function, and one is Introverted while the other is Extraverted. For example, if the dominant function is
-introverted intuition, then the auxiliary function is either extraverted thinking or extraverted feeling.
+The Dominant and Auxiliary cognitive functions are also opposing, with a small difference: one is from the Judging
+functions Thinking/Feeling and the other from the Perceiving functions Sensation/Intuition, and Dominant/Auxiliary
+functions must have different attitude types.
 
 #### Opposing Tertiary & Inferior Cognitive Functions
 
-The same opposing rules from the dominant & auxiliary cognitive functions apply to the tertiary and inferior cognitive
+The same opposing rules for Dominant/Auxiliary cognitive functions apply to Tertiary/Inferior cognitive
 functions.
 
 ### Understanding Personality Type Cognitive Functions
 
-The 8 personality types specify the primary (aka dominant) cognitive function
+The 8 personality types are uniquely defined by the Primary (aka Dominant) cognitive function and its attitude type.
+Consider Introverted Intuition (Ni) as an example. What are its 4 cognitive functions?
 
-For example, consider Introverted Intuition (Ni). What are the 4 cognitive functions?
-
-The Inferior function must be the opposite of Intuition, which is Sensation, and since the primary (dominant) function
+The Inferior function must be the opposite of Intuition, which is Sensation, and since the Primary (Dominant) function
 Intuition is introverted, the Inferior function must be Extraverted.
 
-- Primary: Intuition (Introverted)
+- Primary: Introverted Intuition (Ni)
 - Auxiliary: ?
 - Tertiary: ?
-- Inferior: Sensation (Extraverted)
+- Inferior: Extraverted Sensation (Se)
 
-What about the Auxiliary and Tertiary functions? The same rules of opposing pairs limits these values.
+What about the Auxiliary and Tertiary functions? The same rules of opposing pairs limits these values. Auxiliary
+function must have attitude type Extraverted and be one of the Judging (Rational) functions Thinking/Feeling, therefore
+Auxiliary must be Extraverted Thinking (Te) or Extraverted Feeling (Fe). Tertiary must have attitude type Introverted
+and must be the other Judging (Rational) function, therefore Tertiary must be Introverted Feeling (Fi) or Introverted
+Thinking (Ti).
 
-Since the Primary and Auxiliary cognitive functions are an opposing pair, the Auxiliary function must be a function
-opposite of irrational/perceiving, so it must be either Thinking or Feeling. And since the primary (dominant) function
-Intuition is introverted, the Auxiliary function must be Extraverted. The Tertiary function must be either
-Feeling (Introverted) or Thinking (Introverted), depending on what the Auxiliary function is.
+- Primary: Introverted Intuition (Ni)
+- Auxiliary: Extraverted Thinking (Te) or Extraverted Feeling (Fe)
+- Tertiary: Introverted Feeling (Fi) or Introverted Thinking (Ti)
+- Inferior: Extraverted Sensation (Se)
 
 ### Personality Type Cognitive Functions
 
