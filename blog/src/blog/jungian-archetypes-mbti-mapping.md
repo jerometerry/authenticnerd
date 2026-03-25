@@ -176,6 +176,31 @@ the cognitive function and the director are being "inverted": T <-> F, S <-> N, 
 | Extraverted Sensation | Se      | Ti or Fi  | Fe or Te | Ni       |
 | Extraverted Intuition | Ne      | Ti or Fi  | Fe or Te | Si       |
 
+### Personality Type Cognitive Functions - Extended
+
+Jung defined 8 personality types from the combination of the 4 cognitive functions and 2 attitude types. These 8
+personality types do not specify the Auxiliary / Tertiary cognitive functions. For completeness, here's the expanded
+set of personality types where the Auxiliary and Tertiary cognitive functions are specified.
+
+| Primary | Auxiliary | Tertiary | Inferior | Personality Type           |
+| ------- | --------- | -------- | -------- | -------------------------- |
+| Ti      | Se        | Ni       | Fe       | Introverted Thinking (Ti)  |
+| Ti      | Ne        | Si       | Fe       | Introverted Thinking (Ti)  |
+| Fi      | Se        | Ni       | Te       | Introverted Feeling (Fi)   |
+| Fi      | Ne        | Si       | Te       | Introverted Feeling (Fi)   |
+| Si      | Te        | Fi       | Ne       | Introverted Sensation (Si) |
+| Si      | Fe        | Ti       | Ne       | Introverted Sensation (Si) |
+| Ni      | Te        | Fi       | Se       | Introverted Intuition (Ni) |
+| Ni      | Fe        | Ti       | Se       | Introverted Intuition (Ni) |
+| Te      | Si        | Ne       | Fi       | Extraverted Thinking (Te)  |
+| Te      | Ni        | Se       | Fi       | Extraverted Thinking (Te)  |
+| Fe      | Si        | Ne       | Ti       | Extraverted Feeling (Fe)   |
+| Fe      | Ni        | Se       | Ti       | Extraverted Feeling (Fe)   |
+| Se      | Ti        | Fe       | Ni       | Extraverted Sensation (Se) |
+| Se      | Fi        | Te       | Ni       | Extraverted Sensation (Se) |
+| Ne      | Ti        | Fe       | Si       | Extraverted Intuition (Ne) |
+| Ne      | Fi        | Te       | Si       | Extraverted Intuition (Ne) |
+
 ## MBTI System
 
 [Wikipedia: Myers Briggs Type Indicator](https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator)
@@ -221,66 +246,87 @@ The Jungian Personality Type for INTJ looks like this
 
 ### MBTI to Personality Type Mapping
 
-| MBTI Type | Personality Type      | Primary | Auxiliary | Tertiary | Inferior |
-| --------- | --------------------- | ------- | --------- | -------- | -------- |
-| ISTJ      | Introverted Sensation | Si      | Te        | Fi       | Ne       |
-| ISTP      | Introverted Thinking  | Ti      | Se        | Ni       | Fe       |
-| ISFJ      | Introverted Sensation | Si      | Fe        | Ti       | Ne       |
-| ISFP      | Introverted Feeling   | Fi      | Se        | Ni       | Te       |
-| INTJ      | Introverted Intuition | Ni      | Te        | Fi       | Se       |
-| INTP      | Introverted Thinking  | Ti      | Ne        | Si       | Fe       |
-| INFJ      | Introverted Intuition | Ni      | Fe        | Ti       | Se       |
-| INFP      | Introverted Feeling   | Fi      | Ne        | Si       | Te       |
-| ESTJ      | Extraverted Thinking  | Te      | Si        | Ne       | Fi       |
-| ESTP      | Extraverted Sensation | Se      | Ti        | Fe       | Ni       |
-| ESFJ      | Extraverted Feeling   | Fe      | Si        | Ne       | Ti       |
-| ESFP      | Extraverted Sensation | Se      | Fi        | Te       | Ni       |
-| ENTJ      | Extraverted Thinking  | Te      | Ni        | Se       | Fi       |
-| ENTP      | Extraverted Intuition | Ne      | Ti        | Fe       | Si       |
-| ENFJ      | Extraverted Feeling   | Fe      | Ni        | Se       | Ti       |
-| ENFP      | Extraverted Intuition | Ne      | Fi        | Te       | Si       |
+| MBTI Type | Personality Type      | Primary | Auxiliary | Tertiary | Inferior | Name                  |
+| --------- | --------------------- | ------- | --------- | -------- | -------- | --------------------- |
+| ISTJ      | Introverted Sensation | Si      | Te        | Fi       | Ne       | Logistician/Inspector |
+| ISTP      | Introverted Thinking  | Ti      | Se        | Ni       | Fe       | Virtuoso/Craftsman    |
+| ISFJ      | Introverted Sensation | Si      | Fe        | Ti       | Ne       | Defender/Nurturer     |
+| ISFP      | Introverted Feeling   | Fi      | Se        | Ni       | Te       | Adventurer/Composer   |
+| INTJ      | Introverted Intuition | Ni      | Te        | Fi       | Se       | Architect/Mastermind  |
+| INTP      | Introverted Thinking  | Ti      | Ne        | Si       | Fe       | Logician/Thinker      |
+| INFJ      | Introverted Intuition | Ni      | Fe        | Ti       | Se       | Advocate/Counselor    |
+| INFP      | Introverted Feeling   | Fi      | Ne        | Si       | Te       | Mediator/Healer       |
+| ESTJ      | Extraverted Thinking  | Te      | Si        | Ne       | Fi       | Executive/Supervisor  |
+| ESTP      | Extraverted Sensation | Se      | Ti        | Fe       | Ni       | Entrepreneur/Doer     |
+| ESFJ      | Extraverted Feeling   | Fe      | Si        | Ne       | Ti       | Consul/Provider       |
+| ESFP      | Extraverted Sensation | Se      | Fi        | Te       | Ni       | Entertainer/Performer |
+| ENTJ      | Extraverted Thinking  | Te      | Ni        | Se       | Fi       | Commander/Leader      |
+| ENTP      | Extraverted Intuition | Ne      | Ti        | Fe       | Si       | Debater/Visionary     |
+| ENFJ      | Extraverted Feeling   | Fe      | Ni        | Se       | Ti       | Protagonist/Teacher   |
+| ENFP      | Extraverted Intuition | Ne      | Fi        | Te       | Si       | Campaigner/Champion   |
 
 ### MBTI to Personality Type Mapping - Ordered by Personality Type
 
-| MBTI Type | Personality Type      | Primary | Auxiliary | Tertiary | Inferior |
-| --------- | --------------------- | ------- | --------- | -------- | -------- |
-| ISTP      | Introverted Thinking  | Ti      | Se        | Ni       | Fe       |
-| INTP      | Introverted Thinking  | Ti      | Ne        | Si       | Fe       |
-| ISFP      | Introverted Feeling   | Fi      | Se        | Ni       | Te       |
-| INFP      | Introverted Feeling   | Fi      | Ne        | Si       | Te       |
-| ISTJ      | Introverted Sensation | Si      | Te        | Fi       | Ne       |
-| ISFJ      | Introverted Sensation | Si      | Fe        | Ti       | Ne       |
-| INTJ      | Introverted Intuition | Ni      | Te        | Fi       | Se       |
-| INFJ      | Introverted Intuition | Ni      | Fe        | Ti       | Se       |
-| ESTJ      | Extraverted Thinking  | Te      | Si        | Ne       | Fi       |
-| ENTJ      | Extraverted Thinking  | Te      | Ni        | Se       | Fi       |
-| ESFJ      | Extraverted Feeling   | Fe      | Si        | Ne       | Ti       |
-| ENFJ      | Extraverted Feeling   | Fe      | Ni        | Se       | Ti       |
-| ESTP      | Extraverted Sensation | Se      | Ti        | Fe       | Ni       |
-| ESFP      | Extraverted Sensation | Se      | Fi        | Te       | Ni       |
-| ENTP      | Extraverted Intuition | Ne      | Ti        | Fe       | Si       |
-| ENFP      | Extraverted Intuition | Ne      | Fi        | Te       | Si       |
+| MBTI Type | Personality Type      | Primary | Auxiliary | Tertiary | Inferior | Name                  |
+| --------- | --------------------- | ------- | --------- | -------- | -------- | --------------------- |
+| ISTP      | Introverted Thinking  | Ti      | Se        | Ni       | Fe       | Virtuoso/Craftsman    |
+| INTP      | Introverted Thinking  | Ti      | Ne        | Si       | Fe       | Logician/Thinker      |
+| ISFP      | Introverted Feeling   | Fi      | Se        | Ni       | Te       | Adventurer/Composer   |
+| INFP      | Introverted Feeling   | Fi      | Ne        | Si       | Te       | Mediator/Healer       |
+| ISTJ      | Introverted Sensation | Si      | Te        | Fi       | Ne       | Logistician/Inspector |
+| ISFJ      | Introverted Sensation | Si      | Fe        | Ti       | Ne       | Defender/Nurturer     |
+| INTJ      | Introverted Intuition | Ni      | Te        | Fi       | Se       | Architect/Mastermind  |
+| INFJ      | Introverted Intuition | Ni      | Fe        | Ti       | Se       | Advocate/Counselor    |
+| ESTJ      | Extraverted Thinking  | Te      | Si        | Ne       | Fi       | Executive/Supervisor  |
+| ENTJ      | Extraverted Thinking  | Te      | Ni        | Se       | Fi       | Commander/Leader      |
+| ESFJ      | Extraverted Feeling   | Fe      | Si        | Ne       | Ti       | Consul/Provider       |
+| ENFJ      | Extraverted Feeling   | Fe      | Ni        | Se       | Ti       | Protagonist/Teacher   |
+| ESTP      | Extraverted Sensation | Se      | Ti        | Fe       | Ni       | Entrepreneur/Doer     |
+| ESFP      | Extraverted Sensation | Se      | Fi        | Te       | Ni       | Entertainer/Performer |
+| ENTP      | Extraverted Intuition | Ne      | Ti        | Fe       | Si       | Debater/Visionary     |
+| ENFP      | Extraverted Intuition | Ne      | Fi        | Te       | Si       | Campaigner/Champion   |
 
 ### MBTI to Personality Type Mapping - Ordered by Functional Pair
 
-| MBTI Type | Personality Type      | Primary | Auxiliary | Tertiary | Inferior |
-| --------- | --------------------- | ------- | --------- | -------- | -------- |
-| ISTP      | Introverted Thinking  | Ti      | Se        | Ni       | Fe       |
-| ISTJ      | Introverted Sensation | Si      | Te        | Fi       | Ne       |
-| ESTP      | Extraverted Sensation | Se      | Ti        | Fe       | Ni       |
-| ESTJ      | Extraverted Thinking  | Te      | Si        | Ne       | Fi       |
-| ISFP      | Introverted Feeling   | Fi      | Se        | Ni       | Te       |
-| ISFJ      | Introverted Sensation | Si      | Fe        | Ti       | Ne       |
-| ESFP      | Extraverted Sensation | Se      | Fi        | Te       | Ni       |
-| ESFJ      | Extraverted Feeling   | Fe      | Si        | Ne       | Ti       |
-| INTP      | Introverted Thinking  | Ti      | Ne        | Si       | Fe       |
-| INTJ      | Introverted Intuition | Ni      | Te        | Fi       | Se       |
-| ENTP      | Extraverted Intuition | Ne      | Ti        | Fe       | Si       |
-| ENTJ      | Extraverted Thinking  | Te      | Ni        | Se       | Fi       |
-| INFP      | Introverted Feeling   | Fi      | Ne        | Si       | Te       |
-| INFJ      | Introverted Intuition | Ni      | Fe        | Ti       | Se       |
-| ENFP      | Extraverted Intuition | Ne      | Fi        | Te       | Si       |
-| ENFJ      | Extraverted Feeling   | Fe      | Ni        | Se       | Ti       |
+| MBTI Type | Personality Type      | Primary | Auxiliary | Tertiary | Inferior | Name                  |
+| --------- | --------------------- | ------- | --------- | -------- | -------- | --------------------- |
+| ISTP      | Introverted Thinking  | Ti      | Se        | Ni       | Fe       | Virtuoso/Craftsman    |
+| ISTJ      | Introverted Sensation | Si      | Te        | Fi       | Ne       | Logistician/Inspector |
+| ESTP      | Extraverted Sensation | Se      | Ti        | Fe       | Ni       | Entrepreneur/Doer     |
+| ESTJ      | Extraverted Thinking  | Te      | Si        | Ne       | Fi       | Executive/Supervisor  |
+| ISFP      | Introverted Feeling   | Fi      | Se        | Ni       | Te       | Adventurer/Composer   |
+| ISFJ      | Introverted Sensation | Si      | Fe        | Ti       | Ne       | Defender/Nurturer     |
+| ESFP      | Extraverted Sensation | Se      | Fi        | Te       | Ni       | Entertainer/Performer |
+| ESFJ      | Extraverted Feeling   | Fe      | Si        | Ne       | Ti       | Consul/Provider       |
+| INTP      | Introverted Thinking  | Ti      | Ne        | Si       | Fe       | Logician/Thinker      |
+| INTJ      | Introverted Intuition | Ni      | Te        | Fi       | Se       | Architect/Mastermind  |
+| ENTP      | Extraverted Intuition | Ne      | Ti        | Fe       | Si       | Debater/Visionary     |
+| ENTJ      | Extraverted Thinking  | Te      | Ni        | Se       | Fi       | Commander/Leader      |
+| INFP      | Introverted Feeling   | Fi      | Ne        | Si       | Te       | Mediator/Healer       |
+| INFJ      | Introverted Intuition | Ni      | Fe        | Ti       | Se       | Advocate/Counselor    |
+| ENFP      | Extraverted Intuition | Ne      | Fi        | Te       | Si       | Campaigner/Champion   |
+| ENFJ      | Extraverted Feeling   | Fe      | Ni        | Se       | Ti       | Protagonist/Teacher   |
+
+### Personality Type to MBTI Mapping
+
+| Personality Type           | Primary | Auxiliary | Tertiary | Inferior | MBTI Type |
+| -------------------------- | ------- | --------- | -------- | -------- | --------- |
+| Introverted Thinking (Ti)  | Ti      | Se        | Ni       | Fe       | ISTP      |
+| Introverted Thinking (Ti)  | Ti      | Ne        | Si       | Fe       | INTP      |
+| Introverted Feeling (Fi)   | Fi      | Se        | Ni       | Te       | ISFP      |
+| Introverted Feeling (Fi)   | Fi      | Ne        | Si       | Te       | INFP      |
+| Introverted Sensation (Si) | Si      | Te        | Fi       | Ne       | ISTJ      |
+| Introverted Sensation (Si) | Si      | Fe        | Ti       | Ne       | ISFJ      |
+| Introverted Intuition (Ni) | Ni      | Te        | Fi       | Se       | INTJ      |
+| Introverted Intuition (Ni) | Ni      | Fe        | Ti       | Se       | INFJ      |
+| Extraverted Thinking (Te)  | Te      | Si        | Ne       | Fi       | ESTJ      |
+| Extraverted Thinking (Te)  | Te      | Ni        | Se       | Fi       | ENTJ      |
+| Extraverted Feeling (Fe)   | Fe      | Si        | Ne       | Ti       | ESFJ      |
+| Extraverted Feeling (Fe)   | Fe      | Ni        | Se       | Ti       | ENFJ      |
+| Extraverted Sensation (Se) | Se      | Ti        | Fe       | Ni       | ESTP      |
+| Extraverted Sensation (Se) | Se      | Fi        | Te       | Ni       | ESFP      |
+| Extraverted Intuition (Ne) | Ne      | Ti        | Fe       | Si       | ENTP      |
+| Extraverted Intuition (Ne) | Ne      | Fi        | Te       | Si       | ENFP      |
 
 ## My Confusion with the MBTI System
 
