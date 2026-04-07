@@ -289,6 +289,8 @@ Here's the new cam gear design in action.
 
 ## Build Progress
 
+### Unboxing
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-1.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-2.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-3.png)
@@ -300,16 +302,27 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-9.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-10.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-11.png)
+
+### Bag #1 - Steps 1-16
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-12.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-13.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-14.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-15.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-16.png)
+
+### Bag #2 - Steps 17-35
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-17.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-18.png)
+
+### Bag #3 - Steps 36-58
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-19.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-20.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-21.png)
+
+### Bag #4 - Steps 59-78
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-22.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-23.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-24.png)
@@ -325,6 +338,9 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-34.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-35.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-36.png)
+
+### Bag #5 - Steps 79-89
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-37.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-38.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-39.png)
@@ -332,10 +348,16 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-41.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-42.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-43.png)
+
+### Bag #6 - Steps 90-103
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-44.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-45.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-46.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-47.png)
+
+### Bag #7 - Steps 104-134
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-48.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-49.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-50.png)
@@ -363,15 +385,23 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-72.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-73.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-74.png)
+
+### Bag #8 - Steps 135-161
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-75.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-76.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-77.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-78.png)
+
+### Bag #9 - Steps 162-178
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-79.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-83.png)
+
+### Bags #10 & #11 - Steps 179-208
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-80.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-81.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-82.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-83.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-84.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-85.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-86.png)
@@ -379,10 +409,19 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-88.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-89.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-90.png)
+
+### Bag #12 - Steps 209-230
+
+The o-rings in bag #40 (the bag with the number 8 on the front) act as valve springs in the cylinder head
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-91.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-82.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-92.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-93.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-94.png)
+
+### Bag #13 - Steps 231-243
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-95.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-96.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-97.png)
@@ -393,6 +432,9 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-102.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-103.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-104.png)
+
+### Bag #14 - Steps 244-269
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-105.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-106.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-107.png)
@@ -407,19 +449,31 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-116.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-117.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-118.png)
+
+### Bag #15 - Steps 270-298
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-119.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-120.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-121.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-122.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-123.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-124.png)
+
+### Bag #16 - Steps 299-314
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-125.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-126.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-127.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-128.png)
+
+### Bag #17 - Steps 315-330
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-129.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-130.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-131.png)
+
+### Bag #18 - Steps 331-345
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-132.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-133.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-134.png)
@@ -428,6 +482,9 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-137.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-138.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-139.png)
+
+### Bags #19 & #20 - Steps 346-376
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-140.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-141.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-142.png)
@@ -439,6 +496,9 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-148.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-149.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-150.png)
+
+### Bags #21 & #22 - Steps 377-421
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-151.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-152.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-153.png)
@@ -453,13 +513,22 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-162.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-163.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-164.png)
+
+### Bags #23 & #24 - Steps 422-450
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-165.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-166.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-167.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-168.png)
+
+### Bag #25 - Steps 451-479
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-169.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-170.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-171.png)
+
+### Bag #26 - Steps 480-487
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-172.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-173.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-174.png)
@@ -470,14 +539,23 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-179.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-180.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-181.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-182.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-183.png)
+
+### Bags #27 & #28 - Steps 488-507
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-184.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-185.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-182.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-183.png)
+
+### Bag #29 - Steps 508-519
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-186.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-187.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-188.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-189.png)
+
+#### Addressing Clearance Issues
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-190.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-191.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-192.png)
@@ -507,32 +585,52 @@ Here's the new cam gear design in action.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-216.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-217.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-218.png)
+
+### Bag #30 - Steps 520-549
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-219.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-220.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-221.png)
+
+### Bags #31 & #32 - Steps 550-594
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-222.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-223.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-224.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-225.png)
+
+### Bag #33 - Steps 595-609
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-226.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-227.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-228.png)
+
+### Bags #34-39 - Steps 610-767 (Engine Cover)
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-229.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-230.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-231.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-236.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-232.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-233.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-234.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-235.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-236.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-237.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-238.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-239.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-240.png)
+
+### "Install Engine Cover"
+
+The final step of the build is to lay the engine cover on top of the engine.
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-241.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-242.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-243.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-244.png)
+
+### Attempting to fix cam gear issues
+
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-245.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-246.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-247.png)
