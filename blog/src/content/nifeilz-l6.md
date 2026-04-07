@@ -21,7 +21,7 @@ accessories, including a turbo. It's a realistic looking engine.
 <div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/t_5ioJQE3K8" 
+    src="https://www.youtube-nocookie.com/embed/t_5ioJQE3K8" 
     title="NifeilZ L6 Engine Short" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -33,7 +33,7 @@ accessories, including a turbo. It's a realistic looking engine.
 <div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/wQf3S_dp0K4"
+    src="https://www.youtube-nocookie.com/embed/wQf3S_dp0K4"
     title="NifeilZ L6 Engine Short" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -126,7 +126,7 @@ procedure as part of the assembly process, to save the future aggravation.
 <div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/7REFHNrqH4o" 
+    src="https://www.youtube-nocookie.com/embed/7REFHNrqH4o" 
     title="NifeilZ L6 Engine in Action" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -138,7 +138,7 @@ procedure as part of the assembly process, to save the future aggravation.
 <div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/Ogu5lkGVQHs" 
+    src="https://www.youtube-nocookie.com/embed/Ogu5lkGVQHs" 
     title="NifeilZ L6 Engine in Action" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -150,7 +150,7 @@ procedure as part of the assembly process, to save the future aggravation.
 <div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/As8I3IsBRTs" 
+    src="https://www.youtube-nocookie.com/embed/As8I3IsBRTs" 
     title="NifeilZ L6 Engine in Action" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -162,7 +162,7 @@ procedure as part of the assembly process, to save the future aggravation.
 <div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/KlRA9JJKL4c" 
+    src="https://www.youtube-nocookie.com/embed/KlRA9JJKL4c" 
     title="NifeilZ L6 Engine in Action" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -254,7 +254,7 @@ Here's the new cam gear design in action.
 <div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/9K1zd7YWwd0" 
+    src="https://www.youtube-nocookie.com/embed/9K1zd7YWwd0" 
     title="NifeilZ L6 Engine Short" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -266,7 +266,7 @@ Here's the new cam gear design in action.
 <div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/B0vEnItLp_Q" 
+    src="https://www.youtube-nocookie.com/embed/B0vEnItLp_Q" 
     title="NifeilZ L6 Engine in Action" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -278,7 +278,7 @@ Here's the new cam gear design in action.
 <div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
-    src="https://www.youtube.com/embed/mspT93cUZGw" 
+    src="https://www.youtube-nocookie.com/embed/mspT93cUZGw" 
     title="NifeilZ L6 Engine Short" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
