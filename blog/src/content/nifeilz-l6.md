@@ -18,7 +18,7 @@ accessories, including a turbo. It's a realistic looking engine.
 
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-241.png)
 
-<div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
+<div class="aspect-9/16 w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
     src="https://www.youtube-nocookie.com/embed/t_5ioJQE3K8" 
@@ -30,7 +30,7 @@ accessories, including a turbo. It's a realistic looking engine.
   </iframe>
 </div>
 
-<div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
+<div class="aspect-9/16 w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
     src="https://www.youtube-nocookie.com/embed/wQf3S_dp0K4"
@@ -46,8 +46,8 @@ accessories, including a turbo. It's a realistic looking engine.
 
 ### Knots in Plastic Hoses
 
-The plastic hoses being tied in knots during packaging that detract from the look of the engine once the knots are
-undone. The engine cover seems to be meant to just lay on top of the engine, which was infuriating to me.
+The plastic hoses were tied in knots during packaging, which detracts from the look of the engine once the knots are
+undone.
 
 ### Engine Cover
 
@@ -62,7 +62,7 @@ believe it. I was able to find enough left over parts to rig something up, but i
 
 The assembly instructions did not go into depth on proper crank and piston alignment procedures. The existing steps
 have you assemble the crank and pistons and add it to the engine frame, then assemble the engine block and cylinder
-head, and install it over top of the pistons. By the time you get the to steps where the gears are added to the engine
+head, and install it over top of the pistons. By the time you get to the steps where the gears are added to the engine
 to allow spinning the crank inside the block, any alignment issues are nearly impossible to fix since access to the
 crank / pistons is now completely covered up and you have to strip away the cylinder head and all exterior engine
 components that are attached to the engine block so you can see the crank lobes. Even then, the bottom side of the
@@ -115,7 +115,7 @@ What I had to do was check each engine block cross member and ensure there was e
 I also had to check that the connectors were not protruding. This needs to be done iteratively, because adjusting
 clearance in one cylinder can change clearances in other cylinders. There isn't a whole lot of room for adjustment.
 
-During assembly, the alignments and clearances can change as components are move around. Adding the head, attaching
+During assembly, the alignments and clearances can change as components are moved around. Adding the head, attaching
 the block to the frame, attaching the gears are all examples of things that can change clearances ever so slightly. The
 crank can move forward and backward during assembly. Engine block structural members can move around slightly until
 they are fully aligned / seated.
@@ -214,7 +214,7 @@ design, in perfect alignment.
 I changed the design again after this. My design has 2 small gears on the cam intermeshed, below an small idler gear is
 intermeshed with one of the cam gears (so it drives both cams), and on that same pin another small gear. Below the 2
 doubled up idler gears, the large gear is intermeshed with the outer idler gear above. Since the large gear is mounted
-on as short of a pin and as sturdy as possible, it keeps the gears in contact with the cam. On in inside of the pin
+on as short of a pin and as sturdy as possible, it keeps the gears in contact with the cam. On the inside of the pin
 where the large gear is a small gear. Both these gears are on the same pin, and are structurally sound. Since I removed
 one chain, the chain from the crank to the first idler pulley is now too short. But I have the other chain, so I made
 the chain attached to the crank longer.
@@ -222,13 +222,13 @@ the chain attached to the crank longer.
 It works much better now! One chain connecting 2 small gears, as close to the engine block as I could get to reduce
 leverage action on the gears. The small idler gear that is connected to the crank by the chain has the large gear on
 the same pin. This larger gear is intermeshed with another small idler gear that's on a double idler pin with another
-small gear on the inside that's intermeshed with the 2 cam gears. This design requires less parts overall, and actually
+small gear on the inside that's intermeshed with the 2 cam gears. This design requires fewer parts overall, and actually
 works.
 
-While 2 chains looks cooler, I prefer it to actually work and be reliable. I have ordered some techniq's bricks from
+While 2 chains looks cooler, I prefer it to actually work and be reliable. I have ordered some Technic bricks from
 Amazon which I want to explore making the rear of the engine better. There weren't enough gears included with the
 NifeilZ kit to eliminate the chain altogether. I am going to try to make the crank and the cams connected with direct
-gear drives, making the rear completely bullet proof. That lets me use gear ratios to make the engine turn over much
+gear drives, making the rear completely bulletproof. That lets me use gear ratios to make the engine turn over much
 smoother.
 
 Removed the 2 cam gears and the idler gears to assess the design
@@ -251,7 +251,7 @@ replace it with a direct gear drive.
 
 Here's the new cam gear design in action.
 
-<div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
+<div class="aspect-9/16 w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
     src="https://www.youtube-nocookie.com/embed/9K1zd7YWwd0" 
@@ -275,7 +275,7 @@ Here's the new cam gear design in action.
   </iframe>
 </div>
 
-<div class="aspect-[9/16] w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
+<div class="aspect-9/16 w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
   <iframe 
     class="w-full h-full"
     src="https://www.youtube-nocookie.com/embed/mspT93cUZGw" 
