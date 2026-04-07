@@ -162,3 +162,12 @@ brew upgrade
 I build systems that work, and I write about the journey of living authentically in a digital world.
 
 [Visit the Blog](https://authenticnerd.com)
+
+## ⚖️ License
+
+This project uses a dual-license:
+
+- **The Code:** MIT License. You are free to use the Astro architecture, custom components, and deployment scripts for
+  your own projects.
+- **The Content:** CC BY-NC-ND 4.0. All blog posts, articles, and original photography belong to Jerome Terry. You may
+  share them with attribution, but you may not monetize them or distribute remixed versions.
