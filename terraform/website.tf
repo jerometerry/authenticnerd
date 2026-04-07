@@ -60,7 +60,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers" {
     }
 
     content_security_policy {
-      content_security_policy = "default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+      content_security_policy = "default-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com;"
       override                = true
     }
   }
