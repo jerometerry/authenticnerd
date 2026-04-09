@@ -2,14 +2,23 @@
 
 if [ -z "$1" ]; then
     echo "Error: No prefix provided."
-    echo "Usage: ./convert-heic-to-png.sh <prefix>"
-    echo "Example: ./convert-heic-to-png.sh nifeilz-l6-"
+    echo "Usage: ./convert-heic-to-png.sh <prefix> <dir>"
+    echo "Example: ./convert-heic-to-png.sh nifeilz-l6- ./"
     exit 1
 fi
 
 PREFIX="$1"
 
-mkdir -p converted_pngs
+if [ -z "$2" ]; then
+    echo "Error: No working directory provided."
+    echo "Usage: ./convert-heic-to-png.sh <prefix> <dir>"
+    echo "Example: ./convert-heic-to-png.sh nifeilz-l6- ./"
+    exit 1
+fi
+
+WORKING_DIR="$2"
+
+mkdir -p "${WORKING_DIR}"/converted_pngs
 
 N=1
 
@@ -17,16 +26,16 @@ shopt -s nocaseglob nullglob
 
 echo "Starting conversion with prefix: '${PREFIX}'..."
 
-for file in *IMG_*.HEIC; do
+for file in "${WORKING_DIR}"/*IMG_*.HEIC; do
     output_name="converted_pngs/${PREFIX}${N}.png"
 
     if command -v sips &> /dev/null; then
         echo "Converting: $file -> ${PREFIX}${N}.png"
-        sips -s format png "$file" --out "$output_name" > /dev/null
+        sips -s format png "$file" --out "$WORKING_DIR/$output_name" > /dev/null
         
     elif command -v magick &> /dev/null; then
         echo "Converting: $file -> ${PREFIX}${N}.png"
-        magick "$file" "$output_name"
+        magick "$file" "$WORKING_DIR/$output_name"
         
     else
         echo "Error: Conversion tool not found."
