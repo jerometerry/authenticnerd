@@ -42,6 +42,18 @@ accessories, including a turbo. It's a realistic looking engine.
   </iframe>
 </div>
 
+<div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
+  <iframe 
+    class="w-full h-full"
+    src="https://www.youtube-nocookie.com/embed/WtR_3Nr7-0c" 
+    title="NifeilZ L6 Engine in Action" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
 ## Fit and Finish Issues
 
 ### Knots in Plastic Hoses
