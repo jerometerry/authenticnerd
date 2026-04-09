@@ -653,3 +653,18 @@ The final step of the build is to lay the engine cover on top of the engine.
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-252.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-253.png)
 ![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-254.png)
+
+### Replace Cam Gear chain drive with gear drive
+
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-255.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-256.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-257.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-258.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-259.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-260.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-261.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-262.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-263.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-264.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-265.png)
+![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-266.png)
