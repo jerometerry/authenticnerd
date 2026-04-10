@@ -3,7 +3,7 @@
 if [ -z "$1" ]; then
     echo "Error: No prefix provided."
     echo "Usage: ./convert-heic-to-png.sh <prefix> <dir>"
-    echo "Example: ./convert-heic-to-png.sh nifeilz-l6- ./"
+    echo "Example: ./convert-heic-to-png.sh nifeilz-l6- ./ 1"
     exit 1
 fi
 
@@ -12,7 +12,7 @@ PREFIX="$1"
 if [ -z "$2" ]; then
     echo "Error: No working directory provided."
     echo "Usage: ./convert-heic-to-png.sh <prefix> <dir>"
-    echo "Example: ./convert-heic-to-png.sh nifeilz-l6- ./"
+    echo "Example: ./convert-heic-to-png.sh nifeilz-l6- ./ 1"
     exit 1
 fi
 
@@ -20,7 +20,14 @@ WORKING_DIR="$2"
 
 mkdir -p "${WORKING_DIR}"/converted_pngs
 
-N=1
+if [ -z "$3" ]; then
+    echo "Error: No start id provided."
+    echo "Usage: ./convert-heic-to-png.sh <prefix> <dir> <start_num>"
+    echo "Example: ./convert-heic-to-png.sh nifeilz-l6- ./ 1"
+    exit 1
+fi
+
+N=$3
 
 shopt -s nocaseglob nullglob
 
