@@ -10,15 +10,52 @@ image:
 tags: ["analog", "fun", "systems-thinking", "engineering"]
 ---
 
-## Overview
+## NifeliZ L6 Engine Kit
 
-NifeilZ L6 Model Engine was a great building experience. I enjoyed the build, for the most part. The engine looks
-great. It's a decent size too: 15 inches long, 7 inches wide, 10 inches high. The front of the engine has several
-accessories, including a turbo. It's a realistic looking engine.
+After thoroughly enjoying the LEGO® Back to the Future
+[DeLorean build](https://authenticnerd.com/posts/back-to-the-future/), I wanted to find a more challenging automotive
+inspired LEGO® kit to build. Nothing currently available struck my fancy.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-241.png)
+I found the NifeliZ L6 Engine kit on [Amazon](https://www.amazon.ca/dp/B0FHDLBM55) ($140 CAD / $100 USD) thought it
+looked interesting and went ahead and purchased it. There is also a V8 version. I chose the inline 6 model because I
+have Paul Walker's Toyota Supra Technic build on my shelf, and I thought a 2JZ-style engine would complement it
+perfectly.
 
-To see detailed pics of the build process check out my post [NifeilZ L6 Photos](/posts/nifeilz-l6-photos).
+The NifeliZ L6 Engine Model is a LEGO® Technic inspired take on the inline 6 engine. Here's the NifeliZ marketing
+material:
+
+- [NifeliZ L6 Engine Product Website](https://www.nifeliz.com/nifeliz_product_l6-engine/)
+- [NifeliZ L6 Engine Promo Video](https://www.youtube.com/watch?v=ySQPRgM7hbM)
+
+While I’ve shared quite a few custom modifications and redesigns in my videos, I want to give proper credit to Nifeliz
+for the foundation—it’s a great building experience and serves as a fantastic canvas for any mechanical enthusiast.
+
+At 15 inches long, 7 inches wide, and 10 inches high, the model is a substantial presence on a desk or workbench. It
+features a realistic aesthetic, including a turbocharger and several front-end accessories.
+
+However, as a systems architect, I couldn't help but poke at the boundaries of the design. During the build, I
+encountered significant clearance issues that were difficult to diagnose. Because these binding problems only became
+obvious once the engine was nearly fully assembled, I had to perform a complete teardown back to the short block to
+visualize exactly where the mechanical interference was occurring.
+
+### The Architectural Challenge
+
+The stock cam drive system utilizes two chains. While it looks incredible, it revealed a significant design flaw under
+high torque. The force required to spin the engine created more twisting stress than the plastic chains and the
+single-pin idler gears could handle. Without a native tensioner, the only way to tighten the drive is to remove links;
+however, this added tension pulls the idler pin downward, causing the gears to lose contact with the left camshaft.
+
+### Redesign and Testing
+
+To solve this, I used some additional Technic-style parts to completely rebuild the cam drive into a fully gear-driven
+system, eliminating the chains entirely. I’ve since tested the durability of this redesign using a cordless drill to
+ensure the timing and clearance hold up under stress.
+
+My next step is exploring a Technic motor integration, specifically looking for a motor with an RPM range that respects
+the friction limits of the plastic components.
+
+> **Full Build Log:** To see a chronological, bag-by-bag visual walkthrough of the entire assembly, check out my post
+> [NifeilZ L6 Photos](https://authenticnerd.com/posts/nifeilz-l6-photos/).
 
 ## Engine Demo Videos
 
