@@ -17,4 +17,8 @@ export default defineConfig({
       wrap: true,
     },
   },
+  redirects: {
+    '/posts/nifeilz-l6': '/posts/nifeliz-l6',
+    '/posts/nifeilz-l6-photos': '/posts/nifeliz-l6-photos',
+  }
 });
