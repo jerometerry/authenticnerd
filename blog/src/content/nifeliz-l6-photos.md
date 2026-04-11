@@ -10,9 +10,29 @@ image:
 tags: ["analog", "fun", "systems-thinking", "engineering"]
 ---
 
+Below is a time-lapse of the NifeliZ L6 Engine Build.
+
 While this page documents every step of the build, the real magic happened during the troubleshooting phase. If you
-want to see how I solved the cylinder 6 binding issues and redesigned the rear gear train, check out my post
-[NifeliZ L6 Model Engine](/posts/nifeliz-l6).
+want to see how I solved the cylinder 6 binding issues and redesigned the rear gear train, check out my posts
+[NifeliZ L6 Model Engine](/posts/nifeliz-l6) and
+[NifeliZ L6 Model Engine Cam Drive System Redesign](/posts/nifeliz-l6-cam-drive-mods).
+
+I purchased the NifeliZ L6 Engine kit on [Amazon](https://www.amazon.ca/dp/B0FHDLBM55) for $140 CAD ($100 USD).
+If you're interested in the kit, check out the NifeliZ
+[L6 Engine Website](https://www.nifeliz.com/nifeliz_product_l6-engine/) and the YouTube
+[Promo Video](https://www.youtube.com/watch?v=ySQPRgM7hbM).
+
+## Assembly Manual
+
+The assembly manual is monstrous, weighing in at 3 lbs and measuring nearly a foot wide! Width: 11.5 inches;
+Height: 10 inches; Thickness: 0.75 inches.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-5.png)
+
+There are 283 pages of detailed instructions broken up into 767 steps. The kit has 2,820 pieces sealed in 40 separated
+bags.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-7.png)
 
 ## Quick Navigation
 
@@ -47,6 +67,8 @@ want to see how I solved the cylinder 6 binding issues and redesigned the rear g
 
 _(Chronological assembly photos from unboxing to completion)_
 
+[Back to Navigation](#quick-navigation)
+
 ### Unboxing
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-1.png)
@@ -61,6 +83,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-10.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-11.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #1 - Steps 1-16
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-12.png)
@@ -68,16 +92,22 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-14.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-16.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #2 - Steps 17-35
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-17.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-18.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bag #3 - Steps 36-58
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-19.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-20.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-21.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bag #4 - Steps 59-78
 
@@ -96,6 +126,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-35.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-36.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #5 - Steps 79-89
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-37.png)
@@ -105,12 +137,16 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-42.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-43.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #6 - Steps 90-103
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-44.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-45.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-46.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-47.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bag #7 - Steps 104-134
 
@@ -142,6 +178,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-73.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-74.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #8 - Steps 135-161
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-75.png)
@@ -149,10 +187,14 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-77.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-78.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #9 - Steps 162-178
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-79.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-83.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bags #10 & #11 - Steps 179-208
 
@@ -166,6 +208,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-89.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-90.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #12 - Steps 209-230
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-91.png)
@@ -173,6 +217,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-92.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-93.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-94.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bag #13 - Steps 231-243
 
@@ -186,6 +232,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-102.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-103.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-104.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bag #14 - Steps 244-269
 
@@ -204,6 +252,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-117.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-118.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #15 - Steps 270-298
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-119.png)
@@ -213,6 +263,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-123.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-124.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #16 - Steps 299-314
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-125.png)
@@ -220,11 +272,15 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-127.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-128.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #17 - Steps 315-330
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-129.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-130.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-131.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bag #18 - Steps 331-345
 
@@ -236,6 +292,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-137.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-138.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-139.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bags #19 & #20 - Steps 346-376
 
@@ -250,6 +308,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-148.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-149.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-150.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bags #21 & #22 - Steps 377-421
 
@@ -268,6 +328,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-163.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-164.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bags #23 & #24 - Steps 422-450
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-165.png)
@@ -275,11 +337,15 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-167.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-168.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #25 - Steps 451-479
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-169.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-170.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-171.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bag #26 - Steps 480-487
 
@@ -294,6 +360,8 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-180.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-181.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bags #27 & #28 - Steps 488-507
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-184.png)
@@ -301,17 +369,23 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-182.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-183.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #29 - Steps 508-519
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-186.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-188.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-189.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #30 - Steps 520-549
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-219.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-220.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-221.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bags #31 & #32 - Steps 550-594
 
@@ -320,11 +394,15 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-224.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-225.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Bag #33 - Steps 595-609
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-226.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-227.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-228.png)
+
+[Back to Navigation](#quick-navigation)
 
 ### Bags #34-39 - Steps 610-767 (Engine Cover)
 
@@ -341,9 +419,13 @@ _(Chronological assembly photos from unboxing to completion)_
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-239.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-240.png)
 
+[Back to Navigation](#quick-navigation)
+
 ### Install Engine Cover
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-241.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-242.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-243.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-244.png)
+
+[Back to Navigation](#quick-navigation)
