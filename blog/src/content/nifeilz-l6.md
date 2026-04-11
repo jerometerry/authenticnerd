@@ -1,12 +1,12 @@
 ---
-title: "NifeilZ L6 Model Engine"
+title: "NifeliZ L6 Model Engine"
 pubDate: 2026-04-06
-subtitle: "Assembling the NifeilZ L6: A hands-on dive into mechanical systems and engine architecture."
-description: "A visual walkthrough of building the intricate NifeilZ L6 model engine. Assembling pistons, gears, and camshafts block by block."
+subtitle: "Assembling the NifeliZ L6: A hands-on dive into mechanical systems and engine architecture."
+description: "A visual walkthrough of building the intricate NifeliZ L6 model engine. Assembling pistons, gears, and camshafts block by block."
 author: "Jerome Terry"
 image:
-  url: "lego/nifeilz-l6/nifeilz-l6-244.png"
-  alt: "Picture of the assembled Nifeilz L6 model engine"
+  url: "lego/NifeliZ-l6/NifeliZ-l6-244.png"
+  alt: "Picture of the assembled NifeliZ L6 model engine"
 tags: ["analog", "fun", "systems-thinking", "engineering"]
 ---
 
@@ -55,7 +55,7 @@ My next step is exploring a Technic motor integration, specifically looking for 
 the friction limits of the plastic components.
 
 > **Full Build Log:** To see a chronological, bag-by-bag visual walkthrough of the entire assembly, check out my post
-> [NifeilZ L6 Photos](https://authenticnerd.com/posts/nifeilz-l6-photos/).
+> [NifeliZ L6 Photos](https://authenticnerd.com/posts/NifeliZ-l6-photos/).
 
 ## Engine Demo Videos
 
@@ -67,7 +67,7 @@ Here's a quick clip where I manually turn the engine over, viewed from the rear 
   <iframe 
     class="w-full h-full"
     src="https://www.youtube-nocookie.com/embed/t_5ioJQE3K8" 
-    title="NifeilZ L6 Engine Short" 
+    title="NifeliZ L6 Engine Short" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     referrerpolicy="strict-origin-when-cross-origin"
@@ -83,7 +83,7 @@ Here's another clip where I manually turn the engine over, viewed from the front
   <iframe 
     class="w-full h-full"
     src="https://www.youtube-nocookie.com/embed/wQf3S_dp0K4"
-    title="NifeilZ L6 Engine Short" 
+    title="NifeliZ L6 Engine Short" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     referrerpolicy="strict-origin-when-cross-origin"
@@ -121,14 +121,14 @@ Even then, the bottom side of the engine has zero visibility. Visualizing the bi
 Here's the crank assembled without pistons attached, and then installed in the frame. I turned the frame upside down to
 see how the pistons might look in their bores once the engine block is installed.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-31.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-38.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-31.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-38.png)
 
 Before I realized the binding issues, I was on bag 29 out of 40. Here's what I could see—not much at all. I had to tear
 down to find the problems.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-187.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-196.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-187.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-196.png)
 
 The other side of the engine block had better visibility and gives a nice view of the pistons, but I still couldn't see
 exactly where the binding was happening; I could only hear it.
@@ -137,8 +137,8 @@ I eventually noticed some crank lobes were hitting engine block cross members. A
 pieces using a connector. If that light gray connector on the midline protrudes too far, it can either hit the piston
 connecting rod or the engine block cross member.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-200.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-203.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-200.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-203.png)
 
 What I had to do was check each engine block cross member and ensure there was enough clearance. This needs to be done
 iteratively, because adjusting clearance in one cylinder can change clearances in other cylinders.
@@ -155,10 +155,10 @@ central idler acts as a lever, and the tension pulls the idler gears down toward
 so the cams stop turning entirely.
 
 **Front View**
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-216.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-216.png)
 
 **Side View**
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-217.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-217.png)
 
 _The original, flawed chain-drive configuration from the manual._
 
@@ -173,11 +173,11 @@ fixed position.
 
 Here's a few pics I took while I did a small structural change to implement the exoskeleton. What a monster. lol.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-247.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-248.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-249.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-250.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-251.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-247.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-248.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-249.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-250.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-251.png)
 
 This worked better than I expected. If it works, is it really a dumb idea? lol. I couldn't leave it like this.
 
@@ -189,11 +189,11 @@ which causes the cylinder 6 connection rod to bind when rotating through the cra
 Here's a good view of a piston, connecting rod, and crank lobes. There are 4 oval shaped pieces, 2 on either side of
 the connecting rod.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-202.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-202.png)
 
 Here's a view of the connecting rod and crank lobes during initial assembly.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-26.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-26.png)
 
 The binding issue can be seen clearly in this picture. Look at the connecting rod on the bottom. The 2 crank lobes on
 the bottom aren't connected to anything at this point of the build. Focus on the other 2 crank lobes on the upper side
@@ -214,6 +214,32 @@ engine over are examples of forces that are enough to cause the crank / rod bind
 To prevent the cylinder 6 binding issue, I added 3 small collars around the crankshaft pin, that provide resistance and
 help prevent the crankshaft from protruding through the cylinder 6 crank lobes.
 
+### Checking Clearances and Reattaching Pistons
+
+**Checking for Crank Protrusion in Cylinder 6**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-298.png)
+
+**Purposely Causing Cylinder 6 Crank Protrusion**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-299.png)
+
+**View with crank gear and collar added**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-301.png)
+
+**View of cylinder 6 crank lobe after installing crank gear and collar with too much force**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-302.png)
+
+**View of drill attached to crank, to test clearances**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-303.png)
+
+**View of engine upside down while reattaching cylinder 6 piston to connecting rod**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-304.png)
+
+**Up close view of upside down engine, moving piston up to meet connecting rod**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-305.png)
+
+**Up close view of upside down engine, piston reattached to connecting rod**
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-306.png)
+
 ### Replace One Chain With Gears
 
 The plastic chains that come with this model engine simply aren't strong enough to hold up to the torque needed to
@@ -224,9 +250,9 @@ parts in the kit to replace both chains. However, there were enough parts to rep
 
 Here's what it looked like after I replaced the upper chain with gears.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-252.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-253.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-254.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-252.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-253.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-254.png)
 
 This worked really well. This was enough to resolve the bulk of the flex issues in the cam gear drive assembly. I
 could have stopped there.
@@ -242,11 +268,11 @@ there are plenty of cheap alternatives. I ordered 2 sets to ensure I had enough 
 Once those parts showed up, I prototyped a fully gear driven cam drive system. I overdid it with the structural
 reinforcing to try and reduce flexing / movement while rotating the engine.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-255.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-256.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-257.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-258.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-259.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-255.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-256.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-257.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-258.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-259.png)
 
 Despite the bulkiness, it worked really well! It worked so well that I tried hooking up a power drill to spin the
 engine over! That was a lot of fun, until I ran into the binding issue I mentioned previously.
@@ -259,7 +285,7 @@ connecting rod, and using a small screwdriver to push the connecting rod onto th
 I ended up removing the panels on the left side of the engine, to get access to the pistons. I think it looks cooler
 with the pistons exposed.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-261.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-261.png)
 
 Once I had the binding issues resolved, I went back and removed all the structure I had at the back of the engine, and
 built a minimal structure. The gear drive requires fewer components, giving a clearer view of the cylinder 6 piston.
@@ -277,11 +303,11 @@ the other side of the structural cross brace so that the pin is horizontal to th
 
 Here's a few pictures of the final product.
 
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-262.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-263.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-264.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-265.png)
-![Nifeilz L6 Model Engine](../assets/lego/nifeilz-l6/nifeilz-l6-266.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-262.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-263.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-264.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-265.png)
+![NifeliZ L6 Model Engine](../assets/lego/NifeliZ-l6/NifeliZ-l6-266.png)
 
 Here is the final result: a 90-second run using the power drill, capturing the front accessories, the exposed pistons,
 and the new bulletproof rear gear drive operating flawlessly at varying speeds.
@@ -290,7 +316,7 @@ and the new bulletproof rear gear drive operating flawlessly at varying speeds.
   <iframe 
     class="w-full h-full"
     src="https://www.youtube-nocookie.com/embed/WtR_3Nr7-0c" 
-    title="NifeilZ L6 Engine Power Drill Test" 
+    title="NifeliZ L6 Engine Power Drill Test" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     referrerpolicy="strict-origin-when-cross-origin"
