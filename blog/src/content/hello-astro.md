@@ -5,7 +5,7 @@ subtitle: "Kicking the tires on Astro for this blog"
 description: "Kicking the tires on Astro for this blog"
 author: "Jerome Terry"
 image:
-  url: "astro-logo-dark.png"
+  url: "../assets/astro-logo-dark.png"
   alt: "Dark Astro brand logo, on light background"
 tags: ["astro", "software engineering", "software development", "blogging"]
 ---

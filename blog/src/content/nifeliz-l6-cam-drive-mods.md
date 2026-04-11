@@ -5,7 +5,7 @@ subtitle: "Solving the torque problem: A deep dive into engineering an all-gear 
 description: "A step-by-step teardown and reconstruction of the NifeliZ L6 cam drive. Learn how I replaced the flawed stock chain drive with a high-stability gear-driven architecture."
 author: "Jerome Terry"
 image:
-  url: "lego/nifeliz-l6/nifeliz-l6-244.png"
+  url: "../assets/lego/nifeliz-l6/nifeliz-l6-244.png"
   alt: "Picture of the assembled NifeliZ L6 model engine"
 tags: ["analog", "fun", "systems-thinking", "engineering"]
 ---

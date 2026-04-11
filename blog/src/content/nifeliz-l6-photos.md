@@ -5,7 +5,7 @@ subtitle: "Photos while assembling the NifeliZ L6 Model Engine"
 description: "A visual walkthrough of building the intricate NifeliZ L6 model engine. Assembling pistons, gears, and camshafts block by block."
 author: "Jerome Terry"
 image:
-  url: "lego/nifeliz-l6/nifeliz-l6-244.png"
+  url: "../assets/lego/nifeliz-l6/nifeliz-l6-244.png"
   alt: "Picture of the assembled NifeliZ L6 model engine"
 tags: ["analog", "fun", "systems-thinking", "engineering"]
 ---

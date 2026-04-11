@@ -5,7 +5,7 @@ subtitle: "Decoding the Myers-Briggs 'User Interface' to reveal Carl Jung’s or
 description: "Move beyond surface-level acronyms. This technical breakdown applies a systems-thinking lens to personality theory, mapping the 16 MBTI types back to Carl Jung’s 8 cognitive functions. Explore the 'Introvert Paradox' and learn how the 'J/P' axis functions as a public-facing 'Business Flag' that often obscures a user's internal functional stack in professional settings."
 author: "Jerome Terry"
 image:
-  url: "Ontolokey_Cube.jpg"
+  url: "../assets/Ontolokey_Cube.jpg"
   alt: "The Ontolokey cube shows the connections of all functions according to 'Psychological Types' by Carl Gustav Jung (1921). A registered 3D trade mark at German Patent Office"
 tags:
   [

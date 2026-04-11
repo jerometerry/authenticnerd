@@ -5,7 +5,7 @@ subtitle: "Ten years with Nasdaq Verafin"
 description: "Ten years with Nasdaq Verafin"
 author: "Jerome Terry"
 image:
-  url: "NasdaqTenYearAnniversary.jpg"
+  url: "../assets/NasdaqTenYearAnniversary.jpg"
   alt: "My Picture on Nasdaq Tower in Times Square, NY"
 tags: ["success"]
 ---

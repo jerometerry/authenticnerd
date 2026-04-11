@@ -18,6 +18,7 @@ echo "--- 2. DEPLOYING TO S3 (Two-Pass Sync) ---"
 echo "📦 Uploading immutable hashed assets..."
 aws s3 sync dist/_astro/ "s3://${BLOG_BUCKET_NAME}/_astro/" \
   --delete \
+  --size-only \
   --cache-control "public, max-age=31536000, immutable"
 
 # Pass 2: Unhashed Assets, HTML, and Data (1-Day Cache)
@@ -32,6 +33,6 @@ aws s3 sync dist/ "s3://${BLOG_BUCKET_NAME}/" \
 echo "--- 3. INVALIDATING CLOUDFRONT CACHE ---"
 aws cloudfront create-invalidation \
     --distribution-id "${BLOG_DISTRIBUTION_ID}" \
-    --paths "/*"
+    --paths "/index.html" "/posts/*" "/tags/*" "/about/*" "/sitemap-index.xml"
 
 echo "✅ DEPLOYMENT SUCCESSFUL"

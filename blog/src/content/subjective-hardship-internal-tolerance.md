@@ -5,7 +5,7 @@ subtitle: "The Subjective Hardship and Internal Tolerance (SHIT) Framework  is a
 description: "The Subjective Hardship and Internal Tolerance (SHIT) Framework  is a decidedly unserious tool for the very serious business of personal well-being"
 author: "Jerome Terry"
 image:
-  url: "GetOffMyLawn.png"
+  url: "../assets/GetOffMyLawn.png"
   alt: 'Gruff looking character, leaning on a "Get Off My Lawn Sign"'
 tags: ["happiness", "fun", "creativity"]
 ---

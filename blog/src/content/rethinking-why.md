@@ -5,7 +5,7 @@ subtitle: "Examining my real why"
 description: "Examining my real why"
 author: "Jerome Terry"
 image:
-  url: "EmotionnalSupportCrochetMini.png"
+  url: "../assets/EmotionnalSupportCrochetMini.png"
   alt: "Crochet Tiny Axoloti & Tiny Sloth"
 tags: ["why", "subconscious", "nervous system"]
 ---

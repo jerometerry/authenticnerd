@@ -5,7 +5,7 @@ subtitle: "Our own views cloud reality and we do not even notice"
 description: "Our own views cloud reality and we do not even notice"
 author: "Jerome Terry"
 image:
-  url: "ChoosePaperOverPixels.png"
+  url: "../assets/ChoosePaperOverPixels.png"
   alt: "Letter Board with the phrase: Choose Paper Over Pixels"
 tags: ["reality"]
 ---

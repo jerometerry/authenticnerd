@@ -5,7 +5,7 @@ subtitle: "Having some fun building the iconic DeLorean Time Machine Lego Set fr
 description: "Building the iconic LEGO Back to the Future DeLorean. A detailed walkthrough of the build process, including a major suspension repair!"
 author: "Jerome Terry"
 image:
-  url: "lego/back-to-the-future/bttf-box-front.png"
+  url: "../assets/lego/back-to-the-future/bttf-box-front.png"
   alt: "Picture of front of the unopened Back to the Future Lego Set"
 tags: ["analog", "fun", "troubleshooting", "systems-thinking"]
 ---

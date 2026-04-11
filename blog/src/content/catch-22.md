@@ -5,7 +5,7 @@ subtitle: "Turning brainstorming AI prompt into a blogpost"
 description: "Turning brainstorming AI prompt into a blogpost"
 author: "Jerome Terry"
 image:
-  url: "CuttingMat.png"
+  url: "../assets/CuttingMat.png"
   alt: "Craft Cutting Board with Grid Lines, and a Powertec Aluminum Ruler"
 tags: ["authenticity", "meta", "fear", "quality"]
 ---
