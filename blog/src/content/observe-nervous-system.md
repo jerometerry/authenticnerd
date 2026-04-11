@@ -5,7 +5,7 @@ subtitle: "Applying observability principles to my own nervous system"
 description: "Applying observability principles to my own nervous system"
 author: "Jerome Terry"
 image:
-  url: "NervousSystemObservability.png"
+  url: "../assets/NervousSystemObservability.png"
   alt: "My Oura Ring 4 on my hand, and my copy of Anchored by Deb Dana"
 tags: ["observability", "hypervigilance", "nervous system"]
 ---

@@ -5,7 +5,7 @@ subtitle: "You can choose to be happy, no matter what"
 description: "You can choose to be happy, no matter what"
 author: "Jerome Terry"
 image:
-  url: "ChoosePaperOverPixels.png"
+  url: "../assets/ChoosePaperOverPixels.png"
   alt: "Letter Board with the phrase: Choose Paper Over Pixels"
 tags: ["happiness"]
 ---

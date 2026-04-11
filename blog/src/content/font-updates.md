@@ -5,7 +5,7 @@ subtitle: "Discussing blog changes since the 'Hello, Astro!' post"
 description: "Discussing blog changes since the 'Hello, Astro!' post"
 author: "Jerome Terry"
 image:
-  url: "astro-logo-dark.png"
+  url: "../assets/astro-logo-dark.png"
   alt: "Dark Astro brand logo, on light background"
 tags: ["astro", "software engineering", "software development", "blogging"]
 ---

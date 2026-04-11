@@ -5,7 +5,7 @@ subtitle: "Choosing the right amount of technology for your life"
 description: "Choosing the right amount of technology for your life"
 author: "Jerome Terry"
 image:
-  url: "ChoosePaperOverPixels.png"
+  url: "../assets/ChoosePaperOverPixels.png"
   alt: "Letter Board with the phrase: Choose Paper Over Pixels"
 tags: ["technology", "burnout", "analog", "distractions"]
 ---

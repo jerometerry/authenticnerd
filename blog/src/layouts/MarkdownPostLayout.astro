@@ -4,10 +4,6 @@ import BlogTag from "@components/BlogTag.astro";
 import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
-
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*.{jpeg,jpg,png,gif}");
-const imagePath = `/src/assets/${frontmatter.image.url}`;
-if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/**/*.{jpeg,jpg,png,gif}"`);
 ---
 
 <BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
@@ -27,7 +23,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
   </div>
 
   <Image
-    src={images[imagePath]()}
+    src={frontmatter.image.url}
     alt={frontmatter.image.alt}
     class="zoomable-image mb-8 h-auto w-full max-w-[300px] rounded-lg shadow-md"
   />
