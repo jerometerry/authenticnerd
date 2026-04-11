@@ -28,7 +28,7 @@ aws s3 sync dist/ "s3://${BLOG_BUCKET_NAME}/" \
   --delete \
   --exclude "_astro/*" \
   --exclude ".DS_Store" \
-  --cache-control "public, max-age=86400, must-revalidate"
+  --cache-control "no-cache, must-revalidate"
 
 echo "--- 3. INVALIDATING CLOUDFRONT CACHE ---"
 aws cloudfront create-invalidation \
