@@ -16,8 +16,8 @@ After thoroughly enjoying the LEGO® Back to the Future
 [DeLorean build](https://authenticnerd.com/posts/back-to-the-future/), I wanted to find a more challenging automotive
 inspired LEGO® kit to build. Nothing currently available struck my fancy.
 
-I found the NifeliZ L6 Engine kit on [Amazon](https://www.amazon.ca/dp/B0FHDLBM55) ($140 CAD / $100 USD) thought it
-looked interesting and went ahead and purchased it. There is also a V8 version. I chose the inline 6 model because I
+I found the NifeliZ L6 Engine kit on [Amazon](https://www.amazon.ca/dp/B0FHDLBM55) ($140 CAD / $100 USD), thought it
+looked interesting, and went ahead and purchased it. There is also a V8 version. I chose the inline 6 model because I
 have Paul Walker's Toyota Supra Technic build on my shelf, and I thought a 2JZ-style engine would complement it
 perfectly.
 
@@ -232,6 +232,16 @@ help prevent the crankshaft from protruding through the cylinder 6 crank lobes.
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-303.png)
 
 **View of engine upside down while reattaching cylinder 6 piston to connecting rod**
+
+Attaching the piston to the connecting rod without taking the cylinder head off is a very tedious. It's impossible to
+see what you are doing with the engine upright without having specialized cameras and lighting. The solution that I
+found worked best was to turn the engine upside down, and use gravity to align the connecting rod with the center of
+the piston. The piston has an edge that you can keep centered to make sure the pin on the piston aligns with the
+orientation of the connector on the connecting rod. To connect the piston to the connecting rod, move the piston up to
+meet the connecting rod, tip the engine from side to side slightly to get them aligned, and use a small screwdriver to
+gently nudge the connector onto the piston. Then you can use more force with the screwdriver to securely attach the
+connecting rod to the piston.
+
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-304.png)
 
 **Up close view of upside down engine, moving piston up to meet connecting rod**
