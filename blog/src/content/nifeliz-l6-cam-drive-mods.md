@@ -10,6 +10,16 @@ image:
 tags: ["analog", "fun", "systems-thinking", "engineering"]
 ---
 
+Below is a teardown and detailed walkthrough of my redesigned cam drive system for the NifeliZ L6 Model engine I built.
+See my posts [NifeliZ L6 Model Engine](/posts/nifeliz-l6) and
+[Photos of the NifeliZ L6 Model Engine Build](/posts/nifeliz-l6-photos) to see the stock build time-lapse and
+troubleshooting of issues that came up.
+
+I purchased the NifeliZ L6 Engine kit on [Amazon](https://www.amazon.ca/dp/B0FHDLBM55) for $140 CAD ($100 USD).
+If you're interested in the kit, check out the NifeliZ
+[L6 Engine Website](https://www.nifeliz.com/nifeliz_product_l6-engine/) and the YouTube
+[Promo Video](https://www.youtube.com/watch?v=ySQPRgM7hbM).
+
 ## Cam drive system teardown
 
 ### Assembled cam drive system, with screwdriver attached to crank
@@ -19,10 +29,22 @@ rotate the crank while inspecting it for clearance issues.
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-267.png)
 
+For reference, here is the stock build, which uses 2 plastic chains.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-216.png)
+
+It looks pretty, looking at it straight on. Now look at the side view, and see the flex that happens when enough
+tension is applied to keep the chains from skipping.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-217.png)
+
+I didn't want a show piece that was all show and no go. I want to be able to spin this over without the chains
+coming apart or the cams not turning with the crank.
+
 ### Gears Removed
 
 View of the rear of the engine with all gears removed, excluding the crank gear. This gives a view of the structure of
-the redesigned cam drive system
+my redesigned cam drive system.
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-274.png)
 
@@ -40,10 +62,9 @@ cylinder 6.
 The crank support assembly helps to reinforce the crank from moving while rotating the crank with the wheel that comes
 with the kit. The small hand crank that comes with the kit is too short, and using it causes excessive flexing of the
 cam drive system. Turning the engine over by using a lever increases the amount of flex. Using a drill to turn the
-engine over helps to reduce unnecessary flex since by keeping the torque applied to perpendicular to the crank
-centerline.
+engine over helps to reduce unnecessary flex by keeping the torque perpendicular to the crank centerline.
 
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-283.png)
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-281.png)
 
 ### Cam Drive Gears Assembly Tensioner Disconnected
 
@@ -62,6 +83,12 @@ provides enough rigidity and also gives better visibility of the pistons, connec
 ### Cam Drive Gears Assembly Support Structures Removed
 
 Removing the remaining cam gears assembly support structures gives an unobstructed view of the rotating assembly.
+
+The red pins on the left-side wall of the engine block are visible. These pins did not come with the L6 Engine Kit -
+they came from the
+[582pcs Technical Parts and Pieces Beams Axles Connectors Bricks Set](https://www.amazon.ca/dp/B0DD4HW82D) I ordered
+from Amazon. I also ordered [184PCS Gear and Axle Set for Technic Parts](https://www.amazon.ca/dp/B0DMVKHVJD)
+to have enough parts to replace both plastic chains with gears.
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-290.png)
 
@@ -107,13 +134,26 @@ shows the engine block's rear face, cleared of all timing components and ready f
 
 ### Torn down rear engine viewed straight on
 
+Clear view of cylinder 6 piston, connecting rod. The crank lobes are barely visible at the bottom of the left-side wall
+of the engine block.
+
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-293.png)
 
 ### Torn down rear engine viewed at an angle from left side
 
+I've removed the panels from the exterior of the left-side wall of the engine block. I did this mainly for practical
+purposes. Since the pistons sometimes disconnect from the connecting rods, keeping the panels off saves the headache of
+having to remove and replace these components. It also looks cooler, IMO. I removed some components on the back of the
+engine cover on the left side, since they were getting in my way. The engine cover still looks great and you wouldn't
+know at a glance I had changed it.
+
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-294.png)
 
 ### Torn down rear engine viewed at an angle from right side
+
+Not many changes on the right-side wall of the engine block. I think the only thing I did here was change the
+connection point of the gray plastic tube. The rest of the exterior components on the right-side wall of the engine
+block are stock.
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-295.png)
 
@@ -168,6 +208,11 @@ the pressure applied to keep the gear teeth tightly meshed together.
 
 ### Building the Three-Gear Cam Timing Sub-Assembly
 
+I like the simplicity and practicality of this design. I didn't "design" this per se. Instead, it evolved during mockup
+having the beam connected to the cross brace by a single pin, and I happened to notice that with the gears installed I
+could get the gears into alignment by simply rotating the beam by hand. The idea of the using an axel came about when I
+considered how I could get the 3 gear assembly to stay where I had placed it by hand.
+
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-313.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-314.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-315.png)
@@ -176,6 +221,14 @@ the pressure applied to keep the gear teeth tightly meshed together.
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-322.png)
 
 ### Crank Gear Support Assembly
+
+This design came about by trial and error, using components I had and the constraints of the design of the NifeliZ L6
+model engine. the right-side of the crank had the gears that drive one of the front accessories.
+
+These 2 small gears are part of the system that is apparently supposed to be used when adding an electric motor. Those
+gears are not strong enough to turn the engine over, so I will not be installing an electric motor where the
+instructors indicate. With the reinforced gears at the rear of the engine, that's where I'd put an electric motor. I've
+already used an electric drill to do this, so an electric motor would work there.
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-323.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-324.png)
@@ -200,6 +253,9 @@ the pressure applied to keep the gear teeth tightly meshed together.
 
 ### Cam Gears Install
 
+The support brace behind the cam gears is floating, acting as a spacer to put the cam gears in vertical alignment with
+the other gears. I didn't see a need to attach it to structure.
+
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-345.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-346.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-347.png)
@@ -208,6 +264,10 @@ the pressure applied to keep the gear teeth tightly meshed together.
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-349.png)
 
 ### Cam Drive Gears Assembly - Install Gears
+
+It's satisfying to have those 3 gears all on the same beam. I did not concern myself with getting the correct 2:1 crank
+to cam gear ratios for proper 4-stoke engine timing. For my purposes, seeing the cams turn as the engine turns over is
+good enough.
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-350.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-351.png)
