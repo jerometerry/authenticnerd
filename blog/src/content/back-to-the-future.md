@@ -7,7 +7,7 @@ author: "Jerome Terry"
 image:
   url: "../assets/lego/back-to-the-future/bttf-box-front.png"
   alt: "Picture of front of the unopened Back to the Future Lego Set"
-tags: ["analog", "fun", "troubleshooting", "systems-thinking"]
+tags: ["analog", "fun", "troubleshooting", "systems-thinking", "lego"]
 ---
 
 I had my eye on the
