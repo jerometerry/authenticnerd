@@ -7,7 +7,16 @@ author: "Jerome Terry"
 image:
   url: "../assets/lego/nifeliz-l6/nifeliz-l6-244.png"
   alt: "Picture of the assembled NifeliZ L6 model engine"
-tags: ["analog", "fun", "systems-thinking", "engineering"]
+tags:
+  [
+    "analog",
+    "fun",
+    "systems-thinking",
+    "engineering",
+    "lego",
+    "technic",
+    "nifeliz",
+  ]
 ---
 
 ## NifeliZ L6 Engine Kit
