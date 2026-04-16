@@ -30,6 +30,8 @@ looked interesting, and went ahead and purchased it. There is also a V8 version.
 have Paul Walker's Toyota Supra Technic build on my shelf, and I thought a 2JZ-style engine would complement it
 perfectly.
 
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-11.png)
+
 The NifeliZ L6 Engine Model is a LEGO® Technic inspired take on the inline 6 engine. Here's the NifeliZ marketing
 material:
 
@@ -42,33 +44,30 @@ for the foundation—it’s a great building experience and serves as a fantasti
 At 15 inches long, 7 inches wide, and 10 inches high, the model is a substantial presence on a desk or workbench. It
 features a realistic aesthetic, including a turbocharger and several front-end accessories.
 
-However, as a systems architect, I couldn't help but poke at the boundaries of the design. During the build, I
-encountered significant clearance issues that were difficult to diagnose. Because these binding problems only became
-obvious once the engine was nearly fully assembled, I had to perform a complete teardown back to the short block to
-visualize exactly where the mechanical interference was occurring.
+## Fully Assembled
 
-### The Architectural Challenge
+Here's a picture of the completed build. It looks really great, IMO.
 
-The stock cam drive system utilizes two chains. While it looks incredible, it revealed a significant design flaw under
-high torque. The force required to spin the engine created more twisting stress than the plastic chains and the
-single-pin idler gears could handle. Without a native tensioner, the only way to tighten the drive is to remove links;
-however, this added tension pulls the idler pin downward, causing the gears to lose contact with the left camshaft.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-241.png)
 
-### Redesign and Testing
+### Engine Demo Videos
 
-To solve this, I used some additional Technic-style parts to completely rebuild the cam drive into a fully gear-driven
-system, eliminating the chains entirely. I’ve since tested the durability of this redesign using a cordless drill to
-ensure the timing and clearance hold up under stress.
+Here is the final result: a 90-second run using the power drill, capturing the front accessories, the exposed pistons,
+and the new bulletproof rear gear drive operating flawlessly at varying speeds.
 
-My next step is exploring a Technic motor integration, specifically looking for a motor with an RPM range that respects
-the friction limits of the plastic components.
+<div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
+  <iframe 
+    class="w-full h-full"
+    src="https://www.youtube-nocookie.com/embed/WtR_3Nr7-0c" 
+    title="NifeliZ L6 Engine Power Drill Test" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
 
-> **Full Build Log:** To see a chronological, bag-by-bag visual walkthrough of the entire assembly, check out my post
-> [NifeliZ L6 Photos](https://authenticnerd.com/posts/nifeliz-l6-photos/).
-
-## Engine Demo Videos
-
-### Rear View
+#### Rear View
 
 Here's a quick clip where I manually turn the engine over, viewed from the rear of the engine.
 
@@ -84,7 +83,7 @@ Here's a quick clip where I manually turn the engine over, viewed from the rear 
   </iframe>
 </div>
 
-### Front View
+#### Front View
 
 Here's another clip where I manually turn the engine over, viewed from the front of the engine.
 
@@ -100,23 +99,18 @@ Here's another clip where I manually turn the engine over, viewed from the front
   </iframe>
 </div>
 
-## Fit and Finish Issues
-
-### Knots in Plastic Hoses
-
-The plastic hoses were tied in knots during packaging, which detracts from the look of the engine once the knots are
-undone.
-
-### Engine Cover
+## Engine Cover
 
 The engine cover is really nice, and I don't want to just let it sit on top of the engine. It doesn't look great when
 the engine cover is not level. Any bump and the engine cover can move.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-238.png)
 
 I was pissed that the nice engine cover that is the final part of the build does not include any mechanical
 fasteners. From what I can tell, the instructions tell you to just lay the cover on top of the engine. I could not
 believe it. I was able to find enough left over parts to rig something up, but it's still not to my liking.
 
-## Troubleshooting Crank and Piston Binding
+## Rotating Assembly Clearance
 
 The assembly instructions did not go into depth on proper crank and piston alignment procedures. The existing steps
 have you assemble the crank and pistons and add it to the engine frame, then assemble the engine block and cylinder
@@ -152,45 +146,37 @@ connecting rod or the engine block cross member.
 What I had to do was check each engine block cross member and ensure there was enough clearance. This needs to be done
 iteratively, because adjusting clearance in one cylinder can change clearances in other cylinders.
 
-## Cam Gears & Drive Train Issues
+### Chamfering Crank Lobes
 
-I had immense trouble with the plastic gears used on the back of the engine. There was a massive amount of flex, and
-the kit uses a complex timing setup involving two overhead camshaft gears, multiple idler gears, and two plastic chains.
+I found that the crank lobes were hitting structural components of the engine block, and were also interfering with
+connection rods rotating freely. I had to chamfer all the crank lobes to get the crank and connection rods to rotate
+freely. I used a Dremel and sand paper to chamfer the crank lobes. It looks rough, but it works well.
 
-Due to the amount of friction in this model, there is a surprising amount of torque required to start the engine
-spinning. Since the hand crank is on the rear, that torque is applied directly to those two plastic chains. To get them
-to spin the engine, they need to be tight, otherwise they slip off. But if you make them tight, the large gear on the
-central idler acts as a lever, and the tension pulls the idler gears down towards the crank—away from the cam gears —
-so the cams stop turning entirely.
+Here's a connecting rod connected to 2 crank lobes, with the connecting rod close to TDC. The chamfering is visible on
+the outside of both crank lobes as well as on the inside of both crank lobes. All 6 cylinders had this chamfering work
+done.
 
-**Front View**
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-216.png)
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-365.png)
 
-**Side View**
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-217.png)
+Here's a view of crank lobe chamfering with the connecting rod close to BDC. This shows that when the connecting rods
+sweep through the 2 crank lobes, the connecting rod can bind if the crank lobes are too close together.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-367.png)
 
-_The original, flawed chain-drive configuration from the manual._
+Here's a view of crank lobes showing where the crank lobes attach to the crank, to see the chamfering around the
+connection.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-366.png)
 
-If I put this engine on display, people are going to want to turn it over, and it's not acceptable if the chains come
-apart immediately. The structure at the back of the engine simply wasn't sturdy enough to keep the assemblies in
-alignment.
+Here's a view of the engine torn down for chamfering work, with the engine block disconnected on one side and the
+engine base sitting flat on the table. This gives a good look at the rotating assembly and the chamfering. Pistons are
+still attached.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-363.png)
 
-### Exoskeleton Design Experiment
+Here's another view of the torn down engine for chamfering work, with the engine upside down. This allows the
+connecting rods to hang freely, letting me rotate the crank to check for clearance issues. The engine block is
+disconnected from the base on one side, so I can flip up the base to do the chamfering work.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-368.png)
 
-To try to eliminate flex, I first experimented with using the engine brace as an exoskeleton to hold the gears in a
-fixed position.
-
-Here's a few pics I took while I did a small structural change to implement the exoskeleton. What a monster. lol.
-
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-247.png)
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-248.png)
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-249.png)
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-250.png)
-![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-251.png)
-
-This worked better than I expected. If it works, is it really a dumb idea? lol. I couldn't leave it like this.
-
-### Binding Issues
+### Cylinder 6 Binding
 
 I found out using a power drill that applying axial load on the crank pushes the crank through the lobe in cylinder 6,
 which causes the cylinder 6 connection rod to bind when rotating through the crank lobes.
@@ -259,6 +245,58 @@ connecting rod to the piston.
 **Up close view of upside down engine, piston reattached to connecting rod**
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-306.png)
 
+## Cam Drive System
+
+The stock cam drive system utilizes two chains. While it looks incredible.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-216.png)
+
+Due to binding issues in the stock build, the amount of torque required to turn over the engine is more than the stock
+cam drive system can handle. Tightening the cam drive system involves removing links from the chains to shorten them.
+I axels that hold the idler gears aren't designed to withstand shortening of the chains. The added tension pulls the
+idler pin downward, causing the gears to lose contact with the left camshaft.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-217.png)
+
+### Redesign and Testing
+
+To solve this, I used some additional Technic-style parts to completely rebuild the cam drive into a fully gear-driven
+system, eliminating the chains entirely. I’ve since tested the durability of this redesign using a cordless drill to
+ensure the timing and clearance hold up under stress.
+
+My next step is exploring a Technic motor integration, specifically looking for a motor with an RPM range that respects
+the friction limits of the plastic components.
+
+> **Full Build Log:** To see a chronological, bag-by-bag visual walkthrough of the entire assembly, check out my post
+> [NifeliZ L6 Photos](https://authenticnerd.com/posts/nifeliz-l6-photos/).
+
+**Front View**
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-216.png)
+
+**Side View**
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-217.png)
+
+_The original, flawed chain-drive configuration from the manual._
+
+If I put this engine on display, people are going to want to turn it over, and it's not acceptable if the chains come
+apart immediately. The structure at the back of the engine simply wasn't sturdy enough to keep the assemblies in
+alignment.
+
+### Exoskeleton Design Experiment
+
+To try to eliminate flex, I first experimented with using the engine brace as an exoskeleton to hold the gears in a
+fixed position.
+
+Here's a few pics I took while I did a small structural change to implement the exoskeleton. What a monster. lol.
+
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-247.png)
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-248.png)
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-249.png)
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-250.png)
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-251.png)
+
+This worked better than I expected. If it works, is it really a dumb idea? lol. I couldn't leave it like this.
+
 ### Replace One Chain With Gears
 
 The plastic chains that come with this model engine simply aren't strong enough to hold up to the torque needed to
@@ -320,25 +358,10 @@ just above that structural cross beam you can see a gray pin that connects to th
 tension, I experimented with different pin lengths to attach the other end at. It turns out that attaching the pin on
 the other side of the structural cross brace so that the pin is horizontal to the cross brace provided enough tension!
 
-Here's a few pictures of the final product.
+Here's a few pictures of the final version of the fully gear based cam drive system.
 
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-262.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-263.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-264.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-265.png)
 ![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-266.png)
-
-Here is the final result: a 90-second run using the power drill, capturing the front accessories, the exposed pistons,
-and the new bulletproof rear gear drive operating flawlessly at varying speeds.
-
-<div class="aspect-video w-full mb-8 overflow-hidden rounded-xl shadow-md">
-  <iframe 
-    class="w-full h-full"
-    src="https://www.youtube-nocookie.com/embed/WtR_3Nr7-0c" 
-    title="NifeliZ L6 Engine Power Drill Test" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  </iframe>
-</div>
