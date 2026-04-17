@@ -99,6 +99,41 @@ Here's another clip where I manually turn the engine over, viewed from the front
   </iframe>
 </div>
 
+## Technic Motor Powered - with Remote Control
+
+To add the cherry on top, I installed a Technic XL motor on the crank shaft at the rear of the engine.
+
+### NifeliZ L6 Engine Remote Control Demo
+
+<div class="aspect-9/16 w-full max-w-sm mx-auto mb-8 overflow-hidden rounded-xl shadow-md bg-black">
+  <iframe 
+    class="w-full h-full"
+    src="https://www.youtube-nocookie.com/embed/91zWTlNrVzI"
+    title="NifeliZ L6 Model Engine Build Complete. Powered by Technic XL Motor with Remote Control" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
+### Technic XL Motor Install
+
+The Technic XL motor, IR receiver, battery pack, and remote viewed from an angle behind and to the left of the L6
+engine.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-369.png)
+
+The Technic XL motor setup, viewed straight on from behind the L6 engine.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-370.png)
+
+The Technic XL motor setup, viewed at a downward angle. This shows the layout and attachment points, and the neat and
+tidy routing of the wires.
+![NifeliZ L6 Model Engine](../assets/lego/nifeliz-l6/nifeliz-l6-371.png)
+
+### Technic Motor Kit
+
+Here's the [9-in-1 Technic Motor Kit](https://www.amazon.ca/dp/B0D4M9DVN2) I ordered from Amazon for $42 CAD.
+
 ## Engine Cover
 
 The engine cover is really nice, and I don't want to just let it sit on top of the engine. It doesn't look great when
