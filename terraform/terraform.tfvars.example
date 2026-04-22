@@ -1,4 +1,2 @@
 domain_name    = "<DOMAIN>"
 blog_subdomain_name = "<BLOG_SUBDOMAIN>"
-blog_s3_bucket_name = "<BLOG_BUCKET>"
-blog_system_logs_s3_bucket_name = "<BLOG_SYSTEM_LOGS_BUCKET>"

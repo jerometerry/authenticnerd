@@ -1,23 +1,23 @@
-resource "aws_s3_bucket" "blog_s3_bucket" {
-  bucket = var.blog_s3_bucket_name
+resource "aws_s3_bucket" "authentic_nerd_blog_s3_bucket" {
+  bucket = "authentic-nerd-blog"
 
   tags = {
-    "jt:my-personal-system:name"        = "blog-s3-bucket"
-    "jt:my-personal-system:description" = "S3 Bucket for hosting blog static assets"
-    "jt:my-personal-system:module"      = "frontend"
-    "jt:my-personal-system:component"   = "blog-s3-bucket"
+    "jt:authentic-nerd:name"        = "authentic-nerd-blog"
+    "jt:authentic-nerd:description" = "S3 Bucket for hosting blog static assets"
+    "jt:authentic-nerd:module"      = "frontend"
+    "jt:authentic-nerd:component"   = "authentic-nerd-blog"
   }
 }
 
-resource "aws_s3_bucket_versioning" "blog_versioning" {
-  bucket = aws_s3_bucket.blog_s3_bucket.id
+resource "aws_s3_bucket_versioning" "authentic_nerd_blog_s3_bucket_versioning" {
+  bucket = aws_s3_bucket.authentic_nerd_blog_s3_bucket.id
   versioning_configuration {
     status = "Enabled"
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "blog_access_block" {
-  bucket = aws_s3_bucket.blog_s3_bucket.id
+resource "aws_s3_bucket_public_access_block" "authentic_nerd_blog_s3_bucket_access_block" {
+  bucket = aws_s3_bucket.authentic_nerd_blog_s3_bucket.id
 
   block_public_acls       = true
   ignore_public_acls      = true
@@ -122,8 +122,8 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   }
 
   origin {
-    domain_name              = aws_s3_bucket.blog_s3_bucket.bucket_regional_domain_name
-    origin_id                = aws_s3_bucket.blog_s3_bucket.id
+    domain_name              = aws_s3_bucket.authentic_nerd_blog_s3_bucket.bucket_regional_domain_name
+    origin_id                = aws_s3_bucket.authentic_nerd_blog_s3_bucket.id
     origin_access_control_id = aws_cloudfront_origin_access_control.blog_oac.id
   }
 
@@ -141,7 +141,7 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = aws_s3_bucket.blog_s3_bucket.id
+    target_origin_id = aws_s3_bucket.authentic_nerd_blog_s3_bucket.id
     compress         = true
 
     cache_policy_id            = data.aws_cloudfront_cache_policy.caching_optimized.id
@@ -157,21 +157,21 @@ resource "aws_cloudfront_distribution" "blog_cloudformation_distribution" {
 
   logging_config {
     include_cookies = false
-    bucket          = aws_s3_bucket.logs.bucket_domain_name
+    bucket          = aws_s3_bucket.authentic_nerd_blog_system_logs_s3_bucket.bucket_domain_name
     prefix          = "cloudfront/"
   }
 
   tags = {
-    Name                                = "blog-cloudfront-distribution"
-    "jt:my-personal-system:name"        = "blog-cloudfront-distribution"
-    "jt:my-personal-system:description" = "Public access to the blog"
-    "jt:my-personal-system:module"      = "blog"
-    "jt:my-personal-system:component"   = "cloud-front-distribution"
+    Name                            = "blog-cloudfront-distribution"
+    "jt:authentic-nerd:name"        = "blog-cloudfront-distribution"
+    "jt:authentic-nerd:description" = "Public access to the blog"
+    "jt:authentic-nerd:module"      = "blog"
+    "jt:authentic-nerd:component"   = "cloud-front-distribution"
   }
 }
 
-resource "aws_s3_bucket_policy" "blog_s3_bucket_policy" {
-  bucket = aws_s3_bucket.blog_s3_bucket.id
+resource "aws_s3_bucket_policy" "authentic_nerd_blog_s3_bucket_policy" {
+  bucket = aws_s3_bucket.authentic_nerd_blog_s3_bucket.id
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
@@ -180,7 +180,7 @@ resource "aws_s3_bucket_policy" "blog_s3_bucket_policy" {
       Principal = {
         Service = "cloudfront.amazonaws.com"
       },
-      Resource = "${aws_s3_bucket.blog_s3_bucket.arn}/*",
+      Resource = "${aws_s3_bucket.authentic_nerd_blog_s3_bucket.arn}/*",
       Condition = {
         StringEquals = {
           "AWS:SourceArn" = aws_cloudfront_distribution.blog_cloudformation_distribution.arn
@@ -189,7 +189,7 @@ resource "aws_s3_bucket_policy" "blog_s3_bucket_policy" {
     }]
   })
 
-  depends_on = [aws_s3_bucket_public_access_block.blog_access_block]
+  depends_on = [aws_s3_bucket_public_access_block.authentic_nerd_blog_s3_bucket_access_block]
 }
 
 resource "aws_wafv2_web_acl" "blog_waf" {
@@ -371,27 +371,27 @@ resource "aws_wafv2_web_acl" "blog_waf" {
   }
 
   tags = {
-    "jt:my-personal-system:name"        = "blog-waf"
-    "jt:my-personal-system:description" = "Blog Web Application Firewall"
-    "jt:my-personal-system:module"      = "waf"
-    "jt:my-personal-system:component"   = "cloud-front-distribution"
+    "jt:authentic-nerd:name"        = "blog-waf"
+    "jt:authentic-nerd:description" = "Blog Web Application Firewall"
+    "jt:authentic-nerd:module"      = "waf"
+    "jt:authentic-nerd:component"   = "cloud-front-distribution"
   }
 }
 
-resource "aws_s3_bucket" "logs" {
-  bucket        = var.blog_system_logs_s3_bucket_name
+resource "aws_s3_bucket" "authentic_nerd_blog_system_logs_s3_bucket" {
+  bucket        = "authentic-nerd-blog-system-logs"
   force_destroy = true
 
   tags = {
-    "jt:my-personal-system:name"        = "blog-system-logs-s3-bucket"
-    "jt:my-personal-system:description" = "S3 Bucket for hosting blog system logs"
-    "jt:my-personal-system:module"      = "frontend"
-    "jt:my-personal-system:component"   = "blog-system-logs-s3-bucket"
+    "jt:authentic-nerd:name"        = "authentic-nerd-blog-system-logs-s3-bucket"
+    "jt:authentic-nerd:description" = "S3 Bucket for hosting blog system logs"
+    "jt:authentic-nerd:module"      = "frontend"
+    "jt:authentic-nerd:component"   = "authentic-nerd-blog-system-logs-s3-bucket"
   }
 }
 
-resource "aws_s3_bucket_lifecycle_configuration" "logs_cleanup" {
-  bucket = aws_s3_bucket.logs.id
+resource "aws_s3_bucket_lifecycle_configuration" "authentic_nerd_blog_system_logs_s3_bucket_lifecycle_configuration" {
+  bucket = aws_s3_bucket.authentic_nerd_blog_system_logs_s3_bucket.id
 
   rule {
     id     = "delete-old-logs"
@@ -403,15 +403,15 @@ resource "aws_s3_bucket_lifecycle_configuration" "logs_cleanup" {
   }
 }
 
-resource "aws_s3_bucket_ownership_controls" "logs" {
-  bucket = aws_s3_bucket.logs.id
+resource "aws_s3_bucket_ownership_controls" "authentic_nerd_blog_system_logs_s3_bucket_ownership_controls" {
+  bucket = aws_s3_bucket.authentic_nerd_blog_system_logs_s3_bucket.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "logs_security" {
-  bucket = aws_s3_bucket.logs.id
+resource "aws_s3_bucket_public_access_block" "authentic_nerd_blog_system_logs_s3_bucket_public_access_block" {
+  bucket = aws_s3_bucket.authentic_nerd_blog_system_logs_s3_bucket.id
 
   block_public_acls       = true
   block_public_policy     = true
@@ -419,13 +419,14 @@ resource "aws_s3_bucket_public_access_block" "logs_security" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_acl" "logs" {
-  depends_on = [aws_s3_bucket_ownership_controls.logs, aws_s3_bucket_public_access_block.logs_security]
-  bucket     = aws_s3_bucket.logs.id
+resource "aws_s3_bucket_acl" "authentic_nerd_blog_system_logs_s3_bucket_acl" {
+  depends_on = [aws_s3_bucket_ownership_controls.authentic_nerd_blog_system_logs_s3_bucket_ownership_controls, aws_s3_bucket_public_access_block.authentic_nerd_blog_system_logs_s3_bucket_public_access_block]
+  bucket     = aws_s3_bucket.authentic_nerd_blog_system_logs_s3_bucket.id
   acl        = "private"
 }
 
-data "aws_iam_policy_document" "cloudfront_logs_policy" {
+
+data "aws_iam_policy_document" "authentic_nerd_blog_cloudfront_logs_policy" {
   statement {
     sid    = "AllowCloudFrontServicePrincipalLogDelivery"
     effect = "Allow"
@@ -437,7 +438,7 @@ data "aws_iam_policy_document" "cloudfront_logs_policy" {
 
     actions = ["s3:PutObject"]
 
-    resources = ["${aws_s3_bucket.logs.arn}/cloudfront/*"]
+    resources = ["${aws_s3_bucket.authentic_nerd_blog_system_logs_s3_bucket.arn}/cloudfront/*"]
 
     condition {
       test     = "StringEquals"
@@ -447,9 +448,9 @@ data "aws_iam_policy_document" "cloudfront_logs_policy" {
   }
 }
 
-resource "aws_s3_bucket_policy" "logs_bucket_policy" {
-  bucket = aws_s3_bucket.logs.id
-  policy = data.aws_iam_policy_document.cloudfront_logs_policy.json
+resource "aws_s3_bucket_policy" "authentic_nerd_blog_system_logs_s3_bucket_policy" {
+  bucket = aws_s3_bucket.authentic_nerd_blog_system_logs_s3_bucket.id
+  policy = data.aws_iam_policy_document.authentic_nerd_blog_cloudfront_logs_policy.json
 }
 
 resource "aws_cloudwatch_dashboard" "waf_dashboard" {

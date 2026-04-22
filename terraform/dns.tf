@@ -1,5 +1,3 @@
-# terraform/dns.tf
-
 data "aws_route53_zone" "main" {
   name = var.domain_name
 }
@@ -17,22 +15,22 @@ resource "aws_acm_certificate" "blog_cert" {
   lifecycle {
     create_before_destroy = true
   }
-  
+
   tags = {
-    Name = "my-personal-system-blog-cert"
-    "jt:my-personal-system:name" = "blog-cert"
-    "jt:my-personal-system:description" = "Blog Cert"
-    "jt:my-personal-system:module" = "dns"
-    "jt:my-personal-system:component" = "cloud-front-distribution"
+    Name                            = "authentic-nerd-blog-cert"
+    "jt:authentic-nerd:name"        = "blog-cert"
+    "jt:authentic-nerd:description" = "Blog Cert"
+    "jt:authentic-nerd:module"      = "dns"
+    "jt:authentic-nerd:component"   = "cloud-front-distribution"
   }
 }
 
 resource "aws_route53_record" "blog_cert_validation" {
   for_each = {
     for dvo in aws_acm_certificate.blog_cert.domain_validation_options : dvo.domain_name => {
-      name    = dvo.resource_record_name
-      record  = dvo.resource_record_value
-      type    = dvo.resource_record_type
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
     }
   }
   allow_overwrite = true
@@ -92,7 +90,7 @@ resource "aws_route53_record" "google_verification" {
   name    = var.domain_name
   type    = "TXT"
   ttl     = 300
-  
+
   records = [
     "google-site-verification=HqHEsNeSFE-0oVhnrA_ilIAIW-Dvo20QKu0xTzQClNY"
   ]
