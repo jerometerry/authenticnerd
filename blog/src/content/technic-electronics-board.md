@@ -74,7 +74,9 @@ Portrait top-down view
 
 Here's another project for the 12V DC motor that I've moved to for powering the [NifeliZ L6 Model Engine](/posts/nifeliz-l6). The 12V motor has much better torque to slower speeds to allow turning over the NifeliZ L6 smoothly at slow speeds. In this picture you can see the [I2C INA219 Current Sensor module](https://www.amazon.ca/dp/B0CG9HNZZR) connected to an UNO R3. The INA219 Current Sensor is monitoring high side current, where the Vin+ and Vout- pins are wired in series with the +12V lead from the power supply. The INA219 has a built in shunt resistor.
 
-The 12V motor is attached to the L6 Engine, and has been disconnected from the connectors in this photo. The 12V power supply has also been disconnected. The UNO R3 is currently being powered my my Raspberry PI 5 over USB.
+![Technic Electronics Board](../assets/technic-electronics-board/technic-electronics-board-16.png)
+
+Here's a closeup of the board disconnected from the L6 engine at power supply.
 
 ![Technic Electronics Board](../assets/technic-electronics-board/technic-electronics-board-12.png)
 
