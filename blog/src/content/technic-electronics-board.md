@@ -32,7 +32,7 @@ I experimented with a few different sized drill bits until I found one that the 
 
 ### Attaching Technic Grid
 
-Good thing Technic beams have tolerances. Since I was using an electric drill freehand, the holes weren't perfectly placed. But they were close enough. Good enough for this project though, thankfully. I took some persuasion, but I managed to get it attached.
+Good thing Technic beams have tolerances. Since I was using an electric drill freehand, the holes weren't perfectly placed. But they were close enough. Good enough for this project though, thankfully. It took some persuasion, but I managed to get it attached.
 
 ![Technic Electronics Board](../assets/technic-electronics-board/technic-electronics-board-6.png)
 
@@ -56,13 +56,17 @@ This was a simple use case for my Techic electronics board. I was testing out re
 
 ### 12V DC Motor Prototyping
 
-I am experimenting with an [12V JGB37-520 Gear Reduction Motor](https://www.amazon.ca/dp/B0FRWTZQMW) for my [NifeliZ L6 Model Engine Project}(/posts/nifeliz-l6), and my new Technic Electronics Board worked beautifully for my needs.
+I am experimenting with an [12V JGB37-520 Gear Reduction Motor](https://www.amazon.ca/dp/B0FRWTZQMW) for my [NifeliZ L6 Model Engine Project](/posts/nifeliz-l6).The Technic Electronics Board worked beautifully for my needs.
 
 Here's a couple of pictures of an iteration using a [1803BK PWM Speed Controller](https://www.amazon.ca/dp/B09Q8BHWHM). The breadbooard isn't populated in this iteration since I had just removed the [6V DC motor](https://www.amazon.ca/dp/B0FRWZ9FD8?th=1) controlled with an [L298N H Bridge](https://www.amazon.ca/dp/B0D2RLY7GH) that was wired up using the breadboard.
 
 ![Technic Electronics Board](../assets/technic-electronics-board/technic-electronics-board-13.png)
 
+Top-down view
+
 ![Technic Electronics Board](../assets/technic-electronics-board/technic-electronics-board-14.png)
+
+Portrait top-down view
 
 ![Technic Electronics Board](../assets/technic-electronics-board/technic-electronics-board-15.png)
 
@@ -73,3 +77,7 @@ Here's another project for the 12V DC motor that I've moved to for powering the 
 The 12V motor is attached to the L6 Engine, and has been disconnected from the connectors in this photo. The 12V power supply has also been disconnected. The UNO R3 is currently being powered my my Raspberry PI 5 over USB.
 
 ![Technic Electronics Board](../assets/technic-electronics-board/technic-electronics-board-12.png)
+
+### Final Thoughts
+
+Overall, I'm really happy with how this project turned out. The Technic Electronics Board is a great addition to my workspace and has already been put to good use in several projects. It's a fun and creative way to combine the world of LEGO Technic with electronics prototyping, and I look forward to using it for many more projects in the future.
