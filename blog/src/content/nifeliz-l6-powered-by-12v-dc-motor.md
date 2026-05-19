@@ -19,6 +19,9 @@ tags:
   ]
 ---
 
+In this post, I upgrade my [NifeliZ L6 Model Engine](/posts/nifeliz-l6) build from 6V to 12V to make the NifeliZ L6
+turn over smoothly at low RPMs.
+
 ## In Action
 
 Here's the finished product: the NifeliZ L6 Model Engine powered with a 12V DC Motor. I'm very happy with how smoothly
@@ -38,6 +41,13 @@ with a physical knob suits this project much better.
     allowfullscreen>
   </iframe>
 </div>
+
+## NifeliZ L6 Model Engine Kit
+
+I purchased the NifeliZ L6 Engine kit on [Amazon](https://www.amazon.ca/dp/B0FHDLBM55) for $140 CAD ($100 USD).
+If you're interested in the kit, check out the NifeliZ
+[L6 Engine Website](https://www.nifeliz.com/nifeliz_product_l6-engine/) and the YouTube
+[Promo Video](https://www.youtube.com/watch?v=ySQPRgM7hbM).
 
 ## Parts List
 
