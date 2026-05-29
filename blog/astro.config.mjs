@@ -13,12 +13,12 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
-      theme: "rose-pine",
-      wrap: true,
+      theme: "rose-pine"
     },
   },
   redirects: {
     '/posts/nifeilz-l6': '/posts/nifeliz-l6',
     '/posts/nifeilz-l6-photos': '/posts/nifeliz-l6-photos',
+    '/posts/nifeilz-l6-cam-drive': '/posts/nifeliz-l6-cam-drive',
   }
 });
