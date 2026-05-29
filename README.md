@@ -144,7 +144,9 @@ pnpm up
 
 pnpm astro add mdx
 
-pnpm uninstall @astrojs/mdx
+npx npm-check-updates -u
+
+pnpm install
 ```
 
 ## Common Homebrew Scripts
@@ -153,6 +155,22 @@ pnpm uninstall @astrojs/mdx
 brew update
 
 brew upgrade
+```
+
+## Common Terraform Scripts
+
+```shell
+tfenv list
+
+tfenv list-remote
+
+tfenv install 1.15.5
+
+tfenv use 1.15.5
+
+terraform --version
+
+terraform init --upgrade
 ```
 
 ## 👤 Author
