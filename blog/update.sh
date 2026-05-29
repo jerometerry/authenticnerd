@@ -13,4 +13,7 @@ echo "--- 4. Upgrading Astro ---"
 pnpm dlx @astrojs/upgrade
 
 echo "--- 5. Upgrading all dependencies ---"
-pnpm up
+pnpm up --latest
+
+echo "--- 6. Install dependencies ---"
+pnpm install
