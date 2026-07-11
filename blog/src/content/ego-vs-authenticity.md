@@ -90,16 +90,21 @@ The AI kept pushing me to create the official patch, telling me it was ready for
 disagree, Gemini.
 
 I've never done any Linux Kernel development before, so building a V4L2 driver was a steep learning
-curve. I relied on AI substantially to help me through this. By leaning on AI so much, I don't
-feel comfortable that I know V4L2 deep enough to create a patch into the Linux Kernel with this
-driver.
+curve. I architected the project and reverse-engineered the USB protocol, but I relied on AI
+substantially to navigate the specifics of the Video4Linux (V4L2) and VideoBuffer2 (VB2) subsystems,
+as well as to automate Makefiles and restructure tests. Because I leaned on AI to bridge my
+knowledge gap in V4L2, I don't feel comfortable that I know the kernel-side API deeply enough to
+submit this driver as an official patch.
 
 I considered creating a patch, but decided against it. I don't want to take on the responsibility
 of maintaining an official Linux driver. Working with long time Linux Kernel developers who have to
 thoroughly review my patch made me feel uncomfortable after having done a V4L2 crash course in 2 months. I
 was worried that I wouldn't be able to answer questions about the V4L2 design choices from my own
-intuition, and I don't want to rely on AI to answer reviewers' questions for me. I would need to be
-able to answer those questions with confidence before I ever consider putting forward a patch.
+intuition, and I don't want to rely on AI to answer reviewers' questions for me. I blindly
+accepted some of the AI's V4L2 recommendations just to make the v4l2-compliance and checkpatch.pl
+tests pass, but passing tests isn't the same as understanding the kernel-level implications. I
+would need to be able to answer those questions with confidence before I ever consider putting
+forward a patch.
 
 The code might be ready, but I'm not. The thought of putting this work forward for review made me
 very nervous and anxious. At first I thought it was my insecurities of being judged by Linux kernel
@@ -120,9 +125,12 @@ struggle to try and prove myself and get validation by having my code merged int
 ## Authenticity
 
 It would not be authentic for me to put my work forward, with my current level of knowledge. The
-code may or may not be up to the standards of the Linux Kernel. That isn't the point. I would not
-be able to support this code, with my level of knowledge, or speak confidently about my design
-choices.
+code may or may not be up to the standards of the Linux Kernel. That isn't the point. While I can
+speak confidently about the overarching architecture and the USB protocol decoding, I cannot
+definitively defend the nuanced design choices within the V4L2 and VB2 implementations. If a
+maintainer asked why a specific buffer allocation method was chosen, my honest answer would be
+'because the AI said it would pass the compliance test.' That is not an acceptable answer on the
+Linux Kernel Mailing List.
 
 By keeping it on GitHub under an MIT license rather than forcing a kernel patch, I'm hoping to pass
 the baton. It’s out there for someone who does have the deep foundational expertise—and the
