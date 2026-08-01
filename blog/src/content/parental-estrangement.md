@@ -12,6 +12,16 @@ tags: ["emotions", "analysis", "mental-health", "ai"]
 
 I've debated whether to write this post or not, but something is pulling me to releasing it. So here goes.
 
+## Previous Behaviour
+
+At the beginning of July, I was not responding to anyone's texts or calls, even my dads. My dad doesn't let things go. He called me 3 days in a row, which I ignored. Instead of taking the hint, he showed up knocking on my door at 8:30 AM on a Monday morning. I thought I was dreaming. I was barely awake when I answered the door. He opened with explaining that he was trying to get ahold of me for several days, and he stated that him and mom were worried about me. Which is funny since they can go months without calling me. I don't answer them for 3 days and they're at my door. I was skeptical about his motives, but I heard him out.
+
+My dad let me know that me not responding for 3 days worried my mom and that I should "touch base" with her to "ease her mind". Funny enough that when I'm at their house, my mom asks me "if I'm gone yet" if I say something the doesn't like. Then he gets to the reason why he was trying to get ahold of me. There was something he was thinking about and he wanted my help with it. It was important to him, but nothing that he couldn't have texted me about. I gave him some advice and agreed to help him. His parting words were "don't be a stranger", or something to that effect.
+
+When my dad left that day, I was angry since he woke me because he was worried about me, but in reality it was because I didn't answer him when he wanted me to. I imagined knocking on his door when he was in bed, and thought about the oats I'd hear from him if I was there to ask him some trivial question. He's quite vocal about setting boundaries, and is very quick to say no, and to let it be known when he disapproves. Yet here he is doing something to me that he would chastise anyone else for doing, all in the name of "mom's worry".
+
+## July 23rd - Dad's Invitation Text
+
 In my last post [Intent, Impact, and Emotional Blackmail](/posts/intent-vs-impact), I analyzed the following text message from dad through 3 different frameworks (FOG, FATE, & Modes of Persuasion):
 
 > Happy 50th Anniversary to us. Lol
@@ -22,17 +32,9 @@ In my last post [Intent, Impact, and Emotional Blackmail](/posts/intent-vs-impac
 >
 > What she is hoping if you are free Saturday afternoon and want to drop by, we'll buy the Chicken.
 
-My dad sent me this text on July 23, 2026. I was overcome with anger at this text initially, since this is not the first time he has used my mom's health to get me to do what he wants.
+My dad sent me this text on July 23, 2026. I was overcome with anger at this text initially, since this is not the first time he has used my mom's health to get me to do what he wants. That's why my dad's 50th anniversary text pissed me off - here he is again trying to ensure that I show up by weaponizing my moms health for an occasion that should be joyous. The emotional rollercoaster of his message and the similar tactic he used not just a few weeks prior bothered me.
 
-At the beginning of July, I was not responding to anyone's texts or calls, even my dads. My dad doesn't let things go. He called me 3 days in a row, which I ignored. Instead of taking the hint, he showed up knocking on my door at 8:30 AM on a Monday morning. I thought I was dreaming. I was barely awake when I answered the door. He opened with explaining that he was trying to get ahold of me for several days, and he stated that him and mom were worried about me. Which is funny since they can go months without calling me. I don't answer them for 3 days and they're at my door. I was skeptical about his motives, but I heard him out.
-
-My dad let me know that me not responding for 3 days worried my mom and that I should "touch base" with her to "ease her mind". Funny enough that when I'm at their house, my mom asks me "if I'm gone yet" if I say something the doesn't like. Then he gets to the reason why he was trying to get ahold of me. There was something he was thinking about and he wanted my help with it. It was important to him, but nothing that he couldn't have texted me about. I gave him some advice and agreed to help him. His parting words were "don't be a stranger", or something to that effect.
-
-When my dad left that day, I was angry since he woke me because he was worried about me, but in reality it was because I didn't answer him when he wanted me to. I imagined knocking on his door when he was in bed, and thought about the oats I'd hear from him if I was there to ask him some trivial question. He's quite vocal about setting boundaries, and is very quick to say no, and to let it be known when he disapproves. Yet here he is doing something to me that he would chastise anyone else for doing, all in the name of "mom's worry".
-
-That's why my dad's 50th anniversary text pissed me off - here he is again trying to ensure that I show up by weaponizing my moms health for an occasion that should be joyous. The emotional rollercoaster of his message and the similar tactic he used not just a few weeks prior bothered me.
-
-I believe My reaction to this message sent him over the edge. While my parents 50th anniversary is a milestone event, my own mental health and right to privacy is something that I don't take lightly. I've always been a little intimidated by my dad, and his sense of entitlement was something I wanted to address. But I didn't do it like I would do if we had a healthy relationship, by calling out his behaviour, stating my boundaries, and asking him to respect them. That would be the healthy way of handling boundaries. But I didn't do that.
+I believe my reaction to this message sent him over the edge. While my parents 50th anniversary is a milestone event, my own mental health and right to privacy is something that I don't take lightly. I've always been a little intimidated by my dad, and his sense of entitlement was something I wanted to address. But I didn't do it like I would do if we had a healthy relationship, by calling out his behaviour, stating my boundaries, and asking him to respect them. That would be the healthy way of handling boundaries. But I didn't do that.
 
 What I did was double down on my rebellion. Since he didn't get the message last time I didn't respond, I thought wishing them a belated happy 50th anniversary would have to be good enough. I was unavailable that day - I needed to rearrange my sock drawer, or whatever. The point is that it doesn't matter why I don't show up, and I shouldn't have to explain myself. I'm almost 50 for fuck sakes. So I ignored his text. Then trouble started.
 
@@ -40,13 +42,19 @@ A couple hours after my dad's text on the 23rd, my brother called. I ignored his
 
 Anticipating some family shenanigans, I emailed my therapist to squeeze me in so that I could work through this without completely losing my shit. My therapist found an opening for 8:30 PM on Friday. I'm glad I booked that session, let me tell you. Sticking to my guns of not responding to my family at a milestone event with my family was bound to see fireworks. If anything, I was curious what being unavailable would do. If my dad had simply asked "Hey, we're having a get together on Saturday for our 50th. We'd love for you to celebrate with us" I would have shown up, no problem. But that wasn't the approach he took. Instead, my dad presumed that he has access to me anytime he pleases. Silly me thinking that invitations were optional.
 
+## July 24th - Day Before 50th Anniversary Family Get Together
+
 On Friday, July 24 I found a note on my door around 2 PM in the afternoon from dad. He wrote his 2 phone numbers on a piece of paper, and asked me to call him. I have both his numbers in my phone. I kept the note to show my therapist - thought it would be a good show and share. Dad called and left me a voicemail at 6:30 PM asking me to call him. Ignored. My therapy session was at 8:30 PM, and I wanted to work things out before engaging with my family. It's only 2 hours, it should fly right by, right? Nope. lol. At 7:30 PM I get a knock on my door. It's my dad. Clearly he's not getting the message. After ignoring him for 2 days I presumed he might be a little hot under the collar and I wasn't about to open the door to a potential fight. So I didn't answer. I stayed sat on my couch sipping my tea, reading a book. Dad knows I'm home. I clearly hear him knocking on my door. I could have easily walked the 15 feet to my door to let him in. But I wasn't about to do that, since it was less than an hour until I was to speak with my therapist. My dad was just going to have to wait.
 
 I had a lovely chat with my therapist around boundaries and healthy ways of setting them. When people violate your boundaries, you don't owe them anything. Including your time, or your presence. No response is a response. And sometimes with certain people, no response is the correct response. That's counter intuitive since it's only polite to acknowledge people and show common decency. However, allowing people to violate your boundaries and caving when you do set a boundary conditions people that your boundaries aren't really boundaries. Not answering the door for your dad seems kind of excessive. However, I'm not living in his house and he's not paying my rent. He doesn't get access to me or my home simply because he feels entitled to it. If I want to ignore the world, I have a right to do that. No explanations necessary.
 
 I discussed with my therapist that I suspected my dad wasn't going to let this go and would likely show up at my door first thing in the morning. I was sticking to my guns, even though I felt horrible about doing this. My mom's health issues and my parents 50th anniversary are important to me. But my mental health and my right to privacy are also important to me, and I was not going to tolerate my dad leveraging my mom's health whenever he wanted to ask me a question. I'm only now getting comfortable with setting boundaries and my dad is testing them already, along with my patience.
 
-My therapist recommended that I spend the night in a nice hotel, and get a room with a spa. I thought that was a lovely idea. I found a nice hotel and had a fantastic sleep (July 24th). The next morning (July 25) I slept in, finished off reading a book. Then went to Denny's for breakfast, followed by a trip to the bookstore. The 50th anniversary gathering was at 2 PM. My plan was to be unavailable, let them have their get together, then I'd catch my parents the following day. Boy did that plan go to shit.
+My therapist recommended that I spend the night in a nice hotel, and get a room with a spa. I thought that was a lovely idea. I found a nice hotel and had a fantastic sleep (July 24th).
+
+## July 25th - 50th Anniversary Family Get Together
+
+The next morning (July 25) I slept in, finished off reading a book. Then went to Denny's for breakfast, followed by a trip to the bookstore. The 50th anniversary gathering was at 2 PM. My plan was to be unavailable, let them have their get together, then I'd catch my parents the following day. Boy did that plan go to shit.
 
 Mom called me at 11 AM. My brother called me twice at 1:30 PM. My dad was knocking on my door at 2:20 PM. At that point I turned my phone off and didn't answer the door. My family was clearly not getting the hint. And I wasn't backing down. It was an all out battle for access to me. For not being available.
 
@@ -64,7 +72,19 @@ My dad crossed a line here that my therapist warned me about. My dad used the th
 
 Given that my dad is stubborn (he's not backing down, nor am I. Apple .. tree ... ), I considered that he might actually follow through with this "threat of a wellness check". To nip that in the bud, I called the RNC non-emergency hotline and left a note on my address that I'm OK, I'm an adult and my dad had left a voicemail indicating he was "almost thinking" (how do you almost think?) of having a wellness check done on me. I informed the officer that I'm doing OK and that they can send someone by to confirm if they needed to. I was calm, explained the situation, and tried to prevent an unnecessary use of police resources. It's absolutely insane I had to call the police to prevent a potential abuse of wellness checks. That's what my dad likely didn't consider. Having an officer sent to my door to do a wellness check on me unnecessarily could mean someone else who needs police presence doesn't get it, or in time.
 
+### Anticipating Wellness Check
+
+I was prepared for a police officer to come knocking on my door. If I'm being honest, I was getting excited to see the reaction of the police officer when I answer the door with a smile, welcome them, then ask if they like my mat that readds "Come Back with a Warrant".
+
+![Come Back with a Warrant Mat](../assets/ComeBackWithAWarrant.png)
+
+I don't know how often that officer does wellness checks and is shown a mat with the phrase "come back with a warrant" written on it in big letters. Imagine being in that officer's shoes not knowing what to expect, and when greeted at the door they see a mat on the floor that tells them to come back with a warrant. I would love to see their reaction. lol. If that doesn't get a laugh, I'd be highly disappointed.
+
+## July 26th - Day After 50th Anniversary Family Get Together
+
 My dad showed up at my door again on July 26th at 3:30 PM. He had called several times in the morning. I did not answer his calls, or my door. I saw on my security camera that my dad had his face pressed to the frosted glass in my door with his hands up to his eyes to block the sun so he could see into my apartment. I was legit getting worried. My landlord was out painting her fence when my dad showed up. About 20 minutes later, I got a text from my landlord informing me that my dad talked to her, told her he was trying to get ahold of me for the last few days and that it was important, and to call him. What in the actual fuck. My dad is heading into stalking territory. But it gets worse.
+
+## July 27th - Monday After 50th Anniversary Family Get Together
 
 On Monday, July 27th I was getting ready to head to work. And at 9:20 AM just when I was about to leave, dad is back knocking on my door. Again I didn't answer. I didn't know it at the time, but he left a message from another cell phone while he was at my house, since I had his blocked. He left a voicemail saying that he was sat in my driveway, and he was waiting for me to come out to talk to him. He had is van parked in my driveway, physically blocking my exit, forcing a confrontation. I didn't check my voicemail before I left to go to work, and to my surprise I saw his van. Fight or flight mode kicked in, and let me tell you flight was not an option.
 
